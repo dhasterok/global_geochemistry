@@ -1,7 +1,13 @@
 # global_geochemistry
 A global geochemistry dataset for rocks
 
+Description:
 This repository contains whole rock geochemical data for a global set of samples from a variety of governmental and academic studies.
+
+
+Requirements:
+MATLAB is required to run .m codes and load any .mat files
+
 
 File structure:
 
@@ -27,3 +33,10 @@ global_geochemistry/protolith
   
 
 The repository is currently under construction.
+
+For issues or questions, contact:
+
+Derrick Hasterok
+University of Adelaide
++61 4 8313 4540
+derrick.hasterok@adelaide.edu.au
