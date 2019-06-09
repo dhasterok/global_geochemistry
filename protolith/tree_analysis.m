@@ -18,10 +18,15 @@ return
 
 
 
-function analysis(traindata,testdata,vrsn,method)
+function analysis(traindata,testdata,classifier)
 
 % load classifier
-load([vrsn,'.mat']);
+if isstr(classifier)
+    load([classifier,'.mat']);
+else
+    protolithClassifier = classifier;
+end
+    
 
 % predict protolith type
 traindata.protolith = protolithClassifier.predictFcn(traindata);
@@ -70,9 +75,13 @@ fprintf('sedimentary & %7i & %7i & %7i \n', ...
 
 figure;
 % histograms of training dataset scores (normalized to 1)
-x = min(traindata.score(strcmp(traindata.label,'igneous'),1));
+
+x = min(traindata.score(strcmpi(traindata.label,'igneous'),1));
+traindata.score = traindata.score(:,1)/x-1;
+testdata.score = testdata.score(:,1)/x-1;
+
 subplot(221);
-histogram(traindata.score(rockgroup(traindata,'igneous'),1)/x-1,'BinWidth',0.05,'DisplayStyle','stairs');
+histogram(traindata.score(rockgroup(traindata,'igneous')),'BinWidth',0.05,'DisplayStyle','stairs');
 hold on;
 plot([0 0],get(gca,'YLim'));
 xlabel('Normalized Score');
@@ -80,7 +89,7 @@ title('Igneous (train)');
 xlim([-1 1]);
 
 subplot(222);
-histogram(traindata.score(rockgroup(traindata,'sedimentary'),2)/x-1,'BinWidth',0.05,'DisplayStyle','stairs');
+histogram(traindata.score(rockgroup(traindata,'sedimentary')),'BinWidth',0.05,'DisplayStyle','stairs');
 hold on;
 plot([0 0],get(gca,'YLim'));
 xlabel('Normalized Score');
@@ -89,7 +98,7 @@ xlim([-1 1]);
 
 % histograms of validation dataset scores (normalized to 1)
 subplot(223);
-histogram(testdata.score(rockgroup(testdata,'igneous'),1)/x-1,'BinWidth',0.05,'DisplayStyle','stairs');
+histogram(testdata.score(rockgroup(testdata,'igneous')),'BinWidth',0.05,'DisplayStyle','stairs');
 hold on;
 plot([0 0],get(gca,'YLim'));
 xlabel('Normalized Score');
@@ -97,17 +106,44 @@ title('Igneous (validation)');
 xlim([-1 1]);
 
 subplot(224);
-histogram(testdata.score(rockgroup(testdata,'sedimentary'),2)/x-1,'BinWidth',0.05,'DisplayStyle','stairs');
+histogram(testdata.score(rockgroup(testdata,'sedimentary')),'BinWidth',0.05,'DisplayStyle','stairs');
 hold on;
 plot([0 0],get(gca,'YLim'));
 xlabel('Normalized Score');
 title('Sedimentary (validation)');
 xlim([-1 1]);
 
+figure;
+subplot(231);
+rockscore(traindata,testdata,'iron-rich shale')
+subplot(232);
+rockscore(traindata,testdata,'shale')
+subplot(234);
+rockscore(traindata,testdata,'wacke')
+subplot(235);
+rockscore(traindata,testdata,'arkose')
+
+subplot(233);
+rockscore(traindata,testdata,'granite')
+subplot(236);
+rockscore(traindata,testdata,'granodiorite')
+
 % figure of incorrect values for training dataset
 misclassify_plot(traindata,traindata.label);
 
 % figure of incorrect values for testing dataset
 misclassify_plot(testdata,testdata.label);
+
+return
+
+function rockscore(traindata,testdata,rt)
+
+histogram(traindata.score(strcmp(traindata.rock_type,rt)),'BinWidth',0.05,'DisplayStyle','stairs','Normalization','probability');
+hold on;
+histogram(testdata.score(strcmp(testdata.rock_type,rt)),'BinWidth',0.05,'DisplayStyle','stairs','Normalization','probability');
+plot([0 0],get(gca,'YLim'));
+xlabel('Normalized Score');
+title(rt);
+xlim([-1 1]);
 
 return
