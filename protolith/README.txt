@@ -9,6 +9,7 @@ misclassify_plot.m - creates a plot of results for the preferred classifier (RUS
 prep_for_cluster.m - A Matlab function that extracts data from the global geochemical dataset by Gard et al. (Earth System Sci. Data, submitted) that is used for training and validation of the protolithClassifier.
 protolith_plots.mlx - A Matlab live script that contains the code to recreate figures from Hasterok et al. (Computers & Geosciences, submitted)
 protolith_prep.m - A Matlab function that calls prep_for_cluster.m with selected options (e.g., data transformation, PCA, reserve dataset size).
+protolith_template.xlsx - An example geochemistry input file.
 train_RUSBoost_Classifier_30l_1000s_20190222.m - A Matlab function that can be used to train the a new protolithClassifier using the same options as presented in Hasterok et al. (Computers & Geosciences, submitted).
 trained_RUSBoost_Model_30l_1000s_20190226.mat - A Matlab datafile that contains the data tables used to train the protolithClassifier and post-training validation.
 training_analysis.m - A Matlab function that creates figures illustrating model performance from the tested machine learning algorithms and options.
@@ -20,4 +21,4 @@ The analyses used to train the metamorphic classifiers and the references to the
 
 Reference:
 --------------------------------------
-Hasterok, D., M. Gard, C.M.B. Bishop, and D. Kelsey, (submitted to Computers & Geosciences), Chemical identification of metamorphic protoliths using machine learning methods.
+Hasterok, D., M. Gard, C.M.B. Bishop, and D. Kelsey, (revision submitted to Computers & Geosciences), Chemical identification of metamorphic protoliths using machine learning methods.
