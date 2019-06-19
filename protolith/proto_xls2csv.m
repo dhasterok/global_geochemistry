@@ -19,20 +19,18 @@ function outfile = proto_xls2csv(varargin)
 
 % Original: 2019 June 18 by D. Hasterok dhasterok@gmail.com
 
-outpath = './csv/';
-
 % get infile name
 switch nargin
     case 0
-        [infile,inpath] = uigetfile({'*.xlsx';'*.xls'},'Select a geochemistry data infile')
+        [infile,path] = uigetfile({'*.xlsx';'*.xls'},'Select a geochemistry data infile')
     case 1
         infile = varargin{1};
-        inpath = '';
+        path = '';
     case 2
         infile = varargin{2};
-        inpath = varargin{1};
-        if ~strcmp(inpath(end),'/')
-            inpath = [inpath,'/'];
+        path = varargin{1};
+        if ~strcmp(path(end),'/')
+            path = [path,'/'];
         end
     otherwise
         error('Incorrect number of inputs.');
@@ -43,14 +41,14 @@ end
 
 % outfile name
 if strcmpi(infile(end:end-2),'xls')
-    outfile = [outpath,infile(1:end-3),'csv'];
+    outfile = [path,infile(1:end-3),'csv'];
 else
-    outfile = [outpath,infile(1:end-4),'csv'];
+    outfile = [path,infile(1:end-4),'csv'];
 end
 
 % load infile
 fprintf('Loading %s...\n',infile)
-[num,txt,raw] = xlsread([inpath,infile]);
+[num,txt,raw] = xlsread([path,infile]);
 [nrt,nct] = size(txt);
 [nrn,ncn] = size(num);
 
