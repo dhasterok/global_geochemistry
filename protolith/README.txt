@@ -12,7 +12,7 @@ protolith_plots.mlx - A Matlab live script that contains the code to recreate fi
 protolith_predictor.m - A Matlab function for predicting protolith estimates from a geochemical file (Excel spreadsheet). note: for this function to work, the protolith classification file must be downloaded from https://dx.doi.org/10.5281/zenodo.2586461
 protolith_prep.m - A Matlab function that calls prep_for_cluster.m with selected options (e.g., data transformation, PCA, reserve dataset size).
 protolith_template.xlsx - An example geochemistry input file.
-train_RUSBoost_Classifier_30l_1000s_20190222.m - A Matlab function that can be used to train the a new protolithClassifier using the same options as presented in Hasterok et al. (Computers & Geosciences, submitted).
+train_RUSBoost_Classifier_30l_1000s_20190222.m - A Matlab function that can be used to train the a new protolithClassifier using the same options as presented in Hasterok et al. (Computers & Geosciences, revised).
 trained_RUSBoost_Model_30l_1000s_20190226.mat - A Matlab datafile that contains the data tables used to train the protolithClassifier and post-training validation.
 training_analysis.m - A Matlab function that creates figures illustrating model performance from the tested machine learning algorithms and options.
 tree_analysis.m - A Matlab function that examines in detail the preferred classifier performance.
@@ -31,4 +31,5 @@ The analyses used to train the metamorphic classifiers and the references to the
 
 Reference:
 --------------------------------------
-Hasterok, D., M. Gard, C.M.B. Bishop, and D. Kelsey, (revision submitted to Computers & Geosciences), Chemical identification of metamorphic protoliths using machine learning methods.
+Hasterok, D., M. Gard, C.M.B. Bishop, and D. Kelsey, (revised), Chemical identification of metamorphic protoliths using machine learning methods, Computers & Geosciences.
+Gard, M., Hasterok, D., Halpin, J., 2019. Global whole-rock geochemical database compilation. Earth System Science Data Discussions, Earth System Science Data Discussions 1–23. doi:10.5194/essd-2019-50.
