@@ -8,13 +8,22 @@ This repository contains whole rock geochemical data for a global set of samples
 Requirements:
 MATLAB is required to run .m codes and load any .mat files
 
+Some of the codes utilize geological province boundaries to assign metadata that can be used to examine chemical patterns in different tectonic environments.  These models are contained within a separate GitHub repository dhasterok/global_tectonics.
 
 File structure:
+
+
+global_geochemistry/processing
+
 
 global_geochemistry/classification
   Contains codes that classify whole rock samples on the basis of chemistry
   
-
+  
+global_geochemistry/physprop
+  Codes that estimate physical properties from geochemistry.
+  
+  
 global_geochemistry/protolith
   Contains codes associated with protolith classification, including the preparation of the dataset, training, validation, and analysis
   
@@ -30,8 +39,32 @@ global_geochemistry/protolith
   tree_analysis.m - produces a plot of classification results for a training and validation dataset using the classifier
     trained_RUSBoost_Model_(classifier parameters).mat
   misclassify_plot.m - produces a plot of classification results by rock type
-  
 
+
+global_geochemistry/plotting
+  Codes for visualizing the dataset.
+
+
+global_geochemistry/ternary
+  Make ternary scatter, gridded, or contour plots of data on ternary diagrams.
+
+
+global_geochemistry/maptools
+  Codes for making maps.
+
+
+global_geochemistry/temporal
+  Codes that deal specifically with temporal processing of the dataset.
+
+
+global_geochemistry/stats
+  Codes for statistical analysis of the data, generally non-routine methods including appropriately dealing with censored (below detection) data.
+  
+  
+global_geochemistry/ref_models
+  Contains geochemical reference models.
+  
+  
 The repository is currently under construction.
 
 For issues or questions, contact:
