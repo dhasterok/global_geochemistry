@@ -1,0 +1,30 @@
+%Text width
+16.99757cm
+
+
+%Set figure size: [x-position y-position width height (variable)]
+set(1, 'units', 'centimeters', 'pos', [0 0 15 10])
+Note that x-position and y-position don't really matter -- they define...
+where the figure will appear on your screen, relative to the bottom left corner.
+
+figure(figNum)
+% plot(somestuff);  
+pos = get(figNum,'Position');
+set(figNum,'PaperPositionMode','Auto','PaperUnits','centimeters',...
+'PaperSize',[pos(3), pos(4)])
+print(figNum,'myfigure','-dpdf','-r0')
+
+%If you've got multiple plots make sure to set a unique value for ...
+%myfigure so they don't all overwrite each other.
+
+When you insert the figure, you can adjust it a bit using factors of \textwidth:
+\begin{figure}[!htb]
+    \captionsetup{skip=0.5\baselineskip,size=footnotesize}
+    \centering
+    \includegraphics[width=1.1\textwidth]{Figures/myfigure}
+    \caption{This is the caption text}
+    \label{fig:myfigure}
+\end{figure}
+
+Since you're using a pdf, a bit of stretching up or down won't make ...
+a difference in quality, so I usually just play with this a bit until it looks right.

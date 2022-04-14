@@ -1,0 +1,170 @@
+name,type,age_lower,age_upper
+precambrian,supereon,541,4600
+phanerozoic,eon,0,541
+proterozoic,eon,541,2500
+archaean,eon,2500,4000
+hadean,eon,4000,4600
+cenozoic,era,0,66
+mesozoic,era,66,251.902
+palaeozoic,era,251.902,541
+neoproterozoic,era,541,1000
+mesoproterozoic,era,1000,1600
+palaeoproterozoic,era,1600,2500
+neoarchaean,era,2500,2800
+mesoarchaean,era,2800,3200
+palaeoarchaean,era,3200,3600
+eoarchaean,era,3600,4000
+quaternary,period,0,2.58
+neogene,period,2.58,23.03
+palaeogene,period,23.03,66
+cretaceous,period,66,145
+jurassic,period,145,201.3
+triassic,period,201.3,251.902
+permian,period,251.902,298.9
+carboniferous,period,298.9,358.9
+devonian,period,358.9,419.2
+silurian,period,419.2,443.8
+ordovician,period,443.8,485.4
+cambrian,period,485.4,541
+ediacaran,period,541,635
+cryogenian,period,635,720
+tonian,period,720,1000
+stenian,period,1000,1200
+ectasian,period,1200,1400
+calymmian,period,1400,1600
+statherian,period,1600,1800
+orosirian,period,1800,2050
+rhyacian,period,2050,2300
+siderian,period,2300,2500
+holocene,epoch,0,0.0117
+pleistocene,epoch,0.0117,2.58
+pliocene,epoch,2.58,5.333
+miocene,epoch,5.333,23.03
+oligocene,epoch,23.03,33.9
+eocene,epoch,33.9,56
+palaeocene,epoch,56,66
+upper cretaceous,epoch,66,100.5
+lower cretaceous,epoch,100.5,145
+upper jurassic,epoch,145,163.5
+middle jurassic,epoch,163.5,174.1
+lower jurassic,epoch,174.1,201.3
+upper triassic,epoch,201.3,237
+middle triassic,epoch,237,247.2
+lower triassic,epoch,247.2,251.902
+lopingian,epoch,251.902,259.1
+guadalupian,epoch,259.1,272.95
+cisuralian,epoch,272.95,298.9
+pennsylvanian,epoch,298.9,323.2
+mississippian,epoch,323.2,358.9
+upper devonian,epoch,358.9,382.7
+middle devonian,epoch,382.7,393.3
+lower devonian,epoch,393.3,419.2
+pridoli,epoch,419.2,423
+ludlow,epoch,423,427.4
+wenlock,epoch,427.4,433.4
+llandovery,epoch,433.4,443.8
+upper ordovician,epoch,443.8,458.4
+middle ordovician,epoch,458.4,470
+lower ordovician,epoch,470,485.4
+furongian,epoch,485.4,497
+series 3,epoch,497,509
+series 2,epoch,509,521
+terreneuvian,epoch,521,541
+upper pleistocene,age,0.0117,0.126
+middle pleistocene,age,0.126,0.781
+calabrian,age,0.781,1.8
+gelasian,age,1.8,2.58
+piacenzian,age,2.58,3.6
+zanclean,age,3.6,5.333
+messinian,age,5.333,7.246
+tortonian,age,7.246,11.63
+serravallian,age,11.63,13.82
+langhian,age,13.82,15.97
+burdigalian,age,15.97,20.44
+aquitanian,age,20.44,23.03
+chattian,age,23.03,28.1
+rupelian,age,28.1,33.9
+priabonian,age,33.9,37.8
+bartonian,age,37.8,41.2
+lutetian,age,41.2,47.8
+ypresian,age,47.8,56
+thanetian,age,56,59.2
+selandian,age,59.2,61.6
+danian,age,61.6,66
+maastrichtian,age,66,72.1
+campanian,age,72.1,83.6
+santonian,age,83.6,86.3
+coniacian,age,86.3,89.8
+turonian,age,89.8,93.9
+cenomanian,age,93.9,100.5
+albian,age,100.5,113
+aptian,age,113,125
+barremian,age,125,129.4
+hauterivian,age,129.4,132.9
+valanginian,age,132.9,139.8
+berriasian,age,139.8,145
+tithonian,age,145,152.1
+kimmeridgian,age,152.1,157.3
+oxfordian,age,157.3,163.5
+callovian,age,163.5,166.1
+bathonian,age,166.1,168.3
+bajocian,age,168.3,170.3
+aalenian,age,170.3,174.1
+toarcian,age,174.1,182.7
+pliensbachian,age,182.7,190.8
+sinemurian,age,190.8,199.3
+hettangian,age,199.3,201.3
+rhaetian,age,201.3,208.5
+norian,age,208.5,227
+carnian,age,227,237
+ladinian,age,237,242
+anisian,age,242,247.2
+olenekian,age,247.2,251.2
+induan,age,251.2,251.902
+changhsingian,age,251.902,254.14
+wuchiapingian,age,254.14,259.1
+capitanian,age,259.1,265.1
+wordian,age,265.1,268.8
+roadian,age,268.8,272.95
+kungurian,age,272.95,283.5
+artinskian,age,283.5,290.1
+sakmarian,age,290.1,295
+asselian,age,295,298.9
+gzhelian,age,298.9,303.7
+kasimovian,age,303.7,307
+moscovian,age,307,315.2
+bashkirian,age,315.2,323.2
+serpukhovian,age,323.2,330.9
+visean,age,330.9,346.7
+tournaisian,age,346.7,358.9
+famennian,age,358.9,372.2
+frasnian,age,372.2,382.7
+givetian,age,382.7,387.7
+eifelian,age,387.7,393.3
+emsian,age,393.3,407.6
+pragian,age,407.6,410.8
+lochkovian,age,410.8,419.2
+ludfordian,age,423,425.6
+gorstian,age,425.6,427.4
+homerian,age,427.4,430.5
+sheinwoodian,age,430.5,433.4
+telychian,age,433.4,438.5
+aeronian,age,438.5,440.8
+rhuddanian,age,440.8,443.8
+hirnantian,age,443.8,445.2
+katian,age,445.2,453
+sandbian,age,453,458.4
+darriwilian,age,458.4,467.3
+dapingian,age,467.3,470
+floian,age,470,477.7
+tremadocian,age,477.7,485.4
+stage 10,age,485.4,489.5
+jiangshanian,age,489.5,494
+paibian,age,494,497
+guzhangian,age,497,500.5
+drumian,age,500.5,504.5
+stage 5,age,504.5,509
+stage 4,age,509,514
+stage 3,age,514,521
+stage 2,age,521,529
+fortunian,age,529,541
