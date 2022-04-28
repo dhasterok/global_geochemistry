@@ -42,13 +42,13 @@ for i = 1:length(cont)
     fprintf('Working on %s...\n',cont{i});
     switch cont{i}
         case 'antarctica'
-            filename = ['../GIS/global_tectonics/plates&provinces/',cont{i},'_gprv.shp'];
+            filename = ['../global_tectonics/plates&provinces/',cont{i},'_gprv.shp'];
         case 'lips'
-            filename = ['../GIS/global_tectonics/polygon_data/Johansson_etal_2018_EarthByte_LIPs_v2.shp'];
+            filename = ['../global_tectonics/polygon_data/Johansson_etal_2018_EarthByte_LIPs_v2.shp'];
         case 'plates'
-            filename = ['../GIS/global_tectonics/plates&provinces/plates.shp'];
+            filename = ['../global_tectonics/plates&provinces/plates.shp'];
         otherwise
-            filename = ['../GIS/global_tectonics/plates&provinces/',cont{i},'_gprv.shp'];
+            filename = ['../global_tectonics/plates&provinces/',cont{i},'_gprv.shp'];
     end
     
     s = struct2table(shaperead(filename));

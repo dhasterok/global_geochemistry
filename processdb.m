@@ -59,7 +59,7 @@ use_u_th = 0;           % Use (1) or exclude (0) h.p. estimates for missing
 
 use_norm_oxide = 1;     % Pre-normalise (1) or not (0) major oxides
 
-use_protolith_est = 1;  % Use (1) or exclude (0) estimated protoliths for
+use_protolith_est = 0;  % Use (1) or exclude (0) estimated protoliths for
                         % metamorphic rocks with unknown protolith
 
 % protolith classifier
