@@ -37,8 +37,9 @@ output_stats = 1;
 
 % note if you have downloaded this from GitHub, you may need to change this
 % directory
-path = ['../database/export/',dbdate,'/database_',dbdate,'.csv'];
-
+%path = ['../database/export/',dbdate,'/database_',dbdate,'.csv'];
+path = '/Users/dhasterok/Google Drive/My Drive/heat_production/database/export/';
+       
 % oxides for normalization
 majors = {'sio2';'tio2';'al2o3';'feo_tot';'mgo';'cao';'na2o';'k2o';'p2o5'};
 oxlist = {'SiO2'; 'TiO2'; 'Al2O3'; 'FeO'; 'MgO'; 'CaO'; 'Na2O'; 'K2O'; 'P2O5'};
@@ -73,11 +74,8 @@ new_density_model = 0;  % Use (1) to update or (0) to use existing density
 % ----------------------------------------
 % read data file
 fprintf('Reading database...\n');
-if isempty(fmt)
-    data = readtable(path);
-else
-    data = readtable(path,'Format',fmt);
-end
+data = readtable([path,dbdate,'/','database_',dbdate,'.csv']);
+
 fprintf('Size of database: %i\n\n',height(data));
 
 if strcmp(dbdate,'2018_06_20')
