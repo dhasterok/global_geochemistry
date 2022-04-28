@@ -127,8 +127,8 @@ age_var = 200;
 fprintf('Correcting ages...\n');
 data.avg_age = age_correction(data,age_var);
 
-fprintf('Correcting oceanic and assigning oceanic ages...\n');
-data = correct_country(data);
+%fprintf('Correcting oceanic and assigning oceanic ages...\n');
+%data = correct_country(data);
 
 
 % ----------------------------------------
