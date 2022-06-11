@@ -1,5 +1,5 @@
 # global_geochemistry
-A global geochemistry dataset for rocks
+Codes for analyzing global geochemistry
 
 Description:
 This repository contains whole rock geochemical data for a global set of samples from a variety of governmental and academic studies.
