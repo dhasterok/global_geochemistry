@@ -1,5 +1,11 @@
-function p = plot_llsq(x,y,m,varargin);
-% plots a linear regression model from LLSQ and confidence intervals
+function p = llsqplot(x,y,m,varargin)
+% llsqplot - plots a linear regression with confidence bounds
+%
+%   p = llsqplot(x,y,m,varargin) will plot the least squares solution
+%   contained within m along with the data, (x,y), and a grey bounds for
+%   95% confidence in the linear model.
+%
+%   At the moment the code only works for linear fits (y = mx + b).
 
 alpha = 0.95;
 mlim = [min(x) max(x)];
@@ -27,6 +33,7 @@ if nargin > 3
 end
 
 N = length(x);
+M = size(m,1);
 
 xtmp = linspace(mlim(1),mlim(2),50)';
 ytmp = [ones(size(xtmp)) xtmp]*m(:,1);
@@ -37,7 +44,7 @@ se = sqrt(sum((y - [ones(size(x)) x]*m(:,1)).^2)/(N - 2)) * ...
     sqrt(1/N + (xtmp - xmu).^2/sum((x - xmu).^2));
 
 yci = repmat(ytmp,1,2) + ...
-    tinv((1 - alpha)/2,N-2)*repmat([-1 1],length(xtmp),1).*repmat(se,1,2);
+    tinv((1 - alpha)/2,N-M)*repmat([-1 1],length(xtmp),1).*repmat(se,1,2);
 
 p{2} = fill([xtmp; flipud(xtmp)],[yci(:,1); flipud(yci(:,2))],[0.7 0.7 0.7], ...
     'EdgeColor','none');

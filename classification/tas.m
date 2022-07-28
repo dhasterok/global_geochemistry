@@ -19,36 +19,54 @@ function tas_name = tas(data,varargin);
 %   Carbonatites are specifically identified as such using given names
 %   or high-CO2 content >20%.
 %
-%   tas(data,plot_flag) produces a 2D histogram of TA vs. S with negative
-%   values indicating high-Mg lavas.
+%   There are a few option value pairs that can be provided to tas:
+%
+%       'PlotType'      'hist' will produce a 2D histogram of TA vs. S with
+%                       negative values indicating high-Mg lavas.
+%                       'scatter' will produce a scatter plot.  The default
+%                       is 'none'.
+%
+%       'SizeField'     if 'PlotType' is 'scatter', a field of data can be
+%                       selected to set the size of symbols.
+%
+%       'ColorField'    if 'PlotType' is 'scatter', a field of data can be
+%                       selected to set the color of symbols.
 %
 % See also: CARBCLASS
 
-plottype = 'none';
-ptsize = [];
-ptcolor = [];
+p = inputParser;
+%checkdata = @(data) isa(data,'table');
+addRequired(p,'data');
+addParameter(p,'PlotType','none',@ischar);
+addParameter(p,'SizeField','none',@ischar);
+addParameter(p,'ColorField','none',@ischar);
 
-opt = 1;
-while opt + 1 <= nargin
-    switch lower(varargin{opt})
-        case 'plot'
-            % plottypes:
-            % 'hist' - 2-D histogram
-            % 'scatter' - points
-            plottype = lower(varargin{opt+1});
-            opt = opt + 2;
-        case 'sizefield'
-            sizefield = varargin{opt+1};
-            ptsize = data{:,sizefield};
-            opt = opt + 2;
-        case 'colorfield'
-            colorfield = varargin{opt+1};
-            ptcolor = data{:,colorfield};
-            opt = opt + 2;
-        otherwise
-ed            error('Unknown TAS option.');
-    end
-    
+parse(p,data,varargin{:});
+p.Results
+%data = p.data;
+switch p.Results.PlotType
+    case {'none','hist','scatter'}
+        plottype = p.Results.PlotType;
+    otherwise
+        error('Unknown plot type.');
+end
+
+switch p.Results.SizeField
+    case data.Properties.VariableNames
+        ptsize = data{:,p.Results.SizeField};
+    case 'none'
+        ptsize = [];
+    otherwise
+        error('Unknown field for plotting size.');
+end
+
+switch p.Results.ColorField
+    case data.Properties.VariableNames
+        ptcolor = data{:,p.ColorField};
+    case 'none'
+        ptcolor = [];
+    otherwise
+        error('Unknown field for plotting color.');
 end
 
 tas_name = cell(size(data.sio2));   % TAS determined name
