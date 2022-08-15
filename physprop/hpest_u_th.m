@@ -10,7 +10,7 @@ function data = hpest_u_th(data,varargin)
 p = inputParser;
 
 addRequired(p,'data');
-addParameter(p,'Plot',true,@islogical);
+addParameter(p,'Plot',false,@islogical);
 
 parse(p,data,varargin{:});
 
