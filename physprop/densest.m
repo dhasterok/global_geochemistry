@@ -10,7 +10,7 @@ function data = densest(data)
 % Behn & Kelemen use 7 oxides.  Normalize compositions to these 7 for
 % density and velocity estimates.
 oxides = {'SiO2'; 'TiO2'; 'Al2O3'; 'FeO'; 'MgO'; 'CaO'; 'Na2O'; 'K2O'; 'P2O5'};
-tmp = oxide_norm(data,oxides);
+tmp = oxide_norm(data,'Normalization','anhydrous','Oxides',oxides);
 tmp = geochem_index(tmp);
 
 

@@ -1,5 +1,22 @@
-function data = hpest_u_th(data)
+function data = hpest_u_th(data,varargin)
+% hpest_u_th - estimates heat production when U or Th are missing.
+%
+%   data = hpest_u_th(data);
+%
+%   Detailed plots may be added using the following command:
+%   data = hpest_u_th(data,'Plot',true)
 
+% parse inputs
+p = inputParser;
+
+addRequired(p,'data');
+addParameter(p,'Plot',true,@islogical);
+
+parse(p,data,varargin{:});
+
+plotflag = p.Results.Plot;
+
+% -----------------------------------
 % all data irrespective of rock type
 thind = data.th_ppm > 0;
 uind = data.u_ppm > 0;
@@ -105,73 +122,75 @@ heat_production_th(ind) = data.density_model(ind).*computehp(k2o(ind),data.u_est
 
 % make plots
 % -----------------------------------
-figure;
-qrunavg(data.sio2(data.sio2 > 0 & uind & thind & igind), ...
-    data.ratio_th_u(data.sio2 > 0 & uind & thind & igind),2);
-subplot(3,1,1:2);
-hpax([-2 2]);
-ylabel('Th/U Ratio');
-xlim([0 100]);
-title('Igneous & Metaigneous');
-for i = 1:5
-    if i == 3
-        plot([0 100],[m_ig(i) m_ig(i)],'r-','LineWidth',1.5);
-    else
-        plot([0 100],[m_ig(i) m_ig(i)],'g-','LineWidth',0.5);
+if plotflag
+    figure;
+    qrunavg(data.sio2(data.sio2 > 0 & uind & thind & igind), ...
+        data.ratio_th_u(data.sio2 > 0 & uind & thind & igind),2);
+    subplot(3,1,1:2);
+    hpax([-2 2]);
+    ylabel('Th/U Ratio');
+    xlim([0 100]);
+    title('Igneous & Metaigneous');
+    for i = 1:5
+        if i == 3
+            plot([0 100],[m_ig(i) m_ig(i)],'r-','LineWidth',1.5);
+        else
+            plot([0 100],[m_ig(i) m_ig(i)],'g-','LineWidth',0.5);
+        end
     end
-end
-subplot(3,1,3);
-set(gca,'YScale','log');
-xlabel('SiO_2 (wt.%)');
-xlim([0 100]);
+    subplot(3,1,3);
+    set(gca,'YScale','log');
+    xlabel('SiO_2 (wt.%)');
+    xlim([0 100]);
 
 
-figure;
-qrunavg(data.sio2(uind & thind & sedind), ...
-    data.ratio_th_u(uind & thind & sedind),2);
-subplot(3,1,1:2);
-hpax([-2 2]);
-ylabel('Th/U Ratio');
-xlabel('SiO_2 (wt.%)');
-xlim([0 100]);
-title('Sedimentary & Metasedimentary');
-for i = 1:5
-    if i == 3
-        plot([0 30],[m_sio2_low(i) m_sio2_low(i)],'r-','LineWidth',1.5);
-    else
-        plot([0 30],[m_sio2_low(i) m_sio2_low(i)],'g-','LineWidth',0.5);
+    figure;
+    qrunavg(data.sio2(uind & thind & sedind), ...
+        data.ratio_th_u(uind & thind & sedind),2);
+    subplot(3,1,1:2);
+    hpax([-2 2]);
+    ylabel('Th/U Ratio');
+    xlabel('SiO_2 (wt.%)');
+    xlim([0 100]);
+    title('Sedimentary & Metasedimentary');
+    for i = 1:5
+        if i == 3
+            plot([0 30],[m_sio2_low(i) m_sio2_low(i)],'r-','LineWidth',1.5);
+        else
+            plot([0 30],[m_sio2_low(i) m_sio2_low(i)],'g-','LineWidth',0.5);
+        end
     end
-end
-for i = 1:5
-    if i == 3
-        plot([30 50],[m_sio2_mid(i)*30+b_sio2_mid(i) m_sio2_mid(i)*50+b_sio2_mid(i)],'r-','LineWidth',1.5);
-    else
-        plot([30 50],[m_sio2_mid(i)*30+b_sio2_mid(i) m_sio2_mid(i)*50+b_sio2_mid(i)],'g-','LineWidth',0.5);
+    for i = 1:5
+        if i == 3
+            plot([30 50],[m_sio2_mid(i)*30+b_sio2_mid(i) m_sio2_mid(i)*50+b_sio2_mid(i)],'r-','LineWidth',1.5);
+        else
+            plot([30 50],[m_sio2_mid(i)*30+b_sio2_mid(i) m_sio2_mid(i)*50+b_sio2_mid(i)],'g-','LineWidth',0.5);
+        end
     end
-end
 
-for i = 1:5
-    if i == 3
-        plot([50 100],[m_sio2_high(i) m_sio2_high(i)],'r-','LineWidth',1.5);
-    else
-        plot([50 100],[m_sio2_high(i) m_sio2_high(i)],'g-','LineWidth',0.5);
+    for i = 1:5
+        if i == 3
+            plot([50 100],[m_sio2_high(i) m_sio2_high(i)],'r-','LineWidth',1.5);
+        else
+            plot([50 100],[m_sio2_high(i) m_sio2_high(i)],'g-','LineWidth',0.5);
+        end
     end
+    subplot(3,1,3);
+    set(gca,'YScale','log');
+    ylabel('Th/U Ratio');
+    xlim([0 100]);
+
+    %return
+
+    fprintf('Making igneous plot\n');
+    figure_hpest(data(igind,:),m_ig,heat_production_u(igind),heat_production_th(igind));
+    fprintf('Making sedimentary (SiO2 <= 50) plot\n');
+    figure_hpest(data(sio2_low_ind,:),m_sio2_low,heat_production_u(sio2_low_ind),heat_production_th(sio2_low_ind));
+    fprintf('Making sedimentary (SiO2 > 30) plot\n');
+    figure_hpest(data(sio2_high_ind,:),m_sio2_high,heat_production_u(sio2_high_ind),heat_production_th(sio2_high_ind));
+    fprintf('Making sedimentary (30 < SiO2 < 50) plot\n');
+    figure_hpest(data(sio2_mid_ind,:),m_sio2_mid,heat_production_u(sio2_mid_ind),heat_production_th(sio2_mid_ind));
 end
-subplot(3,1,3);
-set(gca,'YScale','log');
-ylabel('Th/U Ratio');
-xlim([0 100]);
-
-%return
-
-fprintf('Making igneous plot\n');
-figure_hpest(data(igind,:),m_ig,heat_production_u(igind),heat_production_th(igind));
-fprintf('Making sedimentary (SiO2 <= 50) plot\n');
-figure_hpest(data(sio2_low_ind,:),m_sio2_low,heat_production_u(sio2_low_ind),heat_production_th(sio2_low_ind));
-fprintf('Making sedimentary (SiO2 > 30) plot\n');
-figure_hpest(data(sio2_high_ind,:),m_sio2_high,heat_production_u(sio2_high_ind),heat_production_th(sio2_high_ind));
-fprintf('Making sedimentary (30 < SiO2 < 50) plot\n');
-figure_hpest(data(sio2_mid_ind,:),m_sio2_mid,heat_production_u(sio2_mid_ind),heat_production_th(sio2_mid_ind));
 
 return
 
@@ -301,7 +320,11 @@ set(gca,'Box','on');
 figure(fig1);
 subplot(224);
 % observed heat production
-histogram(log10(data.heat_production),'BinWidth',0.1,'DisplayStyle','stairs');
+
+pos = data.heat_production > 0;
+neg = data.heat_production < 0;
+
+histogram(log10(data.heat_production(pos)),'BinWidth',0.1,'DisplayStyle','stairs');
 hpax([-3 2],'x');
 golden;
 
@@ -357,10 +380,9 @@ hold on;
 % modeled heat production
 h = histogram(log10(heat_production_u),'BinWidth',0.1,'DisplayStyle','stairs');
 h = histogram(log10(heat_production_th),'BinWidth',0.1,'DisplayStyle','stairs');
-ind = ~(data.heat_production > 0);
-histogram(log10(data.heat_production_est(ind)),'BinWidth',0.1,'DisplayStyle','stairs');
-histogram(log10([data.heat_production(data.heat_production > 0);
-    data.heat_production_est(data.heat_production_est > 0 & ~(data.heat_production > 0))]), ...
+histogram(log10(data.heat_production_est(neg)),'BinWidth',0.1,'DisplayStyle','stairs');
+histogram(log10([data.heat_production(pos);
+    data.heat_production_est(data.heat_production_est > 0 & ~pos)]), ...
     'BinWidth',0.1,'DisplayStyle','stairs');
 legend('observed','known predicted from U','known predicted Th','unknown predicted','observed + predicted');
 

@@ -6,7 +6,7 @@ function data = vsest(data)
 % Behn & Kelemen use 7 oxides.  Normalize compositions to these 7 for
 % density and velocity estimates.
 oxides = {'SiO2'; 'Al2O3'; 'FeO'; 'MgO'; 'CaO'; 'Na2O'; 'K2O'};
-tmp = oxide_norm(data,oxides);
+tmp = oxide_norm(data,'Normalization','anhydrous','Oxides',oxides);
 
 Vs = 4.5959 ...
     - 0.0091 * tmp.sio2 ...

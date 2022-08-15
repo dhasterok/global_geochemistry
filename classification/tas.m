@@ -62,7 +62,7 @@ end
 
 switch p.Results.ColorField
     case data.Properties.VariableNames
-        ptcolor = data{:,p.ColorField};
+        ptcolor = data{:,p.Results.ColorField};
     case 'none'
         ptcolor = [];
     otherwise
