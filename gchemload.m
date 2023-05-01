@@ -35,7 +35,7 @@ function data = gchemload(varargin)
 %       'DerivedProperties' true (default) will compute a number of derived
 %                           physical properties based on the chemistry.
 %
-%       'SpatialMetadata'   true (default) will add spatial metadata to the
+%       'SpatialMetadata'   false (default) will add spatial metadata to the
 %                           samples (e.g., crustal thickness)
 %
 %       'OutputStats'       true will output physical property statistics
@@ -80,6 +80,7 @@ tau = 10; % tolerance for oxide sum +/- volatiles (performed in oxide_norm.m)
 % ----------------------------------------
 p = inputParser;
 
+addParameter(p,'Filename','',@ischar);
 addParameter(p,'Version',dbdate,@ischar);
 addParameter(p,'Normalization','anhydrous',@ischar);
 addParameter(p,'Oxides',oxlist,@iscell);
@@ -92,6 +93,7 @@ addParameter(p,'SpatialMetadata',false,@islogical);
 
 parse(p,varargin{:});
 
+filename = p.Results.Filename;
 dbdate = p.Results.Version;
 normtype = lower(p.Results.Normalization);
 oxlist = p.Results.Oxides;
@@ -123,24 +125,31 @@ fmt = [];
 %         fmt = [];
 % end
 
-path = ['../database/export/',dbdate,'/database_',dbdate,'.csv'];
-
-
 % ----------------------------------------
 % preparing data scripts
 % ----------------------------------------
 % read data file
-fprintf('Reading database, %s...\n',dbdate);
-if isempty(fmt)
-    data = readtable(path);
+if isempty(filename)
+    path = ['../database/export/',dbdate,'/database_',dbdate,'.csv'];
+    
+    fprintf('Reading database, %s...\n',dbdate);
+    if isempty(fmt)
+        data = readtable(path);
+    else
+        data = readtable(path,'Format',fmt);
+    end
+    fprintf('Size of database: %i\n\n',height(data));
+    
+    if strcmp(dbdate,'2018_06_20')
+        data.rock_facies = data.rock_composition;
+        data.rock_composition(:) = {''};
+    end
 else
-    data = readtable(path,'Format',fmt);
-end
-fprintf('Size of database: %i\n\n',height(data));
-
-if strcmp(dbdate,'2018_06_20')
-    data.rock_facies = data.rock_composition;
-    data.rock_composition(:) = {''};
+    try
+        data = readtable(filename);
+    catch
+        error(['Could not read or find',filename]);
+    end
 end
 
 % reject minerals
@@ -185,10 +194,11 @@ data = sumree(data,scheme);
 % ----------------------------------------
 % estimate ages
 % ----------------------------------------
-age_var = 200;
-fprintf('Correcting ages...\n');
-data.avg_age = age_correction(data,age_var);
-
+if any(strcmp(data.Properties.VariableNames,'age'))
+    age_var = 200;
+    fprintf('Correcting ages...\n');
+    data.avg_age = age_correction(data,age_var);
+end
 
 % ----------------------------------------
 % assign provinces
@@ -203,14 +213,16 @@ fprintf('\n');
 % classifying rocks
 % ----------------------------------------
 %%%%% BEGIN TEMPORARY SECTION %%%%%
-if isnumeric(data.rock_facies)
+if isnumeric(data.rock_facies) & any(strcmp(data.Properties.VariableNames,'rock_composition'))
     data.rock_facies = [];
-    data.rock_facies = data.rock_composition;
-else
+elseif any(strcmp(data.Properties.VariableNames,'rock_composition'))
     ind = ~strcmp(data.rock_composition,'') & strcmp(data.rock_facies,'');
     data.rock_facies(ind) = data.rock_composition(ind);
 end
-data.rock_composition = [];
+if any(strcmp(data.Properties.VariableNames,'rock_composition'))
+    data.rock_composition = [];
+end
+
 %%%%% END TEMPORARY SECTION %%%%%
 
 % compute geochemical indicies and granite classes
@@ -225,7 +237,11 @@ data = lambdaree(data);
 % find metaigneous and metasedimentary rocks not labled as such based on
 % rock_name
 fprintf('Adjusting rock origins...\n');
-data = adjust_origin(data);
+if any(strcmp(data.Properties.VariableNames,'rock_name'))
+    if ~isnumeric(data.rock_name)
+        data = adjust_origin(data);
+    end
+end
 
 if use_protolith_est
     fprintf('Classifying protolith using %s...\n',pclass);
@@ -285,6 +301,13 @@ data.texture = cell([height(data) 1]);
 data.texture(:) = {''};
 
 ind = rockgroup(data,'metamorphic');
+if any(strcmp(data.Properties.VariableNames,'rock_facies'))
+    disp('Yes, I have a rock_facies field.');
+elseif any(strcmp(data.Properties.VariableNames,'rock_composition'))
+    data.rock_facies = data.rock_composition;
+else
+    data.rock_facies = data.facies;
+end
 data(ind,:) = metamorphic_class(data(ind,:));
 
 
@@ -326,7 +349,8 @@ if p.Results.DerivedProperties
     % add heat production estimates for rocks without U or Th measurements
     fprintf('Estimating heat production for missing Th, U...\n');
     data = hpest_u_th(data);
-    ratio_vs_sio2(data);
+    % make histogram plots
+    %ratio_vs_sio2(data);
     
     % estimate basalt liquidus
     fprintf('Estimating basaltic liquidus...');
