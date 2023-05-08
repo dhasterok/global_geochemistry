@@ -38,7 +38,7 @@ function ternary(varargin)
 % ------------------------
 p = inputParser;
 
-addParameter(p,'Labels',@iscellstr);            % labels
+addParameter(p,'Labels',{},@iscellstr);            % labels
 addParameter(p,'GridSpacing',0.1,@isnumeric);   % grid spacing
 addParameter(p,'TickSpacing',0.1,@isnumeric);   % grid spacing
 addParameter(p,'Axes',[],@isgraphics);          % handle to axes
@@ -77,7 +77,7 @@ end
 if length(axlbl) == 3
     axis(ax, [-1.346255486272525 1.346255486272525 -0.480230082488086 1.346255486272525]);
     ternlabel(axlbl{1},axlbl{2},axlbl{3}, 'Axes',ax);
-else
+elseif length(axlbl) == 4
     axis(ax, [-1.346255486272525 1.346255486272525 -1.346255486272525 1.346255486272525]);
     ternlabel(axlbl{1},axlbl{2},axlbl{3},axlbl{4}, 'Axes',ax);
 end
