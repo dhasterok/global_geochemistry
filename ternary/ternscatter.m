@@ -1,24 +1,27 @@
 function [t,varargout] = ternscatter(varargin)
 % TERNSCATTER - plot data on a ternary axes
 %
-%    t = ternplot(a,b,c) or
-%    t = ternplot(a,b,c, sym) where sym is the line specification, see
-%    PLOT.
+%   t = ternscatter(a,b,c) or
+%   t = ternscatter(a,b,c, sym) where sym is the line specification, see
+%   PLOT.
 %
-%    To use ternplot like scatter (points colored using a fourth vector):
-%    t = ternplot(a,b,c, sym, {S,P}) where S is the size and P is the 
-%    vector of values to be scaled as the color.  S and P can be a single
-%    value or of length equal to the number of points.  S and P lengths
-%    need not be the same.
+%   To use ternscatter like scatter (points colored using a fourth vector):
+%   t = ternscatter(a,b,c, [], 'Symbol',sym, 'Size',S, 'Color',P}) where S is
+%   the size and P is the vector of values to be scaled as the color.  S 
+%   and P can be a single value or of length equal to the number of points.
+%   S and P lengths need not be the same.
 %
-%    The order of the axes are as follows:
+%   The order of the axes are as follows:
 %
-%                    A
-%                   / \
-%                  /   \
-%                 B --- C
+%                   A
+%                  / \
+%                 /   \
+%                B --- C
+%                 \   /
+%                  \ /
+%                   D
 %
-%    See also ternary, ternplot
+%   See also ternary, ternplot
 
 % Last Modified: 8 May 2023
 % D. Hasterok, University of Adelaide
