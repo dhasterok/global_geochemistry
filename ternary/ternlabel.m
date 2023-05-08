@@ -1,13 +1,13 @@
 function ternlabel(varargin)
 % ternlabel - adds labels to ternary axes.
 %
-%   ternlabel(A,B,C) will label the ternary axes.
+%   ternlabel({'A','B','C'}) will label the ternary axes from a cell array.
 %
 %           A
 %          / \
 %        B --- C
 %
-%   ternlabel(A,B,C,D) will label a double ternary axes.
+%   ternlabel({'A','B','C','D'}) will label a double ternary axes.
 %
 %           A
 %          / \
@@ -21,31 +21,27 @@ function ternlabel(varargin)
 %
 % See also ternaxes, terngrid
 
+% Last Modified: 8 May 2023
 % D. Hasterok, University of Adelaide
-axlbl = {};
-ax = [];
-opt = 1;
-c = 1;
-while opt < nargin + 1
-    switch varargin{opt}
-        case 'Axes'
-            ax = varargin{opt+1};
-            if ~isgraphics(ax,'Axes');
-                error('Argument must be an axes object.');
-            end
-            opt = opt + 2;
-        otherwise
-            if c > 4
-                error('Too many axes inputs.');
-            elseif ischar(varargin{opt}) | isstring(varargin{opt})
-                axlbl{c} = varargin{opt};
-            else
-                error('Expected label should be of type char or string.')
-            end
-            c = c + 1;
-            opt = opt + 1;
-    end
+
+% parse inputs
+% ------------------------
+p = inputParser;
+
+addRequired(p,'Labels',@iscellstr);     % labels
+addParameter(p,'Axes',[],@isgraphics);      % handle to axes
+
+parse(p,varargin{:});
+
+axlbl = p.Results.Labels;
+n = length(axlbl);
+
+ax = p.Results.Axes;
+if isempty(ax)
+    ax = gca;
 end
+% ------------------------
+
 w = 0.5;
 h = 0.5/tan(pi/6);
 d = 0.02;

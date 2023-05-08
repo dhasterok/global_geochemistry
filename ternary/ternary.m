@@ -76,10 +76,10 @@ end
 % add labels
 if length(axlbl) == 3
     axis(ax, [-1.346255486272525 1.346255486272525 -0.480230082488086 1.346255486272525]);
-    ternlabel(axlbl{1},axlbl{2},axlbl{3}, 'Axes',ax);
+    ternlabel(axlbl, 'Axes',ax);
 elseif length(axlbl) == 4
     axis(ax, [-1.346255486272525 1.346255486272525 -1.346255486272525 1.346255486272525]);
-    ternlabel(axlbl{1},axlbl{2},axlbl{3},axlbl{4}, 'Axes',ax);
+    ternlabel(axlbl, 'Axes',ax);
 end
 
 ax.DataAspectRatio = [1 1 1];
