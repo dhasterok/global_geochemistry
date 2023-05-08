@@ -1,5 +1,5 @@
-function t = ternplot(varargin)
-% TERNPLOT - plot data on a ternary axes
+function [t,varargout] = ternscatter(varargin)
+% TERNSCATTER - plot data on a ternary axes
 %
 %    t = ternplot(a,b,c) or
 %    t = ternplot(a,b,c, sym) where sym is the line specification, see
@@ -18,7 +18,7 @@ function t = ternplot(varargin)
 %                  /   \
 %                 B --- C
 %
-%    See also ternary, ternscatter
+%    See also ternary, ternplot
 
 % Last Modified: 8 May 2023
 % D. Hasterok, University of Adelaide
@@ -27,17 +27,20 @@ function t = ternplot(varargin)
 % ------------------------
 p = inputParser;
 
-% data axes
+% data vectors for plotting on ternary
 addRequired(p,'A',@isnumeric);
 addRequired(p,'B',@isnumeric);
 addRequired(p,'C',@isnumeric);
 addOptional(p,'D',@isnumeric);
 
-addParameter(p,'Axes',[],@isgraphics);          % handle to axes
-
+% point properties
+addParameter(p,'Size',36,@isnumeric);           % size
+addParameter(p,'Color',lines(1),@isnumeric);    % color
+addParameter(p,'Group',{});                     % group (categorized)
+addParameter(p,'Alpha',1,@isnumeric);           % transparency
 addParameter(p,'Symbol','o',@ischar);           % symbol
-addParameter(p,'Attributes',{},@iscell);        % line pattern
 
+addParameter(p,'Axes',[],@isgraphics);          % handle to axes
 parse(p,varargin{:});
 
 a = p.Results.A;
@@ -45,14 +48,23 @@ b = p.Results.B;
 c = p.Results.C;
 d = p.Results.D;
 
-sym = p.Results.Symbol;
-lspec = p.Results.Attributes;
-
 ax = p.Results.Axes;
 if isempty(ax)
     ax = gca;
 end
+
+% point properties
+S = p.Results.Size;
+C = p.Results.Color;
+G = p.Results.Group;
+
+% transparency
+alpha = p.Results.Alpha;
+
+% symbols
+sym = p.Results.Symbol;
 % ------------------------
+
 
 if isempty(d)
     [x,y] = tern2xy(a,b,c);
@@ -66,12 +78,13 @@ else
     y(ind) = -y(ind);
 end  
 
-if ~isempty(lspec)
-    t = scatter(ax,x,y,lspec{1},lspec{2},sym,'filled');
-elseif ~isempty(sym)
-    t = plot(ax,x,y,sym);
+if isempty(G)
+    t = scatter(ax, x,y, S,C, sym,'filled', 'MarkerFaceAlpha',alpha);
 else
-    t = plot(ax,x,y);
+    %group = unique(C);
+    %t = gscatter(ax, x,y, G,C, sym, sqrt(S));
+    [t,leg] = catscatter(x,y,G, 'Size',S, 'Symbol',sym, 'Alpha',alpha, 'Axes',ax);
+    varargout{2} = leg;
 end
 
 return
