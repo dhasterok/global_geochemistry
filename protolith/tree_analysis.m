@@ -77,11 +77,14 @@ figure;
 % histograms of training dataset scores (normalized to 1)
 
 x = min(traindata.score(strcmpi(traindata.label,'igneous'),1));
+fprintf('Classifier Score Normilization Factor: %f',x);
+
 traindata.score = traindata.score(:,1)/x-1;
 testdata.score = testdata.score(:,1)/x-1;
 
 subplot(221);
-histogram(traindata.score(rockgroup(traindata,'igneous')),'BinWidth',0.05,'DisplayStyle','stairs');
+%histogram(traindata.score(rockgroup(traindata,'igneous')),'BinWidth',0.05,'DisplayStyle','stairs');
+histogram(traindata.score(rockgroup(traindata,'igneous')),'BinWidth',0.05,'DisplayStyle','stairs','Normalization','cdf');
 hold on;
 plot([0 0],get(gca,'YLim'));
 xlabel('Normalized Score');
@@ -89,7 +92,8 @@ title('Igneous (train)');
 xlim([-1 1]);
 
 subplot(222);
-histogram(traindata.score(rockgroup(traindata,'sedimentary')),'BinWidth',0.05,'DisplayStyle','stairs');
+%histogram(traindata.score(rockgroup(traindata,'sedimentary')),'BinWidth',0.05,'DisplayStyle','stairs');
+histogram(-traindata.score(rockgroup(traindata,'sedimentary')),'BinWidth',0.05,'DisplayStyle','stairs','Normalization','cdf');
 hold on;
 plot([0 0],get(gca,'YLim'));
 xlabel('Normalized Score');
@@ -98,7 +102,8 @@ xlim([-1 1]);
 
 % histograms of validation dataset scores (normalized to 1)
 subplot(223);
-histogram(testdata.score(rockgroup(testdata,'igneous')),'BinWidth',0.05,'DisplayStyle','stairs');
+%histogram(testdata.score(rockgroup(testdata,'igneous')),'BinWidth',0.05,'DisplayStyle','stairs');
+histogram(testdata.score(rockgroup(testdata,'igneous')),'BinWidth',0.05,'DisplayStyle','stairs','Normalization','cdf');
 hold on;
 plot([0 0],get(gca,'YLim'));
 xlabel('Normalized Score');
@@ -106,7 +111,8 @@ title('Igneous (validation)');
 xlim([-1 1]);
 
 subplot(224);
-histogram(testdata.score(rockgroup(testdata,'sedimentary')),'BinWidth',0.05,'DisplayStyle','stairs');
+%histogram(testdata.score(rockgroup(testdata,'sedimentary')),'BinWidth',0.05,'DisplayStyle','stairs');
+histogram(-testdata.score(rockgroup(testdata,'sedimentary')),'BinWidth',0.05,'DisplayStyle','stairs','Normalization','cdf');
 hold on;
 plot([0 0],get(gca,'YLim'));
 xlabel('Normalized Score');

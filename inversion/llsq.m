@@ -1,5 +1,5 @@
-function [m,r,rms,rsq] = llsq(yd,A);
-% llsq - linear least squares.
+function [m,r,rms,rsq] = llsq(yd,A)
+% llsq - linear least squares regression
 %
 %   [m,r,rms,rsq] = llsq(yd,A) estimates model parameters using a linear
 %   model A m = yd and returns a two column model matrix with the first
@@ -8,18 +8,21 @@ function [m,r,rms,rsq] = llsq(yd,A);
 %   residual vector, r, the root-mean-square (RMS) misfit, rms, and the r^2
 %   value, rsq.
 
-% covariance matrix
+% variance matrix
 C = inv(A'*A);
 
 % model
 m = C*A'*yd;
-m_a95 = 1.96*diag(C).^(1/2);
-m = [m m_a95];
 
-y = A*m(:,1);
-
+y = A*m;
 % residual
 r = yd - y;
+df = height(A) - height(m);
+
+m_a95 = tinv(0.975,df)*diag(C*(r'*r)/(df - 1)).^(1/2);
+
+m = [m m_a95];
+
 l = ones(size(yd));
 
 % RMS misfit

@@ -1,4 +1,4 @@
-function data = fefix(data);
+function data = fefix(data)
 % FEFIX - computes total iron and fe2+ to total iron ratio.
 %
 %   data = fefix(data) converts all iron to total iron and computes the
@@ -10,6 +10,11 @@ function data = fefix(data);
 %       FeO = molecularwt('FeO')*data.fe2_fe_tot.*data.feo_tot
 %       Fe2O3 = 0.5*molecularwt('Fe2O3')*(1 - data.fe2_fe_tot).*data.feo_tot
 %
+
+% solves problem with USGS data
+if any(strcmp(data.Properties.VariableNames,'feto3'))
+    data.fe2o3 = data.feto3;
+end
 
 % conversion factor for Fe2O3 to FeO
 fe_factor = 2*molecularwt('FeO')/molecularwt('Fe2O3');
@@ -90,6 +95,6 @@ data.feo_tot(ind) = data.fe2o3_tot(ind)*fe_factor;
 % remove other iron columns
 data.feo = [];
 data.fe2o3 = [];
-data.fe2o3_tot = [];
+% data.fe2o3_tot = [];
 
 return

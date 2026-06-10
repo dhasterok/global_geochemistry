@@ -23,10 +23,12 @@ function data = sumree(data,scheme)
 mree = {'sm_ppm','eu_ppm','gd_ppm'};
 switch scheme
     case 'full'
+        fprintf('Computing sum of REE''s using full element set.\n');
         lree = {'la_ppm','ce_ppm','pr_ppm','nd_ppm','sm_ppm','eu_ppm','gd_ppm'};
         hree = {'tb_ppm','dy_ppm','ho_ppm','er_ppm','tm_ppm','yb_ppm','lu_ppm'};
         ree = [lree, hree];
     case 'reduced'
+        fprintf('Computing sum of REE''s using reduced element set.\n');
         lree = {'la_ppm','ce_ppm','nd_ppm'};
         hree = {'er_ppm','yb_ppm','lu_ppm'};
         ree = [lree, mree, hree];

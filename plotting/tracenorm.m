@@ -111,7 +111,7 @@ for i = 1:length(ellist)
         else % adjust data to xref
             % initialize adjdata table
             if i == 1
-                adjdata = copymetadata(data);
+                adjdata = copymetadata(data,ellist);
                 adjdata{:,reffield} = xref;
             end
             
@@ -123,7 +123,7 @@ for i = 1:length(ellist)
     else % for subset data
         % initialize adjdata table
         if i == 1
-            adjdata = copymetadata(data(ind,:));
+            adjdata = copymetadata(data(ind,:),ellist);
             adjdata{:,reffield} = xref;
         end
         
@@ -184,37 +184,57 @@ for i = 1:length(ellist)
     elfield{i} = [lower(ellist{i}),'_ppm'];
     
     switch elfield{i}
-        case 'k_ppm'
-            if any(strcmp(data.Properties.VariableNames,'k2o'))
-                data.k_ppm = 2*molecularwt('K')/molecularwt('K2O')*data.k2o*10000;
+        case 'si_ppm'
+            if any(strcmp(data.Properties.VariableNames,'sio2'))
+                data.ti_ppm = molecularwt('Si')/molecularwt('SiO2')*data.sio2*10000;
             end
-        case 'na_ppm'
-            if any(strcmp(data.Properties.VariableNames,'na2o'))
-                data.na_ppm = 2*molecularwt('Na')/molecularwt('Na2O')*data.na2o*10000;
-            end    
         case 'ti_ppm'
             if any(strcmp(data.Properties.VariableNames,'tio2'))
                 data.ti_ppm = molecularwt('Ti')/molecularwt('TiO2')*data.tio2*10000;
             end
-        case 'ba_ppm'
-            if any(strcmp(data.Properties.VariableNames,'bao'))
-                data.ba_ppm = molecularwt('Ba')/molecularwt('BaO')*data.bao*10000;
+        case 'al_ppm'
+            if any(strcmp(data.Properties.VariableNames,'al2o3'))
+                data.cr_ppm = 2/3*molecularwt('Al')/molecularwt('Al2O3')*data.al2o3*10000;
+            end
+        case 'cr_ppm'
+            if any(strcmp(data.Properties.VariableNames,'cr2o3'))
+                data.cr_ppm = 2/3*molecularwt('Cr')/molecularwt('Cr2O3')*data.cr2o3*10000;
             end
         case 'fe_ppm'
             if any(strcmp(data.Properties.VariableNames,'feo_tot'))
                 data.fe_ppm = molecularwt('Fe')/molecularwt('FeO')*data.feo_tot*10000;
-            end    
-        case 'ni_ppm'
-            if any(strcmp(data.Properties.VariableNames,'nio'))
-                data.ni_ppm = molecularwt('Ni')/molecularwt('NiO')*data.nio*10000;
+            end
+        case 'mg_ppm'
+            if any(strcmp(data.Properties.VariableNames,'mgo'))
+                data.ni_ppm = molecularwt('Mg')/molecularwt('MgO')*data.mgo*10000;
             end
         case 'mn_ppm'
             if any(strcmp(data.Properties.VariableNames,'mno'))
                 data.mn_ppm = molecularwt('Mn')/molecularwt('MnO')*data.mno*10000;
             end
-        case 'cr_ppm'
-            if any(strcmp(data.Properties.VariableNames,'cr2o3'))
-                data.cr_ppm = 2/3*molecularwt('Cr')/molecularwt('Cr2O3')*data.cr2o3*10000;
+        case 'ni_ppm'
+            if any(strcmp(data.Properties.VariableNames,'nio'))
+                data.ni_ppm = molecularwt('Ni')/molecularwt('NiO')*data.nio*10000;
+            end
+        case 'ca_ppm'
+            if any(strcmp(data.Properties.VariableNames,'cao'))
+                data.ni_ppm = molecularwt('Ca')/molecularwt('CaO')*data.cao*10000;
+            end
+        case 'na_ppm'
+            if any(strcmp(data.Properties.VariableNames,'na2o'))
+                data.na_ppm = 2*molecularwt('Na')/molecularwt('Na2O')*data.na2o*10000;
+            end    
+        case 'k_ppm'
+            if any(strcmp(data.Properties.VariableNames,'k2o'))
+                data.k_ppm = 2*molecularwt('K')/molecularwt('K2O')*data.k2o*10000;
+            end
+        case 'ba_ppm'
+            if any(strcmp(data.Properties.VariableNames,'bao'))
+                data.ba_ppm = molecularwt('Ba')/molecularwt('BaO')*data.bao*10000;
+            end
+        case 'sr_ppm'
+            if any(strcmp(data.Properties.VariableNames,'sro'))
+                data.ba_ppm = molecularwt('Sr')/molecularwt('SrO')*data.sro*10000;
             end
         case 'p_ppm'
             if any(strcmp(data.Properties.VariableNames,'p2o5'))
@@ -227,16 +247,17 @@ return
 
 
 % extract only columns with metadata (i.e. non-numeric columns)
-function t = copymetadata(t)
+function t = copymetadata(t,ellist)
 
-ind = false(1,width(t));
-for i = 1:width(t)
-    if ~strcmp(class(t{:,i}),'double')
-        ind(i) = 1;
-    end
-end
+%ind = false(1,width(t));
+%for i = 1:width(t)
+%    if ~strcmp(class(t{:,i}),'double')
+%        ind(i) = 1;
+%    end
+%end
+%t = t(:,ind);
 
-t = t(:,ind);
+t = t(:,~ismember(t.Properties.VariableNames,ellist));
 
 return
 

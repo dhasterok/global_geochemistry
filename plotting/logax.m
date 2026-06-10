@@ -16,6 +16,8 @@ function logax(lim,varargin)
 %       Label               add an axis label
 %
 %       TickLabelRotation   angle of text rotation, default is 0
+%
+%       Axes                axes object, default is gca
 
 % Last modified 6 July, 2022
 % D. Hasterok, University of Adelaide
@@ -25,12 +27,14 @@ addRequired(p,'lim',@isnumeric);
 addParameter(p,'Axis','y',@ischar);
 addParameter(p,'Label','',@ischar);
 addParameter(p,'TickLabelRotation',0,@isnumeric);
+addParameter(p,'Axes',gca,@isgraphics)
 
 parse(p,lim,varargin{:});
 lim = p.Results.lim;
 x_or_y = p.Results.Axis;
 axlbl = p.Results.Label;
 angle = p.Results.TickLabelRotation;
+ax = p.Results.Axes;
 
 % create cell array of text
 mt = log10([1:9]);
@@ -46,19 +50,19 @@ switch lower(x_or_y)
     case 'x'
         % add optional label
         if ~isempty(axlbl)
-            xlabel(axlbl);
+            ax.XLabel = axlbl;
         end
         %set(gca,'XTick',[lim(1):lim(2)],'XTickLabel',10.^[lim(1):lim(2)],'Box','on');
-        set(gca,'XTick',atic,'XTickLabel',aticlbl,'Box','on','XTickLabelRotation',angle);
-        xlim(lim);
+        set(ax,'XTick',atic,'XTickLabel',aticlbl,'Box','on','XTickLabelRotation',angle);
+        ax.XLim = lim;
     case 'y'
         % add optional label
         if ~isempty(axlbl)
-            ylabel(axlbl);
+            ax.YLabel = axlbl;
         end
         %set(gca,'YTick',[lim(1):lim(2)],'YTickLabel',10.^[lim(1):lim(2)],'Box','on');
-        set(gca,'YTick',atic,'YTickLabel',aticlbl,'Box','on','YTickLabelRotation',angle);
-        ylim(lim);
+        set(ax,'YTick',atic,'YTickLabel',aticlbl,'Box','on','YTickLabelRotation',angle);
+        ax.YLim = lim;
     otherwise
         warning('Ignoring hpax command, incorrect axes argument');
 end

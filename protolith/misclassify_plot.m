@@ -63,7 +63,8 @@ map = parula(101);
 hold on;
 for i = 1:length(n)
     cind = round(10*sqrt(100*p(i)));
-    h = bar(i,n(i));
+    %h = bar(i,n(i));  % length of bars defined by the number of samples
+    h = bar(i,p(i));  % length of bars defined by percentage of rock type
     if ~isnan(cind)
         h.FaceColor = map(cind+1,:);
     end
@@ -72,11 +73,23 @@ colormap(parula);
 caxis([0 10]);
 cbar;
 set(gca,'Box','on','XTick',[0:length(str)+1],'XTickLabel',{'',str{:},''});
-for i = 1:length(p);
-    if ~isnan(n(i))
-        t = text(i,n(i)+0.05*max(n),num2str(100*p(i),2));
+% add percentage of rock type misclassified as text
+%for i = 1:length(p);
+%    if ~isnan(n(i))
+%        t = text(i,n(i)+0.05*max(n),num2str(100*p(i),2));
+%        set(t,'HorizontalAlign','right');
+%    end
+%end
+% add numer of samples misclassified as text
+fprintf('\n');
+fprintf('rock type & TN & FN & FN percent\n');
+for i = 1:length(n);
+    if ~isnan(p(i))
+        t = text(i,p(i)+0.05*max(p),[num2str(n(i)),'/',num2str(n(i)+m(i))]);
+        set(t,'HorizontalAlign','right');
+        
+        fprintf('%-s & %5i & %5i & %.1f\n',str{i},m(i),n(i),p(i)*100);
     end
-    set(t,'HorizontalAlign','right');
 end
 
 xlim([0 length(str)+1]);

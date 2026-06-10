@@ -2,8 +2,26 @@ function data = geochem_index(data)
 % GEOCHEM_INDEX - Computes several popular geochemical classification
 % indicies (specifically for igneous rocks)
 %
-% Assumes all iron is reported as FeO(T).
-% Frost et al. 2001
+%   data = geochem_index(data) computes a number of geochemical indices.  
+%   Assumes all iron is reported as FeO(T).  CaO is adjusted for apatite
+%   via  nCaO - 10/3*nP2O5 where n is molar fraction.
+%
+%   Adds the following geochemical indicies to the input data table:
+%
+%       .Mg_number              magnesium number
+%       .Fe_number              iron number
+%       .MALI                   modified alkali-lime index
+%       .ASI                    alumina saturation index
+%       .maficity               maficity
+%       .CIA                    chemical index of alteration
+%       .WIP                    weathering index of Parker
+%       .CPA                    chemical proxy of alteration
+%       .spar                   feldspar index
+%       .qtzindex               quartz index
+%       .R1                     1st Roche discriminant
+%       .R2                     2nd Roche discriminant
+
+% D. Hasterok, University of Adelaide
 
 % initialize indicies as NaN
 data.Mg_number = nan([height(data) 1]);

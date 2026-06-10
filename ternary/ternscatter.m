@@ -6,10 +6,11 @@ function [t,varargout] = ternscatter(varargin)
 %   PLOT.
 %
 %   To use ternscatter like scatter (points colored using a fourth vector):
-%   t = ternscatter(a,b,c, [], 'Symbol',sym, 'Size',S, 'Color',P}) where S is
+%   [t,leg] = ternscatter(a,b,c, [], 'Symbol',sym, 'Size',S, 'Color',P}) where S is
 %   the size and P is the vector of values to be scaled as the color.  S 
 %   and P can be a single value or of length equal to the number of points.
-%   S and P lengths need not be the same.
+%   S and P lengths need not be the same.  The output leg returns handles
+%   for the legend.
 %
 %   The order of the axes are as follows:
 %
@@ -21,7 +22,29 @@ function [t,varargout] = ternscatter(varargin)
 %                  \ /
 %                   D
 %
-%   See also ternary, ternplot
+%   Options:
+%
+%       'GroupNames'            If the group is categorical or numerical
+%                               type, a group name can be provided as a
+%                               cell array of char/strings
+%
+%       'Colors'                Provide a color for each group.
+%
+%       'Colormap'              If colors are not provided, a colormap name
+%                               can be provided.
+%
+%       'Size'                  Either a scalar or vector of symbol sizes
+%                               defined by area (same as scatter)
+%
+%       'Alpha'                 Transparency [0,1] = [transparent,opaque]
+%
+%       'Symbol'                Plot symbol (see plot)
+%
+%       'Legend'                Add a legend (default = true)
+%
+%       'Axes'                  Axes object for plotting, default = gca
+%
+%   See also ternary, ternplot, catscatter
 
 % Last Modified: 8 May 2023
 % D. Hasterok, University of Adelaide
@@ -39,7 +62,7 @@ addOptional(p,'D',@isnumeric);
 % point properties
 addParameter(p,'Size',36,@isnumeric);           % size
 addParameter(p,'Color',lines(1),@isnumeric);    % color
-addParameter(p,'Group',{});                     % group (categorized)
+addParameter(p,'GroupNames',{});                % group (categorized)
 addParameter(p,'Alpha',1,@isnumeric);           % transparency
 addParameter(p,'Symbol','o',@ischar);           % symbol
 
@@ -59,7 +82,11 @@ end
 % point properties
 S = p.Results.Size;
 C = p.Results.Color;
-G = p.Results.Group;
+G = p.Results.GroupNames;
+
+if height(C) == 1 & ~isempty(G)
+    C = lines(height(G));
+end
 
 % transparency
 alpha = p.Results.Alpha;
@@ -86,7 +113,7 @@ if isempty(G)
 else
     %group = unique(C);
     %t = gscatter(ax, x,y, G,C, sym, sqrt(S));
-    [t,leg] = catscatter(x,y,G, 'Size',S, 'Symbol',sym, 'Alpha',alpha, 'Axes',ax);
+    [t,leg] = catscatter(x,y,G, 'Size',S, 'Colors',C, 'Symbol',sym, 'Alpha',alpha, 'Axes',ax);
     varargout{2} = leg;
 end
 

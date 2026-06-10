@@ -1,4 +1,11 @@
 function [cipw,P] = cipwnorm(data, varargin)
+% cipwnorm - Computes the CIPW normative mineralogy
+%
+%   [cipw,P] = cipwnorm(data) will determine the CIPW norm given a set of
+%   oxides cotained within a data table.  You can also return geochemical
+%   indices, P, computed as part of the norm.  The resulting norms for each
+%   idealized mineral are given as mass fraction.
+
 % CIPW norm (Verma, 2002, 2003)
 %------------------------------------
 
@@ -421,7 +428,7 @@ P.Femic = cipw.Diopside_Mg + cipw.Diopside_Fe + ...
 P.CI = cipw.Anorthite + (2.1570577*cipw.Diopside_Mg) + ...
     cipw.Olivine_Mg + (0.7007616*cipw.Hypersthene_Fe);
 P.DI =  cipw.Quartz + cipw.Orthoclase + ...
-    cipw.Albite + cipw.Nepheline + cipw.Leucite;
+    cipw.Albite + cipw.Nepheline + cipw.Leucite + cipw.Kaliophilite;
 P.SI = (100*tmp.n_mgo)./(tmp.n_mgo + tmp.n_fe2o3 + ...
     tmp.n_feo + tmp.n_na2o + tmp.n_k2o);
 ind =  tmp.n_sio2 > 0 & tmp.n_k2o./tmp.n_na2o > 1.0 & ...

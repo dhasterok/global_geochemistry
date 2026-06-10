@@ -47,6 +47,8 @@ function data = gchemload(varargin)
 %                    data), bad country/oceanic locations
 %       '2019_01_13' metamorphic protolith paper (contains antarctic data)
 %       '2018_06_20' granite paper
+%       '2022_02_03' update
+%       '2023_10_15' update
 %
 % For additional information, contact:
 %   Derrick Hasterok
@@ -62,7 +64,7 @@ addpath processing classification protolith physprop plotting toolbox  ...
 % default options
 % -----------------------------------------
 % database version
-dbdate = '2022_02_03';
+dbdate = '2024_01_23';
 
 % oxides for normalization
 oxlist = {'SiO2'; 'TiO2'; 'Al2O3'; 'FeO'; 'MgO'; 'CaO'; 'Na2O'; 'K2O'; 'P2O5'};
@@ -84,7 +86,7 @@ addParameter(p,'Filename','',@ischar);
 addParameter(p,'Version',dbdate,@ischar);
 addParameter(p,'Normalization','anhydrous',@ischar);
 addParameter(p,'Oxides',oxlist,@iscell);
-addParameter(p,'TotalTol',tau,@ischar);
+addParameter(p,'TotalTol',tau,@isnumeric);
 addParameter(p,'REEScheme','reduced',@ischar);
 addParameter(p,'ProtolithClass',true,@islogical);
 addParameter(p,'OutputStats',false,@islogical);

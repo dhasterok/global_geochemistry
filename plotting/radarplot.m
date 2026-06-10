@@ -20,6 +20,25 @@ function radar(R, varargin)
 %
 % line_spec - [character vector]
 %
+%   The plot can be modified using the following name value pairs:
+%
+%       'AxisLim'           Set the axes limits along each dimension, a
+%                           matrix 2 by N is required.
+%
+%       'NumTicks'          Define the number of tick marks to be placed on
+%                           the axes.
+%
+%       'Precision'         
+%
+%       'Scale'             Change between 'linear' (default) and 'log' 
+%                           scale
+%
+%       'Location'          Change the location of the legend using the
+%                           same location options as legend().  The default
+%                           is 'EastOutside'
+%
+%       'Axes'              axes graphics object
+%
 % %%%%%%%%%%%%%%%%%%% Example of a Generic Spider Plot %%%%%%%%%%%%%%%%%%%
 % % Clear workspace
 % close all;
@@ -73,104 +92,108 @@ function radar(R, varargin)
 % legend('show', 'Location', 'southoutside');
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-P = R.vals;
-lbls = R.fields;
-
-% default options
-opt = 1;
-axlim = [];
-axes_interval = 2;
-axes_precision = 1;
-axes_scale = 'linear';
-lloc = 'EastOutside';
-
 % user defined options
-while opt + 1 < nargin
-    switch lower(varargin{opt})
-        case 'axes'
-            axlim = varargin{opt+1};
-            axlim = [axlim(:,1) fliplr(axlim(:,2:end))];
-            opt = opt + 2;
-        case 'numticks'
-            axes_interval = varargin{opt+1};
-            opt = opt + 2;
-        case 'precision'
-            axes_precision = varargin{opt+1};
-            opt = opt + 2;
-        case 'legendlocation'
-            lloc = varargin{opt+1};
-            opt = opt + 2;
-        otherwise
-            error(['Unknown option, ',varargin{opt}]);
-    end
+p = inputParser;
+
+addParameter(p,'AxisLim',[],@isnumeric);
+addParameter(p,'NumTicks',2,@isnumeric);
+addParameter(p,'Precision',1,@isnumeric);
+addParameter(p,'Scale','linear',@ischar);
+addParameter(p,'Location','northeastoutside',@ischar);
+addParameter(p,'Orientation','vertical',@ischar);
+addParameter(p,'Axes',[],@isgraphics);     % axes
+addParameter(p,'Colors',[]);
+
+parse(p,varargin{:});
+axlim = p.Results.AxisLim;
+axes_interval = p.Results.NumTicks;
+axes_precision = p.Results.Precision;
+axes_scale = p.Results.Scale;
+legend_loc = p.Results.Location;
+ax = p.Results.Axes;
+if isempty(ax);
+    ax = gca;
 end
+C = p.Results.Colors;
+orientation = p.Results.Orientation;
 
 %%% Point Properties %%%
 % Number of points
-[row_count, var_count] = size(P);
+[group_count, field_count, q_count] = size(R.vals);
+
+if isempty(C)
+    % set colors
+    C = [0, 0.4470, 0.7410;...
+        0.8500, 0.3250, 0.0980;...
+        0.9290, 0.6940, 0.1250;...
+        0.4940, 0.1840, 0.5560;...
+        0.4660, 0.6740, 0.1880;...
+        0.3010, 0.7450, 0.9330;...
+        0.6350, 0.0780, 0.1840];
+    
+    % Repeat colors is necessary
+    repeat_colors = fix(group_count/size(C, 1))+1;
+    C = repmat(C, repeat_colors, 1);
+else
+    % for some reason this will throw an error with some valid color maps
+    %if ~all(validatecolor(C,'multiple'))
+    %    error('Color input is invalid.');
+    %end
+end
 
 %reorder inputs so that variables are arranged clockwise around the plot
-P = [P(:,1) fliplr(P(:,2:end))];
-lbls = [lbls(:,1) fliplr(lbls(:,2:end))];
+%vals = [vals(:,1) fliplr(vals(:,2:end))];
+%lbls = [lbls(:,1) fliplr(lbls(:,2:end))];
 
 %%% Error Check %%%
 % Check if axes properties are an integer
 if floor(axes_interval) ~= axes_interval || floor(axes_precision) ~= axes_precision
-    error('Error: Please enter in an integer for the axes properties.');
+    error('Please enter in an integer for the axes properties.');
 end
 
 % Check if axes properties are positive
 if axes_interval < 1 || axes_precision < 1
-    error('Error: Please enter value greater than one for the axes properties.');
+    error('Please enter value greater than one for the axes properties.');
 end
 
 % Check if the labels are the same number as the number of points
-if length(lbls) ~= var_count
-    error('Error: Please make sure the number of labels is the same as the number of points.');
+if length(R.fields) ~= field_count
+    error('Please make sure the number of labels is the same as the number of points.');
 end
 
 % Pre-allocation
-max_values = zeros(1, var_count);
-min_values = zeros(1, var_count);
-axis_increment = zeros(1, var_count);
+%axis_increment = zeros(1, field_count);
+
+% Determine min and max value of each field (for establishing axes limits)
+if isempty(axlim)
+    fieldmin = min(R.vals(:,:,1),[],1,'omitnan');
+    fieldmax = max(R.vals(:,:,end),[],1,'omitnan');
+else
+    fieldmin = axlim(1,:);
+    fieldmax = axlim(2,:);
+end
+
+ind = fieldmax - fieldmin == 0;
+fieldmin(ind) = R.vals(1,ind,1) - 0.1*R.vals(1,ind,1);
+fieldmax(ind) = R.vals(1,ind,end) + 0.1*R.vals(1,ind,end);
+range = fieldmax - fieldmin;
+
 
 % Normalized axis increment
 normalized_axis_increment = 1/axes_interval;
+axis_increment = range./axes_interval;
 
-% Max and min value of each group
-if isempty(axlim)
-    max_values = nanmax(P,[],1);
-    min_values = nanmin(P,[],1);
-else
-    max_values = axlim(2,:);
-    min_values = axlim(1,:);
-end
-range = max_values - min_values;
-
-ind = range == 0;
-range(ind) = 0.2*P(1,ind);
-max_values(ind) = P(1,ind) + 0.1*P(1,ind);
-min_values(ind) = P(1,ind) - 0.1*P(1,ind);
-
-
-% Iterate through number of variables
-for ii = 1:var_count
-    % Group of points
-    group_points = [P(:, ii);min_values(ii);max_values(ii)];
-    
-    % Axis increment
-    axis_increment(ii) = range(ii)/axes_interval;
-    
-    % Normalize points to range from [0, 1]
-    P(:, ii) = (P(:, ii) - min(group_points))/range(ii);
-    
-    % Shift points by one axis increment
-    P(:, ii) = P(:, ii) + normalized_axis_increment;   
+% Normalize data within each field [min,max] -> [0,1]+one tick
+% the plus one tick to the normalized values moves the minimum away from the
+% center of the plot.
+unitvec = ones([group_count,1]);
+for k = 1:q_count
+    R.vals(:,:,k) = (R.vals(:,:,k) - unitvec*fieldmin)./(unitvec*range) + normalized_axis_increment;
 end
 
 %%% Polar Axes %%%
 % Polar increments
-polar_increments = 2*pi/var_count;
+polar_increments = 2*pi/field_count;
 
 % Normalized  max limit of axes
 axes_limit = 1;
@@ -184,6 +207,7 @@ axes_limit = axes_limit + normalized_axis_increment;
 radius = [0; axes_limit];
 % theta = 0:polar_increments:2*pi;
 theta = t:polar_increments:2*pi+t;
+%theta = [fliplr(theta)];
 
 % Convert polar to cartesian coordinates
 [x_axes, y_axes] = pol2cart(theta, radius);
@@ -191,15 +215,15 @@ theta = t:polar_increments:2*pi+t;
 
 % Plot polar axes
 grey = [1, 1, 1] * 0.5;
-h = line(x_axes, y_axes,...
+h = line(ax,x_axes, y_axes,...
     'LineStyle', '--',...
     'LineWidth', 1,...
     'Color', grey);
 
 % Iterate through all the line handles
-for ii = 1:length(h)
+for i = 1:length(h)
     % Remove polar axes from legend
-    h(ii).Annotation.LegendInformation.IconDisplayStyle = 'off';
+    h(i).Annotation.LegendInformation.IconDisplayStyle = 'off';
 end
 
 %%% Polar Isocurves %%%
@@ -213,71 +237,75 @@ radius = (0:axes_limit/shifted_axes_interval:axes_limit)';
 [x_isocurves, y_isocurves] = pol2cart(theta, radius);
 
 % Plot polar isocurves
-hold on;
-h = plot(x_isocurves', y_isocurves',...
+hold(ax,'on');
+h = plot(ax,x_isocurves', y_isocurves',...
     'LineStyle', ':',...
     'LineWidth', 1,...
     'Color', grey);
 
 % Iterate through all the plot handles
-for ii = 1:length(h)
+for i = 1:length(h)
     % Remove polar isocurves from legend
-    h(ii).Annotation.LegendInformation.IconDisplayStyle = 'off';
+    h(i).Annotation.LegendInformation.IconDisplayStyle = 'off';
 end
 
 %%% Data Points %%%
 % Iterate through all the rows
 
-for ii = 1:row_count
-    % Convert polar to cartesian coordinates
-    [x_points, y_points] = pol2cart(theta(1:end-1), P(ii, :));
-    
-    % Make points circular
-    x_circular = [x_points, x_points(1)];
-    y_circular = [y_points, y_points(1)];
-    
-    colors = [0, 0.4470, 0.7410;...
-        0.8500, 0.3250, 0.0980;...
-        0.9290, 0.6940, 0.1250;...
-        0.4940, 0.1840, 0.5560;...
-        0.4660, 0.6740, 0.1880;...
-        0.3010, 0.7450, 0.9330;...
-        0.6350, 0.0780, 0.1840];
+if q_count == 1
+    for i = 1:group_count
+        mid(i) = radarline(ax, theta,R.vals(i,:),C(i,:));  
+    end
+else
+    switch q_count
+        case 2
+            for i = 1:group_count
+                mid(i) = radarpoly(ax, theta,[R.vals(i,:,1); R.vals(i,:,2)],C(i,:));  
+            end
+        case 3
+            for i = 1:group_count
+                radarpoly(ax, theta,[R.vals(i,:,1); R.vals(i,:,3)],C(i,:));  
+                mid(i) = radarline(ax, theta,R.vals(i,:,2),C(i,:));  
+            end
+        case 5
+            for i = 1:group_count
+                low(i) = radarline(ax, theta,R.vals(i,:,1),C(i,:));
+                high(i) = radarline(ax, theta,R.vals(i,:,5),C(i,:));
+                set(low(i),'LineWidth',0.25);
+                set(high(i),'LineWidth',0.25);
 
-    % Repeat colors is necessary
-    repeat_colors = fix(row_count/size(colors, 1))+1;
-    colors = repmat(colors, repeat_colors, 1);
-    
-    
-%     color = rand(1,3);
-    % Plot data points
-    fill(x_circular, y_circular,colors(ii,:),...
-        'FaceColor', colors(ii,:),...
-        'EdgeColor', colors(ii,:),...
-        'FaceAlpha', 0.1);   
+                radarpoly(ax, theta,[R.vals(i,:,1); R.vals(i,:,2)],C(i,:));  
+                
+                mid(i) = radarline(ax, theta,R.vals(i,:,3),C(i,:));
+            end
+    end
 end
 
 %%% Axis Properties %%%
 % Figure background
-fig = gcf;
-fig.Color = 'white';
+ax.Color = 'white';
+ax.XColor = 'none';
+ax.YColor = 'none';
 
 % Shifted min value
-shifted_min_value = min_values - axis_increment;
+shifted_min_value = fieldmin - axis_increment;
 
 % Iterate through all the number of points
-for hh = 1:var_count
+for j = 1:field_count
     % Axis label for each row
-    row_axis_labels = (shifted_min_value(hh):axis_increment(hh):max_values(hh))';
+    row_axis_labels = (shifted_min_value(j):axis_increment(j):fieldmax(j))';
     
+    if isempty(row_axis_labels)
+        continue;
+    end
 
     % Iterate through all the isocurve radius
-    for ii = 2:length(radius)
+    for i = 2:length(radius)
     
         % Display axis text for each isocurve
-        text(x_isocurves(ii, hh), y_isocurves(ii, hh), ...
+        text(ax,x_isocurves(i, j), y_isocurves(i, j), ...
             sprintf(sprintf('%%.%if', axes_precision), ...
-            row_axis_labels(ii)),...
+            row_axis_labels(i)),...
             'Units', 'Data',...
             'Color', 'k',...
             'FontSize', 10,...
@@ -294,9 +322,9 @@ y_label = y_isocurves(end, :);
 shift_pos = 0.07;
 
 % Iterate through each label
-for ii = 1:var_count
+for i = 1:field_count
     % Angle of point in radians
-    theta_point = theta(ii);
+    theta_point = theta(i);
     
     % Find out which quadrant the point is in
     if theta_point == 0
@@ -364,18 +392,73 @@ for ii = 1:var_count
     end
     
     % Display text label
-    text(x_label(ii)+x_pos, y_label(ii)+y_pos, lbls{ii},...
+    text(ax,x_label(i)+x_pos, y_label(i)+y_pos, R.fields{i},...
         'Units', 'Data',...
         'HorizontalAlignment', horz_align,...
         'VerticalAlignment', vert_align);
 end
 
 % Axis limits
-axis square;
-axis([-axes_limit, axes_limit, -axes_limit, axes_limit]);
-axis off;
+axis(ax,'square');
+axis(ax,1.1*[-axes_limit, axes_limit, -axes_limit, axes_limit]);
+axis(ax,'off');
+ax.XTick = [];
+ax.YTick = [];
 
-legend(R.types,'Location',lloc);
-legend('boxoff');
+
+if isnumeric(R.types)
+    for i = 1:height(R.types)
+        types{i} = num2str(R.types(i));
+    end
+else
+    types = R.types;
+end
+
+legend(ax, mid,types,'Location',legend_loc,'Orientation',orientation);
+legend(ax,'boxoff');
+
+return
+
+
+function h = radarline(ax,theta,vals,C)
+
+% Convert polar to cartesian coordinates
+[x_points, y_points] = pol2cart(theta(1:end-1), vals);
+
+% Make points circular
+x_circular = [x_points, x_points(1)];
+y_circular = [y_points, y_points(1)];
+
+h = plot(ax,x_circular, y_circular,'Color',C,'LineWidth',1);
+
+return
+
+
+function h = radarpoly(ax,theta,vals,C)
+
+
+% Convert polar to cartesian coordinates
+[x_points, y_points] = pol2cart(repmat(theta(1:end-1),height(vals),1), vals);
+
+% Make points circular
+x_circular = [x_points, x_points(:,1)];
+y_circular = [y_points, y_points(:,1)];
+
+if height(vals) == 1
+    h = fill(ax, x_circular,y_circular,C, ...
+        'FaceColor', C,...
+        'EdgeColor', C,...
+        'FaceAlpha', 0.1);
+else
+    outer = polyshape([x_circular(2,:); y_circular(2,:)]');
+    inner = polyshape([x_circular(1,:); y_circular(1,:)]');
+    
+    poly = subtract(outer,inner);
+
+    h = plot(ax, poly, ...
+        'FaceColor', C, ...
+        'EdgeColor', 'none', ...
+        'FaceAlpha', 0.1);
+end
 
 return

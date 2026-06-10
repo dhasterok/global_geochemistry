@@ -1,7 +1,10 @@
-function t = spider(data,varargin)
+function t = spider2(data,varargin)
 % SPIDER - computes 
 %
 %   Options:
+%
+%       'Axes'          handle to an axes, default is gca
+%
 %       'Elements'      list of elements in cell array
 %
 %       'NormRef'       normalizing reference material found in
@@ -100,11 +103,23 @@ if nargin >= opt + 1
                 fid = fopen('spidernorm.log','a+');
                 logfile = 1;
                 opt = opt + 1;
+            case 'axes'
+                ax = varargin{opt+1};
+                if ~isgraphics(ax,'Axes')
+                    error('Argument must be an axes object.');
+                end
+                opt = opt + 2;
             otherwise
                 error(['Unknown option, ',varargin{opt}]);
         end
     end
 end
+
+if isempty(ax)
+    ax = gca;
+end
+
+hold(ax,'on');
 
 if islogical(subset)
     % do nothing, data are already subset
@@ -112,16 +127,16 @@ elseif strcmp(subset,'field')
     if isempty(edges)
         % if subset chars/strings are not provided
         if isempty(subtext)
-            subtext = unique(data{:,field})
+            subtext = unique(data{:,field});
         end
         % indices for char/string bins
-        subset = logical(zeros([height(data),length(subtext)]));
+        subset = false(height(data),length(subtext));
         for i = 1:length(subtext)
             subset(:,i) = strcmp(data{:,field},subtext{i});
         end
     else
         % indicies for numeric bins
-        subset = logical(zeros([height(data),length(edges)-1]));
+        subset = false(height(data),length(edges)-1);
         for i = 1:length(edges)-1
             subset(:,i) = edges(i) <= data{:,field} & data{:,field} < edges(i+1);
             subtext{i} = [num2str(edges(i)),' to ',num2str(edges(i+1))];
@@ -161,8 +176,8 @@ end
 [elfield,data] = ox2ppm(ellist,data);
 
 % normalize chemistry if necessary
-if ~isempty(reffield) & ~strcmp(reffield,'none')
-    if isempty(xref) | strcmp(xref,'median')
+if ~isempty(reffield) && ~strcmp(reffield,'none')
+    if isempty(xref) || strcmp(xref,'median')
         xref = median(data{:,reffield});
     end
     if logfile
@@ -222,9 +237,9 @@ end
 % normalize element data by reference values
 switch normref
     case 'mean'
-        ref = repmat(nanmean(exp(t{:,elfieldm})),size(subset,2),1);
+        ref = repmat(mean(exp(t{:,elfieldm}),'omitnan'),size(subset,2),1);
     case 'global'
-        ref = repmat(nanmedian(adjdata{:,elfield}),size(subset,2),1);
+        ref = repmat(median(adjdata{:,elfield},'omitnan'),size(subset,2),1);
     otherwise
         ref = repmat(refchem{1,elfield},size(subset,2),1);
 end
@@ -235,27 +250,27 @@ t{:,elfieldsn} = (t{:,elfields}/log(10))./log10(ref);
 elid = [1:length(ellist)];
 if ~isempty(colour)
     for i = 1:size(subset,2)
-        p = plot(elid',t{i,elfieldmn}','-');
+        p = plot(ax,elid',t{i,elfieldmn}','-');
         hold on;
         set(p,'Color',colour(i,:));
     end
 else
-    p = plot(elid',t{:,elfieldmn}','-');
+    plot(ax,elid',t{:,elfieldmn}','-');
 end
-set(gca,'Box','on','XTick',elid,'XTickLabel',ellist);
-xlim([elid(1)-1 elid(end)+1]);
-yl = get(gca,'YLim');
-hpax([floor(yl(1)) ceil(yl(2))],'y');
+set(ax,'Box','on','XTick',elid,'XTickLabel',ellist);
+ax.XLim = [Elide (1)-1 elid(end)+1];
+yl = ax.YLim;
+logax([floor(yl(1)) ceil(yl(2))],'Axis','y','Axes',ax);
 switch normref
     case 'mean'
-        ylabel(['Abundance/Mean']);
+        ax.YLabel = 'Abundance/Mean';
     otherwise
-        ylabel(['Abundance/',refchem.layer{1},' (',refchem.model{1},')']);
+        ax.YLabel = ['Abundance/',refchem.layer{1},' (',refchem.model{1},')'];
 end
-golden        
+golden
 
 if ~isempty(subtext)
-    legend(subtext,'Location','eastoutside');
+    legend(ax,subtext,'Location','eastoutside');
 end
 
 if logfile
