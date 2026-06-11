@@ -1,24 +1,18 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on Thu Nov 2 20:43:59 2023
+Ternary and quaternary (diamond) plotting class.
 
-@author: Shavin Kaluthantri and Derrick Hasterok
+Authors: Shavin Kaluthantri and Derrick Hasterok, University of Adelaide
 """
 
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.figure import Figure
-import matplotlib.tri as tri
-from scipy.spatial import Delaunay
-import matplotlib.tri as mtri
-from matplotlib.path import Path
-import pandas as pd
 import matplotlib.cm as cm
 import matplotlib.colors as colors
 from matplotlib.colors import BoundaryNorm, ListedColormap
+from matplotlib.path import Path
+import pandas as pd
 
-# import ternary
+
 class ternary:
     """Ternary plotting class, produces ternary axes and creates various plot types.
 
@@ -75,8 +69,8 @@ class ternary:
             Distance between tick marks.
         """
 
-        if self.style not in [3, 4]:
-            raise ValueError('Number of vertices must be 3 or 4.')
+        if self.style not in ['ternary', 'quaternary']:
+            raise ValueError("Style must be 'ternary' or 'quaternary'.")
 
         if self.ax is None:
             self.ax = plt.gca()
@@ -143,12 +137,21 @@ class ternary:
             self.ax.plot([-w, 0, w, -w], [0, -h, 0, 0], '-k', linewidth=1)
     
         if labels is not None:
-            # Set labels
-            self.ax.text(0, h, labels[0], ha='center', va='bottom', fontsize=11)
-            self.ax.text(-w*0.85, -h*0.05, labels[1], ha='right', va='center', fontsize=11)
-            self.ax.text(w*0.85, -h*0.05, labels[2], ha='left', va='center', fontsize=11)
-            if self.style == 'quaternary':
-                self.ax.text(0, -h, labels[3], ha='center', va='top', fontsize=11)
+            d = 0.02
+            self.ax.text(0, h + d, labels[0], ha='center', va='bottom',
+                         fontsize=12, fontweight='bold')
+            if self.style == 'ternary':
+                self.ax.text(-w, -d, labels[1], ha='center', va='top',
+                             fontsize=12, fontweight='bold')
+                self.ax.text(w, -d, labels[2], ha='center', va='top',
+                             fontsize=12, fontweight='bold')
+            else:
+                self.ax.text(-w - d, 0, labels[1], ha='right', va='center',
+                             fontsize=12, fontweight='bold')
+                self.ax.text(w + d, 0, labels[2], ha='left', va='center',
+                             fontsize=12, fontweight='bold')
+                self.ax.text(0, -(h + d), labels[3], ha='center', va='top',
+                             fontsize=12, fontweight='bold')
         
 #        for ax in axs:    
 #            ax.axis("off")
@@ -298,8 +301,7 @@ class ternary:
             Scatter plot object, legend (if applicable)
         """
         if cmap is None:
-            cmap = plt.cm.get_cmap('plasma')
-            # cmap = cm.get_cmap(cmap)
+            cmap = plt.colormaps['plasma']
             
         # if self.ax is None:
         #     self.ax = plt.gca()
@@ -536,9 +538,9 @@ class ternary:
 
         # Prepare the colormap
         if cmap is None:
-            cmap = cm.get_cmap('virdis')
-        else:
-            cmap = cm.get_cmap(cmap)
+            cmap = plt.colormaps['viridis']
+        elif isinstance(cmap, str):
+            cmap = plt.colormaps[cmap]
         
         if not norm:
             norm = colors.Normalize(vmin=hexbin_df[plotfield].min(), vmax=hexbin_df[plotfield].max())
@@ -702,73 +704,45 @@ class ternary:
         
         return cval
 
-    # def ternmap(self, a,b,c, ca=[1,1,0], cb=[0.3,0.73,0.1], cc=[0,0,0.15], p=[1/3,1/3,1/3], cp = []):
-    #     """Generates a raster map colored by position within a ternary plot.
-        
-    #     """
-    #     cval = self.terncolor(a, b, c, ca, cb, cc, p, cp)
+    def ternpolygons(self, polygons, labels=None, color='k', linewidth=0.75,
+                     fontsize=9, label_offset=0.02):
+        """Draw classification polygon boundaries on the ternary axes.
 
-    #     self.ax.imshow(cval)
+        Parameters
+        ----------
+        polygons : list of array-like
+            Each element is an (N, 3) array of (a, b, c) ternary coordinates
+            defining one closed polygon boundary.  The polygon is closed
+            automatically if the first and last rows differ.
+        labels : list of str, optional
+            One label per polygon, placed at the polygon centroid.
+        color : color spec
+            Line colour for all polygon boundaries (default 'k').
+        linewidth : float
+        fontsize : float
+        label_offset : float
+            Fraction of diagram width added to label y position.
+        """
+        if labels is None:
+            labels = [None] * len(polygons)
 
-    #     return cb
+        for poly, lbl in zip(polygons, labels):
+            poly = np.asarray(poly, dtype=float)
+            a, b, c = poly[:, 0], poly[:, 1], poly[:, 2]
 
+            # Close the polygon if needed
+            if not (a[0] == a[-1] and b[0] == b[-1] and c[0] == c[-1]):
+                a = np.append(a, a[0])
+                b = np.append(b, b[0])
+                c = np.append(c, c[0])
 
-# # # Example usage
-# # t_plot = ternary(['A', 'B', 'C'], 'heatmap')
-# # a, b, c = np.random.rand(3, 100)  # Example data
-# # values = np.random.rand(100)      # Example values for heatmap
-# t_plot.ternhex(a, b, c, n=10)
+            x, y = self.tern2xy(a, b, c)
+            self.ax.plot(x, y, color=color, linewidth=linewidth)
 
-
-
-# Example Usage
-# ternary = ternary(["A", "B", "C"])
-
-# Test data
-# a = np.random.rand(100)
-# b = np.random.rand(100)
-# c = 1 - a - b
-# val = np.random.rand(100)
-
-# # Plot
-# # ternary.ternsurf(a, b, c, val, 0.05)  # Using dt=0.05
-
-# # import ternary
-# scale = 40
-# figure, tax = ternary.figure(scale=scale)
-
-# tax.set_title("Ternary Heatmap")
-# tax.boundary(linewidth=2.0)
-# tax.gridlines(multiple=5, color="blue")
-
-# # Define the heatmap style
-# if style == 'triangle':
-#     d = tax.heatmapf(sample_function, boundary=True, style="triangular")
-
-# Example usage
-# labels = ["A", "B", "C"]
-# ternary_plot = ternary(labels)
-# a, b, c = np.random.rand(3, 100) # Generate some random data
-# values = np.random.rand(100)  # Corresponding values
-# ternary_plot.ternheatmap(a, b, c, values, scale=10, cmap='viridis')
-# # ternary_plot.ternscatter(a, b, c, size=100)
-# plt.show()
-
-
-
-# def main():
-#     Labels = ["A", "B", "C", "D"]
-    
-#     # Example usage:
-    # labels = ["A", "B", "C"]
-    # ternary_plot = ternary(labels)
-    
-    # a, b, c = np.random.rand(3, 100) # Generate some random data
-    # ternary_plot.ternscatter(a, b, c, size=100)
-    # plt.show(ternary_plot.fig)
-#     # d = sample_data[:,3]
-#     # ternscatter(a, b, c,  size=36, color=None, categories=None,alpha=0.2, marker='o', ax=ax)
-#     # ternscatter(a, b, c,  size=36, color=None,alpha=0.2, marker='o', ax=ax)
-#     # plt.show()
-
-# main()
+            if lbl is not None:
+                # Label at centroid (excluding closing duplicate)
+                cx, cy = self.tern2xy(
+                    np.mean(a[:-1]), np.mean(b[:-1]), np.mean(c[:-1])
+                )
+                self.ax.text(cx, cy + label_offset, lbl,
+                             ha='center', va='bottom', fontsize=fontsize)

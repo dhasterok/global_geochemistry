@@ -2,32 +2,42 @@
 Classification of igneous rocks.
 
 Implements:
-- TAS (Total Alkali–Silica) classification for volcanic and plutonic rocks
-  based on Le Bas et al. (1986) and Middlemost (1994).
-- High-Mg volcanic and ultramafic rock types (Le Bas & Streckeisen 1991).
-- Mg number computation.
+- TAS (Total Alkali–Silica) classification — volcanic and plutonic rock
+  names based on Le Bas et al. (1986) and Middlemost (1994); high-Mg
+  overrides from Le Bas & Streckeisen (1991).
+- Carbonatite classification on the CaO–MgO–FeO+Fe2O3+MnO ternary
+  (calciocarbonatite, magnesiocarbonatite, ferrocarbonatite).
+- QAP normative classification (IUGS double triangle; Le Maitre 2002)
+  using CIPW mineral proportions.
+- Granite geochemical classification: Frost et al. (2001) ferroan/
+  magnesian + alkali-lime series + alumina saturation; SIA (S/I/A-type)
+  scheme of Chappell & White (1992) and Whalen et al. (1987).
+- Mg number.
 
 References:
-    Le Bas, M.J., Le Maitre, R.W., Streckeisen, A., Zanettin, B. (1986)
-    A chemical classification of volcanic rocks based on the total alkali
-    silica diagram.  Journal of Petrology 27(3), 745–750.
-
-    Middlemost, E.A.K. (1994) Naming materials in the magma/igneous rock
-    system.  Earth-Science Reviews 37, 215–224.
-
-    Le Bas, M.J. & Streckeisen, A.L. (1991) The IUGS systematics of igneous
-    rocks.  Journal of the Geological Society London 148, 825–833.
+    Le Bas et al. (1986) J. Petrology 27, 745–750.
+    Middlemost (1994) Earth-Sci. Rev. 37, 215–224.
+    Le Bas & Streckeisen (1991) J. Geol. Soc. London 148, 825–833.
+    Le Maitre, R.W. (ed.) (2002) Igneous Rocks, 2nd ed. Cambridge UP.
+    Frost et al. (2001) J. Petrology 42, 2033–2048.
+    Chappell & White (1992) Trans. R. Soc. Edinburgh 83, 1–26.
+    Whalen et al. (1987) Contrib. Mineral. Petrol. 95, 407–419.
 """
 
 import numpy as np
 import pandas as pd
 from matplotlib.path import Path
 
+from src.utils.molecular import MolecularWeightCalculator
 
-# ---------------------------------------------------------------------------
-# TAS polygon definitions (SiO2, Na2O+K2O) — from Middlemost (1994)
-# Each entry: (vertices_array, volcanic_name, plutonic_name)
-# ---------------------------------------------------------------------------
+_mwc = MolecularWeightCalculator()
+def _mw(f): return _mwc.molecular_weight(f)
+
+
+# ===========================================================================
+# TAS polygon definitions (SiO2, Na2O+K2O) — Middlemost (1994)
+# Each entry: (vertices, volcanic_name, plutonic_name)
+# ===========================================================================
 
 _TAS_POLYGONS = [
     (np.array([[41,0],[41,3],[33,3],[33,0]]),
@@ -77,9 +87,117 @@ _TAS_POLYGONS = [
      'ultra-high alkali volcanic', 'ultra-high alkali plutonic'),
 ]
 
-# Pre-build matplotlib Path objects for fast point-in-polygon testing
 _TAS_PATHS = [Path(v) for v, _, _ in _TAS_POLYGONS]
 
+
+# ===========================================================================
+# Carbonatite ternary polygons — CaO, MgO, FeO+Fe2O3+MnO (load_carbgons.m)
+# Vertices in fractional (C, M) space after normalising C+M+F=1.
+# ===========================================================================
+
+_CARB_POLYGONS = [
+    (np.array([[1.0, 0.0],[0.8, 0.2],[0.8, 0.0]]),
+     'calciocarbonatite'),
+    (np.array([[0.8, 0.2],[0.0, 1.0],[0.0, 0.5],[0.8, 0.1]]),
+     'magnesiocarbonatite'),
+    (np.array([[0.8, 0.0],[0.0, 0.0],[0.0, 0.5],[0.8, 0.1]]),
+     'ferrocarbonatite'),
+]
+_CARB_PATHS = [Path(v) for v, _ in _CARB_POLYGONS]
+
+
+# ===========================================================================
+# QAP polygon definitions — [Q, A, P, F] as percent of Q+A+P+F
+# F=0 polygons → tested on Q-A-P face; Q=0 polygons → tested on A-P-F face.
+# Source: load_qapgons.m (Le Maitre 2002)
+# ===========================================================================
+
+_QAP_POLYGONS = [
+    # Q-A-P face
+    (np.array([[90,10,0,0],[100,0,0,0],[90,0,10,0]]),
+     'quartzolite',          'silexite'),
+    (np.array([[90,10,0,0],[90,0,10,0],[60,0,40,0],[60,40,0,0]]),
+     'quartz-rich granitoid', 'quartz-rich rhyolite'),
+    (np.array([[60,40,0,0],[60,36,4,0],[20,72,8,0],[20,80,0,0]]),
+     'alkali feldspar granite', 'alkali feldspar rhyolite'),
+    (np.array([[60,4,36,0],[20,8,72,0],[20,28,52,0],[60,14,26,0]]),
+     'granodiorite',          'dacite'),
+    (np.array([[60,26,14,0],[20,52,28,0],[20,72,8,0],[60,36,4,0]]),
+     'syenogranite',          'rhyolite'),
+    (np.array([[60,14,26,0],[20,28,52,0],[20,52,28,0],[60,26,14,0]]),
+     'monzogranite',          'rhyolite'),
+    (np.array([[60,0,40,0],[60,4,36,0],[20,8,72,0],[20,0,80,0]]),
+     'tonalite',              'dacite'),
+    (np.array([[20,80,0,0],[5,95,0,0],[5,85.5,9.5,0],[20,72,8,0]]),
+     'alkali feldspar quartz syenite', 'alkali feldspar quartz trachyte'),
+    (np.array([[20,72,8,0],[5,85.5,9.5,0],[5,61.75,33.25,0],[20,52,28,0]]),
+     'quartz syenite',        'quartz trachyte'),
+    (np.array([[20,52,28,0],[5,61.75,33.25,0],[5,33.25,61.75,0],[20,28,52,0]]),
+     'quartz monzonite',      'quartz latite'),
+    (np.array([[20,28,52,0],[5,33.25,61.75,0],[5,9.5,85.5,0],[20,8,72,0]]),
+     'quartz monzodiorite',   'andesite'),
+    (np.array([[20,8,72,0],[5,9.5,85.5,0],[5,0,95,0],[20,0,80,0]]),
+     'quartz diorite',        'andesite'),
+    # A-P only (Q=0, F=0)
+    (np.array([[5,95,0,0],[0,100,0,0],[0,90,10,0],[5,85.5,9.5,0]]),
+     'alkali feldspar syenite', 'alkali feldspar trachyte'),
+    (np.array([[5,85.5,9.5,0],[0,90,10,0],[0,65,35,0],[5,61.75,33.25,0]]),
+     'syenite',                'trachyte'),
+    (np.array([[5,61.75,33.25,0],[0,65,35,0],[0,35,65,0],[5,33.25,61.75,0]]),
+     'monzonite',              'latite'),
+    (np.array([[5,33.25,61.75,0],[0,35,65,0],[0,10,90,0],[5,9.5,85.5,0]]),
+     'monzodiorite',           'andesite'),
+    (np.array([[5,9.5,85.5,0],[0,10,90,0],[0,0,100,0],[5,0,95,0]]),
+     'diorite',                'andesite'),
+    # A-P-F face (Q=0)
+    (np.array([[0,0,0,100],[0,10,0,90],[0,0,10,90]]),
+     'foidolite',              'foidite'),
+    (np.array([[0,10,0,90],[0,40,0,60],[0,20,20,60],[0,5,5,90]]),
+     'foidolite',              'phonolitic foidite'),
+    (np.array([[0,0,10,90],[0,0,40,60],[0,20,20,60],[0,5,5,90]]),
+     'foidolite',              'tephritic foidite'),
+    (np.array([[0,40,0,60],[0,36,4,60],[0,81,9,10],[0,90,0,10]]),
+     'foid syenite',           'phonolite'),
+    (np.array([[0,100,0,0],[0,90,10,0],[0,81,9,10],[0,90,0,10]]),
+     'foid-bearing alkali feldspar syenite', 'foid-bearing alkali feldspar trachyte'),
+    (np.array([[0,90,10,0],[0,81,9,10],[0,58.5,31.5,10],[0,65,35,0]]),
+     'foid-bearing syenite',   'foid-bearing trachyte'),
+    (np.array([[0,65,35,0],[0,35,65,0],[0,31.5,58.5,10],[0,58.5,31.5,10]]),
+     'foid-bearing monzonite', 'foid-bearing latite'),
+    (np.array([[0,10,90,0],[0,9,81,10],[0,31.5,58.5,10],[0,35,65,0]]),
+     'foid-bearing monzodiorite', 'andesite'),
+    (np.array([[0,0,100,0],[0,10,90,0],[0,9,81,10],[0,0,90,10]]),
+     'foid-bearing diorite',   'andesite'),
+    (np.array([[0,0,40,60],[0,4,36,60],[0,9,81,10],[0,0,90,10]]),
+     'foid diorite',           'tephrite'),
+    (np.array([[0,45,45,10],[0,9,81,10],[0,4,36,60],[0,20,20,60]]),
+     'foid monzodiorite',      'phonolitic tephrite'),
+    (np.array([[0,45,45,10],[0,81,9,10],[0,36,4,60],[0,20,20,60]]),
+     'foid monzosyenite',      'tephritic phonolite'),
+]
+
+# Pre-build QAP paths projected onto the appropriate ternary face
+def _qap_path(verts, face):
+    with np.errstate(invalid='ignore', divide='ignore'):
+        if face == 'QAP':
+            t = verts[:,0] + verts[:,1] + verts[:,2]
+            x = verts[:,1] / t   # A fraction
+            y = verts[:,0] / t   # Q fraction
+        else:
+            t = verts[:,1] + verts[:,2] + verts[:,3]
+            x = verts[:,1] / t   # A fraction
+            y = verts[:,3] / t   # F fraction
+    return Path(np.column_stack([x, y]))
+
+_QAP_DATA = []
+for _v, _pn, _vn in _QAP_POLYGONS:
+    _face = 'APF' if _v[:,3].max() > 0.5 else 'QAP'
+    _QAP_DATA.append((_face, _qap_path(_v, _face), _pn, _vn))
+
+
+# ===========================================================================
+# TAS classification
+# ===========================================================================
 
 def tas(data, rock_category=None):
     """Classify igneous rocks using the Total Alkali–Silica diagram.
@@ -87,23 +205,16 @@ def tas(data, rock_category=None):
     Parameters
     ----------
     data : pandas.DataFrame
-        Must contain 'sio2', 'na2o', 'k2o', 'mgo', 'feo_tot', 'tio2'
-        columns in wt%.
+        Must contain 'sio2', 'na2o', 'k2o'.  Optional: 'mgo', 'feo_tot',
+        'tio2' (needed for high-Mg and ultramafic overrides).
     rock_category : array-like of str, optional
-        Per-sample classification as 'volcanic', 'plutonic', or other/NaN.
-        If None, all samples are classified with volcanic names.  Samples
-        with category 'plutonic' receive plutonic names.
+        Per-sample category: 'volcanic', 'plutonic', or other/NaN.
+        When None all samples receive volcanic names.
 
     Returns
     -------
     pandas.Series
-        Rock names (string), empty string where classification could not
-        be assigned.
-
-    Notes
-    -----
-    High-Mg rocks (MgO ≥ 12 wt%) receive overriding names.
-    Ultramafic plutonic rocks are further subdivided by TiO2 content.
+        Rock names; empty string where unclassifiable.
     """
     n = len(data)
     names = np.full(n, '', dtype=object)
@@ -120,13 +231,12 @@ def tas(data, rock_category=None):
     ta   = na2o + k2o
 
     valid = ~np.isnan(sio2)
-    pts_valid = np.column_stack([sio2[valid], ta[valid]])
+    pts_v = np.column_stack([sio2[valid], ta[valid]])
 
-    # Determine rock category masks
     is_volcanic = np.zeros(n, dtype=bool)
     is_plutonic = np.zeros(n, dtype=bool)
     if rock_category is None:
-        is_volcanic = valid.copy()  # classify all with volcanic names when unspecified
+        is_volcanic = valid.copy()
     else:
         rc = np.asarray(rock_category, dtype=object)
         is_volcanic = np.isin(rc, ['volcanic'])
@@ -134,107 +244,331 @@ def tas(data, rock_category=None):
 
     for path, (_, volc_name, plut_name) in zip(_TAS_PATHS, _TAS_POLYGONS):
         inside = np.zeros(n, dtype=bool)
-        if pts_valid.shape[0]:
-            inside[valid] = path.contains_points(pts_valid)
+        if pts_v.shape[0]:
+            inside[valid] = path.contains_points(pts_v)
         names[inside & is_volcanic] = volc_name
         names[inside & is_plutonic] = plut_name
 
-    # --- High-Mg overrides ---
-    # Applied to both volcanic and plutonic unless otherwise noted.
-    mafic_field = valid & (sio2 >= 33) & (sio2 < 65)
+    mafic = valid & (sio2 >= 33) & (sio2 < 65)
 
-    # Boninite/sanukitoid
-    mask = mafic_field & (sio2 >= 52) & _safe_ge(mgo, 8) & _safe_lt(tio2, 0.5)
+    mask = mafic & (sio2 >= 52) & _safe_ge(mgo, 8) & _safe_lt(tio2, 0.5)
     names[mask & is_volcanic] = 'boninite'
     names[mask & is_plutonic] = 'sanukitoid'
 
-    # Picrite / ferropicrite variants — no volcanic/plutonic distinction in MATLAB
-    mask = mafic_field & (sio2 < 52) & _safe_ge(mgo, 12) & (ta < 3)
+    mask = mafic & (sio2 < 52) & _safe_ge(mgo, 12) & (ta < 3)
     names[mask & _safe_ge(feo, 13)] = 'ferropicrite'
     names[mask & _safe_lt(feo, 13)] = 'picrite'
 
-    mask = mafic_field & (sio2 < 52) & _safe_ge(mgo, 12) & (ta >= 3)
+    mask = mafic & (sio2 < 52) & _safe_ge(mgo, 12) & (ta >= 3)
     names[mask & _safe_ge(feo, 13)] = 'alkali ferropicrite'
     names[mask & _safe_lt(feo, 13)] = 'alkali picrite'
 
-    # Meimechite (very high MgO, high TiO2)
-    mask = mafic_field & (sio2 < 52) & _safe_ge(mgo, 18) & _safe_gt(tio2, 1) & (ta < 2)
+    mask = mafic & (sio2 < 52) & _safe_ge(mgo, 18) & _safe_gt(tio2, 1) & (ta < 2)
     names[mask] = 'meimechite'
 
-    # Komatiite
-    mask = mafic_field & (sio2 < 45) & _safe_ge(mgo, 18) & _safe_lt(tio2, 1) & (ta < 2)
+    mask = mafic & (sio2 < 45) & _safe_ge(mgo, 18) & _safe_lt(tio2, 1) & (ta < 2)
     names[mask & is_volcanic] = 'komatiite'
     names[mask & is_plutonic] = 'intrusive komatiite'
 
-    # Basaltic komatiite
-    mask = mafic_field & (sio2 >= 45) & (sio2 < 52) & _safe_ge(mgo, 18) & _safe_lt(tio2, 1) & (ta < 2)
+    mask = mafic & (sio2 >= 45) & (sio2 < 52) & _safe_ge(mgo, 18) & _safe_lt(tio2, 1) & (ta < 2)
     names[mask & is_volcanic] = 'basaltic komatiite'
     names[mask & is_plutonic] = 'gabbroic komatiite'
 
     # Plutonic ultramafic subdivision by TiO2 (Reverdatto et al. 2008)
     mask = is_plutonic & valid & (sio2 >= 33) & (sio2 < 45) & _safe_gt(tio2, 0) & _safe_le(tio2, 0.3)
-    names[mask & _safe_ge(mgo, 35)]                          = 'mantle peridotite'
-    names[mask & _safe_ge(mgo, 18) & _safe_lt(mgo, 35)]     = 'mantle pyroxenite'
+    names[mask & _safe_ge(mgo, 35)]                      = 'mantle peridotite'
+    names[mask & _safe_ge(mgo, 18) & _safe_lt(mgo, 35)] = 'mantle pyroxenite'
 
     return pd.Series(names, index=data.index, dtype=object)
 
 
-def mgnum(mgo, feo_tot, fe3_fraction=0.0):
-    """Compute Mg number: Mg/(Mg + Fe²⁺) molar.
+# ===========================================================================
+# Carbonatite classification
+# ===========================================================================
+
+def carbclass(data):
+    """Classify carbonatites on the CaO–MgO–(FeO+Fe2O3+MnO) ternary.
+
+    A sample is treated as a carbonatite when any of:
+    - CO2 >= 20 wt% (if column present)
+    - rock_name contains 'carbonatite' (case-insensitive)
+    - SiO2 < 33 wt%
+
+    Samples with 20 < SiO2 < 33 receive a 'silico-' prefix.
 
     Parameters
     ----------
-    mgo : array-like
-        MgO concentration in wt%.
-    feo_tot : array-like
-        Total iron as FeO in wt%.
-    fe3_fraction : float or array-like
-        Fraction of total iron as Fe³⁺ (0–1).  Default 0 (all Fe as Fe²⁺).
+    data : pandas.DataFrame
+        Must contain 'sio2', 'cao', 'mgo', 'feo_tot'.  Optional: 'mno',
+        'fe2_fe_tot' (Fe²⁺/ΣFe molar ratio), 'co2', 'rock_name'.
 
     Returns
     -------
-    numpy.ndarray
+    pandas.Series
+        Carbonatite sub-type name; empty string for non-carbonatite samples.
     """
-    from src.utils.molecular import MolecularWeightCalculator
-    _mwc = MolecularWeightCalculator()
+    n = len(data)
+    names = np.full(n, '', dtype=object)
 
-    mgo     = np.asarray(mgo,     dtype=float)
-    feo_tot = np.asarray(feo_tot, dtype=float)
+    sio2    = data['sio2'].to_numpy(float)
+    cao     = data['cao'].to_numpy(float)  if 'cao'     in data.columns else np.zeros(n)
+    mgo     = data['mgo'].to_numpy(float)  if 'mgo'     in data.columns else np.zeros(n)
+    feo_tot = data['feo_tot'].to_numpy(float) if 'feo_tot' in data.columns else np.zeros(n)
+    mno     = data['mno'].to_numpy(float)  if 'mno'     in data.columns else np.zeros(n)
+    co2     = data['co2'].to_numpy(float)  if 'co2'     in data.columns else np.zeros(n)
+
+    # Iron proxy: 80% FeO + 20% Fe2O3 equivalent + MnO (default);
+    # uses measured Fe ratio when available
+    _fe_cf = _mw('Fe2O3') / (2 * _mw('FeO'))
+    F = 0.8 * feo_tot + 0.2 * feo_tot * _fe_cf + mno
+    if 'fe2_fe_tot' in data.columns:
+        fe2 = data['fe2_fe_tot'].to_numpy(float)
+        has_ratio = np.isfinite(fe2) & (fe2 > 0)
+        F[has_ratio] = (fe2[has_ratio] * feo_tot[has_ratio] +
+                        (1 - fe2[has_ratio]) * feo_tot[has_ratio] * _fe_cf +
+                        mno[has_ratio])
+
+    # Carbonatite detection
+    is_carb = (np.abs(sio2) < 33)
+    if 'co2' in data.columns:
+        is_carb = is_carb | (co2 >= 20)
+    if 'rock_name' in data.columns:
+        rn = data['rock_name'].astype(str).str.lower()
+        is_carb = is_carb | rn.str.contains('carbonatite', regex=False).to_numpy()
+
+    names[is_carb] = 'carbonatite'
+
+    silico = is_carb & (sio2 > 20) & (sio2 < 33)
+    names[silico] = 'silicocarbonatite'
+
+    # Sub-classify using CaO–MgO–F ternary
+    CMF = cao + mgo + F
+    with np.errstate(invalid='ignore', divide='ignore'):
+        C_frac = np.where(CMF > 0, cao / CMF, np.nan)
+        M_frac = np.where(CMF > 0, mgo / CMF, np.nan)
+
+    ternary_valid = is_carb & np.isfinite(C_frac) & np.isfinite(M_frac)
+    if ternary_valid.any():
+        pts = np.column_stack([C_frac[ternary_valid], M_frac[ternary_valid]])
+        for path, (_, label) in zip(_CARB_PATHS, _CARB_POLYGONS):
+            inside = np.zeros(n, dtype=bool)
+            inside[ternary_valid] = path.contains_points(pts)
+            names[inside & ~silico] = label
+            names[inside &  silico] = 'silico-' + label
+
+    return pd.Series(names, index=data.index, dtype=object)
+
+
+# ===========================================================================
+# QAP normative classification
+# ===========================================================================
+
+def qap(cipw_result, is_volcanic=None):
+    """Assign QAP rock names from CIPW normative mineral proportions.
+
+    Parameters
+    ----------
+    cipw_result : pandas.DataFrame
+        Output of :func:`src.classification.cipw.cipwnorm`.
+    is_volcanic : array-like of bool, optional
+        True → volcanic name.  Defaults to False (plutonic names).
+
+    Returns
+    -------
+    pandas.Series
+        QAP rock name; empty string where classification is not possible.
+    """
+    n = len(cipw_result)
+    if is_volcanic is None:
+        is_volcanic = np.zeros(n, dtype=bool)
+    else:
+        is_volcanic = np.asarray(is_volcanic, dtype=bool)
+
+    def _col(name):
+        arr = cipw_result[name].to_numpy(float) if name in cipw_result.columns else np.zeros(n)
+        return np.nan_to_num(arr, nan=0.0)
+
+    Q = _col('cipw_quartz')
+    A = (_col('cipw_orthoclase') + _col('cipw_potassium_ms') +
+         _col('cipw_kaliophilite') + _col('cipw_sodium_ms'))
+    P = _col('cipw_albite') + _col('cipw_anorthite')
+    F = _col('cipw_nepheline') + _col('cipw_leucite') + _col('cipw_kaliophilite')
+
+    total = Q + A + P + F
+    valid = total > 0
+
+    with np.errstate(invalid='ignore', divide='ignore'):
+        Qn = np.where(valid, Q / total, np.nan)
+        An = np.where(valid, A / total, np.nan)
+        Fn = np.where(valid, F / total, np.nan)
+
+    use_apf = valid & (Fn > 0.1)
+    use_qap = valid & ~use_apf
+
+    pts_qap = np.column_stack([An, Qn])
+    pts_apf = np.column_stack([An, Fn])
+
+    names = np.full(n, '', dtype=object)
+
+    for face, path, plut_name, volc_name in _QAP_DATA:
+        use = use_apf if face == 'APF' else use_qap
+        if not use.any():
+            continue
+        inside = np.zeros(n, dtype=bool)
+        inside[use] = path.contains_points(pts_apf[use] if face == 'APF' else pts_qap[use])
+        names[inside & ~is_volcanic] = plut_name
+        names[inside &  is_volcanic] = volc_name
+
+    return pd.Series(names, index=cipw_result.index, dtype=object)
+
+
+# ===========================================================================
+# Granite geochemical classification
+# ===========================================================================
+
+def graniteclass(data):
+    """Geochemical classification of granitoids.
+
+    Implements:
+    - Frost et al. (2001) three-axis scheme:
+        1. ferroan / magnesian (Fe-number vs SiO2 boundary)
+        2. alkalic / alkali-calcic / calc-alkalic / calcic (MALI vs SiO2)
+        3. peraluminous / metaluminous / peralkaline (ASI)
+    - SIA-type (S / I / A) classification:
+        A-type: agpaitic index (Al/(Na+K) molar) < 1/0.85 AND
+                (ferroan below 70% SiO2, OR above 70% SiO2)
+        S-type: ASI >= 1.1
+        I-type: remainder
+
+    Parameters
+    ----------
+    data : pandas.DataFrame
+        Requires columns computed by :func:`src.classification.indices.geochem_index`:
+        'Fe_number', 'MALI', 'ASI', 'sio2', 'al2o3', 'na2o', 'k2o'.
+        Trace elements 'f_ppm', 'zr_ppm', 'nb_ppm', 'ce_ppm', 'y_ppm',
+        'ga_ppm' improve A-type detection when available.
+
+    Returns
+    -------
+    dict of pandas.Series
+        Keys: 'sia', 'fe_mg', 'alkali_lime', 'alumina_sat'
+    """
+    n = len(data)
+
+    def col(name):
+        if name in data.columns:
+            return data[name].to_numpy(float)
+        return np.full(n, np.nan)
+
+    sio2    = col('sio2')
+    al2o3   = col('al2o3')
+    na2o    = col('na2o')
+    k2o     = col('k2o')
+    fe_num  = col('Fe_number')
+    mali    = col('MALI')
+    asi     = col('ASI')
+
+    # ---- 1. Frost et al. (2001): ferroan / magnesian ----
+    boundary_fe = 0.486 + 0.0046 * sio2
+    fe_mg = np.where(fe_num < boundary_fe, 'magnesian',
+            np.where(fe_num >= boundary_fe, 'ferroan', ''))
+
+    # ---- 2. Alkali-lime series (MALI vs SiO2 polynomial boundaries) ----
+    b_alkalic     = -41.86 + 1.12   * sio2 - 0.00572 * sio2**2
+    b_alkali_calc = -44.72 + 1.094  * sio2 - 0.00527 * sio2**2
+    b_calc_calc   = -45.36 + 1.0043 * sio2 - 0.00427 * sio2**2
+
+    alkali_lime = np.where(mali > b_alkalic,     'alkalic',
+                  np.where(mali > b_alkali_calc,  'alkali-calcic',
+                  np.where(mali > b_calc_calc,    'calc-alkalic',
+                                                  'calcic')))
+    alkali_lime = np.where(np.isnan(mali), '', alkali_lime)
+
+    # ---- 3. Alumina saturation ----
+    # Agpaitic index: molar Al / (Na + K)
+    n_al  = 2 * al2o3 / _mw('Al2O3')   # moles Al atoms per 100 g
+    n_nak = (2 * na2o / _mw('Na2O') +
+             2 * k2o  / _mw('K2O'))    # moles Na+K atoms per 100 g
+    with np.errstate(invalid='ignore', divide='ignore'):
+        agpaitic = np.where(n_nak > 0, n_al / n_nak, np.nan)
+
+    peralkaline_cond = (asi < 1.0) & np.isfinite(agpaitic) & (agpaitic < 1.0)
+    alumina_sat = np.where(asi >= 1.0,       'peraluminous',
+                  np.where(peralkaline_cond,  'peralkaline',
+                                              'metaluminous'))
+    alumina_sat = np.where(np.isnan(asi), '', alumina_sat)
+
+    # ---- 4. SIA scheme ----
+    # A-type conditions
+    ferroan = fe_num >= boundary_fe
+    is_a_low_si  = ferroan & (sio2 < 70) & (agpaitic < 1/0.85)  # agpaitic < ~1.18
+    is_a_high_si = (sio2 >= 70) & (agpaitic < 1/0.85)
+
+    sia = np.full(n, '', dtype=object)
+    sia[is_a_low_si | is_a_high_si] = 'A'
+    # S-type: strongly peraluminous (ASI >= 1.1)
+    sia[(sia == '') & (asi >= 1.1)] = 'S'
+    # I-type: remainder with valid SiO2
+    sia[(sia == '') & np.isfinite(sio2)] = 'I'
+
+    return {
+        'sia':         pd.Series(sia,         index=data.index),
+        'fe_mg':       pd.Series(fe_mg,       index=data.index),
+        'alkali_lime': pd.Series(alkali_lime, index=data.index),
+        'alumina_sat': pd.Series(alumina_sat, index=data.index),
+    }
+
+
+# ===========================================================================
+# Mg number
+# ===========================================================================
+
+def mgnum(mgo, feo_tot, fe3_fraction=0.0):
+    """Mg/(Mg + Fe²⁺) molar ratio.
+
+    Parameters
+    ----------
+    mgo, feo_tot : array-like
+        MgO and total FeO (wt%).
+    fe3_fraction : float or array-like
+        Fraction of total iron as Fe³⁺ (0–1).  Default 0.
+    """
+    mgo      = np.asarray(mgo,     dtype=float)
+    feo_tot  = np.asarray(feo_tot, dtype=float)
     fe3_frac = np.asarray(fe3_fraction, dtype=float)
 
-    n_mg  = mgo / _mwc.molecular_weight('MgO')
-    n_feo = feo_tot * (1 - fe3_frac) / _mwc.molecular_weight('FeO')
+    n_mg  = mgo / _mw('MgO')
+    n_feo = feo_tot * (1 - fe3_frac) / _mw('FeO')
     with np.errstate(invalid='ignore', divide='ignore'):
         mg = n_mg / (n_mg + n_feo)
-    mg = np.where(np.isfinite(mg), mg, np.nan)
-    return mg
+    return np.where(np.isfinite(mg), mg, np.nan)
 
+
+# ===========================================================================
+# Plotting helpers
+# ===========================================================================
 
 def plot_tas(ax=None, rock_type='volcanic', **kwargs):
-    """Draw TAS field boundaries on a matplotlib axes.
+    """Draw TAS field boundaries on a matplotlib Axes.
 
     Parameters
     ----------
     ax : matplotlib.axes.Axes, optional
-        Target axes; uses current axes if None.
     rock_type : {'volcanic', 'plutonic'}
-        Which rock names to annotate.
-    **kwargs
-        Passed to ``ax.plot()`` for boundary lines.
+    **kwargs : passed to ``ax.plot()`` for the boundary lines.
 
     Returns
     -------
     matplotlib.axes.Axes
     """
     import matplotlib.pyplot as plt
-
     if ax is None:
         ax = plt.gca()
 
     lkw = {'color': 'k', 'linewidth': 0.8, **kwargs}
     name_idx = 1 if rock_type == 'volcanic' else 2
 
-    for path, (verts, *names) in zip(_TAS_PATHS, _TAS_POLYGONS):
+    for _path, (verts, *names) in zip(_TAS_PATHS, _TAS_POLYGONS):
         x, y = verts[:, 0], verts[:, 1]
         ax.plot(np.append(x, x[0]), np.append(y, y[0]), **lkw)
         name = names[name_idx - 1]
@@ -250,9 +584,9 @@ def plot_tas(ax=None, rock_type='volcanic', **kwargs):
     return ax
 
 
-# ---------------------------------------------------------------------------
-# Helper: NaN-safe comparisons
-# ---------------------------------------------------------------------------
+# ===========================================================================
+# Internal helpers
+# ===========================================================================
 
 def _safe_ge(a, v): return np.where(np.isnan(a), False, a >= v)
 def _safe_le(a, v): return np.where(np.isnan(a), False, a <= v)
