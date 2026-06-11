@@ -1,0 +1,28 @@
+{
+  "datasets": [
+    {
+      "name": "global_whole_rock",
+      "description": "Global whole-rock geochemical database",
+      "format": "csv",
+      "version": "2024_01_23",
+      "location": "Google Drive — see config/paths.yml",
+      "notes": "Exported from PostgreSQL database. Primary input for all geochemical analyses."
+    },
+    {
+      "name": "earthref",
+      "description": "Earth reference chemistry models (Bulk Silicate Earth, UCC, LCC, etc.)",
+      "format": "xlsx",
+      "version": null,
+      "location": "src/data/earthref.xlsx",
+      "notes": "Used by src/geochem/ref_models/refchem.py"
+    },
+    {
+      "name": "element_info",
+      "description": "Periodic table element properties (atomic number, mass, ionic radii, etc.)",
+      "format": "xlsx",
+      "version": null,
+      "location": "src/data/element_info.xlsx",
+      "notes": "Used by src/utils/elements.py"
+    }
+  ]
+}

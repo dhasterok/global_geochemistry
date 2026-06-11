@@ -63,8 +63,8 @@ def density_geochem(data, shift=_DENSITY_SHIFT, inplace=False):
     pandas.DataFrame
         With column 'density_bk' (kg m⁻³) added.
     """
-    from src.classification.indices import geochem_index
-    from src.processing.normalize import oxide_norm, DEFAULT_OXIDES
+    from src.geochem.classification.indices import geochem_index
+    from src.geochem.processing.normalize import oxide_norm, DEFAULT_OXIDES
 
     if not inplace:
         data = data.copy()
@@ -108,7 +108,7 @@ def densest(data, inplace=False):
     pandas.DataFrame
         Adds 'p_velocity', 'density_bk', 'density_cm', 'density_model'.
     """
-    from src.physprop.seismic import vpest
+    from src.geochem.physprop.seismic import vpest
 
     if not inplace:
         data = data.copy()

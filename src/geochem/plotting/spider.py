@@ -16,7 +16,7 @@ import pandas as pd
 from scipy.stats import norm
 from scipy.interpolate import LinearNDInterpolator
 from src.utils.molecular import MolecularWeightCalculator
-from src.processing.censored import gausscensor
+from src.geochem.processing.censored import gausscensor
 from matplotlib.figure import Figure
 import re
 

@@ -1,0 +1,11 @@
+database:
+  default_version: "2024_01_23"
+  # {version} is substituted at runtime by _resolve_db_path()
+  path: "~/Library/CloudStorage/GoogleDrive-dhasterok@gmail.com/My Drive/heat_production/database/export/{version}/database_{version}.csv"
+
+ref_models:
+  earthref: "src/data/earthref.xlsx"
+
+utils:
+  element_info: "src/data/element_info.xlsx"
+  custom_colormaps: "src/data/custom_colormaps.csv"
