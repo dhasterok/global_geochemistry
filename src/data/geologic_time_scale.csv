@@ -1,0 +1,178 @@
+chron_level,symbol,name,date_min,date_max
+age,,Meghalayan,0,0.0042
+age,,Northgrippian,0.0042,0.008276
+age,,Greenlandian,0.008276,0.0117
+era,Cz,Cenozoic,0,66
+period,Q,Quaternary,0,2.58
+epoch,,Holocene,0,0.0117
+epoch,,Pleistocene,0.0117,2.58
+age,,Pleistocene Stage 4,0.0117,0.129
+age,,Chibanian,0.129,0.774
+age,,Calabrian,0.774,1.8
+age,,Gelasian,1.8,2.58
+period,N,Neogene,2.58,23
+epoch,,Pliocene,2.58,5.3
+age,,Piacenzian,2.58,3.6
+age,,Zanclean,3.6,5.333
+epoch,,Miocene,5.333,23.03
+age,,Messinian,5.333,7.246
+age,,Tortonian,7.246,11.63
+age,,Serravallian,11.63,13.82
+age,,Langhian,13.82,15.97
+age,,Burdigalian,15.97,20.44
+age,,Aquitanian,20.44,23.03
+period,Pg,Paleogene,23.03,66
+epoch,,Oligocene,23.03,33.9
+age,,Chattian,23.03,27.82
+age,,Rupelian,27.82,33.9
+epoch,,Eocene,33.9,56
+age,,Priabonian,33.9,37.71
+age,,Bartonian,37.71,41.2
+age,,Lutetian,41.2,47.8
+age,,Ypresian,47.8,56
+epoch,,Paleocene,56,66
+age,,Thanetian,56,59.2
+age,,Selandian,59.2,61.6
+age,,Danian,61.6,66
+era,Mz,Mesozoic,66,252
+period,K,Cretaceous,66,145
+epoch,lK,Late Cretaceous,66,100.5
+age,,Maastrichtian,66,72.1
+age,,Campanian,72.1,83.6
+age,,Santonian,83.6,86.3
+age,,Coniacian,86.3,89.8
+age,,Turonian,89.8,93.9
+age,,Cenomanian,93.9,100.5
+epoch,eK,Early Cretaceous,100.5,145
+age,,Albian,100.5,113
+age,,Aptian,113,121.4
+age,,Barremian,121.4,129.4
+age,,Hauterivian,129.4,132.6
+age,,Valanginian,132.6,139.8
+age,,Berriasian,139.8,145
+period,J,Jurassic,145,201.3
+epoch,lJ,Late Jurassic,145,161.5
+age,,Tithonian,145,149.2
+age,,Kimmeridgian,149.2,154.8
+age,,Oxfordian,154.8,161.5
+epoch,mJ,Middle Jurassic,161.5,174.7
+age,,Callovian,161.5,165.3
+age,,Bathonian,165.3,168.2
+age,,Bajocian,168.2,170.9
+age,,Aalenian,170.9,174.7
+epoch,eJ,Early Jurassic,174.7,201.4
+age,,Toarcian,174.7,184.2
+age,,Pliensbachian,184.2,192.9
+age,,Sinemurian,192.9,199.5
+age,,Hettangian,199.5,201.4
+period,Tr,Triassic,201.4,251.902
+epoch,lTr,Late Triassic,201.4,237
+age,,Rhaetian,201.4,208.5
+age,,Norian,208.5,227
+age,,Carnian,227,237
+epoch,mTr,Middle Triassic,237,247.2
+age,,Ladinian,237,242
+age,,Anisian,242,247.2
+epoch,eTr,Early Triassic,247.2,251.902
+age,,Olenekian,247.2,251.2
+age,,Induan,251.2,251.902
+era,Pz,Paleozoic,251.902,538.8
+period,P,Permian,251.902,298.9
+epoch,lP,Lopingian,251.902,259.51
+age,,Changhsingian,251.902,254.14
+age,,Wuchiapingian,254.14,259.51
+epoch,mP,Guadalupian,259.51,273.01
+age,,Capitanian,259.51,264.28
+age,,Wordian,264.28,266.9
+age,,Roadian,266.9,273.01
+epoch,eP,Cisuralian,273.01,298.9
+age,,Kungurian,273.01,283.5
+age,,Artinskian,283.5,290.1
+age,,Sakmarian,290.1,293.52
+age,,Asselian,293.52,298.9
+period,C,Carboniferous,298.9,358.9
+epoch,PP,Pennsylvanian,298.9,323.2
+epoch,lPP,Late Pennsylvanian,298.9,307
+age,,Gzhelian,298.9,303.7
+age,,Kasimovian,303.7,307
+epoch,mPP,Middle Pennsylvanian,307,315.2
+age,,Moscovian,307,315.2
+epoch,ePP,Early Pennsylvanian,315.2,323.2
+age,,Bashkirian,315.2,323.2
+epoch,M,Mississippian,323.2,358.9
+epoch,lM,Late Mississippian,323.2,330.9
+age,,Serpukhovian,323.2,330.9
+epoch,mM,Middle Mississippian,330.9,346.7
+age,,Visean,330.9,346.7
+epoch,eM,Early Mississippian,346.7,358.9
+age,,Tournaisian,346.7,358.9
+period,D,Devonian,358.9,419.2
+epoch,lD,Late Devonian,358.9,382.7
+age,,Famennian,358.9,372.2
+age,,Frasnian,372.2,382.7
+epoch,mD,Middle Devonian,382.7,393.3
+age,,Givetian,382.7,387.7
+age,,Eifelian,387.7,393.3
+epoch,eD,Early Devonian,393.3,419.2
+age,,Emsian,393.3,407.6
+age,,Pragian,407.6,410.8
+age,,Lochkovian,410.8,419.2
+period,S,Silurian,419.2,443.8
+epoch,,Pridoli,419.2,423
+epoch,,Ludlow,423,427.4
+age,,Ludfordian,423,425.6
+age,,Gorstian,425.6,427.4
+epoch,,Wenlock,427.4,433.4
+age,,Homerian,427.4,430.5
+age,,Sheinwoodian,430.5,433.4
+epoch,,Llandovery,433.4,443.8
+age,,Telychian,433.4,438.5
+age,,Aeronian,438.5,440.8
+age,,Rhuddanian,440.8,443.8
+period,O,Ordovician,443.8,485.4
+epoch,,Late Ordivician,443.8,458.4
+age,,Hirnantian,443.8,445.2
+age,,Katian,445.2,453
+age,,Sandbian,453,458.4
+epoch,,Middle Ordivician,458.4,470
+age,,Darriwilian,458.4,467.3
+age,,Dapingian,467.3,470
+epoch,,Early Ordivician,470,485.4
+age,,Floian,470,477.7
+age,,Tremadocian,477.7,485.4
+period,C,Cambrian,485.4,538.8
+epoch,,Furongian,485.4,497
+age,,Cambrian Stage 10,485.4,489.5
+age,,Jiangshanian,489.5,494
+age,,Paibian,494,497
+epoch,,Miaolingian,497,509
+age,,Guzhangian,497,500.5
+age,,Drumian,500.5,504.5
+age,,Wulian,504.5,509
+epoch,,Cambrian Series 2,509,521
+age,,Cambrian Stage 4,509,514
+age,,Cambrian Stage 3,514,521
+epoch,,Terreneuvian,521,538.8
+age,,Cambrian Stage 2,521,529
+age,,Fortunian,529,538.8
+supereon,pC,Precambrian,538.8,4000
+eon,Pt,Proterozoic,538.8,2500
+era,X,Neoproterozoic,538.8,1000
+period,,Ediacaran,538.8,635
+period,,Cryogenian,635,720
+period,,Tonian,720,1000
+era,Y,Mesoproterozoic,1000,1600
+period,,Stenian,1000,1200
+period,,Ectasian,1200,1400
+period,,Calymmian,1400,1600
+era,Z,Paleoproterozoic,1600,2500
+period,,Statherian,1600,1800
+period,,Orosirian,1800,2050
+period,,Rhyacian,2050,2300
+period,,Siderian,2300,2500
+eon,A,Archean,2500,4000
+era,,Neoarchean,2500,2800
+era,,Mesoarchean,2800,3200
+era,,Paleoarchean,3200,3600
+era,,Eoarchean,3600,4000
+eon,,Hadean,4000,4650

@@ -132,7 +132,7 @@ def _auto_ymax(y, default):
     if len(finite) == 0:
         return default
     q95 = np.quantile(finite, 0.95)
-    return max(np.ceil(1.3 * q95), default * 0.1)
+    return max(np.ceil(1.3 * q95), default)
 
 
 def _scatter_panel(ax, sio2, y, color, marker, alpha):

@@ -1,5 +1,14 @@
 """
-Age data cleaning and correction.
+Age data cleaning, resolution, and correction.
+
+``age_from_name(name)``
+    Look up a geologic time interval by name in the ICS time scale CSV,
+    returning (age_min, age_mid, age_max) in Ma.
+
+``resolve_ages(data)``
+    Convert age columns that may contain numeric values *or* geologic time
+    scale names (e.g. ``'Archean'``, ``'Holocene'``) into numerical Ma values,
+    then run ``age_correction`` to sanitise the result.
 
 ``age_correction(data, age_var=200)``
     Sanitise age_min / age / age_max columns: fix negative values, correct
@@ -7,8 +16,123 @@ Age data cleaning and correction.
     whose min–max range exceeds *age_var* Ma.
 """
 
+from __future__ import annotations
+
+import functools
+import pathlib
+
 import numpy as np
 import pandas as pd
+
+
+_DATA_DIR = pathlib.Path(__file__).resolve().parent.parent.parent / 'data'
+_GTS_PATH = _DATA_DIR / 'geologic_time_scale.csv'
+
+
+@functools.lru_cache(maxsize=1)
+def _load_timescale() -> pd.DataFrame:
+    """Load the ICS geologic time scale CSV (cached after first call)."""
+    ts = pd.read_csv(_GTS_PATH)
+    ts['name_lower'] = ts['name'].str.strip().str.lower()
+    return ts
+
+
+def age_from_name(name: str) -> tuple[float, float, float]:
+    """Return (age_min, age_mid, age_max) in Ma for a geologic time interval.
+
+    Looks up *name* (case-insensitive) in ``src/data/geologic_time_scale.csv``.
+    Returns ``(NaN, NaN, NaN)`` if the name is not found.
+
+    Parameters
+    ----------
+    name : str
+        Geologic interval name, e.g. ``'Archean'``, ``'Holocene'``,
+        ``'Cretaceous'``.
+
+    Returns
+    -------
+    age_min, age_mid, age_max : float
+        Ages in Ma (million years).  ``age_mid = (age_min + age_max) / 2``.
+
+    Examples
+    --------
+    >>> age_from_name('Archean')
+    (2500.0, 3250.0, 4000.0)
+    >>> age_from_name('Holocene')
+    (0.0, 0.00585, 0.0117)
+    """
+    ts = _load_timescale()
+    key = name.strip().lower()
+    row = ts[ts['name_lower'] == key]
+    if row.empty:
+        return np.nan, np.nan, np.nan
+    age_min = float(row.iloc[0]['date_min'])
+    age_max = float(row.iloc[0]['date_max'])
+    return age_min, 0.5 * (age_min + age_max), age_max
+
+
+def _parse_age_value(v) -> tuple[float, float, float]:
+    """Convert a single age value to (min, mid, max) in Ma.
+
+    Handles:
+    - numeric (float/int)  → (NaN, value, NaN)
+    - numeric string       → (NaN, value, NaN)
+    - time scale name      → from age_from_name()
+    - None / NaN           → (NaN, NaN, NaN)
+    """
+    if v is None:
+        return np.nan, np.nan, np.nan
+    if isinstance(v, (int, float, np.floating)):
+        if np.isnan(v):
+            return np.nan, np.nan, np.nan
+        return np.nan, float(v), np.nan
+    sv = str(v).strip()
+    if not sv:
+        return np.nan, np.nan, np.nan
+    try:
+        return np.nan, float(sv), np.nan
+    except ValueError:
+        return age_from_name(sv)
+
+
+def resolve_ages(data: pd.DataFrame, age_var: float = 200) -> pd.DataFrame:
+    """Resolve age columns containing numeric values or time scale names.
+
+    Converts ``age``, ``age_min``, and ``age_max`` columns (which may hold
+    numeric values *or* strings such as ``'Archean'`` or ``'500'``) into
+    purely numerical Ma values, then runs :func:`age_correction` to sanitise
+    bounds and compute ``avg_age``.
+
+    Parameters
+    ----------
+    data : pandas.DataFrame
+        Must contain at least one of ``'age'``, ``'age_min'``, ``'age_max'``.
+    age_var : float
+        Forwarded to :func:`age_correction` (default 200 Ma).
+
+    Returns
+    -------
+    pandas.DataFrame
+        Copy of *data* with numeric ``age``, ``age_min``, ``age_max``, and
+        ``avg_age`` columns.
+    """
+    out = data.copy()
+
+    for col in ('age', 'age_min', 'age_max'):
+        if col not in out.columns:
+            continue
+        series = out[col]
+        # If already all-numeric, nothing to do
+        if pd.api.types.is_numeric_dtype(series):
+            continue
+        # Mixed or object dtype — resolve element by element
+        resolved = np.full(len(series), np.nan)
+        for i, v in enumerate(series):
+            _, mid, _ = _parse_age_value(v)
+            resolved[i] = mid
+        out[col] = resolved
+
+    return age_correction(out, age_var=age_var)
 
 
 def age_correction(data, age_var=200):
