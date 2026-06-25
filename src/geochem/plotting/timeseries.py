@@ -36,8 +36,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 
-from src.geochem.processing.censored import gausscensor
-from src.geochem.processing.decay    import decaycorrect, DECAY_ELEMENTS
+from global_geochemistry.geochem.processing.censored import gausscensor
+from global_geochemistry.geochem.processing.decay    import decaycorrect, DECAY_ELEMENTS
 
 
 # Default age bin edges (Ma): 0 → 4000 in 500 Ma steps

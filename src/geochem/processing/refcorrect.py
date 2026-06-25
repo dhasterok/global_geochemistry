@@ -41,7 +41,7 @@ from __future__ import annotations
 import numpy as np
 import pandas as pd
 
-from src.geochem.processing.censored import gausscensor
+from global_geochemistry.geochem.processing.censored import gausscensor
 
 
 # ---------------------------------------------------------------------------

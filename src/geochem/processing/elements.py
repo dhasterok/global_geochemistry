@@ -111,7 +111,7 @@ def get_k2o(data):
     pandas.Series
         K2O in wt%.
     """
-    from src.utils.molecular import MolecularWeightCalculator
+    from global_geochemistry.utils.molecular import MolecularWeightCalculator
     _mwc = MolecularWeightCalculator()
 
     if 'k2o' in data.columns:
@@ -142,7 +142,7 @@ def fix_k(data, inplace=False):
     if 'k2o' not in data.columns:
         data['k2o'] = np.nan
 
-    from src.utils.molecular import MolecularWeightCalculator
+    from global_geochemistry.utils.molecular import MolecularWeightCalculator
     _mwc = MolecularWeightCalculator()
     factor = _mwc.molecular_weight('K2O') / (2 * _mwc.molecular_weight('K') * 1e4)
     k2o_from_ppm = data['k_ppm'] * factor

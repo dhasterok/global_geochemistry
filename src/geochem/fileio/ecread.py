@@ -22,7 +22,7 @@ import re
 import numpy as np
 import pandas as pd
 
-from src.geochem.fileio.pgcsv import (
+from global_geochemistry.geochem.fileio.pgcsv import (
     _clean_name,
     _resolve_name,
     _apply_units,

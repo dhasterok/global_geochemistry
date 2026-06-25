@@ -24,7 +24,7 @@ References:
 
 import numpy as np
 import pandas as pd
-from src.utils.molecular import MolecularWeightCalculator
+from global_geochemistry.utils.molecular import MolecularWeightCalculator
 
 _mwc = MolecularWeightCalculator()
 

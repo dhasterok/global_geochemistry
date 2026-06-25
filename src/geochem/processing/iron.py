@@ -16,7 +16,7 @@ Reference:
 
 import numpy as np
 import pandas as pd
-from src.utils.molecular import MolecularWeightCalculator
+from global_geochemistry.utils.molecular import MolecularWeightCalculator
 
 _mwc = MolecularWeightCalculator()
 
@@ -57,7 +57,7 @@ def fefix(data, inplace=False):
     -----
     To recover FeO and Fe2O3 from the output::
 
-        import src.utils.molecular as mol
+        import global_geochemistry.utils.molecular as mol
         data['feo']   = mol.mw('FeO')  * data['fe2_fe_tot'] * data['feo_tot']
         data['fe2o3'] = 0.5 * mol.mw('Fe2O3') * (1 - data['fe2_fe_tot']) * data['feo_tot']
     """

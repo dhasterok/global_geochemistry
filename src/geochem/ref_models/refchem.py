@@ -29,7 +29,7 @@ _EARTHREF_PATH = _DATA_DIR / 'earthref.xlsx'
 def _iron_fix(df: pd.DataFrame) -> pd.DataFrame:
     """Apply Fe correction (wrapper around src.processing.iron.fefix)."""
     try:
-        from src.geochem.processing.iron import fefix
+        from global_geochemistry.geochem.processing.iron import fefix
         return fefix(df)
     except ImportError:
         warnings.warn("src.processing.iron not found; skipping Fe fix.")
@@ -38,7 +38,7 @@ def _iron_fix(df: pd.DataFrame) -> pd.DataFrame:
 
 def _geochem_index(df: pd.DataFrame) -> pd.DataFrame:
     try:
-        from src.geochem.classification.indices import geochem_index
+        from global_geochemistry.geochem.classification.indices import geochem_index
         return geochem_index(df)
     except ImportError:
         warnings.warn("src.classification.indices not found; skipping geochem indices.")
@@ -47,7 +47,7 @@ def _geochem_index(df: pd.DataFrame) -> pd.DataFrame:
 
 def _vpest(df: pd.DataFrame) -> pd.DataFrame:
     try:
-        from src.geochem.physprop.seismic import vpest
+        from global_geochemistry.geochem.physprop.seismic import vpest
         return vpest(df)
     except ImportError:
         warnings.warn("src.physprop.seismic not found; skipping Vp estimate.")
@@ -56,7 +56,7 @@ def _vpest(df: pd.DataFrame) -> pd.DataFrame:
 
 def _densest(df: pd.DataFrame) -> pd.DataFrame:
     try:
-        from src.geochem.physprop.density import densest
+        from global_geochemistry.geochem.physprop.density import densest
         return densest(df)
     except ImportError:
         warnings.warn("src.physprop.density not found; skipping density estimate.")
@@ -65,7 +65,7 @@ def _densest(df: pd.DataFrame) -> pd.DataFrame:
 
 def _hpest(df: pd.DataFrame) -> pd.DataFrame:
     try:
-        from src.geochem.physprop.heat import hpest
+        from global_geochemistry.geochem.physprop.heat import hpest
         return hpest(df)
     except ImportError:
         warnings.warn("src.physprop.heat not found; skipping HP estimate.")
@@ -74,7 +74,7 @@ def _hpest(df: pd.DataFrame) -> pd.DataFrame:
 
 def _tcest(df: pd.DataFrame) -> pd.DataFrame:
     try:
-        from src.geochem.physprop.thermal import tcest
+        from global_geochemistry.geochem.physprop.thermal import tcest
         return tcest(df)
     except ImportError:
         warnings.warn("src.physprop.thermal not found; skipping Tc estimate.")

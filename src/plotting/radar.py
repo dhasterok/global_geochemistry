@@ -18,7 +18,7 @@ Examples
 Basic web from a DataFrame::
 
     import pandas as pd
-    from src.plotting.radar import radar_prep, radarplot
+    from global_geochemistry.plotting.radar import radar_prep, radarplot
 
     fields = ['SiO2', 'TiO2', 'Al2O3', 'FeOT', 'MgO', 'CaO', 'Na2O', 'K2O']
     prep = radar_prep(df, fields, group_field='rock_type',

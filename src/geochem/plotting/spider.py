@@ -15,8 +15,8 @@ import numpy as np
 import pandas as pd
 from scipy.stats import norm
 from scipy.interpolate import LinearNDInterpolator
-from src.utils.molecular import MolecularWeightCalculator
-from src.geochem.processing.censored import gausscensor
+from global_geochemistry.utils.molecular import MolecularWeightCalculator
+from global_geochemistry.geochem.processing.censored import gausscensor
 from matplotlib.figure import Figure
 import re
 

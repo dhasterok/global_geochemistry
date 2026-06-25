@@ -34,7 +34,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 from matplotlib.patches import Rectangle
 
-from src.geochem.processing.censored import gausscensor
+from global_geochemistry.geochem.processing.censored import gausscensor
 
 
 # --------------------------------------------------------------------------

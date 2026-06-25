@@ -31,8 +31,8 @@ Registered datasets
 
 Usage
 -----
->>> from src.maptools.coast import plotcoast
->>> from src.maptools.tectonic import plotboundaries, plotpolygons
+>>> from global_geochemistry.maptools.coast import plotcoast
+>>> from global_geochemistry.maptools.tectonic import plotboundaries, plotpolygons
 >>> ax = plotcoast(projection='robinson')
 >>> plotpolygons('plates', projection='robinson', ax=ax, zorder=0)
 >>> plotboundaries('plate_boundaries', projection='robinson', ax=ax,

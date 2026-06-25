@@ -63,7 +63,7 @@ import warnings
 import numpy as np
 import pandas as pd
 from scipy.stats import norm as _norm
-from src.utils.molecular import MolecularWeightCalculator
+from global_geochemistry.utils.molecular import MolecularWeightCalculator
 
 _mwc = MolecularWeightCalculator()
 
@@ -496,7 +496,7 @@ def _bdl_censor(x, verbose=False, label='element'):
     # Fit log-normal using gausscensor
     mu = sigma = np.nan
     try:
-        from src.geochem.processing.censored import gausscensor
+        from global_geochemistry.geochem.processing.censored import gausscensor
         result = gausscensor(x, scale='log10')
         if isinstance(result, tuple):
             stats = result[0]
@@ -762,8 +762,8 @@ def hpest(data, method='mcdonough', include_rb=False, include_sm=False,
 
     # Volumetric HP (μW m⁻³)
     if 'density_model' not in data.columns:
-        from src.geochem.physprop.seismic import vpest
-        from src.geochem.physprop.density import density_cm
+        from global_geochemistry.geochem.physprop.seismic import vpest
+        from global_geochemistry.geochem.physprop.density import density_cm
         data = vpest(data)
         data['density_model'] = density_cm(data['p_velocity'])
 

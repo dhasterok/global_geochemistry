@@ -49,7 +49,7 @@ def tcest(data, inplace=False):
     pandas.DataFrame
         With column 'thermal_conductivity' (W m⁻¹ K⁻¹) added.
     """
-    from src.geochem.processing.normalize import oxide_norm
+    from global_geochemistry.geochem.processing.normalize import oxide_norm
 
     if not inplace:
         data = data.copy()

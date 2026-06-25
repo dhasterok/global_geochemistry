@@ -12,19 +12,19 @@ from __future__ import annotations
 import numpy as np
 import pandas as pd
 
-from src.geochem.fileio.database          import load_database
-from src.geochem.processing.iron          import fefix
-from src.geochem.processing.normalize     import oxide_norm, cation_to_oxide
-from src.geochem.processing.elements      import sumree
-from src.geochem.processing.ages          import age_correction
-from src.geochem.classification.indices   import geochem_index, lambdaree
-from src.geochem.classification.igneous   import tas, graniteclass
-from src.geochem.classification.sedimentary import sedclass
-from src.geochem.classification.metamorphic import metamorphic_class, adjust_origin
-from src.geochem.physprop.seismic         import vpest, vsest
-from src.geochem.physprop.density         import densest
-from src.geochem.physprop.thermal         import tcest
-from src.geochem.physprop.heat            import hpest, hpest_u_th, basalt_liquidus
+from global_geochemistry.geochem.fileio.database          import load_database
+from global_geochemistry.geochem.processing.iron          import fefix
+from global_geochemistry.geochem.processing.normalize     import oxide_norm, cation_to_oxide
+from global_geochemistry.geochem.processing.elements      import sumree
+from global_geochemistry.geochem.processing.ages          import age_correction
+from global_geochemistry.geochem.classification.indices   import geochem_index, lambdaree
+from global_geochemistry.geochem.classification.igneous   import tas, graniteclass
+from global_geochemistry.geochem.classification.sedimentary import sedclass
+from global_geochemistry.geochem.classification.metamorphic import metamorphic_class, adjust_origin
+from global_geochemistry.geochem.physprop.seismic         import vpest, vsest
+from global_geochemistry.geochem.physprop.density         import densest
+from global_geochemistry.geochem.physprop.thermal         import tcest
+from global_geochemistry.geochem.physprop.heat            import hpest, hpest_u_th, basalt_liquidus
 
 
 _OXIDES = ['sio2', 'tio2', 'al2o3', 'feo_tot', 'mgo', 'cao', 'na2o', 'k2o', 'p2o5']

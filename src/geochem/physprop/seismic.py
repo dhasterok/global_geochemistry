@@ -38,7 +38,7 @@ def vpest(data, inplace=False):
     pandas.DataFrame
         With column 'p_velocity' (km/s) added.
     """
-    from src.geochem.processing.normalize import oxide_norm
+    from global_geochemistry.geochem.processing.normalize import oxide_norm
 
     if not inplace:
         data = data.copy()
