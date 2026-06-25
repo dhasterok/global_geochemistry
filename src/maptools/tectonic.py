@@ -1,0 +1,832 @@
+"""
+Tectonic and geographic boundary data from global_tectonics.
+
+Loads shapefiles from the local clone of
+https://github.com/dhasterok/global_tectonics
+and projects/plots them on map axes produced by :func:`~coast.plotcoast`.
+
+Registered datasets
+-------------------
+``'plate_boundaries'``
+    Tectonic plate boundary polylines (spreading centres, subduction zones,
+    transform faults, etc.).  571 features.  Field ``'type'`` values:
+    ``'subduction zone'``, ``'spreading center'``, ``'collision zone'``,
+    ``'dextral transform'``, ``'sinistral transform'``, ``'extension zone'``,
+    ``'inferred'``.
+
+``'plates'``
+    Tectonic plate polygons.  280 features.
+
+``'oc_boundaries'``
+    Ocean–continent boundary polylines.  93 features.
+
+``'provinces'``
+    Global geologic provinces (polygons).  914 features.
+
+``'cratons'``
+    Craton polygons.  114 features.
+
+``'coastline_hi'``
+    High-resolution GSHHS coastline polygons.  6042 features.
+
+Usage
+-----
+>>> from src.maptools.coast import plotcoast
+>>> from src.maptools.tectonic import plotboundaries, plotpolygons
+>>> ax = plotcoast(projection='robinson')
+>>> plotpolygons('plates', projection='robinson', ax=ax, zorder=0)
+>>> plotboundaries('plate_boundaries', projection='robinson', ax=ax,
+...                attribute='type', value='subduction zone',
+...                color='k', barbs=True)
+"""
+
+from __future__ import annotations
+
+import colorsys
+import pathlib
+import warnings
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+from .coast import _preprocess_lines, _project, _clip_lines
+
+# ---------------------------------------------------------------------------
+# QGIS plate colours (from global_tectonics/styles/plates_types.qml)
+# ---------------------------------------------------------------------------
+
+_QGIS_PLATE_COLORS: dict[str, tuple[float, float, float]] = {
+    name: tuple(c / 255 for c in rgb)
+    for name, rgb in {
+        'African Plate':        (229, 216, 202),
+        'Antarctic Plate':      (245, 218, 233),
+        'South American Plate': (251, 209, 206),
+        'Arabian Plate':        (204, 224, 237),
+        'Australian Plate':     (255, 229, 206),
+        'Caribbean Plate':      (255, 239, 207),
+        'Cocos Plate':          (228, 220, 237),
+        'Eurasian Plate':       (254, 248, 223),
+        'Indian Plate':         (228, 201, 200),
+        'Juan de Fuca Plate':   (245, 224, 205),
+        'North American Plate': (208, 232, 206),
+        'Nazca Plate':          (207, 236, 239),
+        'Pacific Plate':        (209, 220, 241),
+        'Philippine Plate':     (246, 248, 222),
+        'Scotia Plate':         (210, 219, 224),
+        'Somali Plate':         (237, 237, 237),
+    }.items()
+}
+
+
+# ---------------------------------------------------------------------------
+# Data registry
+# ---------------------------------------------------------------------------
+
+_TECTONICS_ROOT = pathlib.Path(
+    '/Users/dhasterok/Documents/GitHub/global_tectonics'
+)
+
+_REGISTRY: dict[str, pathlib.Path] = {
+    'plate_boundaries': _TECTONICS_ROOT / 'plates&provinces/shp/plate_boundaries.shp',
+    'plates':           _TECTONICS_ROOT / 'plates&provinces/shp/plates.shp',
+    'oc_boundaries':    _TECTONICS_ROOT / 'plates&provinces/shp/oc_boundaries.shp',
+    'provinces':        _TECTONICS_ROOT / 'plates&provinces/shp/global_gprv.shp',
+    'cratons':          _TECTONICS_ROOT / 'plates&provinces/shp/cratons.shp',
+    'coastline_hi':     _TECTONICS_ROOT / 'polygon_data/GSHHS_I_L1.shp',
+}
+
+
+def list_datasets() -> list[str]:
+    """Return names of all registered tectonic datasets."""
+    return sorted(_REGISTRY)
+
+
+# ---------------------------------------------------------------------------
+# Shapefile I/O helpers
+# ---------------------------------------------------------------------------
+
+def _open_shapefile(name_or_path):
+    try:
+        import shapefile as pyshp
+    except ImportError:
+        raise ImportError(
+            'pyshp is required for shapefile loading.  '
+            'Install it with:  pip install pyshp'
+        ) from None
+    path = _REGISTRY.get(str(name_or_path), pathlib.Path(name_or_path))
+    if not pathlib.Path(path).exists():
+        raise FileNotFoundError(
+            f"Shapefile not found: {path}\n"
+            f"Registered names: {list_datasets()}"
+        )
+    return pyshp.Reader(str(path))
+
+
+def _filter_index(sf, attribute):
+    """Return (field_names, filter_idx) for attribute filtering."""
+    field_names = [f[0] for f in sf.fields[1:]]
+    if attribute is None:
+        return field_names, None
+    if attribute not in field_names:
+        raise ValueError(
+            f"Attribute '{attribute}' not found.  "
+            f"Available fields: {field_names}"
+        )
+    return field_names, field_names.index(attribute)
+
+
+def _split_at_nan(x, y):
+    """Split NaN-separated coordinate arrays into finite (x, y) segment lists."""
+    x = np.asarray(x, dtype=float)
+    y = np.asarray(y, dtype=float)
+    valid = np.isfinite(x) & np.isfinite(y)
+    segments = []
+    start = None
+    for i in range(len(x)):
+        if valid[i]:
+            if start is None:
+                start = i
+        else:
+            if start is not None and i - start >= 2:
+                segments.append((x[start:i], y[start:i]))
+            start = None
+    if start is not None and len(x) - start >= 2:
+        segments.append((x[start:], y[start:]))
+    return segments
+
+
+# ---------------------------------------------------------------------------
+# Shapefile loaders
+# ---------------------------------------------------------------------------
+
+def load_shapes(
+    name_or_path: str | pathlib.Path,
+    attribute: str | None = None,
+    value=None,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Load a shapefile and return NaN-separated (lon, lat) arrays.
+
+    Handles POLYLINE (type 3) and POLYGON (type 5) shapefiles.  Each part
+    within each feature is separated by a NaN.
+
+    Parameters
+    ----------
+    name_or_path : str or Path
+        Either a registered dataset name (see :func:`list_datasets`) or a
+        path to a ``.shp`` file.
+    attribute : str, optional
+        If provided together with *value*, only features where the named
+        attribute equals *value* are returned.
+    value : optional
+        Value to match against *attribute*.
+
+    Returns
+    -------
+    lon, lat : numpy.ndarray
+        Coordinate arrays in decimal degrees with NaN separators between
+        polyline/polygon parts.
+    """
+    sf = _open_shapefile(name_or_path)
+    if sf.shapeType not in (3, 5, 13, 15):
+        raise ValueError(
+            f"Unsupported shape type {sf.shapeType} ({sf.shapeTypeName}).  "
+            "Only POLYLINE and POLYGON are supported."
+        )
+
+    _, filter_idx = _filter_index(sf, attribute)
+
+    lon_segs: list[np.ndarray] = []
+    lat_segs: list[np.ndarray] = []
+
+    for rec, sh in zip(sf.iterRecords(), sf.iterShapes()):
+        if filter_idx is not None and rec[filter_idx] != value:
+            continue
+        if sh.shapeType == 0:
+            continue
+
+        pts = np.asarray(sh.points)
+        parts = list(sh.parts) + [len(pts)]
+
+        for k in range(len(parts) - 1):
+            seg = pts[parts[k]:parts[k + 1]]
+            if len(seg) < 2:
+                continue
+            lon_segs.append(seg[:, 0])
+            lon_segs.append(np.array([np.nan]))
+            lat_segs.append(seg[:, 1])
+            lat_segs.append(np.array([np.nan]))
+
+    if not lon_segs:
+        return np.array([]), np.array([])
+
+    return np.concatenate(lon_segs), np.concatenate(lat_segs)
+
+
+def load_polygon_parts(
+    name_or_path: str | pathlib.Path,
+    attribute: str | None = None,
+    value=None,
+    group_by: str | None = None,
+) -> list[tuple[np.ndarray, np.ndarray]] | dict[str, list]:
+    """Load polygon shapefile parts as individual (lon, lat) ring arrays.
+
+    Unlike :func:`load_shapes`, each ring is returned as a separate array
+    rather than concatenated with NaN separators.  This is suitable for
+    :func:`matplotlib.axes.Axes.fill`.
+
+    Parameters
+    ----------
+    name_or_path : str or Path
+        Registered dataset name or path to a ``.shp`` file.
+    attribute, value : optional
+        Filter to features where ``attribute == value``.
+    group_by : str, optional
+        Field name to group features by.  If provided, returns a ``dict``
+        mapping group value → list of ``(lon, lat)`` arrays.
+
+    Returns
+    -------
+    list of (lon, lat) arrays  |  dict mapping group → list of (lon, lat)
+    """
+    sf = _open_shapefile(name_or_path)
+    if sf.shapeType not in (5, 15):
+        raise ValueError(
+            f"Shape type {sf.shapeType} is not a polygon.  "
+            "Use load_shapes() for polylines."
+        )
+
+    field_names, filter_idx = _filter_index(sf, attribute)
+    _, group_idx = _filter_index(sf, group_by) if group_by else (None, None)
+
+    parts_dict: dict = {}
+    parts_list: list = []
+
+    for rec, sh in zip(sf.iterRecords(), sf.iterShapes()):
+        if filter_idx is not None and rec[filter_idx] != value:
+            continue
+        if sh.shapeType == 0:
+            continue
+
+        pts = np.asarray(sh.points)
+        bounds = list(sh.parts) + [len(pts)]
+
+        group_key = str(rec[group_idx]) if group_idx is not None else None
+
+        for k in range(len(bounds) - 1):
+            ring = pts[bounds[k]:bounds[k + 1]]
+            if len(ring) < 3:
+                continue
+            lon_r, lat_r = ring[:, 0], ring[:, 1]
+            # In ESRI shapefiles exterior rings are CW (negative signed area)
+            # and interior rings / holes are CCW (positive signed area).
+            # Skip holes so they are not filled as solid polygons.
+            area = 0.5 * np.sum(
+                lon_r[:-1] * lat_r[1:] - lon_r[1:] * lat_r[:-1]
+            )
+            if area >= 0:   # CCW = hole → skip
+                continue
+            entry = (lon_r, lat_r)
+            if group_key is not None:
+                parts_dict.setdefault(group_key, []).append(entry)
+            else:
+                parts_list.append(entry)
+
+    return parts_dict if group_key is not None else parts_list
+
+
+# ---------------------------------------------------------------------------
+# Barb drawing
+# ---------------------------------------------------------------------------
+
+def _draw_barbs(
+    ax,
+    x: np.ndarray,
+    y: np.ndarray,
+    spacing: float | None = None,
+    length: float | None = None,
+    side: int = 1,
+    color='k',
+    zorder: int = 4,
+):
+    """Draw filled triangular barbs perpendicular to a projected polyline.
+
+    Barbs represent the overriding plate on subduction zone traces.  They
+    are placed at regular intervals along the line, with each barb's tip
+    pointing perpendicular to the local line direction.
+
+    Parameters
+    ----------
+    ax : matplotlib.axes.Axes
+    x, y : numpy.ndarray
+        Projected coordinate arrays, NaN-separated between segments.
+    spacing : float, optional
+        Distance between barb bases in map units.  Auto-scaled to
+        ~2.5 % of the data bounding box if *None*.
+    length : float, optional
+        Length of each barb in map units.  Auto-scaled to ~0.8 % of
+        the data bounding box if *None*.
+    side : int
+        ``1`` (default) — barb points to the **right** of the line's
+        travel direction.  ``-1`` — points to the left.
+        Which physical side corresponds to the overriding plate depends on
+        how the trench lines are oriented in the shapefile.
+    color : color
+        Fill colour for the triangular barbs.
+    zorder : int
+        Drawing order.  Default 4 (above most map elements).
+    """
+    segments = _split_at_nan(x, y)
+    if not segments:
+        return
+
+    # Auto-scale from the bounding box of all projected data
+    all_x = np.concatenate([s[0] for s in segments])
+    all_y = np.concatenate([s[1] for s in segments])
+    data_scale = max(np.ptp(all_x), np.ptp(all_y))
+
+    if spacing is None:
+        spacing = data_scale * 0.025
+    if length is None:
+        length = data_scale * 0.008
+
+    half_base = length * 0.45  # half-width of triangle base along the line
+
+    for xs, ys in segments:
+        if len(xs) < 2:
+            continue
+
+        dx = np.diff(xs)
+        dy = np.diff(ys)
+        seg_len = np.sqrt(dx**2 + dy**2)
+
+        # Cumulative arc length
+        cum_len = np.concatenate([[0], np.cumsum(seg_len)])
+        total_len = cum_len[-1]
+
+        barb_positions = np.arange(spacing / 2, total_len, spacing)
+
+        for pos in barb_positions:
+            # Locate the segment index
+            idx = min(np.searchsorted(cum_len[1:], pos), len(dx) - 1)
+            if seg_len[idx] == 0:
+                continue
+
+            t = (pos - cum_len[idx]) / seg_len[idx]
+            bx = xs[idx] + t * dx[idx]
+            by = ys[idx] + t * dy[idx]
+
+            # Unit vectors: forward and perpendicular (right)
+            fx = dx[idx] / seg_len[idx]
+            fy = dy[idx] / seg_len[idx]
+            px = fy * side    # right perpendicular: rotate CW
+            py = -fx * side
+
+            tip_x = bx + length * px
+            tip_y = by + length * py
+            b1_x = bx - half_base * fx
+            b1_y = by - half_base * fy
+            b2_x = bx + half_base * fx
+            b2_y = by + half_base * fy
+
+            ax.fill([b1_x, b2_x, tip_x], [b1_y, b2_y, tip_y],
+                    color=color, zorder=zorder, linewidth=0)
+
+
+# ---------------------------------------------------------------------------
+# Geographic polygon splitting (shapely-based)
+# ---------------------------------------------------------------------------
+
+def _iter_polygons(geom):
+    """Yield every Polygon component of a shapely geometry."""
+    if geom.is_empty:
+        return
+    t = geom.geom_type
+    if t == 'Polygon':
+        yield geom
+    elif t in ('MultiPolygon', 'GeometryCollection'):
+        for g in geom.geoms:
+            yield from _iter_polygons(g)
+
+
+def _geographic_sub_rings(lon_raw, lat_raw, fold_lons=None, split_equator=False):
+    """Split a geographic polygon ring at projection fold meridians.
+
+    Uses shapely to clip the ring in geographic space, returning a list of
+    closed (lon, lat) sub-rings that each lie entirely within one projection
+    cell.  This prevents the antimeridian / fold-meridian artefacts that
+    occur when matplotlib tries to fill an open arc.
+
+    Parameters
+    ----------
+    lon_raw, lat_raw : array_like
+        Ring coordinates in decimal degrees.  May be closed (first == last)
+        or open.
+    fold_lons : list of float
+        Meridians at which the projection folds.  Default ``[-180, 180]``
+        splits only at the antimeridian.  Pass ``[-180,-90,0,90,180]`` for
+        Waterman.
+    split_equator : bool
+        If *True*, additionally split each sub-ring at lat = 0.  Required
+        for projections (e.g. Waterman) that apply a reflection at the
+        equator.
+
+    Returns
+    -------
+    list of (lon, lat) ndarray pairs, each a closed ring.
+    """
+    try:
+        from shapely.geometry import Polygon, box as shp_box
+        from shapely.validation import make_valid
+    except ImportError:
+        raise ImportError(
+            'shapely is required for polygon filling.  '
+            'Install it with:  pip install shapely'
+        ) from None
+
+    if fold_lons is None:
+        fold_lons = [-180, 180]
+
+    lon = np.asarray(lon_raw, dtype=float)
+    lat = np.asarray(lat_raw, dtype=float)
+
+    # Ensure closed ring
+    if not (lon[-1] == lon[0] and lat[-1] == lat[0]):
+        lon = np.concatenate([lon, [lon[0]]])
+        lat = np.concatenate([lat, [lat[0]]])
+
+    pts_lon = lon[:-1].copy()   # shapely auto-closes; copy so we can snap
+    pts_lat = lat[:-1]
+
+    if len(pts_lon) < 3:
+        return []
+
+    sorted_folds = sorted(set(fold_lons))
+
+    # Snap vertices within a small tolerance of each fold meridian to the
+    # meridian exactly.  Many polygons are drawn deliberately stopping a
+    # fraction of a degree short of ±180° (or Waterman fold lons) to avoid
+    # QGIS wrapping artefacts; snapping ensures the fill reaches the map frame.
+    _SNAP = 0.02   # degrees — catches ±179.999° without disturbing ±179° features
+    for fl in sorted_folds:
+        pts_lon[np.abs(pts_lon - fl) < _SNAP] = float(fl)
+
+    # Rebuild the closed ring with snapped vertices
+    lon = np.concatenate([pts_lon, [pts_lon[0]]])
+
+    # Unwrap longitudes so the ring is continuous (no antimeridian jumps)
+    dlon = np.diff(pts_lon)
+    dlon_w = ((dlon + 180) % 360) - 180
+    lon_cont = np.concatenate([[pts_lon[0]], pts_lon[0] + np.cumsum(dlon_w)])
+
+    lo_cont = lon_cont.min()
+    hi_cont = lon_cont.max()
+
+    # Detect crossings in ORIGINAL (post-snap) coordinates.
+    # Normal crossings (~±358°) push lo_cont/hi_cont outside the cell range.
+    # Degenerate crossings at exactly ±360° (where dlon_w → 0°) are caught by
+    # checking all consecutive pairs including the closing segment.
+    all_diffs = np.abs(np.diff(pts_lon))
+    raw_crossings = bool(np.any(all_diffs > 180 - 1e-9))
+
+    # Check if the unwrapped ring fits entirely within one projection cell
+    fits_one_cell = False
+    if not raw_crossings:
+        for i in range(len(sorted_folds) - 1):
+            if lo_cont >= sorted_folds[i] - 1e-9 and hi_cont <= sorted_folds[i + 1] + 1e-9:
+                fits_one_cell = True
+                break
+
+    if fits_one_cell:
+        if not split_equator or lat.min() >= -1e-9 or lat.max() <= 1e-9:
+            return [(lon, lat)]
+        return _equator_split_ring(lon, lat)
+
+    # Build shapely polygon in unwrapped lon space
+    try:
+        poly = Polygon(zip(lon_cont, pts_lat))
+        if not poly.is_valid:
+            poly = make_valid(poly)
+        if poly.is_empty or poly.area == 0:
+            return []
+    except Exception:
+        return []
+
+    # Collect all fold boundaries in unwrapped space that intersect [lo_cont, hi_cont]
+    boundaries = {lo_cont, hi_cont}
+    for fl in sorted_folds:
+        k_min = int(np.floor((lo_cont - fl) / 360)) - 1
+        k_max = int(np.ceil((hi_cont - fl) / 360)) + 1
+        for k in range(k_min, k_max + 1):
+            b = fl + k * 360
+            if lo_cont - 1e-9 <= b <= hi_cont + 1e-9:
+                boundaries.add(b)
+
+    boundaries = sorted(boundaries)
+    result = []
+
+    for i in range(len(boundaries) - 1):
+        cell_lo = boundaries[i]
+        cell_hi = boundaries[i + 1]
+        if cell_hi - cell_lo < 1e-9:
+            continue
+
+        try:
+            clipped = poly.intersection(shp_box(cell_lo - 1e-9, -91,
+                                                 cell_hi + 1e-9,  91))
+        except Exception:
+            continue
+
+        if clipped.is_empty:
+            continue
+
+        # Shift clipped coords back to canonical [-180, 180]
+        canonical_lo = ((cell_lo + 180) % 360) - 180
+        x_shift = canonical_lo - cell_lo
+
+        for sub in _iter_polygons(clipped):
+            if sub.is_empty:
+                continue
+            coords = np.array(sub.exterior.coords)
+            sub_lon = coords[:, 0] + x_shift
+            sub_lat = coords[:, 1]
+            if split_equator:
+                result.extend(_equator_split_ring(sub_lon, sub_lat))
+            else:
+                result.append((sub_lon, sub_lat))
+
+    return result if result else [(lon, lat)]
+
+
+def _equator_split_ring(lon, lat):
+    """Split a ring at lat = 0 for projections with an equatorial reflection."""
+    try:
+        from shapely.geometry import Polygon, box as shp_box
+        from shapely.validation import make_valid
+    except ImportError:
+        return [(lon, lat)]
+
+    lon = np.asarray(lon, dtype=float)
+    lat = np.asarray(lat, dtype=float)
+
+    if lat.min() >= -1e-9 or lat.max() <= 1e-9:
+        return [(lon, lat)]
+
+    pts_lon = lon[:-1] if (lon[-1] == lon[0] and lat[-1] == lat[0]) else lon
+    pts_lat = lat[:-1] if (lon[-1] == lon[0] and lat[-1] == lat[0]) else lat
+
+    if len(pts_lon) < 3:
+        return []
+
+    try:
+        poly = Polygon(zip(pts_lon, pts_lat))
+        if not poly.is_valid:
+            poly = make_valid(poly)
+        if poly.is_empty:
+            return []
+    except Exception:
+        return []
+
+    result = []
+    for clip_box in [shp_box(-360, 0, 360, 90), shp_box(-360, -90, 360, 0)]:
+        try:
+            clipped = poly.intersection(clip_box)
+        except Exception:
+            continue
+        for sub in _iter_polygons(clipped):
+            if sub.is_empty:
+                continue
+            coords = np.array(sub.exterior.coords)
+            result.append((coords[:, 0], coords[:, 1]))
+
+    return result if result else [(lon, lat)]
+
+
+# ---------------------------------------------------------------------------
+# Polygon colour palette
+# ---------------------------------------------------------------------------
+
+def _pastel_palette(n: int) -> list[tuple]:
+    """Generate *n* visually distinct pastel RGBA colours."""
+    colors = []
+    for i in range(n):
+        h = i / n
+        r, g, b = colorsys.hls_to_rgb(h, 0.88, 0.55)
+        colors.append((r, g, b, 1.0))
+    return colors
+
+
+# ---------------------------------------------------------------------------
+# Public API
+# ---------------------------------------------------------------------------
+
+def plotboundaries(
+    name_or_path: str | pathlib.Path = 'plate_boundaries',
+    projection: str = 'geographic',
+    lon0: float = 0.0,
+    lat0: float = 0.0,
+    attribute: str | None = None,
+    value=None,
+    ax: plt.Axes | None = None,
+    # barb options
+    barbs: bool = False,
+    barb_spacing: float | None = None,
+    barb_length: float | None = None,
+    barb_side: int = -1,
+    barb_color=None,
+    **kw,
+) -> plt.Axes:
+    """Plot tectonic or geographic boundaries from a shapefile.
+
+    Parameters
+    ----------
+    name_or_path : str or Path
+        Registered dataset name or path to a ``.shp`` file.
+        Default ``'plate_boundaries'``.
+    projection : str
+        Projection name (same as :func:`~coast.plotcoast`).
+    lon0, lat0 : float
+        Central meridian and parallel in degrees.
+    attribute, value : optional
+        Filter to features where ``attribute == value``.
+    ax : matplotlib.axes.Axes, optional
+        Target axes.  Created if *None*.
+    barbs : bool
+        Draw filled triangular barbs perpendicular to the line (default
+        ``False``).  Suitable for subduction zones.
+    barb_spacing : float, optional
+        Distance between barbs in map units.  Auto-scaled if *None*.
+    barb_length : float, optional
+        Barb length in map units.  Auto-scaled if *None*.
+    barb_side : int
+        ``-1`` (default) — barbs point to the left of the line direction.
+        ``1`` — barbs point to the right.
+    barb_color : color, optional
+        Barb fill colour.  Defaults to the same colour as the line.
+    **kw
+        Forwarded to :func:`matplotlib.axes.Axes.plot`.
+
+    Returns
+    -------
+    matplotlib.axes.Axes
+    """
+    kw.setdefault('color', 'C1')
+    kw.setdefault('linewidth', 0.5)
+
+    lon, lat = load_shapes(name_or_path, attribute=attribute, value=value)
+    if lon.size == 0:
+        warnings.warn(f"No features loaded from '{name_or_path}'.")
+        if ax is None:
+            _, ax = plt.subplots()
+        return ax
+
+    lon, lat = _preprocess_lines(lon, lat, projection)
+    x, y = _project(lon, lat, projection, lon0, lat0)
+    x, y = _clip_lines(x, y, projection)
+
+    if ax is None:
+        _, ax = plt.subplots()
+
+    ax.plot(x, y, **kw)
+
+    if barbs:
+        bc = barb_color if barb_color is not None else kw['color']
+        _draw_barbs(ax, x, y,
+                    spacing=barb_spacing,
+                    length=barb_length,
+                    side=barb_side,
+                    color=bc)
+
+    return ax
+
+
+def plotpolygons(
+    name_or_path: str | pathlib.Path = 'plates',
+    projection: str = 'geographic',
+    lon0: float = 0.0,
+    lat0: float = 0.0,
+    attribute: str | None = None,
+    value=None,
+    group_by: str | None = None,
+    colors=None,
+    alpha: float = 0.35,
+    ax: plt.Axes | None = None,
+    zorder: int = 0,
+    **kw,
+) -> plt.Axes:
+    """Fill tectonic plate or province polygons on a map.
+
+    Polygons are filled in projected space.  They are intended to be drawn
+    **before** the coastline (lower *zorder*) so the coastline remains
+    visible on top.
+
+    Parameters
+    ----------
+    name_or_path : str or Path
+        Registered dataset name or path to a polygon ``.shp`` file.
+        Default ``'plates'``.
+    projection : str
+        Projection name matching the underlying map.
+    lon0, lat0 : float
+        Central meridian and parallel (must match the base map).
+    attribute, value : optional
+        Filter to features where ``attribute == value``.
+    group_by : str, optional
+        Shapefile field name to colour by.  All polygons belonging to the
+        same group receive the same pastel colour.  If *None*, colours
+        cycle over each individual polygon part.
+    colors : list or None
+        Explicit colour list.  If *None*, a pastel palette is generated
+        automatically.
+    alpha : float
+        Fill transparency.  Default 0.35.
+    ax : matplotlib.axes.Axes, optional
+        Target axes.  Created if *None*.
+    zorder : int
+        Drawing order.  Default 0 (below coastline and boundaries).
+    **kw
+        Additional keyword arguments forwarded to
+        :func:`matplotlib.axes.Axes.fill` (e.g. ``edgecolor``).
+
+    Returns
+    -------
+    matplotlib.axes.Axes
+    """
+    kw.setdefault('edgecolor', 'none')
+    kw.setdefault('linewidth', 0)
+
+    if ax is None:
+        _, ax = plt.subplots()
+
+    parts = load_polygon_parts(
+        name_or_path, attribute=attribute, value=value, group_by=group_by
+    )
+
+    if group_by is not None:
+        # parts is a dict: group_key → list of (lon, lat) arrays
+        groups = list(parts.keys())
+        if colors is None:
+            # Use QGIS colours for the 'plate' field; fall back to pastel palette
+            if group_by == 'plate':
+                palette = [
+                    _QGIS_PLATE_COLORS.get(g, _pastel_palette(1)[0])
+                    for g in groups
+                ]
+            else:
+                palette = _pastel_palette(len(groups))
+        else:
+            palette = list(colors)
+        color_map = {g: palette[i % len(palette)] for i, g in enumerate(groups)}
+
+        for group_key, ring_list in parts.items():
+            c = color_map[group_key]
+            _fill_rings(ax, ring_list, projection, lon0, lat0, c, alpha, zorder, kw)
+    else:
+        # parts is a flat list of (lon, lat) arrays — cycle colours
+        n = max(len(parts), 1)
+        palette = _pastel_palette(n) if colors is None else list(colors)
+
+        for i, (lon_ring, lat_ring) in enumerate(parts):
+            c = palette[i % len(palette)]
+            _fill_rings(ax, [(lon_ring, lat_ring)], projection, lon0, lat0,
+                        c, alpha, zorder, kw)
+
+    return ax
+
+
+_WATERMAN_FOLDS = [-180, -90, 0, 90, 180]
+_ANTIMERIDIAN    = [-180, 180]
+
+
+def _densify_ring(lon, lat, max_deg=2.0):
+    """Insert intermediate vertices along segments longer than max_deg degrees.
+
+    Curved projections (e.g. Robinson) map the antimeridian to a curved edge,
+    so a polygon segment with only two points at ±180° gets drawn as a straight
+    line in projected space.  Densifying ensures the filled boundary follows
+    the true projection curve.
+    """
+    out_lon = [lon[0]]
+    out_lat = [lat[0]]
+    for i in range(len(lon) - 1):
+        dist = max(abs(lon[i + 1] - lon[i]), abs(lat[i + 1] - lat[i]))
+        if dist > max_deg:
+            n = int(np.ceil(dist / max_deg))
+            ts = np.linspace(0, 1, n + 1)[1:]
+            out_lon.extend(lon[i] + ts * (lon[i + 1] - lon[i]))
+            out_lat.extend(lat[i] + ts * (lat[i + 1] - lat[i]))
+        else:
+            out_lon.append(lon[i + 1])
+            out_lat.append(lat[i + 1])
+    return np.array(out_lon), np.array(out_lat)
+
+
+def _fill_rings(ax, ring_list, projection, lon0, lat0, color, alpha, zorder, kw):
+    """Project and fill polygon rings."""
+    for lon_ring, lat_ring in ring_list:
+        lon_ring, lat_ring = _densify_ring(lon_ring, lat_ring)
+        x, y = _project(lon_ring, lat_ring, projection, lon0, lat0)
+        # Drop non-finite points before filling
+        mask = np.isfinite(x) & np.isfinite(y)
+        if mask.sum() >= 3:
+            ax.fill(x[mask], y[mask], color=color, alpha=alpha,
+                    zorder=zorder, **kw)

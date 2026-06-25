@@ -79,6 +79,14 @@ def cassini_fwd(
     b = np.cos(phi) * np.sin(lam)
     x = R * np.arcsin(np.clip(b, -1.0, 1.0))
     y = R * (np.arctan2(np.tan(phi), np.cos(lam)) - phi0)
+
+    # Wrap y into [−R·π, R·π] so the far hemisphere folds back into the strip.
+    # Equivalent to the MATLAB cassini.m lines 53-54:
+    #   y(y < -ymax) = 2*ymax + y(...)   (ymax = R·π)
+    ymax = R * np.pi
+    fin = np.isfinite(y)
+    y[fin & (y < -ymax)] += 2.0 * ymax
+    y[fin & (y >  ymax)] -= 2.0 * ymax
     return x, y
 
 
