@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "global-geochemistry"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "pandas",
+    "matplotlib",
+    "scipy",
+]
+
+# NOTE: internal imports still use `from src.*` style and must be updated to
+# `from global_geochemistry.*` (or relative imports) before this package is
+# fully installable.
+
+[tool.setuptools]
+packages = [
+    "global_geochemistry",
+    "global_geochemistry.geochem",
+    "global_geochemistry.geochem.classification",
+    "global_geochemistry.geochem.fileio",
+    "global_geochemistry.geochem.physprop",
+    "global_geochemistry.geochem.plotting",
+    "global_geochemistry.geochem.processing",
+    "global_geochemistry.geochem.ref_models",
+    "global_geochemistry.geophys",
+    "global_geochemistry.maptools",
+    "global_geochemistry.modelling",
+    "global_geochemistry.modelling.inversion",
+    "global_geochemistry.plotting",
+    "global_geochemistry.tectonics",
+    "global_geochemistry.utils",
+]
+
+[tool.setuptools.package-dir]
+"global_geochemistry" = "src"
