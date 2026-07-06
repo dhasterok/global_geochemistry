@@ -363,6 +363,106 @@ def fig_barbs_waterman():
 _run('20_barbs_waterman', fig_barbs_waterman)
 
 
+# ── 21. Waterman M — rotated lon0=20, all transform types, fixed border ───────
+def fig_waterman_m_rotated():
+    fig, ax = plt.subplots(figsize=(13, 7))
+    plotpolygons('plates', projection='waterman_m', lon0=20, ax=ax,
+                 zorder=0, alpha=0.25)
+    plotcoast(projection='waterman_m', lon0=20, ax=ax)
+    plotboundaries('plate_boundaries', projection='waterman_m', lon0=20, ax=ax,
+                   attribute='type', value='subduction zone',
+                   color='k', linewidth=0.8, barbs=True, barb_side=-1)
+    plotboundaries('plate_boundaries', projection='waterman_m', lon0=20, ax=ax,
+                   attribute='type', value='spreading center',
+                   color='C3', linewidth=0.7)
+    plotboundaries('plate_boundaries', projection='waterman_m', lon0=20, ax=ax,
+                   attribute='type', value='dextral transform',
+                   color='C0', linewidth=0.5)
+    plotboundaries('plate_boundaries', projection='waterman_m', lon0=20, ax=ax,
+                   attribute='type', value='sinistral transform',
+                   color='C0', linewidth=0.5)
+    ax.set_title('Waterman M (lon0=20°) — plates + subduction + spreading + transforms')
+    fig.tight_layout()
+    return fig
+
+_run('21_waterman_m_rotated', fig_waterman_m_rotated)
+
+
+# ── 22. Cassini lat0=90 — plates + all boundary types (QGIS style) ───────────
+# Colours from boundaries.qml (R,G,B → hex):
+#   subduction  #0031CF  collision   #577EFF
+#   spreading   #BB1C1F  extension   #F8747D
+#   dextral     #E5C003  sinistral   #068601
+#   inferred    #403E3E (dashed)
+# Linewidths: major 0.4 mm → 1.1 pt, minor 0.2 mm → 0.6 pt
+#             sub/col major 0.39 mm → 1.1 pt, minor 0.15 mm → 0.4 pt
+_CASS = dict(projection='cassini', lon0=-70, lat0=90)
+def fig_cassini_tectonic():
+    fig, ax = plt.subplots(figsize=(5, 10))
+    plotpolygons('plates', **_CASS, ax=ax, zorder=0, alpha=0.25)
+    plotcoast(**_CASS, ax=ax, linewidth=0.4)
+
+    # spreading center
+    for lv, lw in ((1, 1.1), (2, 0.6)):
+        plotboundaries('plate_boundaries', **_CASS, ax=ax,
+                       attribute='type', value='spreading center',
+                       filters={'level': lv},
+                       color='#BB1C1F', linewidth=lw)
+    # extension zone
+    for lv, lw in ((1, 1.1), (2, 0.6)):
+        plotboundaries('plate_boundaries', **_CASS, ax=ax,
+                       attribute='type', value='extension zone',
+                       filters={'level': lv},
+                       color='#F8747D', linewidth=lw)
+    # subduction zone — barbs on both major and minor
+    for lv, lw in ((1, 1.1), (2, 0.4)):
+        plotboundaries('plate_boundaries', **_CASS, ax=ax,
+                       attribute='type', value='subduction zone',
+                       filters={'level': lv},
+                       color='#0031CF', linewidth=lw,
+                       barbs=True, barb_side=-1)
+    # collision zone — barbs (same convention as subduction)
+    for lv, lw in ((1, 1.1), (2, 0.4)):
+        plotboundaries('plate_boundaries', **_CASS, ax=ax,
+                       attribute='type', value='collision zone',
+                       filters={'level': lv},
+                       color='#577EFF', linewidth=lw,
+                       barbs=True, barb_side=-1)
+    # dextral transform
+    for lv, lw in ((1, 1.1), (2, 0.6)):
+        plotboundaries('plate_boundaries', **_CASS, ax=ax,
+                       attribute='type', value='dextral transform',
+                       filters={'level': lv},
+                       color='#E5C003', linewidth=lw)
+    # sinistral transform
+    for lv, lw in ((1, 1.1), (2, 0.6)):
+        plotboundaries('plate_boundaries', **_CASS, ax=ax,
+                       attribute='type', value='sinistral transform',
+                       filters={'level': lv},
+                       color='#068601', linewidth=lw)
+    # inferred (dashed)
+    for lv, lw in ((1, 1.1), (2, 0.6)):
+        plotboundaries('plate_boundaries', **_CASS, ax=ax,
+                       attribute='type', value='inferred',
+                       filters={'level': lv},
+                       color='#403E3E', linewidth=lw, linestyle='--')
+
+    ax.set_title('Cassini (lon₀=−70°, lat₀=90°) — plates + all boundaries')
+    ax.legend(handles=[
+        mpatches.Patch(color='#0031CF', label='subduction zone'),
+        mpatches.Patch(color='#577EFF', label='collision zone'),
+        mpatches.Patch(color='#BB1C1F', label='spreading center'),
+        mpatches.Patch(color='#F8747D', label='extension zone'),
+        mpatches.Patch(color='#E5C003', label='dextral transform'),
+        mpatches.Patch(color='#068601', label='sinistral transform'),
+        mpatches.Patch(color='#403E3E', label='inferred'),
+    ], fontsize=7, loc='lower right')
+    fig.tight_layout()
+    return fig
+
+_run('22_cassini_tectonic', fig_cassini_tectonic)
+
+
 # ── Summary ───────────────────────────────────────────────────────────────────
 print()
 if _errors:
@@ -371,7 +471,7 @@ if _errors:
         print(f'  {name}: {exc}')
     sys.exit(1)
 else:
-    n = 20 - len(_errors)
+    n = 22 - len(_errors)
     print(f'All {n} smoke tests passed.  PNGs saved to tests/output/')
 
 if not args.save:

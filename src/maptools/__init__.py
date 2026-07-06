@@ -8,4 +8,5 @@ from .transforms import (
 )
 from .coast import plotcoast, geoplot, geoscatter, tissot
 from .projections import cassini_fwd, cassini_inv, pyproj_fwd, pyproj_inv, spilhaus_fwd, waterman_fwd
-from .tectonic import plotboundaries, plotpolygons, load_shapes, load_polygon_parts, list_datasets
+from .tectonic import (plotboundaries, plotpolygons, load_shapes, load_polygon_parts,
+                       list_datasets, assign_tectonic_attributes)

@@ -57,6 +57,8 @@ def load_geochem(
     hp_include_sm: bool = False,
     hp_est_missing: bool = True,
     hp_censor_bdl: bool = True,
+    assign_tectonic: bool = True,
+    assign_crustal_thickness: bool = False,
     verbose: bool = True,
 ) -> pd.DataFrame:
     """Load and fully process the global geochemical database.
@@ -98,6 +100,19 @@ def load_geochem(
         Predict missing U/Th from rock-type Th/U ratio; Rb from K; Sm from Nd.
     hp_censor_bdl : bool
         Apply Gaussian censoring to below-detection-limit U, Th, K values.
+    assign_tectonic : bool
+        Assign tectonic plate and province attributes to each sample using
+        point-in-polygon testing against the global_tectonics shapefiles.
+        Adds columns: ``plate``, ``plate_code``, ``subplate``, ``plate_type``,
+        ``crust_type``, ``prov_name``, ``prov_type``, ``prov_group``,
+        ``lastorogen``, ``continent``.  Default ``True``.
+        Requires the global_tectonics dataset — run
+        ``download_dataset('global_tectonics')`` if not already installed.
+    assign_crustal_thickness : bool
+        Interpolate total crustal thickness (ECM1 column ``Hc``) to each
+        sample location and store in column ``crustal_thickness_km``.
+        Default ``False``.  Requires ECM1.txt — update its path in
+        data_registry.json if needed.
     verbose : bool
         Print progress messages to stdout.
 
@@ -236,6 +251,52 @@ def load_geochem(
             _log(f"    {int(data['basalt_liquidus'].notna().sum()):,} basaltic samples with liquidus estimate.")
     else:
         _log('Skipping physical property estimates.')
+
+    # 9. Tectonic attribute assignment (plate, province, crust type, …)
+    if assign_tectonic and 'latitude' in data.columns and 'longitude' in data.columns:
+        _log('Assigning tectonic attributes (plate, province)...')
+        _log('  (Building spatial index — takes ~30 s on first run)')
+        try:
+            import sys as _sys, pathlib as _pl
+            _root = _pl.Path(__file__).resolve().parent.parent.parent.parent
+            if str(_root) not in _sys.path:
+                _sys.path.insert(0, str(_root))
+            from src.maptools.tectonic import assign_tectonic_attributes
+            tect = assign_tectonic_attributes(
+                data['longitude'].to_numpy(float),
+                data['latitude'].to_numpy(float),
+            )
+            for col in tect.columns:
+                data[col] = tect[col].values
+            assigned = (data.get('plate', pd.Series(dtype=str)) != '').sum()
+            _log(f'  {assigned:,} samples assigned to a tectonic plate.')
+        except FileNotFoundError as e:
+            _log(f'  WARNING: {e}')
+            _log('  Tectonic assignment skipped — run download_dataset("global_tectonics") to install data.')
+        except Exception as e:
+            _log(f'  WARNING: tectonic assignment failed ({e})')
+
+    # 10. Crustal thickness from ECM1
+    if assign_crustal_thickness and 'latitude' in data.columns and 'longitude' in data.columns:
+        _log('Interpolating crustal thickness from ECM1...')
+        try:
+            import sys as _sys, pathlib as _pl
+            _root = _pl.Path(__file__).resolve().parent.parent.parent.parent
+            if str(_root) not in _sys.path:
+                _sys.path.insert(0, str(_root))
+            from src.geophys.ecm1 import interpolate_to_points
+            data['crustal_thickness_km'] = interpolate_to_points(
+                data['longitude'].to_numpy(float),
+                data['latitude'].to_numpy(float),
+                'Hc',
+            )
+            n_hc = data['crustal_thickness_km'].notna().sum()
+            _log(f'  {n_hc:,} samples with crustal thickness estimate.')
+        except FileNotFoundError as e:
+            _log(f'  WARNING: {e}')
+            _log('  Crustal thickness skipped — update ECM1 location in data_registry.json.')
+        except Exception as e:
+            _log(f'  WARNING: crustal thickness interpolation failed ({e})')
 
     _log('Done.')
     return data

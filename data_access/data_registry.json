@@ -23,6 +23,24 @@
       "version": null,
       "location": "src/data/element_info.xlsx",
       "notes": "Used by src/utils/elements.py"
+    },
+    {
+      "name": "ECM1",
+      "description": "1°×1° global crustal structure and velocity model",
+      "format": "txt",
+      "version": null,
+      "location": "/Users/dhasterok/Library/CloudStorage/GoogleDrive-dhasterok@gmail.com/My Drive/heat_production/crust_model/ECM1/ECM1.txt",
+      "notes": "Used by src/geophys/ecm1.py. Columns: Hc (total crust km), Hcc (crystalline crust km), Sed (sediment km), VP/VS/RHO per layer."
+    },
+    {
+      "name": "global_tectonics",
+      "description": "Tectonic plate boundaries, plate polygons, provinces, and ocean-continent boundaries",
+      "format": "shapefile",
+      "version": null,
+      "doi": "https://doi.org/10.5281/zenodo.6586972",
+      "github": "https://github.com/dhasterok/global_tectonics",
+      "location": "/Users/dhasterok/Documents/GitHub/global_tectonics",
+      "notes": "Run data_access.download_data.download_dataset('global_tectonics') to install automatically. 'location' is updated to the local path after download."
     }
   ]
 }

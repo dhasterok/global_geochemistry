@@ -40,6 +40,7 @@ src/geochem/processing/refcorrect.py
 src/geochem/ref_models/__init__.py
 src/geochem/ref_models/refchem.py
 src/geophys/__init__.py
+src/geophys/ecm1.py
 src/maptools/__init__.py
 src/maptools/coast.py
 src/maptools/projections.py

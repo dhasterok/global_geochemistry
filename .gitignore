@@ -1,2 +1,8 @@
 __pycache__/
 *.pyc
+
+.venv/
+venv/
+env/
+
+working/

@@ -43,13 +43,20 @@ Usage
 from __future__ import annotations
 
 import colorsys
+import functools
+import json
 import pathlib
 import warnings
 
 import numpy as np
 import matplotlib.pyplot as plt
 
-from .coast import _preprocess_lines, _project, _clip_lines
+from shapely.geometry import box as _shp_box, Polygon as _ShpPolygon, MultiPolygon as _ShpMultiPolygon
+
+from .coast import (_preprocess_lines, _project, _clip_lines,
+                    _clip_ring_at_folds, _presplit_at_equator,
+                    _WATERMAN_INNER_FOLDS,
+                    _clip_to_panel, _waterman_panels, _densify_panel_boundary)
 
 # ---------------------------------------------------------------------------
 # QGIS plate colours (from global_tectonics/styles/plates_types.qml)
@@ -79,26 +86,82 @@ _QGIS_PLATE_COLORS: dict[str, tuple[float, float, float]] = {
 
 
 # ---------------------------------------------------------------------------
-# Data registry
+# Data registry — path resolved from data_registry.json at runtime
 # ---------------------------------------------------------------------------
 
-_TECTONICS_ROOT = pathlib.Path(
-    '/Users/dhasterok/Documents/GitHub/global_tectonics'
-)
+def _get_tectonics_root() -> pathlib.Path:
+    """Return the global_tectonics data root, resolved from the data registry.
 
-_REGISTRY: dict[str, pathlib.Path] = {
-    'plate_boundaries': _TECTONICS_ROOT / 'plates&provinces/shp/plate_boundaries.shp',
-    'plates':           _TECTONICS_ROOT / 'plates&provinces/shp/plates.shp',
-    'oc_boundaries':    _TECTONICS_ROOT / 'plates&provinces/shp/oc_boundaries.shp',
-    'provinces':        _TECTONICS_ROOT / 'plates&provinces/shp/global_gprv.shp',
-    'cratons':          _TECTONICS_ROOT / 'plates&provinces/shp/cratons.shp',
-    'coastline_hi':     _TECTONICS_ROOT / 'polygon_data/GSHHS_I_L1.shp',
-}
+    Search order:
+    1. ``"location"`` field in data_registry.json for the ``"global_tectonics"``
+       dataset (set automatically by :func:`~data_access.download_data.download_dataset`).
+    2. ``<repo_root>/data/global_tectonics/``
+    3. ``~/global_tectonics/``
+
+    Raises
+    ------
+    FileNotFoundError
+        If no valid location is found.  Run
+        ``data_access.download_data.download_dataset('global_tectonics')``
+        to download the data automatically.
+    """
+    _repo = pathlib.Path(__file__).resolve().parent.parent.parent
+    registry_path = _repo / 'data_access' / 'data_registry.json'
+
+    if registry_path.exists():
+        with registry_path.open() as f:
+            registry = json.load(f)
+        for ds in registry.get('datasets', []):
+            if ds.get('name') == 'global_tectonics':
+                loc = ds.get('location', '')
+                if loc and loc != 'auto':
+                    p = pathlib.Path(loc).expanduser()
+                    if p.exists():
+                        return p
+
+    # Well-known fallback locations
+    for candidate in [
+        _repo / 'data' / 'global_tectonics',
+        pathlib.Path.home() / 'global_tectonics',
+    ]:
+        if candidate.exists():
+            return candidate
+
+    raise FileNotFoundError(
+        'global_tectonics data not found.\n'
+        'Download it with:\n'
+        '    from data_access.download_data import download_dataset\n'
+        '    download_dataset("global_tectonics")\n'
+        'or set its "location" in data_access/data_registry.json.'
+    )
+
+
+def _build_registry() -> dict[str, pathlib.Path]:
+    root = _get_tectonics_root()
+    return {
+        'plate_boundaries': root / 'plates&provinces/shp/plate_boundaries.shp',
+        'plates':           root / 'plates&provinces/shp/plates.shp',
+        'oc_boundaries':    root / 'plates&provinces/shp/oc_boundaries.shp',
+        'provinces':        root / 'plates&provinces/shp/global_gprv.shp',
+        'cratons':          root / 'plates&provinces/shp/cratons.shp',
+        'coastline_hi':     root / 'polygon_data/GSHHS_I_L1.shp',
+    }
+
+
+# Module-level cache — populated on first use
+_REGISTRY: dict[str, pathlib.Path] = {}
+
+
+def _get_registry() -> dict[str, pathlib.Path]:
+    global _REGISTRY
+    if not _REGISTRY:
+        _REGISTRY = _build_registry()
+    return _REGISTRY
 
 
 def list_datasets() -> list[str]:
     """Return names of all registered tectonic datasets."""
-    return sorted(_REGISTRY)
+    return sorted(_get_registry())
 
 
 # ---------------------------------------------------------------------------
@@ -113,7 +176,7 @@ def _open_shapefile(name_or_path):
             'pyshp is required for shapefile loading.  '
             'Install it with:  pip install pyshp'
         ) from None
-    path = _REGISTRY.get(str(name_or_path), pathlib.Path(name_or_path))
+    path = _get_registry().get(str(name_or_path), pathlib.Path(name_or_path))
     if not pathlib.Path(path).exists():
         raise FileNotFoundError(
             f"Shapefile not found: {path}\n"
@@ -163,6 +226,7 @@ def load_shapes(
     name_or_path: str | pathlib.Path,
     attribute: str | None = None,
     value=None,
+    filters: dict | None = None,
 ) -> tuple[np.ndarray, np.ndarray]:
     """Load a shapefile and return NaN-separated (lon, lat) arrays.
 
@@ -179,6 +243,9 @@ def load_shapes(
         attribute equals *value* are returned.
     value : optional
         Value to match against *attribute*.
+    filters : dict, optional
+        Additional ``{attribute: value}`` pairs that must ALL match.
+        Combined with *attribute*/*value* when both are given.
 
     Returns
     -------
@@ -193,13 +260,28 @@ def load_shapes(
             "Only POLYLINE and POLYGON are supported."
         )
 
-    _, filter_idx = _filter_index(sf, attribute)
+    # Build combined filter dict from attribute/value + filters
+    combined: dict = {}
+    if attribute is not None and value is not None:
+        combined[attribute] = value
+    if filters:
+        combined.update(filters)
+
+    field_names = [f[0] for f in sf.fields[1:]]
+    filter_pairs = []
+    for attr, val in combined.items():
+        if attr not in field_names:
+            raise ValueError(
+                f"Attribute '{attr}' not found.  "
+                f"Available fields: {field_names}"
+            )
+        filter_pairs.append((field_names.index(attr), val))
 
     lon_segs: list[np.ndarray] = []
     lat_segs: list[np.ndarray] = []
 
     for rec, sh in zip(sf.iterRecords(), sf.iterShapes()):
-        if filter_idx is not None and rec[filter_idx] != value:
+        if any(rec[idx] != val for idx, val in filter_pairs):
             continue
         if sh.shapeType == 0:
             continue
@@ -602,6 +684,155 @@ def _equator_split_ring(lon, lat):
 
 
 # ---------------------------------------------------------------------------
+# Tectonic attribute assignment (point-in-polygon)
+# ---------------------------------------------------------------------------
+
+# Fields to extract from each dataset
+_PLATE_FIELDS    = ['plate', 'plate_code', 'subplate', 'plate_type', 'crust_type']
+_PROVINCE_FIELDS = ['prov_name', 'prov_type', 'prov_group', 'lastorogen', 'continent']
+
+
+@functools.lru_cache(maxsize=4)
+def _build_spatial_index(dataset: str):
+    """Build and cache a shapely STRtree for a tectonic polygon dataset.
+
+    Returns
+    -------
+    tree : shapely.STRtree
+    geoms : list of shapely geometries (same order as tree)
+    records : list of dicts (attribute dicts, same order as tree)
+    fields : list of str (attribute names extracted)
+    """
+    try:
+        from shapely.geometry import shape
+        from shapely import STRtree
+    except ImportError:
+        raise ImportError(
+            'shapely is required for tectonic attribute assignment.  '
+            'Install it with:  pip install shapely'
+        ) from None
+
+    sf = _open_shapefile(dataset)
+    field_names = [f[0] for f in sf.fields[1:]]
+
+    if dataset == 'plates':
+        keep = _PLATE_FIELDS
+    elif dataset in ('provinces', 'global_gprv'):
+        keep = _PROVINCE_FIELDS
+    else:
+        keep = field_names
+
+    geoms = []
+    records = []
+    for rec, sh in zip(sf.iterRecords(), sf.iterShapes()):
+        if sh.shapeType == 0:
+            continue
+        try:
+            g = shape(sh.__geo_interface__)
+        except Exception:
+            continue
+        if g.is_empty:
+            continue
+        geoms.append(g)
+        records.append({k: rec[field_names.index(k)]
+                        for k in keep if k in field_names})
+
+    tree = STRtree(geoms)
+    return tree, geoms, records, keep
+
+
+def assign_tectonic_attributes(
+    lon,
+    lat,
+    datasets: list[str] | None = None,
+) -> 'pd.DataFrame':
+    """Assign tectonic attributes to geographic point locations.
+
+    Uses point-in-polygon testing (shapely STRtree) against the tectonic
+    shapefiles.  Points that fall outside all polygons receive empty strings
+    for string fields and NaN for numeric fields.
+
+    Parameters
+    ----------
+    lon, lat : array-like
+        Decimal-degree coordinates.  NaN values are skipped and produce
+        empty/NaN output rows.
+    datasets : list of str, optional
+        Which datasets to query.  Default ``['plates', 'provinces']``.
+        Valid names: ``'plates'``, ``'provinces'``.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Same number of rows as the input, with columns:
+
+        From ``'plates'``: ``plate``, ``plate_code``, ``subplate``,
+        ``plate_type``, ``crust_type``
+
+        From ``'provinces'``: ``prov_name``, ``prov_type``, ``prov_group``,
+        ``lastorogen``, ``continent``
+
+    Notes
+    -----
+    The spatial index is built once per dataset and cached for the lifetime
+    of the Python session.  Expect ~5–30 s for a first call on 1 M points.
+    """
+    import pandas as pd
+    try:
+        import shapely
+    except ImportError:
+        raise ImportError(
+            'shapely is required for tectonic attribute assignment.'
+        ) from None
+
+    if datasets is None:
+        datasets = ['plates', 'provinces']
+
+    lon = np.asarray(lon, dtype=float).ravel()
+    lat = np.asarray(lat, dtype=float).ravel()
+    n   = len(lon)
+
+    result = pd.DataFrame(index=range(n))
+
+    for dataset in datasets:
+        tree, geoms, records, fields = _build_spatial_index(dataset)
+
+        # Default empty values
+        defaults = {f: '' for f in fields}
+        col_data = {f: [''] * n for f in fields}
+
+        valid = np.where(np.isfinite(lon) & np.isfinite(lat))[0]
+        if len(valid) == 0:
+            result = pd.concat([result, pd.DataFrame(col_data)], axis=1)
+            continue
+
+        # Build point array (shapely 2.x vectorised constructor)
+        pts = shapely.points(lon[valid], lat[valid])
+
+        # STRtree.query returns (input_geometry_indices, tree_geometry_indices).
+        # In shapely 2.x predicate='within' tests input_geom.within(tree_geom),
+        # i.e. point is within polygon — which is the correct point-in-polygon test.
+        pt_idx, poly_idx = tree.query(pts, predicate='within')
+
+        # pt_idx  : indices into `pts` (0 … len(valid)-1)
+        # poly_idx: indices into `geoms` / `records`
+        # valid[pt_idx] maps back to original row indices
+        assigned = {}   # original_row_index → record dict
+        for qi, pi in zip(pt_idx, poly_idx):
+            orig = int(valid[qi])
+            if orig not in assigned:
+                assigned[orig] = records[pi]
+
+        for row_idx, rec in assigned.items():
+            for f in fields:
+                col_data[f][row_idx] = rec.get(f, '')
+
+        result = pd.concat([result, pd.DataFrame(col_data)], axis=1)
+
+    return result.reset_index(drop=True)
+
+
+# ---------------------------------------------------------------------------
 # Polygon colour palette
 # ---------------------------------------------------------------------------
 
@@ -626,6 +857,7 @@ def plotboundaries(
     lat0: float = 0.0,
     attribute: str | None = None,
     value=None,
+    filters: dict | None = None,
     ax: plt.Axes | None = None,
     # barb options
     barbs: bool = False,
@@ -672,14 +904,15 @@ def plotboundaries(
     kw.setdefault('color', 'C1')
     kw.setdefault('linewidth', 0.5)
 
-    lon, lat = load_shapes(name_or_path, attribute=attribute, value=value)
+    lon, lat = load_shapes(name_or_path, attribute=attribute, value=value,
+                           filters=filters)
     if lon.size == 0:
         warnings.warn(f"No features loaded from '{name_or_path}'.")
         if ax is None:
             _, ax = plt.subplots()
         return ax
 
-    lon, lat = _preprocess_lines(lon, lat, projection)
+    lon, lat = _preprocess_lines(lon, lat, projection, lon0)
     x, y = _project(lon, lat, projection, lon0, lat0)
     x, y = _clip_lines(x, y, projection)
 
@@ -820,13 +1053,286 @@ def _densify_ring(lon, lat, max_deg=2.0):
     return np.array(out_lon), np.array(out_lat)
 
 
+
 def _fill_rings(ax, ring_list, projection, lon0, lat0, color, alpha, zorder, kw):
-    """Project and fill polygon rings."""
+    """Project and fill polygon rings.
+
+    For Waterman projections, uses shapely polygon intersection to cut each ring
+    into the 8 geographic octant panels (4 longitude bands x 2 hemispheres).
+    Fold meridian splitting (via S-H) is done first to avoid shapely issues with
+    antimeridian-crossing rings.  Shapely intersection then correctly inserts all
+    panel boundary coordinates including panel corner vertices (e.g. the V-notch
+    tip at (fold_lon, lat=0)).  Southern panels use lat=-EQ_RETRACT instead of
+    lat=0 as the equatorial boundary so boundary vertices project to the southern
+    Waterman face.  Fold boundary vertices are retracted slightly inside each band
+    to avoid the Waterman fold-seam projection ambiguity.  The equatorial boundary
+    edge is densified so fills trace the curved wing arc rather than a chord.
+
+    For Cassini, uses the same shapely-intersection approach with 3 panels in the
+    pre-rotated lon_rot frame: left back-face [-180, -90], front face [-90, +90],
+    right back-face [+90, +180].  No equatorial split is needed.  The fold
+    meridians at lon_rot = ±90° are curved arcs in Cassini space so boundary
+    edges are densified.  Polar rings crossing the antimeridian fall back to S-H;
+    non-polar rings use the two-copy approach.
+
+    For all other projections, the ring is pre-processed with _preprocess_lines
+    (NaN-based antimeridian/fold splitting) and each NaN-separated segment is
+    filled independently.
+    """
+    key = projection.strip().lower()
+    is_waterman = key in ('waterman', 'waterman_m')
+    is_cassini  = key == 'cassini'
+
+    if is_waterman:
+        _FOLD_RETRACT = 1e-4
+        _EQ_RETRACT   = 1e-4
+
+        # Always clip in the unrotated (lon_rot = lon - lon0) frame so that
+        # panels are always [-180,-90], [-90,0], [0,90], [90,180] regardless
+        # of lon0.  This avoids (a) the sign error in computing shifted fold
+        # positions, and (b) the wrapping outer band that arises when lon0≠0.
+        # After clipping we project with lon0=0 since the rotation has already
+        # been baked into the coordinates.
+        inner_folds = [-90.0, 0.0, 90.0]
+        lon_bounds  = [-180.0, -90.0, 0.0, 90.0, 180.0]
+
     for lon_ring, lat_ring in ring_list:
-        lon_ring, lat_ring = _densify_ring(lon_ring, lat_ring)
-        x, y = _project(lon_ring, lat_ring, projection, lon0, lat0)
-        # Drop non-finite points before filling
-        mask = np.isfinite(x) & np.isfinite(y)
-        if mask.sum() >= 3:
-            ax.fill(x[mask], y[mask], color=color, alpha=alpha,
-                    zorder=zorder, **kw)
+        if is_waterman:
+            # Pre-rotate into the map frame: lon_rot = lon - lon0 (mod ±180).
+            # Antimeridian crossings are then detected in this rotated space
+            # so the outer edge of the butterfly (always at lon_rot = ±180)
+            # is treated correctly for any lon0.
+            lon_rot = (
+                (np.asarray(lon_ring, dtype=float) - lon0 + 180.0) % 360.0
+            ) - 180.0
+            lat_arr = np.asarray(lat_ring, dtype=float)
+
+            dlon = np.diff(lon_rot)
+            if np.any(np.abs(dlon) > 180.0):
+                # Ring crosses the rotated antimeridian (lon_rot = ±180).
+                #
+                # Polar rings (those that encircle a pole) must use S-H
+                # pre-splitting: the two-copy approach splits them at lon=0
+                # and produces geometrically inverted half-polygons that
+                # fail to include the polar interior.
+                #
+                # Non-polar rings (simple antimeridian crossings) use the
+                # two-copy approach:
+                #   left  (bands 0-1): shift values > 0 by −360 so the
+                #          closing edge crosses lon_rot = −180 at the outer
+                #          boundary, giving shapely the correct panel edge.
+                #   right (bands 2-3): shift values < 0 by +360 symmetrically.
+                is_polar = lat_arr.min() < -70.0 or lat_arr.max() > 70.0
+                if is_polar:
+                    input_rings = [
+                        (b_lon, b_lat, (0, 1, 2, 3))
+                        for b_lon, b_lat
+                        in _clip_ring_at_folds(lon_rot, lat_arr, inner_folds)
+                    ]
+                else:
+                    lon_left  = lon_rot - 360.0 * (lon_rot > 0.0)
+                    lon_right = lon_rot + 360.0 * (lon_rot < 0.0)
+                    input_rings = [
+                        (lon_left,  lat_arr, (0, 1)),
+                        (lon_right, lat_arr, (2, 3)),
+                    ]
+            else:
+                input_rings = [(lon_rot, lat_arr, (0, 1, 2, 3))]
+
+            for b_lon, b_lat, band_ids in input_rings:
+                if len(b_lon) < 3:
+                    continue
+
+                # Build shapely polygon in pre-rotated lon_rot space.
+                try:
+                    ring_poly = _ShpPolygon(zip(b_lon, b_lat))
+                    if not ring_poly.is_valid:
+                        ring_poly = ring_poly.buffer(0)
+                    if ring_poly.is_empty:
+                        continue
+                except Exception:
+                    continue
+
+                # Intersect with the relevant panel boxes.
+                for band_idx in band_ids:
+                    lon_min = lon_bounds[band_idx]
+                    lon_max = lon_bounds[band_idx + 1]
+                    for lat_min, lat_max in ((-90.0, 0.0), (0.0, 90.0)):
+                        # Southern equatorial boundary at -EQ_RETRACT so those
+                        # vertices project onto the southern Waterman face.
+                        clip_lat_max = lat_max if lat_max > 0.0 else -_EQ_RETRACT
+                        panel_box = _shp_box(lon_min, lat_min, lon_max, clip_lat_max)
+
+                        try:
+                            inter = ring_poly.intersection(panel_box)
+                        except Exception:
+                            continue
+
+                        if inter.is_empty:
+                            continue
+
+                        # Collect all Polygon pieces from the result.
+                        if inter.geom_type == 'Polygon':
+                            geoms = [inter]
+                        elif inter.geom_type in ('MultiPolygon', 'GeometryCollection'):
+                            geoms = [g for g in inter.geoms
+                                     if g.geom_type == 'Polygon' and not g.is_empty]
+                        else:
+                            continue
+
+                        for geom in geoms:
+                            coords = np.array(geom.exterior.coords)
+                            if len(coords) < 3:
+                                continue
+                            ilon = coords[:, 0].copy()
+                            ilat = coords[:, 1]
+
+                            # Retract fold-boundary vertices so the Waterman
+                            # projection assigns them to the correct face.
+                            ilon[ilon <= lon_min] = lon_min + _FOLD_RETRACT
+                            ilon[ilon >= lon_max] = lon_max - _FOLD_RETRACT
+
+                            # Densify all panel boundary edges that are curved
+                            # in Waterman space: equatorial (horizontal) and
+                            # fold/antimeridian (vertical).  Without densification
+                            # any boundary segment projects as a straight chord
+                            # rather than the actual curved arc.
+                            # Northern panels: bottom edge is at lat=0 (curved).
+                            # Southern panels: top edge is at clip_lat_max=-EQ_RETRACT.
+                            h_dens = []
+                            if lat_min == 0.0:
+                                h_dens.append(0.0)
+                            if clip_lat_max < 90.0:
+                                h_dens.append(clip_lat_max)
+                            v_dens = [lon_min + _FOLD_RETRACT, lon_max - _FOLD_RETRACT]
+                            ilon, ilat = _densify_panel_boundary(
+                                ilon, ilat,
+                                v_bounds=v_dens, h_bounds=h_dens, max_deg=0.5,
+                            )
+
+                            # Coordinates are already in lon_rot space; project
+                            # with lon0=0 (rotation was pre-applied above).
+                            x, y = _project(ilon, ilat, projection, 0.0, lat0)
+                            fin = np.isfinite(x) & np.isfinite(y)
+                            if fin.sum() >= 3:
+                                ax.fill(x[fin], y[fin], color=color, alpha=alpha,
+                                        zorder=zorder, **kw)
+        elif is_cassini:
+            # ── Cassini panel clip ─────────────────────────────────────────
+            # Pre-rotate into lon_rot = lon - lon0 frame.  Three panels:
+            #   left back-face  [-180, -90]  (far hemisphere, left half)
+            #   front face      [ -90,  +90] (near hemisphere)
+            #   right back-face [ +90, +180] (far hemisphere, right half)
+            # Fold meridians at lon_rot = ±90° are curved in Cassini space,
+            # so boundary edges are densified.  Project with lon0=0 since
+            # rotation is already baked in.
+            _FOLD_RETRACT = 1e-4
+            lon_rot = (
+                (np.asarray(lon_ring, dtype=float) - lon0 + 180.0) % 360.0
+            ) - 180.0
+            lat_arr = np.asarray(lat_ring, dtype=float)
+
+            dlon = np.diff(lon_rot)
+            if np.any(np.abs(dlon) > 180.0):
+                # Ring crosses the rotated antimeridian (lon_rot = ±180°).
+                # S-H cannot be used here: when applied to find the ±90° fold
+                # crossing it interpolates across the ±180° jump, creating
+                # false boundary vertices for any ring — including polar ones.
+                # Instead, create two continuous copies that eliminate the jump:
+                #   left  copy: positive lon_rot values shifted by −360
+                #   right copy: negative lon_rot values shifted by +360
+                # Both copies are intersected with all three panels; panels
+                # whose lon range doesn't overlap the copy simply return empty.
+                # Shapely correctly handles polar interiors (e.g. Antarctica)
+                # because each panel is an unambiguous lat/lon rectangle and
+                # the south/north pole is naturally inside the clipped polygon.
+                lon_left  = lon_rot - 360.0 * (lon_rot > 0.0)
+                lon_right = lon_rot + 360.0 * (lon_rot < 0.0)
+                input_rings = [
+                    (lon_left,  lat_arr, (0, 1, 2)),
+                    (lon_right, lat_arr, (0, 1, 2)),
+                ]
+            else:
+                input_rings = [(lon_rot, lat_arr, (0, 1, 2))]
+
+            # Panel boxes: idx 0 = left back, 1 = front, 2 = right back
+            _cass_panels = [(-180.0, -90.0), (-90.0, 90.0), (90.0, 180.0)]
+
+            for b_lon, b_lat, panel_ids in input_rings:
+                if len(b_lon) < 3:
+                    continue
+                try:
+                    ring_poly = _ShpPolygon(zip(b_lon, b_lat))
+                    if not ring_poly.is_valid:
+                        ring_poly = ring_poly.buffer(0)
+                    if ring_poly.is_empty:
+                        continue
+                except Exception:
+                    continue
+
+                for pid in panel_ids:
+                    lon_min, lon_max = _cass_panels[pid]
+                    # Back-face panels (pid 0 and 2): avoid placing a vertex
+                    # at exactly lat=-90.  arctan2(-inf, cos(Δlon)) = -π/2
+                    # regardless of Δlon, so the south pole always projects to
+                    # y=-Rπ (bottom) in the Cassini formula — but the limit as
+                    # lat→-90 from above correctly wraps to y→+Rπ (top of the
+                    # back face).  Keeping lat slightly above -90 sidesteps the
+                    # discontinuity and lets the fill reach the top of the strip.
+                    lat_min_panel = (-90.0 + _FOLD_RETRACT) if pid != 1 else -90.0
+                    panel_box = _shp_box(lon_min, lat_min_panel, lon_max, 90.0)
+                    try:
+                        inter = ring_poly.intersection(panel_box)
+                    except Exception:
+                        continue
+                    if inter.is_empty:
+                        continue
+
+                    if inter.geom_type == 'Polygon':
+                        geoms = [inter]
+                    elif inter.geom_type in ('MultiPolygon', 'GeometryCollection'):
+                        geoms = [g for g in inter.geoms
+                                 if g.geom_type == 'Polygon' and not g.is_empty]
+                    else:
+                        continue
+
+                    for geom in geoms:
+                        coords = np.array(geom.exterior.coords)
+                        if len(coords) < 3:
+                            continue
+                        ilon = coords[:, 0].copy()
+                        ilat = coords[:, 1]
+
+                        # Retract vertices exactly on the fold seam so the
+                        # Cassini projection assigns them to the correct face.
+                        ilon[ilon <= lon_min] = lon_min + _FOLD_RETRACT
+                        ilon[ilon >= lon_max] = lon_max - _FOLD_RETRACT
+
+                        # Densify fold boundaries (curved arcs in Cassini space).
+                        v_dens = [lon_min + _FOLD_RETRACT, lon_max - _FOLD_RETRACT]
+                        ilon, ilat = _densify_panel_boundary(
+                            ilon, ilat,
+                            v_bounds=v_dens, h_bounds=[], max_deg=0.5,
+                        )
+
+                        x, y = _project(ilon, ilat, projection, 0.0, lat0)
+                        fin = np.isfinite(x) & np.isfinite(y)
+                        if fin.sum() >= 3:
+                            ax.fill(x[fin], y[fin], color=color, alpha=alpha,
+                                    zorder=zorder, **kw)
+
+        else:
+            lon_ring, lat_ring = _preprocess_lines(lon_ring, lat_ring, projection, lon0)
+            x, y = _project(lon_ring, lat_ring, projection, lon0, lat0)
+
+            nan_mask = ~np.isfinite(x) | ~np.isfinite(y)
+            split_at = np.where(nan_mask)[0]
+            starts   = np.concatenate([[0],      split_at + 1])
+            ends     = np.concatenate([split_at, [len(x)]])
+            for s, e in zip(starts, ends):
+                seg_x = x[s:e]
+                seg_y = y[s:e]
+                fin   = np.isfinite(seg_x) & np.isfinite(seg_y)
+                if fin.sum() >= 3:
+                    ax.fill(seg_x[fin], seg_y[fin], color=color, alpha=alpha,
+                            zorder=zorder, **kw)

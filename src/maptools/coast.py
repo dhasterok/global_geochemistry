@@ -277,17 +277,383 @@ def _presplit_at_equator(
     return np.concatenate(out_lon), np.concatenate(out_lat)
 
 
+def _sh_clip(
+    lon: np.ndarray,
+    lat: np.ndarray,
+    meridian: float,
+    keep_left: bool,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Sutherland-Hodgman clip of a closed polygon ring at a longitude meridian.
+
+    Parameters
+    ----------
+    lon, lat : array-like
+        Closed polygon ring.  A duplicate closing vertex (first == last) is
+        stripped before clipping.
+    meridian : float
+        Longitude of the clipping edge.
+    keep_left : bool
+        If True, keep vertices with lon ≤ meridian; if False, lon ≥ meridian.
+
+    Returns
+    -------
+    out_lon, out_lat : np.ndarray
+        Clipped closed sub-ring.  Empty arrays if fewer than 3 vertices remain.
+    """
+    lon = np.asarray(lon, dtype=float)
+    lat = np.asarray(lat, dtype=float)
+
+    # Strip duplicate closing vertex so S-H iteration wraps cleanly
+    if len(lon) > 1 and lon[-1] == lon[0] and lat[-1] == lat[0]:
+        lon = lon[:-1]
+        lat = lat[:-1]
+
+    n = len(lon)
+    if n < 3:
+        return np.array([]), np.array([])
+
+    out_lon: list[float] = []
+    out_lat: list[float] = []
+
+    for i in range(n):
+        j = (i - 1) % n
+        lo_curr, la_curr = lon[i], lat[i]
+        lo_prev, la_prev = lon[j], lat[j]
+
+        # Treat NaN vertices as if they were inside (don't clip them away)
+        if not np.isfinite(lo_curr) or not np.isfinite(la_curr):
+            continue
+        if not np.isfinite(lo_prev) or not np.isfinite(la_prev):
+            prev_in = True
+        else:
+            prev_in = (lo_prev <= meridian) if keep_left else (lo_prev >= meridian)
+
+        curr_in = (lo_curr <= meridian) if keep_left else (lo_curr >= meridian)
+
+        dlo = lo_curr - lo_prev
+        if curr_in:
+            if not prev_in:
+                # Entering: insert boundary intersection
+                if abs(dlo) > 1e-15:
+                    t = (meridian - lo_prev) / dlo
+                    out_lon.append(meridian)
+                    out_lat.append(la_prev + t * (la_curr - la_prev))
+            out_lon.append(lo_curr)
+            out_lat.append(la_curr)
+        elif prev_in:
+            # Exiting: insert boundary intersection
+            if abs(dlo) > 1e-15:
+                t = (meridian - lo_prev) / dlo
+                out_lon.append(meridian)
+                out_lat.append(la_prev + t * (la_curr - la_prev))
+
+    if len(out_lon) < 3:
+        return np.array([]), np.array([])
+    return np.array(out_lon), np.array(out_lat)
+
+
+def _clip_ring_at_folds(
+    lon: np.ndarray,
+    lat: np.ndarray,
+    fold_lons: np.ndarray,
+) -> list[tuple[np.ndarray, np.ndarray]]:
+    """Clip a closed polygon ring at fold meridians using Sutherland-Hodgman.
+
+    Applies ``_sh_clip`` at each fold in *fold_lons* in sorted order, splitting
+    the ring into sub-rings that each lie entirely within one longitude band.
+    Boundary vertices (at exactly the fold meridian) are inserted by the S-H
+    algorithm, so each sub-ring closes flush against the fold in projected space.
+
+    Parameters
+    ----------
+    lon, lat : array-like
+        Closed polygon ring.
+    fold_lons : array-like
+        Fold meridian longitudes (geographic degrees).
+
+    Returns
+    -------
+    list of (lon, lat) pairs
+        Closed sub-rings, one per occupied longitude band.  Empty if the input
+        ring degenerates.
+    """
+    fold_lons = sorted(fold_lons)
+    rings: list[tuple[np.ndarray, np.ndarray]] = [
+        (np.asarray(lon, dtype=float), np.asarray(lat, dtype=float))
+    ]
+
+    for fold in fold_lons:
+        new_rings: list[tuple[np.ndarray, np.ndarray]] = []
+        for r_lon, r_lat in rings:
+            for keep_left in (True, False):
+                c_lon, c_lat = _sh_clip(r_lon, r_lat, fold, keep_left)
+                if len(c_lon) >= 3:
+                    new_rings.append((c_lon, c_lat))
+        rings = new_rings
+
+    return rings
+
+
+# Standard Waterman inner fold meridians (octant-face boundaries, excluding ±180).
+_WATERMAN_INNER_FOLDS = np.array([-90.0, 0.0, 90.0])
+
+
+def _sh_clip_lat(
+    lon: np.ndarray,
+    lat: np.ndarray,
+    parallel: float,
+    keep_above: bool,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Sutherland-Hodgman clip of a closed polygon ring at a latitude parallel.
+
+    Parameters
+    ----------
+    lon, lat : array-like
+        Closed polygon ring.  A duplicate closing vertex is stripped.
+    parallel : float
+        Latitude of the clip boundary (geographic degrees).
+    keep_above : bool
+        If True keep vertices with lat ≥ parallel; otherwise keep lat ≤ parallel.
+
+    Returns
+    -------
+    out_lon, out_lat : np.ndarray
+        Clipped closed sub-ring.  Empty arrays if fewer than 3 vertices remain.
+    """
+    lon = np.asarray(lon, dtype=float)
+    lat = np.asarray(lat, dtype=float)
+
+    if len(lon) > 1 and lon[-1] == lon[0] and lat[-1] == lat[0]:
+        lon = lon[:-1]
+        lat = lat[:-1]
+
+    n = len(lon)
+    if n < 3:
+        return np.array([]), np.array([])
+
+    out_lon: list[float] = []
+    out_lat: list[float] = []
+
+    for i in range(n):
+        j = (i - 1) % n
+        lo_curr, la_curr = lon[i], lat[i]
+        lo_prev, la_prev = lon[j], lat[j]
+
+        if not np.isfinite(lo_curr) or not np.isfinite(la_curr):
+            continue
+        if not np.isfinite(lo_prev) or not np.isfinite(la_prev):
+            prev_in = True
+        else:
+            prev_in = (la_prev >= parallel) if keep_above else (la_prev <= parallel)
+
+        curr_in = (la_curr >= parallel) if keep_above else (la_curr <= parallel)
+
+        dla = la_curr - la_prev
+        if curr_in:
+            if not prev_in:
+                if abs(dla) > 1e-15:
+                    t = (parallel - la_prev) / dla
+                    out_lon.append(lo_prev + t * (lo_curr - lo_prev))
+                    out_lat.append(parallel)
+            out_lon.append(lo_curr)
+            out_lat.append(la_curr)
+        elif prev_in:
+            if abs(dla) > 1e-15:
+                t = (parallel - la_prev) / dla
+                out_lon.append(lo_prev + t * (lo_curr - lo_prev))
+                out_lat.append(parallel)
+
+    if len(out_lon) < 3:
+        return np.array([]), np.array([])
+    return np.array(out_lon), np.array(out_lat)
+
+
+def _densify_panel_boundary(
+    lon: np.ndarray,
+    lat: np.ndarray,
+    v_bounds: list,
+    h_bounds: list,
+    max_deg: float = 0.5,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Densify polygon edges that lie along panel boundary lines.
+
+    For each consecutive edge where both endpoints sit on the same panel
+    boundary (a meridian in *v_bounds* or a parallel in *h_bounds*), inserts
+    intermediate vertices spaced at most *max_deg* degrees apart.  This ensures
+    that when the polygon is projected, the fill correctly traces the panel
+    boundary curve rather than cutting a straight chord across it.
+
+    Parameters
+    ----------
+    lon, lat : array-like
+        Closed polygon ring without a duplicate closing vertex.
+    v_bounds : list of float
+        Meridian longitudes that are panel boundary lines.
+    h_bounds : list of float
+        Parallel latitudes that are panel boundary lines.
+    max_deg : float
+        Maximum vertex spacing in degrees for densified boundary edges.
+
+    Returns
+    -------
+    out_lon, out_lat : np.ndarray
+        Ring with boundary edges densified.
+    """
+    lon = np.asarray(lon, dtype=float)
+    lat = np.asarray(lat, dtype=float)
+    _EPS = 1e-9
+
+    out_lon: list[float] = []
+    out_lat: list[float] = []
+    n = len(lon)
+
+    for i in range(n):
+        j = (i + 1) % n
+        lo0, la0 = lon[i], lat[i]
+        lo1, la1 = lon[j], lat[j]
+        out_lon.append(lo0)
+        out_lat.append(la0)
+
+        inserted = False
+        for f in v_bounds:
+            if abs(lo0 - f) < _EPS and abs(lo1 - f) < _EPS:
+                dlat = abs(la1 - la0)
+                if dlat > max_deg:
+                    n_pts = max(1, int(np.ceil(dlat / max_deg))) - 1
+                    for k in range(1, n_pts + 1):
+                        t = k / (n_pts + 1)
+                        out_lon.append(f)
+                        out_lat.append(la0 + t * (la1 - la0))
+                inserted = True
+                break
+
+        if not inserted:
+            for g in h_bounds:
+                if abs(la0 - g) < _EPS and abs(la1 - g) < _EPS:
+                    dlon = abs(lo1 - lo0)
+                    if dlon > max_deg:
+                        n_pts = max(1, int(np.ceil(dlon / max_deg))) - 1
+                        for k in range(1, n_pts + 1):
+                            t = k / (n_pts + 1)
+                            out_lon.append(lo0 + t * (lo1 - lo0))
+                            out_lat.append(g)
+                    break
+
+    return np.array(out_lon), np.array(out_lat)
+
+
+def _clip_to_panel(
+    lon: np.ndarray,
+    lat: np.ndarray,
+    lon_min: float,
+    lon_max: float,
+    lat_min: float,
+    lat_max: float,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Clip a closed polygon ring to a geographic rectangle.
+
+    Applies four Sutherland-Hodgman passes to clip the ring to
+    [lon_min, lon_max] × [lat_min, lat_max].  The S-H algorithm inserts
+    intersection vertices exactly on each active panel boundary, so the
+    clipped ring closes flush against the panel edge in geographic space.
+
+    Clips at ±180° longitude and ±90° latitude are skipped because no polygon
+    vertex can lie outside those global limits.
+
+    Parameters
+    ----------
+    lon, lat : array-like
+        Closed polygon ring.
+    lon_min, lon_max : float
+        Longitude bounds of the panel (−180 to +180).
+    lat_min, lat_max : float
+        Latitude bounds of the panel (−90 to +90).
+
+    Returns
+    -------
+    out_lon, out_lat : np.ndarray
+        Clipped ring.  Empty arrays if fewer than 3 vertices survive.
+    """
+    lon = np.asarray(lon, dtype=float)
+    lat = np.asarray(lat, dtype=float)
+
+    if lon_min > -180.0:
+        lon, lat = _sh_clip(lon, lat, lon_min, keep_left=False)   # lon ≥ lon_min
+        if len(lon) < 3:
+            return np.array([]), np.array([])
+    if lon_max < 180.0:
+        lon, lat = _sh_clip(lon, lat, lon_max, keep_left=True)    # lon ≤ lon_max
+        if len(lon) < 3:
+            return np.array([]), np.array([])
+    if lat_min > -90.0:
+        lon, lat = _sh_clip_lat(lon, lat, lat_min, keep_above=True)
+        if len(lon) < 3:
+            return np.array([]), np.array([])
+    if lat_max < 90.0:
+        lon, lat = _sh_clip_lat(lon, lat, lat_max, keep_above=False)
+        if len(lon) < 3:
+            return np.array([]), np.array([])
+
+    return lon, lat
+
+
+def _waterman_panels(lon0: float) -> list:
+    """Return (lon_min, lon_max, lat_min, lat_max) for the 8 Waterman octant panels.
+
+    The standard inner fold meridians at −90°, 0°, +90° (relative to lon0) are
+    mapped into geographic space, then combined with the equator to give 8
+    rectangular panels that tile the globe for the Waterman butterfly projection.
+
+    Parameters
+    ----------
+    lon0 : float
+        Central meridian of the Waterman projection.
+
+    Returns
+    -------
+    list of (lon_min, lon_max, lat_min, lat_max) tuples
+    """
+    inner = sorted(
+        float(((f - lon0 + 180.0) % 360.0) - 180.0)
+        for f in (-90.0, 0.0, 90.0)
+    )
+    lon_bounds = [-180.0] + inner + [180.0]
+    panels: list = []
+    for i in range(4):
+        for lat_min, lat_max in ((-90.0, 0.0), (0.0, 90.0)):
+            panels.append((lon_bounds[i], lon_bounds[i + 1], lat_min, lat_max))
+    return panels
+
+
 def _preprocess_lines(
     lon: np.ndarray,
     lat: np.ndarray,
     projection: str,
+    lon0: float = 0.0,
 ) -> tuple[np.ndarray, np.ndarray]:
-    """Apply projection-specific geographic pre-processing before projection."""
+    """Apply projection-specific geographic pre-processing before projection.
+
+    For Waterman projections the fold meridians in geographic space shift with
+    *lon0*.  Specifically, the standard folds at [-180, -90, 0, 90] in the
+    rotated frame correspond to original geographic longitudes at
+    ``(fold - lon0 + 180) % 360 - 180``.  Passing *lon0* here ensures segments
+    are split at the correct meridians before projection.
+
+    For all other projections no splitting is applied.  Polar polygons that
+    wrap around ±90° via the antimeridian produce an essentially zero-length
+    segment at the pole in projected space, which causes no visible artefact
+    and must not be split (splitting breaks the polar fill).
+    """
     key = projection.strip().lower()
     if key in ('waterman', 'waterman_m'):
-        lon, lat = _presplit_at_folds(lon, lat, _WATERMAN_FOLDS)
+        if lon0 == 0.0:
+            folds = _WATERMAN_FOLDS
+        else:
+            folds = np.sort(
+                ((_WATERMAN_FOLDS - lon0 + 180.0) % 360.0) - 180.0
+            )
+        lon, lat = _presplit_at_folds(lon, lat, folds)
         lon, lat = _presplit_at_equator(lon, lat)
-        return lon, lat
     return lon, lat
 
 
@@ -475,7 +841,7 @@ def plotcoast(
     >>> ax = plotcoast(projection='cassini', lon0=-150)  # subduction view
     """
     lon, lat = _load_coast()
-    lon, lat = _preprocess_lines(lon, lat, projection)
+    lon, lat = _preprocess_lines(lon, lat, projection, lon0)
     x, y = _project(lon, lat, projection, lon0, lat0)
     x, y = _clip_lines(x, y, projection)
 
@@ -528,7 +894,7 @@ def geoplot(
     """
     lon = np.asarray(lon, dtype=float)
     lat = np.asarray(lat, dtype=float)
-    lon, lat = _preprocess_lines(lon, lat, projection)
+    lon, lat = _preprocess_lines(lon, lat, projection, lon0)
     x, y = _project(lon, lat, projection, lon0, lat0)
     x, y = _clip_lines(x, y, projection)
 
@@ -639,7 +1005,7 @@ def tissot(
 
     lon_all = np.concatenate(all_lon)
     lat_all = np.concatenate(all_lat)
-    lon_all, lat_all = _preprocess_lines(lon_all, lat_all, projection)
+    lon_all, lat_all = _preprocess_lines(lon_all, lat_all, projection, lon0)
 
     x, y = _project(lon_all, lat_all, projection, lon0, lat0)
     x, y = _clip_lines(x, y, projection)
@@ -812,7 +1178,7 @@ def _frame_path(projection, lon0, lat0, n=360):
         for col in range(4):
             v_lon = np.concatenate([blon_down[:, col], blon_up[:, col]])
             v_lat = np.concatenate([lat_down, lat_up])
-            xb, yb = _project(v_lon, v_lat, key, lon0, lat0)
+            xb, yb = _project(v_lon, v_lat, key, 0.0, lat0)
             xsegs.extend([xb, np.array([np.nan])])
             ysegs.extend([yb, np.array([np.nan])])
         # No discontinuity clipping: the frame path is deliberately structured
