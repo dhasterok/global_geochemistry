@@ -1122,12 +1122,40 @@ def _fill_rings(ax, ring_list, projection, lon0, lat0, color, alpha, zorder, kw)
                 #          closing edge crosses lon_rot = −180 at the outer
                 #          boundary, giving shapely the correct panel edge.
                 #   right (bands 2-3): shift values < 0 by +360 symmetrically.
-                is_polar = lat_arr.min() < -70.0 or lat_arr.max() > 70.0
-                if is_polar:
+                # Only rings that literally reach a pole (lat ≈ ±90°) truly
+                # encircle it.  High-latitude plates like Eurasia (lat_max
+                # ≈ 72–82°) do NOT encircle the north pole and must use the
+                # two-copy path.
+                # 89.9° threshold: only rings with actual pole vertices
+                # (lat = ±90°) are truly polar.  Rings that merely reach
+                # lat ≈ 89.5° (e.g. plate_id=400 shp=269, lat_max=89.575°)
+                # are high-latitude but non-encircling and must use the
+                # two-copy path.
+                is_south_polar = lat_arr.min() < -89.9
+                is_north_polar = lat_arr.max() > 89.9
+
+                if is_south_polar or is_north_polar:
+                    # Healed-ring + S-H: roll the ring so the antimeridian
+                    # jump is last, then append an explicit pole-closure path
+                    # at lon = ±180° so S-H sees no discontinuity when it
+                    # computes the ±90° fold crossings.
+                    j = int(np.argmax(np.abs(dlon)))
+                    lon_rolled = np.roll(lon_rot, -(j + 1))
+                    lat_rolled = np.roll(lat_arr, -(j + 1))
+
+                    pole_lat = -90.0 if is_south_polar else 90.0
+                    closure_lon = np.array([180.0, 180.0, -180.0, -180.0])
+                    closure_lat = np.array([lat_rolled[-1], pole_lat,
+                                            pole_lat, lat_rolled[0]])
+
+                    lon_healed = np.concatenate([lon_rolled, closure_lon])
+                    lat_healed = np.concatenate([lat_rolled, closure_lat])
+
                     input_rings = [
                         (b_lon, b_lat, (0, 1, 2, 3))
                         for b_lon, b_lat
-                        in _clip_ring_at_folds(lon_rot, lat_arr, inner_folds)
+                        in _clip_ring_at_folds(lon_healed, lat_healed,
+                                               inner_folds)
                     ]
                 else:
                     lon_left  = lon_rot - 360.0 * (lon_rot > 0.0)
@@ -1235,23 +1263,53 @@ def _fill_rings(ax, ring_list, projection, lon0, lat0, color, alpha, zorder, kw)
             dlon = np.diff(lon_rot)
             if np.any(np.abs(dlon) > 180.0):
                 # Ring crosses the rotated antimeridian (lon_rot = ±180°).
-                # S-H cannot be used here: when applied to find the ±90° fold
-                # crossing it interpolates across the ±180° jump, creating
-                # false boundary vertices for any ring — including polar ones.
-                # Instead, create two continuous copies that eliminate the jump:
-                #   left  copy: positive lon_rot values shifted by −360
-                #   right copy: negative lon_rot values shifted by +360
-                # Both copies are intersected with all three panels; panels
-                # whose lon range doesn't overlap the copy simply return empty.
-                # Shapely correctly handles polar interiors (e.g. Antarctica)
-                # because each panel is an unambiguous lat/lon rectangle and
-                # the south/north pole is naturally inside the clipped polygon.
-                lon_left  = lon_rot - 360.0 * (lon_rot > 0.0)
-                lon_right = lon_rot + 360.0 * (lon_rot < 0.0)
-                input_rings = [
-                    (lon_left,  lat_arr, (0, 1, 2)),
-                    (lon_right, lat_arr, (0, 1, 2)),
-                ]
+                # Only treat as polar if the ring literally reaches the pole
+                # (lat ≈ ±90°).  High-latitude but non-encircling rings such as
+                # the Eurasian plate (lat_max ≈ 72–82°) must NOT get the
+                # pole-closure path — they are simply-connected and the closure
+                # would falsely include the pole in their interior.
+                is_south_polar = lat_arr.min() < -89.9
+                is_north_polar = lat_arr.max() > 89.9
+
+                if is_south_polar or is_north_polar:
+                    # Polar rings: heal the antimeridian jump before S-H.
+                    # The two-copy approach introduces a new ≈360° jump at
+                    # lon_rot=0° (inside the front face), which causes shapely
+                    # to clip incorrect triangular gaps in the fill.
+                    #
+                    # Fix: roll the ring so the jump edge is last, then append
+                    # an explicit pole-closure path at lon=±180°.  S-H can then
+                    # split cleanly at ±90° without encountering any jump.
+                    j = int(np.argmax(np.abs(dlon)))  # index just before jump
+                    lon_rolled = np.roll(lon_rot, -(j + 1))
+                    lat_rolled = np.roll(lat_arr, -(j + 1))
+
+                    pole_lat = -90.0 if is_south_polar else 90.0
+                    # Closure: end-of-ring → ±180° → pole → ±180° → start-of-ring
+                    closure_lon = np.array([180.0, 180.0, -180.0, -180.0])
+                    closure_lat = np.array([lat_rolled[-1], pole_lat,
+                                            pole_lat, lat_rolled[0]])
+
+                    lon_healed = np.concatenate([lon_rolled, closure_lon])
+                    lat_healed = np.concatenate([lat_rolled, closure_lat])
+
+                    input_rings = [
+                        (b_lon, b_lat, (0, 1, 2))
+                        for b_lon, b_lat
+                        in _clip_ring_at_folds(lon_healed, lat_healed,
+                                               [-90.0, 90.0])
+                    ]
+                else:
+                    # Non-polar: two-copy approach works correctly because
+                    # the ring does not encircle a pole and the ≈360° jump
+                    # at lon_rot=0° only falls in the back-face panels where
+                    # the false diagonal edge doesn't create interior gaps.
+                    lon_left  = lon_rot - 360.0 * (lon_rot > 0.0)
+                    lon_right = lon_rot + 360.0 * (lon_rot < 0.0)
+                    input_rings = [
+                        (lon_left,  lat_arr, (0, 1, 2)),
+                        (lon_right, lat_arr, (0, 1, 2)),
+                    ]
             else:
                 input_rings = [(lon_rot, lat_arr, (0, 1, 2))]
 
