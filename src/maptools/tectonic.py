@@ -18,7 +18,7 @@ Registered datasets
     Tectonic plate polygons.  280 features.
 
 ``'oc_boundaries'``
-    Ocean–continent boundary polylines.  93 features.
+    Ocean--continent boundary polylines.  93 features.
 
 ``'provinces'``
     Global geologic provinces (polygons).  914 features.

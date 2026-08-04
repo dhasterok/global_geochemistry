@@ -51,9 +51,11 @@ src/modelling/inversion/__init__.py
 src/modelling/inversion/models.py
 src/plotting/__init__.py
 src/plotting/colormap.py
+src/plotting/hp_velocity.py
 src/plotting/radar.py
 src/plotting/scatter.py
 src/plotting/ternary.py
+src/plotting/whisker.py
 src/tectonics/__init__.py
 src/utils/__init__.py
 src/utils/elements.py

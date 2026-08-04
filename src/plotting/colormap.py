@@ -88,10 +88,29 @@ def _hex_to_rgb(h: str) -> tuple[float, float, float]:
     return r / 255.0, g / 255.0, b / 255.0
 
 
+def _colormap_csv_path() -> pathlib.Path | None:
+    """Return the path to ``custom_colormaps.csv``.
+
+    Prefers the version shipped with the installed ``blueberry-colortools``
+    package (``blueberry.COLORMAP_PATH``).  Falls back to the copy stored
+    alongside this package in ``src/data/``.
+    """
+    try:
+        import blueberry
+        p = pathlib.Path(blueberry.COLORMAP_PATH) / 'custom_colormaps.csv'
+        if p.exists():
+            return p
+    except ImportError:
+        pass
+
+    p = pathlib.Path(__file__).parent.parent / 'data' / 'custom_colormaps.csv'
+    return p if p.exists() else None
+
+
 def _load_csv() -> None:
     """Parse custom_colormaps.csv and register all entries."""
-    csv_path = pathlib.Path(__file__).parent.parent / 'data' / 'custom_colormaps.csv'
-    if not csv_path.exists():
+    csv_path = _colormap_csv_path()
+    if csv_path is None:
         return
     with csv_path.open(encoding='utf-8-sig') as fh:
         for line in fh:
@@ -160,6 +179,16 @@ def get_colormap(
         cmap = _REGISTRY[key].resampled(n)
         return cmap.reversed() if reverse else cmap
 
+    # Fall back to cmcrameri
+    try:
+        import cmcrameri.cm as cmc
+        for attr in (key, key.replace(' ', '_'), key.replace('-', '_')):
+            if hasattr(cmc, attr):
+                cmap = getattr(cmc, attr)
+                return cmap.reversed() if reverse else cmap
+    except ImportError:
+        pass
+
     # Fall back to matplotlib
     try:
         cmap = mpl_cm.get_cmap(name, n)
@@ -167,10 +196,47 @@ def get_colormap(
     except (ValueError, KeyError):
         raise ValueError(
             f"Unknown colormap '{name}'. "
-            f"Available: {available_colormaps()}"
+            f"Available custom names: {available_colormaps()}.\n"
+            "Also accepts any cmcrameri or matplotlib colormap name."
         )
 
 
+# Convenience alias matching the shorter name used in plotting modules.
+get_cmap = get_colormap
+
+
 def available_colormaps() -> list[str]:
-    """Return sorted list of all registered colormap names."""
+    """Return sorted list of all registered custom colormap names."""
     return sorted(_REGISTRY.keys())
+
+
+def list_cmaps(source: str = 'custom') -> None:
+    """Print available colormap names.
+
+    Parameters
+    ----------
+    source : {'custom', 'cmcrameri', 'matplotlib', 'all'}
+    """
+    if source in ('custom', 'all'):
+        names = available_colormaps()
+        print(f"Custom ({len(names)}):")
+        for n in names:
+            print(f"  {n}")
+
+    if source in ('cmcrameri', 'all'):
+        try:
+            import cmcrameri.cm as cmc
+            names = sorted(x for x in dir(cmc)
+                           if not x.startswith('_') and not x.endswith('_r'))
+            print(f"\ncmcrameri ({len(names)}):")
+            for n in names:
+                print(f"  {n}")
+        except ImportError:
+            print("\ncmcrameri not installed.")
+
+    if source in ('matplotlib', 'all'):
+        import matplotlib.pyplot as plt
+        names = sorted(plt.colormaps())
+        print(f"\nMatplotlib ({len(names)}):")
+        for n in names:
+            print(f"  {n}")
