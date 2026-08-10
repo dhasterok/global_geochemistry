@@ -1,0 +1,991 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>global_geochemistry.geochem.classification.igneous &#8212; global_geochemistry 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/global_geochemistry/geochem/classification/igneous';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">global_geochemistry 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../generated/global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../generated/global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">global_geochemistry.geochem.classification.igneous</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for global_geochemistry.geochem.classification.igneous</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Classification of igneous rocks.</span>
+
+<span class="sd">Implements:</span>
+<span class="sd">- TAS (Total Alkali–Silica) classification — volcanic and plutonic rock</span>
+<span class="sd">  names based on Le Bas et al. (1986) and Middlemost (1994); high-Mg</span>
+<span class="sd">  overrides from Le Bas &amp; Streckeisen (1991).</span>
+<span class="sd">- Carbonatite classification on the CaO–MgO–FeO+Fe2O3+MnO ternary</span>
+<span class="sd">  (calciocarbonatite, magnesiocarbonatite, ferrocarbonatite).</span>
+<span class="sd">- QAP normative classification (IUGS double triangle; Le Maitre 2002)</span>
+<span class="sd">  using CIPW mineral proportions.</span>
+<span class="sd">- Granite geochemical classification: Frost et al. (2001) ferroan/</span>
+<span class="sd">  magnesian + alkali-lime series + alumina saturation; SIA (S/I/A-type)</span>
+<span class="sd">  scheme of Chappell &amp; White (1992) and Whalen et al. (1987).</span>
+<span class="sd">- Mg number.</span>
+
+<span class="sd">References:</span>
+<span class="sd">    Le Bas et al. (1986) J. Petrology 27, 745–750.</span>
+<span class="sd">    Middlemost (1994) Earth-Sci. Rev. 37, 215–224.</span>
+<span class="sd">    Le Bas &amp; Streckeisen (1991) J. Geol. Soc. London 148, 825–833.</span>
+<span class="sd">    Le Maitre, R.W. (ed.) (2002) Igneous Rocks, 2nd ed. Cambridge UP.</span>
+<span class="sd">    Frost et al. (2001) J. Petrology 42, 2033–2048.</span>
+<span class="sd">    Chappell &amp; White (1992) Trans. R. Soc. Edinburgh 83, 1–26.</span>
+<span class="sd">    Whalen et al. (1987) Contrib. Mineral. Petrol. 95, 407–419.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.path</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">global_geochemistry.utils.molecular</span><span class="w"> </span><span class="kn">import</span> <span class="n">MolecularWeightCalculator</span>
+
+<span class="n">_mwc</span> <span class="o">=</span> <span class="n">MolecularWeightCalculator</span><span class="p">()</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_mw</span><span class="p">(</span><span class="n">f</span><span class="p">):</span> <span class="k">return</span> <span class="n">_mwc</span><span class="o">.</span><span class="n">molecular_weight</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+
+<span class="c1"># ===========================================================================</span>
+<span class="c1"># TAS polygon definitions (SiO2, Na2O+K2O) — Middlemost (1994)</span>
+<span class="c1"># Each entry: (vertices, volcanic_name, plutonic_name)</span>
+<span class="c1"># ===========================================================================</span>
+
+<span class="n">_TAS_POLYGONS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">41</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">41</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">33</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">33</span><span class="p">,</span><span class="mi">0</span><span class="p">]]),</span>
+     <span class="s1">&#39;&#39;</span><span class="p">,</span>                    <span class="s1">&#39;peridotite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">41</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">41</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">45</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">45</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">41</span><span class="p">,</span><span class="mi">0</span><span class="p">]]),</span>
+     <span class="s1">&#39;picrobasalt&#39;</span><span class="p">,</span>         <span class="s1">&#39;peridotgabbro&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">45</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">45</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">52</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">45</span><span class="p">,</span><span class="mi">2</span><span class="p">]]),</span>
+     <span class="s1">&#39;alkalic basalt&#39;</span><span class="p">,</span>      <span class="s1">&#39;alkalic gabbro&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">45</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">45</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">52</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">52</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">45</span><span class="p">,</span><span class="mi">0</span><span class="p">]]),</span>
+     <span class="s1">&#39;subalkalic basalt&#39;</span><span class="p">,</span>   <span class="s1">&#39;subalkalic gabbro&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">52</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">52</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">57</span><span class="p">,</span><span class="mf">5.9</span><span class="p">],[</span><span class="mi">57</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">52</span><span class="p">,</span><span class="mi">0</span><span class="p">]]),</span>
+     <span class="s1">&#39;basaltic andesite&#39;</span><span class="p">,</span>   <span class="s1">&#39;gabbroic diorite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">57</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">57</span><span class="p">,</span><span class="mf">5.9</span><span class="p">],[</span><span class="mi">63</span><span class="p">,</span><span class="mi">7</span><span class="p">],[</span><span class="mi">63</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">57</span><span class="p">,</span><span class="mi">0</span><span class="p">]]),</span>
+     <span class="s1">&#39;andesite&#39;</span><span class="p">,</span>            <span class="s1">&#39;diorite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">63</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">63</span><span class="p">,</span><span class="mi">7</span><span class="p">],[</span><span class="mi">69</span><span class="p">,</span><span class="mi">8</span><span class="p">],[</span><span class="mf">77.3</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">63</span><span class="p">,</span><span class="mi">0</span><span class="p">]]),</span>
+     <span class="s1">&#39;dacite&#39;</span><span class="p">,</span>              <span class="s1">&#39;granodiorite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">77.3</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">69</span><span class="p">,</span><span class="mi">8</span><span class="p">],[</span><span class="mf">71.8</span><span class="p">,</span><span class="mf">13.5</span><span class="p">],[</span><span class="mf">85.9</span><span class="p">,</span><span class="mf">6.8</span><span class="p">],[</span><span class="mf">87.5</span><span class="p">,</span><span class="mf">4.7</span><span class="p">],[</span><span class="mf">77.3</span><span class="p">,</span><span class="mi">0</span><span class="p">]]),</span>
+     <span class="s1">&#39;rhyolite&#39;</span><span class="p">,</span>            <span class="s1">&#39;granite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">45</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mf">49.4</span><span class="p">,</span><span class="mf">7.3</span><span class="p">],[</span><span class="mi">52</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">45</span><span class="p">,</span><span class="mi">5</span><span class="p">]]),</span>
+     <span class="s1">&#39;trachybasalt&#39;</span><span class="p">,</span>        <span class="s1">&#39;monzogabbro&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">52</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mf">49.4</span><span class="p">,</span><span class="mf">7.3</span><span class="p">],[</span><span class="mi">53</span><span class="p">,</span><span class="mf">9.3</span><span class="p">],[</span><span class="mi">57</span><span class="p">,</span><span class="mf">5.9</span><span class="p">],[</span><span class="mi">52</span><span class="p">,</span><span class="mi">5</span><span class="p">]]),</span>
+     <span class="s1">&#39;basaltic trachyandesite&#39;</span><span class="p">,</span> <span class="s1">&#39;monzodiorite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">57</span><span class="p">,</span><span class="mf">5.9</span><span class="p">],[</span><span class="mi">53</span><span class="p">,</span><span class="mf">9.3</span><span class="p">],[</span><span class="mf">57.6</span><span class="p">,</span><span class="mf">11.7</span><span class="p">],[</span><span class="mi">63</span><span class="p">,</span><span class="mi">7</span><span class="p">],[</span><span class="mi">57</span><span class="p">,</span><span class="mf">5.9</span><span class="p">]]),</span>
+     <span class="s1">&#39;trachyandesite&#39;</span><span class="p">,</span>      <span class="s1">&#39;monzonite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">63</span><span class="p">,</span><span class="mi">7</span><span class="p">],[</span><span class="mf">61.1</span><span class="p">,</span><span class="mf">8.65</span><span class="p">],[</span><span class="mf">71.8</span><span class="p">,</span><span class="mf">13.5</span><span class="p">],[</span><span class="mi">69</span><span class="p">,</span><span class="mi">8</span><span class="p">],[</span><span class="mi">63</span><span class="p">,</span><span class="mi">7</span><span class="p">]]),</span>
+     <span class="s1">&#39;trachydacite&#39;</span><span class="p">,</span>        <span class="s1">&#39;quartz monzonite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">61.1</span><span class="p">,</span><span class="mf">8.65</span><span class="p">],[</span><span class="mf">57.6</span><span class="p">,</span><span class="mf">11.7</span><span class="p">],[</span><span class="mi">61</span><span class="p">,</span><span class="mf">13.5</span><span class="p">],[</span><span class="mi">63</span><span class="p">,</span><span class="mf">16.2</span><span class="p">],[</span><span class="mf">71.8</span><span class="p">,</span><span class="mf">13.5</span><span class="p">],[</span><span class="mf">61.1</span><span class="p">,</span><span class="mf">8.65</span><span class="p">]]),</span>
+     <span class="s1">&#39;trachyte&#39;</span><span class="p">,</span>            <span class="s1">&#39;syenite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">41</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">41</span><span class="p">,</span><span class="mi">7</span><span class="p">],[</span><span class="mi">45</span><span class="p">,</span><span class="mf">9.4</span><span class="p">],[</span><span class="mf">49.4</span><span class="p">,</span><span class="mf">7.3</span><span class="p">],[</span><span class="mi">45</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">45</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">41</span><span class="p">,</span><span class="mi">3</span><span class="p">]]),</span>
+     <span class="s1">&#39;tephrite&#39;</span><span class="p">,</span>            <span class="s1">&#39;foid gabbro&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">49.4</span><span class="p">,</span><span class="mf">7.3</span><span class="p">],[</span><span class="mi">45</span><span class="p">,</span><span class="mf">9.4</span><span class="p">],[</span><span class="mf">48.4</span><span class="p">,</span><span class="mf">11.5</span><span class="p">],[</span><span class="mi">53</span><span class="p">,</span><span class="mf">9.3</span><span class="p">],[</span><span class="mf">49.4</span><span class="p">,</span><span class="mf">7.3</span><span class="p">]]),</span>
+     <span class="s1">&#39;phonotephrite&#39;</span><span class="p">,</span>       <span class="s1">&#39;foid monzodiorite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">53</span><span class="p">,</span><span class="mf">9.3</span><span class="p">],[</span><span class="mf">48.4</span><span class="p">,</span><span class="mf">11.5</span><span class="p">],[</span><span class="mf">52.5</span><span class="p">,</span><span class="mi">14</span><span class="p">],[</span><span class="mf">57.6</span><span class="p">,</span><span class="mf">11.7</span><span class="p">],[</span><span class="mi">53</span><span class="p">,</span><span class="mf">9.3</span><span class="p">]]),</span>
+     <span class="s1">&#39;tephriphonolite&#39;</span><span class="p">,</span>     <span class="s1">&#39;foid monzosyenite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">57.6</span><span class="p">,</span><span class="mf">11.7</span><span class="p">],[</span><span class="mf">52.5</span><span class="p">,</span><span class="mi">14</span><span class="p">],[</span><span class="mf">52.5</span><span class="p">,</span><span class="mi">18</span><span class="p">],[</span><span class="mi">57</span><span class="p">,</span><span class="mi">18</span><span class="p">],[</span><span class="mi">63</span><span class="p">,</span><span class="mf">16.2</span><span class="p">],[</span><span class="mi">61</span><span class="p">,</span><span class="mf">13.5</span><span class="p">],[</span><span class="mf">57.6</span><span class="p">,</span><span class="mf">11.7</span><span class="p">]]),</span>
+     <span class="s1">&#39;phonolite&#39;</span><span class="p">,</span>           <span class="s1">&#39;foid syenite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">33</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="mi">33</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">41</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">41</span><span class="p">,</span><span class="mi">7</span><span class="p">],[</span><span class="mi">33</span><span class="p">,</span><span class="mi">10</span><span class="p">]]),</span>
+     <span class="s1">&#39;ultramafic foidite&#39;</span><span class="p">,</span>  <span class="s1">&#39;ultramafic foidolite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">41</span><span class="p">,</span><span class="mi">7</span><span class="p">],[</span><span class="mi">33</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="mi">37</span><span class="p">,</span><span class="mi">14</span><span class="p">],[</span><span class="mi">45</span><span class="p">,</span><span class="mf">9.4</span><span class="p">],[</span><span class="mi">41</span><span class="p">,</span><span class="mi">7</span><span class="p">]]),</span>
+     <span class="s1">&#39;mafic foidite&#39;</span><span class="p">,</span>       <span class="s1">&#39;mafic foidolite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">37</span><span class="p">,</span><span class="mi">14</span><span class="p">],[</span><span class="mf">52.5</span><span class="p">,</span><span class="mi">18</span><span class="p">],[</span><span class="mf">52.5</span><span class="p">,</span><span class="mi">14</span><span class="p">],[</span><span class="mf">48.4</span><span class="p">,</span><span class="mf">11.5</span><span class="p">],[</span><span class="mi">45</span><span class="p">,</span><span class="mf">9.4</span><span class="p">],[</span><span class="mi">37</span><span class="p">,</span><span class="mi">14</span><span class="p">]]),</span>
+     <span class="s1">&#39;intermediate foidite&#39;</span><span class="p">,</span> <span class="s1">&#39;intermediate foidolite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">77.3</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mf">87.5</span><span class="p">,</span><span class="mf">4.7</span><span class="p">],[</span><span class="mf">85.9</span><span class="p">,</span><span class="mf">6.8</span><span class="p">],[</span><span class="mf">93.2</span><span class="p">,</span><span class="mf">6.8</span><span class="p">],[</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mf">77.3</span><span class="p">,</span><span class="mi">0</span><span class="p">]]),</span>
+     <span class="s1">&#39;silexite&#39;</span><span class="p">,</span>            <span class="s1">&#39;quartzolite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">93.2</span><span class="p">,</span><span class="mf">6.8</span><span class="p">],[</span><span class="mf">85.9</span><span class="p">,</span><span class="mf">6.8</span><span class="p">],[</span><span class="mf">71.8</span><span class="p">,</span><span class="mf">13.5</span><span class="p">],[</span><span class="mi">63</span><span class="p">,</span><span class="mf">16.2</span><span class="p">],[</span><span class="mi">57</span><span class="p">,</span><span class="mi">18</span><span class="p">],[</span><span class="mf">52.5</span><span class="p">,</span><span class="mi">18</span><span class="p">],</span>
+               <span class="p">[</span><span class="mi">37</span><span class="p">,</span><span class="mi">14</span><span class="p">],[</span><span class="mi">37</span><span class="p">,</span><span class="mi">63</span><span class="p">],[</span><span class="mf">93.2</span><span class="p">,</span><span class="mf">6.8</span><span class="p">]]),</span>
+     <span class="s1">&#39;ultra-high alkali volcanic&#39;</span><span class="p">,</span> <span class="s1">&#39;ultra-high alkali plutonic&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">_TAS_PATHS</span> <span class="o">=</span> <span class="p">[</span><span class="n">Path</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">_TAS_POLYGONS</span><span class="p">]</span>
+
+
+<span class="c1"># ===========================================================================</span>
+<span class="c1"># Carbonatite ternary polygons — CaO, MgO, FeO+Fe2O3+MnO (load_carbgons.m)</span>
+<span class="c1"># Vertices in fractional (C, M) space after normalising C+M+F=1.</span>
+<span class="c1"># ===========================================================================</span>
+
+<span class="n">_CARB_POLYGONS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]]),</span>
+     <span class="s1">&#39;calciocarbonatite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]]),</span>
+     <span class="s1">&#39;magnesiocarbonatite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]]),</span>
+     <span class="s1">&#39;ferrocarbonatite&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+<span class="n">_CARB_PATHS</span> <span class="o">=</span> <span class="p">[</span><span class="n">Path</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">_CARB_POLYGONS</span><span class="p">]</span>
+
+
+<span class="c1"># ===========================================================================</span>
+<span class="c1"># QAP polygon definitions — [Q, A, P, F] as percent of Q+A+P+F</span>
+<span class="c1"># F=0 polygons → tested on Q-A-P face; Q=0 polygons → tested on A-P-F face.</span>
+<span class="c1"># Source: load_qapgons.m (Le Maitre 2002)</span>
+<span class="c1"># ===========================================================================</span>
+
+<span class="n">_QAP_POLYGONS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># Q-A-P face</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">90</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">90</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">]]),</span>
+     <span class="s1">&#39;quartzolite&#39;</span><span class="p">,</span>          <span class="s1">&#39;silexite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">90</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">90</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">60</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">60</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]]),</span>
+     <span class="s1">&#39;quartz-rich granitoid&#39;</span><span class="p">,</span> <span class="s1">&#39;quartz-rich rhyolite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">60</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">60</span><span class="p">,</span><span class="mi">36</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">20</span><span class="p">,</span><span class="mi">72</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">20</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]]),</span>
+     <span class="s1">&#39;alkali feldspar granite&#39;</span><span class="p">,</span> <span class="s1">&#39;alkali feldspar rhyolite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">60</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">36</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">20</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">72</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">20</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">52</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">60</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="mi">0</span><span class="p">]]),</span>
+     <span class="s1">&#39;granodiorite&#39;</span><span class="p">,</span>          <span class="s1">&#39;dacite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">60</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">20</span><span class="p">,</span><span class="mi">52</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">20</span><span class="p">,</span><span class="mi">72</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">60</span><span class="p">,</span><span class="mi">36</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">]]),</span>
+     <span class="s1">&#39;syenogranite&#39;</span><span class="p">,</span>          <span class="s1">&#39;rhyolite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">60</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">20</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">52</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">20</span><span class="p">,</span><span class="mi">52</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">60</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">0</span><span class="p">]]),</span>
+     <span class="s1">&#39;monzogranite&#39;</span><span class="p">,</span>          <span class="s1">&#39;rhyolite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">60</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">60</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">36</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">20</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">72</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">20</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">0</span><span class="p">]]),</span>
+     <span class="s1">&#39;tonalite&#39;</span><span class="p">,</span>              <span class="s1">&#39;dacite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">20</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mi">95</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mf">85.5</span><span class="p">,</span><span class="mf">9.5</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">20</span><span class="p">,</span><span class="mi">72</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">]]),</span>
+     <span class="s1">&#39;alkali feldspar quartz syenite&#39;</span><span class="p">,</span> <span class="s1">&#39;alkali feldspar quartz trachyte&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">20</span><span class="p">,</span><span class="mi">72</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mf">85.5</span><span class="p">,</span><span class="mf">9.5</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mf">61.75</span><span class="p">,</span><span class="mf">33.25</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">20</span><span class="p">,</span><span class="mi">52</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">0</span><span class="p">]]),</span>
+     <span class="s1">&#39;quartz syenite&#39;</span><span class="p">,</span>        <span class="s1">&#39;quartz trachyte&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">20</span><span class="p">,</span><span class="mi">52</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mf">61.75</span><span class="p">,</span><span class="mf">33.25</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mf">33.25</span><span class="p">,</span><span class="mf">61.75</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">20</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">52</span><span class="p">,</span><span class="mi">0</span><span class="p">]]),</span>
+     <span class="s1">&#39;quartz monzonite&#39;</span><span class="p">,</span>      <span class="s1">&#39;quartz latite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">20</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">52</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mf">33.25</span><span class="p">,</span><span class="mf">61.75</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mf">9.5</span><span class="p">,</span><span class="mf">85.5</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">20</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">72</span><span class="p">,</span><span class="mi">0</span><span class="p">]]),</span>
+     <span class="s1">&#39;quartz monzodiorite&#39;</span><span class="p">,</span>   <span class="s1">&#39;andesite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">20</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">72</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mf">9.5</span><span class="p">,</span><span class="mf">85.5</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">95</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">20</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">0</span><span class="p">]]),</span>
+     <span class="s1">&#39;quartz diorite&#39;</span><span class="p">,</span>        <span class="s1">&#39;andesite&#39;</span><span class="p">),</span>
+    <span class="c1"># A-P only (Q=0, F=0)</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span><span class="mi">95</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mf">85.5</span><span class="p">,</span><span class="mf">9.5</span><span class="p">,</span><span class="mi">0</span><span class="p">]]),</span>
+     <span class="s1">&#39;alkali feldspar syenite&#39;</span><span class="p">,</span> <span class="s1">&#39;alkali feldspar trachyte&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span><span class="mf">85.5</span><span class="p">,</span><span class="mf">9.5</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mf">61.75</span><span class="p">,</span><span class="mf">33.25</span><span class="p">,</span><span class="mi">0</span><span class="p">]]),</span>
+     <span class="s1">&#39;syenite&#39;</span><span class="p">,</span>                <span class="s1">&#39;trachyte&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span><span class="mf">61.75</span><span class="p">,</span><span class="mf">33.25</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mf">33.25</span><span class="p">,</span><span class="mf">61.75</span><span class="p">,</span><span class="mi">0</span><span class="p">]]),</span>
+     <span class="s1">&#39;monzonite&#39;</span><span class="p">,</span>              <span class="s1">&#39;latite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span><span class="mf">33.25</span><span class="p">,</span><span class="mf">61.75</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mf">9.5</span><span class="p">,</span><span class="mf">85.5</span><span class="p">,</span><span class="mi">0</span><span class="p">]]),</span>
+     <span class="s1">&#39;monzodiorite&#39;</span><span class="p">,</span>           <span class="s1">&#39;andesite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span><span class="mf">9.5</span><span class="p">,</span><span class="mf">85.5</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">95</span><span class="p">,</span><span class="mi">0</span><span class="p">]]),</span>
+     <span class="s1">&#39;diorite&#39;</span><span class="p">,</span>                <span class="s1">&#39;andesite&#39;</span><span class="p">),</span>
+    <span class="c1"># A-P-F face (Q=0)</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">90</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">90</span><span class="p">]]),</span>
+     <span class="s1">&#39;foidolite&#39;</span><span class="p">,</span>              <span class="s1">&#39;foidite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">90</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">60</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">60</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">90</span><span class="p">]]),</span>
+     <span class="s1">&#39;foidolite&#39;</span><span class="p">,</span>              <span class="s1">&#39;phonolitic foidite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">90</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">60</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">60</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">90</span><span class="p">]]),</span>
+     <span class="s1">&#39;foidolite&#39;</span><span class="p">,</span>              <span class="s1">&#39;tephritic foidite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">60</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">36</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">60</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">81</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">]]),</span>
+     <span class="s1">&#39;foid syenite&#39;</span><span class="p">,</span>           <span class="s1">&#39;phonolite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">81</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">]]),</span>
+     <span class="s1">&#39;foid-bearing alkali feldspar syenite&#39;</span><span class="p">,</span> <span class="s1">&#39;foid-bearing alkali feldspar trachyte&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">81</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mf">58.5</span><span class="p">,</span><span class="mf">31.5</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">0</span><span class="p">]]),</span>
+     <span class="s1">&#39;foid-bearing syenite&#39;</span><span class="p">,</span>   <span class="s1">&#39;foid-bearing trachyte&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mf">31.5</span><span class="p">,</span><span class="mf">58.5</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mf">58.5</span><span class="p">,</span><span class="mf">31.5</span><span class="p">,</span><span class="mi">10</span><span class="p">]]),</span>
+     <span class="s1">&#39;foid-bearing monzonite&#39;</span><span class="p">,</span> <span class="s1">&#39;foid-bearing latite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">81</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mf">31.5</span><span class="p">,</span><span class="mf">58.5</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">0</span><span class="p">]]),</span>
+     <span class="s1">&#39;foid-bearing monzodiorite&#39;</span><span class="p">,</span> <span class="s1">&#39;andesite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">81</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">10</span><span class="p">]]),</span>
+     <span class="s1">&#39;foid-bearing diorite&#39;</span><span class="p">,</span>   <span class="s1">&#39;andesite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">60</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">36</span><span class="p">,</span><span class="mi">60</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">81</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">10</span><span class="p">]]),</span>
+     <span class="s1">&#39;foid diorite&#39;</span><span class="p">,</span>           <span class="s1">&#39;tephrite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">81</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">36</span><span class="p">,</span><span class="mi">60</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">60</span><span class="p">]]),</span>
+     <span class="s1">&#39;foid monzodiorite&#39;</span><span class="p">,</span>      <span class="s1">&#39;phonolitic tephrite&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">81</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">36</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">60</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">60</span><span class="p">]]),</span>
+     <span class="s1">&#39;foid monzosyenite&#39;</span><span class="p">,</span>      <span class="s1">&#39;tephritic phonolite&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="c1"># Pre-build QAP paths projected onto the appropriate ternary face</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_qap_path</span><span class="p">(</span><span class="n">verts</span><span class="p">,</span> <span class="n">face</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="n">invalid</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">divide</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">face</span> <span class="o">==</span> <span class="s1">&#39;QAP&#39;</span><span class="p">:</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">verts</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">verts</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">verts</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">verts</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">t</span>   <span class="c1"># A fraction</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">verts</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">t</span>   <span class="c1"># Q fraction</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">verts</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">verts</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">verts</span><span class="p">[:,</span><span class="mi">3</span><span class="p">]</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">verts</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">t</span>   <span class="c1"># A fraction</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">verts</span><span class="p">[:,</span><span class="mi">3</span><span class="p">]</span> <span class="o">/</span> <span class="n">t</span>   <span class="c1"># F fraction</span>
+    <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]))</span>
+
+<span class="n">_QAP_DATA</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">_v</span><span class="p">,</span> <span class="n">_pn</span><span class="p">,</span> <span class="n">_vn</span> <span class="ow">in</span> <span class="n">_QAP_POLYGONS</span><span class="p">:</span>
+    <span class="n">_face</span> <span class="o">=</span> <span class="s1">&#39;APF&#39;</span> <span class="k">if</span> <span class="n">_v</span><span class="p">[:,</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mf">0.5</span> <span class="k">else</span> <span class="s1">&#39;QAP&#39;</span>
+    <span class="n">_QAP_DATA</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">_face</span><span class="p">,</span> <span class="n">_qap_path</span><span class="p">(</span><span class="n">_v</span><span class="p">,</span> <span class="n">_face</span><span class="p">),</span> <span class="n">_pn</span><span class="p">,</span> <span class="n">_vn</span><span class="p">))</span>
+
+
+<span class="c1"># ===========================================================================</span>
+<span class="c1"># TAS classification</span>
+<span class="c1"># ===========================================================================</span>
+
+<div class="viewcode-block" id="tas">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.geochem.classification.igneous.html#global_geochemistry.geochem.classification.igneous.tas">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">tas</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">rock_category</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Classify igneous rocks using the Total Alkali–Silica diagram.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : pandas.DataFrame</span>
+<span class="sd">        Must contain &#39;sio2&#39;, &#39;na2o&#39;, &#39;k2o&#39;.  Optional: &#39;mgo&#39;, &#39;feo_tot&#39;,</span>
+<span class="sd">        &#39;tio2&#39; (needed for high-Mg and ultramafic overrides).</span>
+<span class="sd">    rock_category : array-like of str, optional</span>
+<span class="sd">        Per-sample category: &#39;volcanic&#39;, &#39;plutonic&#39;, or other/NaN.</span>
+<span class="sd">        When None all samples receive volcanic names.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.Series</span>
+<span class="sd">        Rock names; empty string where unclassifiable.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">names</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+
+    <span class="n">sio2</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;sio2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">na2o</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;na2o&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="k">if</span> <span class="s1">&#39;na2o&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">k2o</span>  <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;k2o&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>  <span class="k">if</span> <span class="s1">&#39;k2o&#39;</span>  <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">mgo</span>  <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;mgo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>  <span class="k">if</span> <span class="s1">&#39;mgo&#39;</span>  <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="n">feo</span>  <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;feo_tot&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="k">if</span> <span class="s1">&#39;feo_tot&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="n">tio2</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;tio2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="k">if</span> <span class="s1">&#39;tio2&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+    <span class="n">na2o</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">na2o</span><span class="p">),</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">na2o</span><span class="p">)</span>
+    <span class="n">k2o</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">k2o</span><span class="p">),</span>  <span class="mf">0.0</span><span class="p">,</span> <span class="n">k2o</span><span class="p">)</span>
+    <span class="n">ta</span>   <span class="o">=</span> <span class="n">na2o</span> <span class="o">+</span> <span class="n">k2o</span>
+
+    <span class="n">valid</span> <span class="o">=</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">sio2</span><span class="p">)</span>
+    <span class="n">pts_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">sio2</span><span class="p">[</span><span class="n">valid</span><span class="p">],</span> <span class="n">ta</span><span class="p">[</span><span class="n">valid</span><span class="p">]])</span>
+
+    <span class="n">is_volcanic</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+    <span class="n">is_plutonic</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">rock_category</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">is_volcanic</span> <span class="o">=</span> <span class="n">valid</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">rc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">rock_category</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+        <span class="n">is_volcanic</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">rc</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;volcanic&#39;</span><span class="p">])</span>
+        <span class="n">is_plutonic</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">rc</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;plutonic&#39;</span><span class="p">])</span>
+
+    <span class="k">for</span> <span class="n">path</span><span class="p">,</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">volc_name</span><span class="p">,</span> <span class="n">plut_name</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">_TAS_PATHS</span><span class="p">,</span> <span class="n">_TAS_POLYGONS</span><span class="p">):</span>
+        <span class="n">inside</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">pts_v</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="n">inside</span><span class="p">[</span><span class="n">valid</span><span class="p">]</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">contains_points</span><span class="p">(</span><span class="n">pts_v</span><span class="p">)</span>
+        <span class="n">names</span><span class="p">[</span><span class="n">inside</span> <span class="o">&amp;</span> <span class="n">is_volcanic</span><span class="p">]</span> <span class="o">=</span> <span class="n">volc_name</span>
+        <span class="n">names</span><span class="p">[</span><span class="n">inside</span> <span class="o">&amp;</span> <span class="n">is_plutonic</span><span class="p">]</span> <span class="o">=</span> <span class="n">plut_name</span>
+
+    <span class="n">mafic</span> <span class="o">=</span> <span class="n">valid</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sio2</span> <span class="o">&gt;=</span> <span class="mi">33</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sio2</span> <span class="o">&lt;</span> <span class="mi">65</span><span class="p">)</span>
+
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">mafic</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sio2</span> <span class="o">&gt;=</span> <span class="mi">52</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">_safe_ge</span><span class="p">(</span><span class="n">mgo</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">_safe_lt</span><span class="p">(</span><span class="n">tio2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">names</span><span class="p">[</span><span class="n">mask</span> <span class="o">&amp;</span> <span class="n">is_volcanic</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;boninite&#39;</span>
+    <span class="n">names</span><span class="p">[</span><span class="n">mask</span> <span class="o">&amp;</span> <span class="n">is_plutonic</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;sanukitoid&#39;</span>
+
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">mafic</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sio2</span> <span class="o">&lt;</span> <span class="mi">52</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">_safe_ge</span><span class="p">(</span><span class="n">mgo</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ta</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">names</span><span class="p">[</span><span class="n">mask</span> <span class="o">&amp;</span> <span class="n">_safe_ge</span><span class="p">(</span><span class="n">feo</span><span class="p">,</span> <span class="mi">13</span><span class="p">)]</span> <span class="o">=</span> <span class="s1">&#39;ferropicrite&#39;</span>
+    <span class="n">names</span><span class="p">[</span><span class="n">mask</span> <span class="o">&amp;</span> <span class="n">_safe_lt</span><span class="p">(</span><span class="n">feo</span><span class="p">,</span> <span class="mi">13</span><span class="p">)]</span> <span class="o">=</span> <span class="s1">&#39;picrite&#39;</span>
+
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">mafic</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sio2</span> <span class="o">&lt;</span> <span class="mi">52</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">_safe_ge</span><span class="p">(</span><span class="n">mgo</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ta</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">names</span><span class="p">[</span><span class="n">mask</span> <span class="o">&amp;</span> <span class="n">_safe_ge</span><span class="p">(</span><span class="n">feo</span><span class="p">,</span> <span class="mi">13</span><span class="p">)]</span> <span class="o">=</span> <span class="s1">&#39;alkali ferropicrite&#39;</span>
+    <span class="n">names</span><span class="p">[</span><span class="n">mask</span> <span class="o">&amp;</span> <span class="n">_safe_lt</span><span class="p">(</span><span class="n">feo</span><span class="p">,</span> <span class="mi">13</span><span class="p">)]</span> <span class="o">=</span> <span class="s1">&#39;alkali picrite&#39;</span>
+
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">mafic</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sio2</span> <span class="o">&lt;</span> <span class="mi">52</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">_safe_ge</span><span class="p">(</span><span class="n">mgo</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">_safe_gt</span><span class="p">(</span><span class="n">tio2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ta</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">names</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;meimechite&#39;</span>
+
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">mafic</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sio2</span> <span class="o">&lt;</span> <span class="mi">45</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">_safe_ge</span><span class="p">(</span><span class="n">mgo</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">_safe_lt</span><span class="p">(</span><span class="n">tio2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ta</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">names</span><span class="p">[</span><span class="n">mask</span> <span class="o">&amp;</span> <span class="n">is_volcanic</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;komatiite&#39;</span>
+    <span class="n">names</span><span class="p">[</span><span class="n">mask</span> <span class="o">&amp;</span> <span class="n">is_plutonic</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;intrusive komatiite&#39;</span>
+
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">mafic</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sio2</span> <span class="o">&gt;=</span> <span class="mi">45</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sio2</span> <span class="o">&lt;</span> <span class="mi">52</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">_safe_ge</span><span class="p">(</span><span class="n">mgo</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">_safe_lt</span><span class="p">(</span><span class="n">tio2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ta</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">names</span><span class="p">[</span><span class="n">mask</span> <span class="o">&amp;</span> <span class="n">is_volcanic</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;basaltic komatiite&#39;</span>
+    <span class="n">names</span><span class="p">[</span><span class="n">mask</span> <span class="o">&amp;</span> <span class="n">is_plutonic</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;gabbroic komatiite&#39;</span>
+
+    <span class="c1"># Plutonic ultramafic subdivision by TiO2 (Reverdatto et al. 2008)</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">is_plutonic</span> <span class="o">&amp;</span> <span class="n">valid</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sio2</span> <span class="o">&gt;=</span> <span class="mi">33</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sio2</span> <span class="o">&lt;</span> <span class="mi">45</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">_safe_gt</span><span class="p">(</span><span class="n">tio2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">_safe_le</span><span class="p">(</span><span class="n">tio2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+    <span class="n">names</span><span class="p">[</span><span class="n">mask</span> <span class="o">&amp;</span> <span class="n">_safe_ge</span><span class="p">(</span><span class="n">mgo</span><span class="p">,</span> <span class="mi">35</span><span class="p">)]</span>                      <span class="o">=</span> <span class="s1">&#39;mantle peridotite&#39;</span>
+    <span class="n">names</span><span class="p">[</span><span class="n">mask</span> <span class="o">&amp;</span> <span class="n">_safe_ge</span><span class="p">(</span><span class="n">mgo</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">_safe_lt</span><span class="p">(</span><span class="n">mgo</span><span class="p">,</span> <span class="mi">35</span><span class="p">)]</span> <span class="o">=</span> <span class="s1">&#39;mantle pyroxenite&#39;</span>
+
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span></div>
+
+
+
+<span class="c1"># ===========================================================================</span>
+<span class="c1"># Carbonatite classification</span>
+<span class="c1"># ===========================================================================</span>
+
+<div class="viewcode-block" id="carbclass">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.geochem.classification.igneous.html#global_geochemistry.geochem.classification.igneous.carbclass">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">carbclass</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Classify carbonatites on the CaO–MgO–(FeO+Fe2O3+MnO) ternary.</span>
+
+<span class="sd">    A sample is treated as a carbonatite when any of:</span>
+<span class="sd">    - CO2 &gt;= 20 wt% (if column present)</span>
+<span class="sd">    - rock_name contains &#39;carbonatite&#39; (case-insensitive)</span>
+<span class="sd">    - SiO2 &lt; 33 wt%</span>
+
+<span class="sd">    Samples with 20 &lt; SiO2 &lt; 33 receive a &#39;silico-&#39; prefix.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : pandas.DataFrame</span>
+<span class="sd">        Must contain &#39;sio2&#39;, &#39;cao&#39;, &#39;mgo&#39;, &#39;feo_tot&#39;.  Optional: &#39;mno&#39;,</span>
+<span class="sd">        &#39;fe2_fe_tot&#39; (Fe²⁺/ΣFe molar ratio), &#39;co2&#39;, &#39;rock_name&#39;.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.Series</span>
+<span class="sd">        Carbonatite sub-type name; empty string for non-carbonatite samples.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">names</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+
+    <span class="n">sio2</span>    <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;sio2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">cao</span>     <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;cao&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>  <span class="k">if</span> <span class="s1">&#39;cao&#39;</span>     <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">mgo</span>     <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;mgo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>  <span class="k">if</span> <span class="s1">&#39;mgo&#39;</span>     <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">feo_tot</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;feo_tot&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="k">if</span> <span class="s1">&#39;feo_tot&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">mno</span>     <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;mno&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>  <span class="k">if</span> <span class="s1">&#39;mno&#39;</span>     <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">co2</span>     <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;co2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>  <span class="k">if</span> <span class="s1">&#39;co2&#39;</span>     <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="c1"># Iron proxy: 80% FeO + 20% Fe2O3 equivalent + MnO (default);</span>
+    <span class="c1"># uses measured Fe ratio when available</span>
+    <span class="n">_fe_cf</span> <span class="o">=</span> <span class="n">_mw</span><span class="p">(</span><span class="s1">&#39;Fe2O3&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">_mw</span><span class="p">(</span><span class="s1">&#39;FeO&#39;</span><span class="p">))</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="mf">0.8</span> <span class="o">*</span> <span class="n">feo_tot</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="n">feo_tot</span> <span class="o">*</span> <span class="n">_fe_cf</span> <span class="o">+</span> <span class="n">mno</span>
+    <span class="k">if</span> <span class="s1">&#39;fe2_fe_tot&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">fe2</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;fe2_fe_tot&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+        <span class="n">has_ratio</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">fe2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">fe2</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">F</span><span class="p">[</span><span class="n">has_ratio</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">fe2</span><span class="p">[</span><span class="n">has_ratio</span><span class="p">]</span> <span class="o">*</span> <span class="n">feo_tot</span><span class="p">[</span><span class="n">has_ratio</span><span class="p">]</span> <span class="o">+</span>
+                        <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">fe2</span><span class="p">[</span><span class="n">has_ratio</span><span class="p">])</span> <span class="o">*</span> <span class="n">feo_tot</span><span class="p">[</span><span class="n">has_ratio</span><span class="p">]</span> <span class="o">*</span> <span class="n">_fe_cf</span> <span class="o">+</span>
+                        <span class="n">mno</span><span class="p">[</span><span class="n">has_ratio</span><span class="p">])</span>
+
+    <span class="c1"># Carbonatite detection</span>
+    <span class="n">is_carb</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">sio2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">33</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s1">&#39;co2&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">is_carb</span> <span class="o">=</span> <span class="n">is_carb</span> <span class="o">|</span> <span class="p">(</span><span class="n">co2</span> <span class="o">&gt;=</span> <span class="mi">20</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s1">&#39;rock_name&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">rn</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;rock_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">is_carb</span> <span class="o">=</span> <span class="n">is_carb</span> <span class="o">|</span> <span class="n">rn</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;carbonatite&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+    <span class="n">names</span><span class="p">[</span><span class="n">is_carb</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;carbonatite&#39;</span>
+
+    <span class="n">silico</span> <span class="o">=</span> <span class="n">is_carb</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sio2</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sio2</span> <span class="o">&lt;</span> <span class="mi">33</span><span class="p">)</span>
+    <span class="n">names</span><span class="p">[</span><span class="n">silico</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;silicocarbonatite&#39;</span>
+
+    <span class="c1"># Sub-classify using CaO–MgO–F ternary</span>
+    <span class="n">CMF</span> <span class="o">=</span> <span class="n">cao</span> <span class="o">+</span> <span class="n">mgo</span> <span class="o">+</span> <span class="n">F</span>
+    <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="n">invalid</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">divide</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">):</span>
+        <span class="n">C_frac</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">CMF</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">cao</span> <span class="o">/</span> <span class="n">CMF</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+        <span class="n">M_frac</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">CMF</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">mgo</span> <span class="o">/</span> <span class="n">CMF</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+    <span class="n">ternary_valid</span> <span class="o">=</span> <span class="n">is_carb</span> <span class="o">&amp;</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">C_frac</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">M_frac</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ternary_valid</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+        <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">C_frac</span><span class="p">[</span><span class="n">ternary_valid</span><span class="p">],</span> <span class="n">M_frac</span><span class="p">[</span><span class="n">ternary_valid</span><span class="p">]])</span>
+        <span class="k">for</span> <span class="n">path</span><span class="p">,</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">_CARB_PATHS</span><span class="p">,</span> <span class="n">_CARB_POLYGONS</span><span class="p">):</span>
+            <span class="n">inside</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+            <span class="n">inside</span><span class="p">[</span><span class="n">ternary_valid</span><span class="p">]</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">contains_points</span><span class="p">(</span><span class="n">pts</span><span class="p">)</span>
+            <span class="n">names</span><span class="p">[</span><span class="n">inside</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">silico</span><span class="p">]</span> <span class="o">=</span> <span class="n">label</span>
+            <span class="n">names</span><span class="p">[</span><span class="n">inside</span> <span class="o">&amp;</span>  <span class="n">silico</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;silico-&#39;</span> <span class="o">+</span> <span class="n">label</span>
+
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span></div>
+
+
+
+<span class="c1"># ===========================================================================</span>
+<span class="c1"># QAP normative classification</span>
+<span class="c1"># ===========================================================================</span>
+
+<div class="viewcode-block" id="qap">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.geochem.classification.igneous.html#global_geochemistry.geochem.classification.igneous.qap">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">qap</span><span class="p">(</span><span class="n">cipw_result</span><span class="p">,</span> <span class="n">is_volcanic</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Assign QAP rock names from CIPW normative mineral proportions.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cipw_result : pandas.DataFrame</span>
+<span class="sd">        Output of :func:`src.classification.cipw.cipwnorm`.</span>
+<span class="sd">    is_volcanic : array-like of bool, optional</span>
+<span class="sd">        True → volcanic name.  Defaults to False (plutonic names).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.Series</span>
+<span class="sd">        QAP rock name; empty string where classification is not possible.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">cipw_result</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">is_volcanic</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">is_volcanic</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">is_volcanic</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">is_volcanic</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_col</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+        <span class="n">arr</span> <span class="o">=</span> <span class="n">cipw_result</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">cipw_result</span><span class="o">.</span><span class="n">columns</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan_to_num</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">nan</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+    <span class="n">Q</span> <span class="o">=</span> <span class="n">_col</span><span class="p">(</span><span class="s1">&#39;cipw_quartz&#39;</span><span class="p">)</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="p">(</span><span class="n">_col</span><span class="p">(</span><span class="s1">&#39;cipw_orthoclase&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">_col</span><span class="p">(</span><span class="s1">&#39;cipw_potassium_ms&#39;</span><span class="p">)</span> <span class="o">+</span>
+         <span class="n">_col</span><span class="p">(</span><span class="s1">&#39;cipw_kaliophilite&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">_col</span><span class="p">(</span><span class="s1">&#39;cipw_sodium_ms&#39;</span><span class="p">))</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="n">_col</span><span class="p">(</span><span class="s1">&#39;cipw_albite&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">_col</span><span class="p">(</span><span class="s1">&#39;cipw_anorthite&#39;</span><span class="p">)</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="n">_col</span><span class="p">(</span><span class="s1">&#39;cipw_nepheline&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">_col</span><span class="p">(</span><span class="s1">&#39;cipw_leucite&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">_col</span><span class="p">(</span><span class="s1">&#39;cipw_kaliophilite&#39;</span><span class="p">)</span>
+
+    <span class="n">total</span> <span class="o">=</span> <span class="n">Q</span> <span class="o">+</span> <span class="n">A</span> <span class="o">+</span> <span class="n">P</span> <span class="o">+</span> <span class="n">F</span>
+    <span class="n">valid</span> <span class="o">=</span> <span class="n">total</span> <span class="o">&gt;</span> <span class="mi">0</span>
+
+    <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="n">invalid</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">divide</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">):</span>
+        <span class="n">Qn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">valid</span><span class="p">,</span> <span class="n">Q</span> <span class="o">/</span> <span class="n">total</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+        <span class="n">An</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">valid</span><span class="p">,</span> <span class="n">A</span> <span class="o">/</span> <span class="n">total</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+        <span class="n">Fn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">valid</span><span class="p">,</span> <span class="n">F</span> <span class="o">/</span> <span class="n">total</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+    <span class="n">use_apf</span> <span class="o">=</span> <span class="n">valid</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">Fn</span> <span class="o">&gt;</span> <span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">use_qap</span> <span class="o">=</span> <span class="n">valid</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">use_apf</span>
+
+    <span class="n">pts_qap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">An</span><span class="p">,</span> <span class="n">Qn</span><span class="p">])</span>
+    <span class="n">pts_apf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">An</span><span class="p">,</span> <span class="n">Fn</span><span class="p">])</span>
+
+    <span class="n">names</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">face</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">plut_name</span><span class="p">,</span> <span class="n">volc_name</span> <span class="ow">in</span> <span class="n">_QAP_DATA</span><span class="p">:</span>
+        <span class="n">use</span> <span class="o">=</span> <span class="n">use_apf</span> <span class="k">if</span> <span class="n">face</span> <span class="o">==</span> <span class="s1">&#39;APF&#39;</span> <span class="k">else</span> <span class="n">use_qap</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">use</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+            <span class="k">continue</span>
+        <span class="n">inside</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+        <span class="n">inside</span><span class="p">[</span><span class="n">use</span><span class="p">]</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">contains_points</span><span class="p">(</span><span class="n">pts_apf</span><span class="p">[</span><span class="n">use</span><span class="p">]</span> <span class="k">if</span> <span class="n">face</span> <span class="o">==</span> <span class="s1">&#39;APF&#39;</span> <span class="k">else</span> <span class="n">pts_qap</span><span class="p">[</span><span class="n">use</span><span class="p">])</span>
+        <span class="n">names</span><span class="p">[</span><span class="n">inside</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">is_volcanic</span><span class="p">]</span> <span class="o">=</span> <span class="n">plut_name</span>
+        <span class="n">names</span><span class="p">[</span><span class="n">inside</span> <span class="o">&amp;</span>  <span class="n">is_volcanic</span><span class="p">]</span> <span class="o">=</span> <span class="n">volc_name</span>
+
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">cipw_result</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span></div>
+
+
+
+<span class="c1"># ===========================================================================</span>
+<span class="c1"># Granite geochemical classification</span>
+<span class="c1"># ===========================================================================</span>
+
+<div class="viewcode-block" id="graniteclass">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.geochem.classification.igneous.html#global_geochemistry.geochem.classification.igneous.graniteclass">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">graniteclass</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Geochemical classification of granitoids.</span>
+
+<span class="sd">    Implements:</span>
+<span class="sd">    - Frost et al. (2001) three-axis scheme:</span>
+<span class="sd">        1. ferroan / magnesian (Fe-number vs SiO2 boundary)</span>
+<span class="sd">        2. alkalic / alkali-calcic / calc-alkalic / calcic (MALI vs SiO2)</span>
+<span class="sd">        3. peraluminous / metaluminous / peralkaline (ASI)</span>
+<span class="sd">    - SIA-type (S / I / A) classification:</span>
+<span class="sd">        A-type: agpaitic index (Al/(Na+K) molar) &lt; 1/0.85 AND</span>
+<span class="sd">                (ferroan below 70% SiO2, OR above 70% SiO2)</span>
+<span class="sd">        S-type: ASI &gt;= 1.1</span>
+<span class="sd">        I-type: remainder</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : pandas.DataFrame</span>
+<span class="sd">        Requires columns computed by :func:`src.classification.indices.geochem_index`:</span>
+<span class="sd">        &#39;Fe_number&#39;, &#39;MALI&#39;, &#39;ASI&#39;, &#39;sio2&#39;, &#39;al2o3&#39;, &#39;na2o&#39;, &#39;k2o&#39;.</span>
+<span class="sd">        Trace elements &#39;f_ppm&#39;, &#39;zr_ppm&#39;, &#39;nb_ppm&#39;, &#39;ce_ppm&#39;, &#39;y_ppm&#39;,</span>
+<span class="sd">        &#39;ga_ppm&#39; improve A-type detection when available.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict of pandas.Series</span>
+<span class="sd">        Keys: &#39;sia&#39;, &#39;fe_mg&#39;, &#39;alkali_lime&#39;, &#39;alumina_sat&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">col</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+    <span class="n">sio2</span>    <span class="o">=</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;sio2&#39;</span><span class="p">)</span>
+    <span class="n">al2o3</span>   <span class="o">=</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;al2o3&#39;</span><span class="p">)</span>
+    <span class="n">na2o</span>    <span class="o">=</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;na2o&#39;</span><span class="p">)</span>
+    <span class="n">k2o</span>     <span class="o">=</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;k2o&#39;</span><span class="p">)</span>
+    <span class="n">fe_num</span>  <span class="o">=</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;Fe_number&#39;</span><span class="p">)</span>
+    <span class="n">mali</span>    <span class="o">=</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;MALI&#39;</span><span class="p">)</span>
+    <span class="n">asi</span>     <span class="o">=</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;ASI&#39;</span><span class="p">)</span>
+
+    <span class="c1"># ---- 1. Frost et al. (2001): ferroan / magnesian ----</span>
+    <span class="n">boundary_fe</span> <span class="o">=</span> <span class="mf">0.486</span> <span class="o">+</span> <span class="mf">0.0046</span> <span class="o">*</span> <span class="n">sio2</span>
+    <span class="n">fe_mg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">fe_num</span> <span class="o">&lt;</span> <span class="n">boundary_fe</span><span class="p">,</span> <span class="s1">&#39;magnesian&#39;</span><span class="p">,</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">fe_num</span> <span class="o">&gt;=</span> <span class="n">boundary_fe</span><span class="p">,</span> <span class="s1">&#39;ferroan&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+
+    <span class="c1"># ---- 2. Alkali-lime series (MALI vs SiO2 polynomial boundaries) ----</span>
+    <span class="n">b_alkalic</span>     <span class="o">=</span> <span class="o">-</span><span class="mf">41.86</span> <span class="o">+</span> <span class="mf">1.12</span>   <span class="o">*</span> <span class="n">sio2</span> <span class="o">-</span> <span class="mf">0.00572</span> <span class="o">*</span> <span class="n">sio2</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">b_alkali_calc</span> <span class="o">=</span> <span class="o">-</span><span class="mf">44.72</span> <span class="o">+</span> <span class="mf">1.094</span>  <span class="o">*</span> <span class="n">sio2</span> <span class="o">-</span> <span class="mf">0.00527</span> <span class="o">*</span> <span class="n">sio2</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">b_calc_calc</span>   <span class="o">=</span> <span class="o">-</span><span class="mf">45.36</span> <span class="o">+</span> <span class="mf">1.0043</span> <span class="o">*</span> <span class="n">sio2</span> <span class="o">-</span> <span class="mf">0.00427</span> <span class="o">*</span> <span class="n">sio2</span><span class="o">**</span><span class="mi">2</span>
+
+    <span class="n">alkali_lime</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mali</span> <span class="o">&gt;</span> <span class="n">b_alkalic</span><span class="p">,</span>     <span class="s1">&#39;alkalic&#39;</span><span class="p">,</span>
+                  <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mali</span> <span class="o">&gt;</span> <span class="n">b_alkali_calc</span><span class="p">,</span>  <span class="s1">&#39;alkali-calcic&#39;</span><span class="p">,</span>
+                  <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mali</span> <span class="o">&gt;</span> <span class="n">b_calc_calc</span><span class="p">,</span>    <span class="s1">&#39;calc-alkalic&#39;</span><span class="p">,</span>
+                                                  <span class="s1">&#39;calcic&#39;</span><span class="p">)))</span>
+    <span class="n">alkali_lime</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">mali</span><span class="p">),</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">alkali_lime</span><span class="p">)</span>
+
+    <span class="c1"># ---- 3. Alumina saturation ----</span>
+    <span class="c1"># Agpaitic index: molar Al / (Na + K)</span>
+    <span class="n">n_al</span>  <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">al2o3</span> <span class="o">/</span> <span class="n">_mw</span><span class="p">(</span><span class="s1">&#39;Al2O3&#39;</span><span class="p">)</span>   <span class="c1"># moles Al atoms per 100 g</span>
+    <span class="n">n_nak</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">na2o</span> <span class="o">/</span> <span class="n">_mw</span><span class="p">(</span><span class="s1">&#39;Na2O&#39;</span><span class="p">)</span> <span class="o">+</span>
+             <span class="mi">2</span> <span class="o">*</span> <span class="n">k2o</span>  <span class="o">/</span> <span class="n">_mw</span><span class="p">(</span><span class="s1">&#39;K2O&#39;</span><span class="p">))</span>    <span class="c1"># moles Na+K atoms per 100 g</span>
+    <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="n">invalid</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">divide</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">):</span>
+        <span class="n">agpaitic</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">n_nak</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n_al</span> <span class="o">/</span> <span class="n">n_nak</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+    <span class="n">peralkaline_cond</span> <span class="o">=</span> <span class="p">(</span><span class="n">asi</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">agpaitic</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">agpaitic</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">alumina_sat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">asi</span> <span class="o">&gt;=</span> <span class="mf">1.0</span><span class="p">,</span>       <span class="s1">&#39;peraluminous&#39;</span><span class="p">,</span>
+                  <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">peralkaline_cond</span><span class="p">,</span>  <span class="s1">&#39;peralkaline&#39;</span><span class="p">,</span>
+                                              <span class="s1">&#39;metaluminous&#39;</span><span class="p">))</span>
+    <span class="n">alumina_sat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">asi</span><span class="p">),</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">alumina_sat</span><span class="p">)</span>
+
+    <span class="c1"># ---- 4. SIA scheme ----</span>
+    <span class="c1"># A-type conditions</span>
+    <span class="n">ferroan</span> <span class="o">=</span> <span class="n">fe_num</span> <span class="o">&gt;=</span> <span class="n">boundary_fe</span>
+    <span class="n">is_a_low_si</span>  <span class="o">=</span> <span class="n">ferroan</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sio2</span> <span class="o">&lt;</span> <span class="mi">70</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">agpaitic</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="o">/</span><span class="mf">0.85</span><span class="p">)</span>  <span class="c1"># agpaitic &lt; ~1.18</span>
+    <span class="n">is_a_high_si</span> <span class="o">=</span> <span class="p">(</span><span class="n">sio2</span> <span class="o">&gt;=</span> <span class="mi">70</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">agpaitic</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="o">/</span><span class="mf">0.85</span><span class="p">)</span>
+
+    <span class="n">sia</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+    <span class="n">sia</span><span class="p">[</span><span class="n">is_a_low_si</span> <span class="o">|</span> <span class="n">is_a_high_si</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span>
+    <span class="c1"># S-type: strongly peraluminous (ASI &gt;= 1.1)</span>
+    <span class="n">sia</span><span class="p">[(</span><span class="n">sia</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">asi</span> <span class="o">&gt;=</span> <span class="mf">1.1</span><span class="p">)]</span> <span class="o">=</span> <span class="s1">&#39;S&#39;</span>
+    <span class="c1"># I-type: remainder with valid SiO2</span>
+    <span class="n">sia</span><span class="p">[(</span><span class="n">sia</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">sio2</span><span class="p">)]</span> <span class="o">=</span> <span class="s1">&#39;I&#39;</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;sia&#39;</span><span class="p">:</span>         <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">sia</span><span class="p">,</span>         <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">),</span>
+        <span class="s1">&#39;fe_mg&#39;</span><span class="p">:</span>       <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">fe_mg</span><span class="p">,</span>       <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">),</span>
+        <span class="s1">&#39;alkali_lime&#39;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">alkali_lime</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">),</span>
+        <span class="s1">&#39;alumina_sat&#39;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">alumina_sat</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">),</span>
+    <span class="p">}</span></div>
+
+
+
+<span class="c1"># ===========================================================================</span>
+<span class="c1"># Mg number</span>
+<span class="c1"># ===========================================================================</span>
+
+<div class="viewcode-block" id="mgnum">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.geochem.classification.igneous.html#global_geochemistry.geochem.classification.igneous.mgnum">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">mgnum</span><span class="p">(</span><span class="n">mgo</span><span class="p">,</span> <span class="n">feo_tot</span><span class="p">,</span> <span class="n">fe3_fraction</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Mg/(Mg + Fe²⁺) molar ratio.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mgo, feo_tot : array-like</span>
+<span class="sd">        MgO and total FeO (wt%).</span>
+<span class="sd">    fe3_fraction : float or array-like</span>
+<span class="sd">        Fraction of total iron as Fe³⁺ (0–1).  Default 0.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">mgo</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mgo</span><span class="p">,</span>     <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">feo_tot</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">feo_tot</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">fe3_frac</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">fe3_fraction</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+    <span class="n">n_mg</span>  <span class="o">=</span> <span class="n">mgo</span> <span class="o">/</span> <span class="n">_mw</span><span class="p">(</span><span class="s1">&#39;MgO&#39;</span><span class="p">)</span>
+    <span class="n">n_feo</span> <span class="o">=</span> <span class="n">feo_tot</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">fe3_frac</span><span class="p">)</span> <span class="o">/</span> <span class="n">_mw</span><span class="p">(</span><span class="s1">&#39;FeO&#39;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="n">invalid</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">divide</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">):</span>
+        <span class="n">mg</span> <span class="o">=</span> <span class="n">n_mg</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_mg</span> <span class="o">+</span> <span class="n">n_feo</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">mg</span><span class="p">),</span> <span class="n">mg</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span></div>
+
+
+
+<span class="c1"># ===========================================================================</span>
+<span class="c1"># Plotting helpers</span>
+<span class="c1"># ===========================================================================</span>
+
+<div class="viewcode-block" id="plot_tas">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.geochem.classification.igneous.html#global_geochemistry.geochem.classification.igneous.plot_tas">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_tas</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rock_type</span><span class="o">=</span><span class="s1">&#39;volcanic&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Draw TAS field boundaries on a matplotlib Axes.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ax : matplotlib.axes.Axes, optional</span>
+<span class="sd">    rock_type : {&#39;volcanic&#39;, &#39;plutonic&#39;}</span>
+<span class="sd">    **kwargs : passed to ``ax.plot()`` for the boundary lines.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    matplotlib.axes.Axes</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+
+    <span class="n">lkw</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;linewidth&#39;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">}</span>
+    <span class="n">name_idx</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">rock_type</span> <span class="o">==</span> <span class="s1">&#39;volcanic&#39;</span> <span class="k">else</span> <span class="mi">2</span>
+
+    <span class="k">for</span> <span class="n">_path</span><span class="p">,</span> <span class="p">(</span><span class="n">verts</span><span class="p">,</span> <span class="o">*</span><span class="n">names</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">_TAS_PATHS</span><span class="p">,</span> <span class="n">_TAS_POLYGONS</span><span class="p">):</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">verts</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">verts</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="o">**</span><span class="n">lkw</span><span class="p">)</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">names</span><span class="p">[</span><span class="n">name_idx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
+            <span class="n">cx</span><span class="p">,</span> <span class="n">cy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">verts</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                    <span class="n">fontsize</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;SiO$_2$ (wt%)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Na$_2$O + K$_2$O (wt%)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">33</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ax</span></div>
+
+
+
+<span class="c1"># ===========================================================================</span>
+<span class="c1"># Internal helpers</span>
+<span class="c1"># ===========================================================================</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_safe_ge</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span> <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="kc">False</span><span class="p">,</span> <span class="n">a</span> <span class="o">&gt;=</span> <span class="n">v</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_safe_le</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span> <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="kc">False</span><span class="p">,</span> <span class="n">a</span> <span class="o">&lt;=</span> <span class="n">v</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_safe_gt</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span> <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="kc">False</span><span class="p">,</span> <span class="n">a</span> <span class="o">&gt;</span>  <span class="n">v</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_safe_lt</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span> <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="kc">False</span><span class="p">,</span> <span class="n">a</span> <span class="o">&lt;</span>  <span class="n">v</span><span class="p">)</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Derrick Hasterok.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

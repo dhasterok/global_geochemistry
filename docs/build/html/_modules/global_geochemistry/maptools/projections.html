@@ -1,0 +1,934 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>global_geochemistry.maptools.projections &#8212; global_geochemistry 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/global_geochemistry/maptools/projections';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">global_geochemistry 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../generated/global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../generated/global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">global_geochemistry.maptools.projections</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for global_geochemistry.maptools.projections</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Custom and pyproj-backed geographic projections.</span>
+
+<span class="sd">All forward functions accept arrays of (lon, lat) in decimal degrees and</span>
+<span class="sd">return (x, y).  Cassini returns metres; Spilhaus and Waterman return</span>
+<span class="sd">dimensionless units (the elliptic-integral and octahedral scales</span>
+<span class="sd">respectively).  Inverse functions are the reverse.</span>
+
+<span class="sd">Available</span>
+<span class="sd">---------</span>
+<span class="sd">``cassini_fwd / cassini_inv``</span>
+<span class="sd">    Spherical Cassini-Soldner (R = 6 371 km).  Port of ``cassini.m`` /</span>
+<span class="sd">    ``cassini_inv.m``.</span>
+
+<span class="sd">``spilhaus_fwd``</span>
+<span class="sd">    Spilhaus ocean-centric projection.  Rotates the globe so pole-points</span>
+<span class="sd">    land in continental interiors (≈115°E 30°N and 56°W 30°S), then</span>
+<span class="sd">    applies Adams World-in-a-Square II (diamond conformal).  Port of</span>
+<span class="sd">    ``adams.m`` (GDrive maptools/).</span>
+
+<span class="sd">``waterman_fwd``</span>
+<span class="sd">    Waterman Butterfly or M projection.  Unfolds the sphere onto a regular</span>
+<span class="sd">    octahedron and lays the faces flat.  Port of ``OctahedralProjection.m``</span>
+<span class="sd">    (GDrive waterman/).</span>
+
+<span class="sd">``pyproj_fwd / pyproj_inv``</span>
+<span class="sd">    Thin wrappers around :mod:`pyproj` for any standard PROJ projection.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Cassini-Soldner (spherical)</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<span class="n">_R_EARTH</span> <span class="o">=</span> <span class="mf">6_371_000.0</span>   <span class="c1"># metres</span>
+
+
+<div class="viewcode-block" id="cassini_fwd">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.maptools.projections.html#global_geochemistry.maptools.projections.cassini_fwd">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">cassini_fwd</span><span class="p">(</span>
+    <span class="n">lon</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">lat</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">lon0</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">lat0</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">R</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">_R_EARTH</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Spherical Cassini-Soldner forward projection.</span>
+
+<span class="sd">    Maps the full globe onto a vertical strip</span>
+<span class="sd">    x ∈ [−Rπ/2, Rπ/2], y ∈ [−2R, 2R].  Points in the far hemisphere</span>
+<span class="sd">    (|lon − lon0| &gt; 90°) wrap around, placing both poles at the top and</span>
+<span class="sd">    bottom of the strip — useful for &quot;south-pole to south-pole&quot; views of</span>
+<span class="sd">    global subduction when centred on the Pacific.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    lon, lat : array-like</span>
+<span class="sd">        Geographic coordinates (decimal degrees).  NaN values are preserved.</span>
+<span class="sd">    lon0 : float</span>
+<span class="sd">        Central meridian (degrees).  Default 0.</span>
+<span class="sd">    lat0 : float</span>
+<span class="sd">        Central parallel (degrees).  Default 0.</span>
+<span class="sd">    R : float</span>
+<span class="sd">        Sphere radius in metres.  Default 6 371 000 m.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    x, y : numpy.ndarray</span>
+<span class="sd">        Projected coordinates in metres.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">lon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">phi</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>
+    <span class="n">lam</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lon</span> <span class="o">-</span> <span class="n">lon0</span><span class="p">)</span>
+    <span class="n">phi0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat0</span><span class="p">)</span>
+
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">lam</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">R</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">R</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">phi</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lam</span><span class="p">))</span> <span class="o">-</span> <span class="n">phi0</span><span class="p">)</span>
+
+    <span class="c1"># Wrap y into [−R·π, R·π] so the far hemisphere folds back into the strip.</span>
+    <span class="c1"># Equivalent to the MATLAB cassini.m lines 53-54:</span>
+    <span class="c1">#   y(y &lt; -ymax) = 2*ymax + y(...)   (ymax = R·π)</span>
+    <span class="n">ymax</span> <span class="o">=</span> <span class="n">R</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+    <span class="n">fin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">y</span><span class="p">[</span><span class="n">fin</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y</span> <span class="o">&lt;</span> <span class="o">-</span><span class="n">ymax</span><span class="p">)]</span> <span class="o">+=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">ymax</span>
+    <span class="n">y</span><span class="p">[</span><span class="n">fin</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y</span> <span class="o">&gt;</span>  <span class="n">ymax</span><span class="p">)]</span> <span class="o">-=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">ymax</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span></div>
+
+
+
+<div class="viewcode-block" id="cassini_inv">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.maptools.projections.html#global_geochemistry.maptools.projections.cassini_inv">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">cassini_inv</span><span class="p">(</span>
+    <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">lon0</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">lat0</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">R</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">_R_EARTH</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Spherical Cassini-Soldner inverse projection.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x, y : array-like</span>
+<span class="sd">        Projected coordinates in metres.</span>
+<span class="sd">    lon0, lat0 : float</span>
+<span class="sd">        Central meridian and parallel (degrees).</span>
+<span class="sd">    R : float</span>
+<span class="sd">        Sphere radius in metres.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    lon, lat : numpy.ndarray</span>
+<span class="sd">        Geographic coordinates in decimal degrees.  Longitude normalised to</span>
+<span class="sd">        [−180, 180].</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">phi0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat0</span><span class="p">)</span>
+
+    <span class="n">xr</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">R</span>
+    <span class="n">yr</span> <span class="o">=</span> <span class="n">y</span> <span class="o">/</span> <span class="n">R</span> <span class="o">+</span> <span class="n">phi0</span>
+
+    <span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">yr</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">xr</span><span class="p">)))</span>
+    <span class="n">lon</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">xr</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">yr</span><span class="p">)))</span> <span class="o">+</span> <span class="n">lon0</span> <span class="o">+</span> <span class="mf">180.0</span><span class="p">)</span> <span class="o">%</span> <span class="mf">360.0</span> <span class="o">-</span> <span class="mf">180.0</span>
+    <span class="k">return</span> <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span></div>
+
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Spilhaus ocean-centric projection</span>
+<span class="c1"># (Adams World-in-a-Square II with globe rotation)</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<span class="n">_ELL_C0</span> <span class="o">=</span> <span class="mf">2.19174570831038</span>
+<span class="n">_ELL_C</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">8.58691003636495e-07</span><span class="p">,</span>  <span class="mf">2.02692115653689e-07</span><span class="p">,</span>
+                      <span class="mf">3.12960480765314e-05</span><span class="p">,</span>  <span class="mf">5.30394739921063e-05</span><span class="p">,</span>
+                     <span class="o">-</span><span class="mf">1.28046446806130e-03</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.75574836830288e-03</span><span class="p">,</span>
+                      <span class="mf">9.14203033408211e-02</span><span class="p">])</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_ell_int_5</span><span class="p">(</span><span class="n">phi</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Elliptic integral of the first kind, k²=0.5 (Chebyshev approximation).</span>
+
+<span class="sd">    Precision better than 1e-7.  Port of the MATLAB ``ell_int_5`` sub-function</span>
+<span class="sd">    in ``adams.m``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">y</span>  <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">phi</span> <span class="o">*</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="mf">1.0</span>
+    <span class="n">y2</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">y</span>
+    <span class="n">d1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+    <span class="n">d2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">ci</span> <span class="ow">in</span> <span class="n">_ELL_C</span><span class="p">:</span>
+        <span class="n">d1</span><span class="p">,</span> <span class="n">d2</span> <span class="o">=</span> <span class="n">y2</span> <span class="o">*</span> <span class="n">d1</span> <span class="o">-</span> <span class="n">d2</span> <span class="o">+</span> <span class="n">ci</span><span class="p">,</span> <span class="n">d1</span>
+    <span class="k">return</span> <span class="n">phi</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="n">d1</span> <span class="o">-</span> <span class="n">d2</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">_ELL_C0</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_adams_diamond</span><span class="p">(</span><span class="n">lon</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">lat</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+                   <span class="n">lon0</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">lat0</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adams World-in-a-Square II (diamond / world2) forward projection.</span>
+
+<span class="sd">    Vectorised port of the ``&quot;world2&quot;``/``&quot;diamond&quot;`` branch in ``adams.m``.</span>
+<span class="sd">    Returns dimensionless (x, y); NaN in → NaN out.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">lon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">nan_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>
+
+    <span class="n">lon</span> <span class="o">-=</span> <span class="n">lon0</span>
+    <span class="n">lon</span>  <span class="o">=</span> <span class="p">(</span><span class="n">lon</span> <span class="o">+</span> <span class="mf">180.0</span><span class="p">)</span> <span class="o">%</span> <span class="mf">360.0</span> <span class="o">-</span> <span class="mf">180.0</span>
+    <span class="n">lam</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span>
+    <span class="n">phi</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat</span> <span class="o">-</span> <span class="n">lat0</span><span class="p">)</span>
+
+    <span class="n">spp</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">phi</span><span class="p">)</span>
+    <span class="n">a_raw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">spp</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">lam</span><span class="p">)</span>
+
+    <span class="n">indm</span> <span class="o">=</span> <span class="p">(</span><span class="n">spp</span> <span class="o">+</span> <span class="n">a_raw</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span>
+    <span class="n">indn</span> <span class="o">=</span> <span class="p">(</span><span class="n">spp</span> <span class="o">-</span> <span class="n">a_raw</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span>
+
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">spp</span><span class="p">,</span>   <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">a_raw</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+
+    <span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)))))</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span>  <span class="mf">1.0</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)))))</span>
+    <span class="n">m</span><span class="p">[</span><span class="n">indm</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">m</span><span class="p">[</span><span class="n">indm</span><span class="p">]</span>
+    <span class="n">n</span><span class="p">[</span><span class="n">indn</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">n</span><span class="p">[</span><span class="n">indn</span><span class="p">]</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">_ell_int_5</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">_ell_int_5</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="c1"># 45° rotation for diamond layout</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">x</span><span class="p">[</span><span class="n">nan_mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">y</span><span class="p">[</span><span class="n">nan_mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+
+
+<div class="viewcode-block" id="spilhaus_fwd">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.maptools.projections.html#global_geochemistry.maptools.projections.spilhaus_fwd">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">spilhaus_fwd</span><span class="p">(</span>
+    <span class="n">lon</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">lat</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">lon0</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>   <span class="c1"># unused — Spilhaus has a fixed projection centre</span>
+    <span class="n">lat0</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>   <span class="c1"># unused</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Spilhaus ocean-centric forward projection.</span>
+
+<span class="sd">    Rotates the globe so the two land-pole points lie at ≈ 115°E 30°N and</span>
+<span class="sd">    56°W 30°S (leaving the world ocean as a connected body), then applies</span>
+<span class="sd">    the Adams World-in-a-Square II (diamond) conformal projection.</span>
+
+<span class="sd">    Port of the ``&#39;Spilhaus&#39;`` branch in ``adams.m`` (GDrive maptools/).</span>
+<span class="sd">    Output is dimensionless (roughly ±2.6 in each axis).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    lon, lat : array-like</span>
+<span class="sd">        Geographic coordinates (decimal degrees).</span>
+<span class="sd">    lon0, lat0 : float</span>
+<span class="sd">        Ignored — the projection centre is fixed by the globe rotation.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    x, y : numpy.ndarray</span>
+<span class="sd">        Dimensionless projected coordinates.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">lon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="n">lon</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">lon_r</span> <span class="o">=</span> <span class="n">lon</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="n">lat_r</span> <span class="o">=</span> <span class="n">lat</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+    <span class="c1"># Globe rotation: Ry(-60°) · Rz(-115°)</span>
+    <span class="n">tz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="o">-</span><span class="mf">115.0</span><span class="p">)</span>
+    <span class="n">ty</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="o">-</span><span class="mf">60.0</span><span class="p">)</span>
+
+    <span class="n">lam</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lon_r</span><span class="p">)</span>
+    <span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat_r</span><span class="p">)</span>
+    <span class="n">xc</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lam</span><span class="p">)</span>
+    <span class="n">yc</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">lam</span><span class="p">)</span>
+    <span class="n">zc</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+
+    <span class="n">cz</span><span class="p">,</span> <span class="n">sz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">tz</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">tz</span><span class="p">)</span>
+    <span class="n">cy</span><span class="p">,</span> <span class="n">sy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">ty</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">ty</span><span class="p">)</span>
+
+    <span class="c1"># Apply Rz then Ry</span>
+    <span class="n">xr</span> <span class="o">=</span>  <span class="n">cz</span> <span class="o">*</span> <span class="n">xc</span> <span class="o">-</span> <span class="n">sz</span> <span class="o">*</span> <span class="n">yc</span>
+    <span class="n">yr</span> <span class="o">=</span>  <span class="n">sz</span> <span class="o">*</span> <span class="n">xc</span> <span class="o">+</span> <span class="n">cz</span> <span class="o">*</span> <span class="n">yc</span>
+    <span class="n">zr</span> <span class="o">=</span>  <span class="n">zc</span>
+    <span class="n">x2</span> <span class="o">=</span>  <span class="n">cy</span> <span class="o">*</span> <span class="n">xr</span> <span class="o">+</span> <span class="n">sy</span> <span class="o">*</span> <span class="n">zr</span>
+    <span class="n">y2</span> <span class="o">=</span>  <span class="n">yr</span>
+    <span class="n">z2</span> <span class="o">=</span> <span class="o">-</span><span class="n">sy</span> <span class="o">*</span> <span class="n">xr</span> <span class="o">+</span> <span class="n">cy</span> <span class="o">*</span> <span class="n">zr</span>
+
+    <span class="n">lon2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span> <span class="n">x2</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">lat2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">z2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y2</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+
+    <span class="c1"># Adams diamond with internal centre at lon0=-24, lat0=0</span>
+    <span class="k">return</span> <span class="n">_adams_diamond</span><span class="p">(</span><span class="n">lon2</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lon0</span><span class="o">=-</span><span class="mf">24.0</span><span class="p">,</span> <span class="n">lat0</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span></div>
+
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Waterman Butterfly / M projections</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<span class="n">_S3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">_WATERMAN_CONFIGS</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;butterfly&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;altitude&#39;</span><span class="p">:</span>   <span class="mi">2</span> <span class="o">*</span> <span class="n">_S3</span><span class="p">,</span>
+        <span class="s1">&#39;fullHeight&#39;</span><span class="p">:</span> <span class="mi">4</span> <span class="o">/</span> <span class="n">_S3</span><span class="p">,</span>
+        <span class="s1">&#39;octants&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+            <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">_S3</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">_S3</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span>   <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">_S3</span><span class="p">,</span>  <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span>    <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">_S3</span><span class="p">,</span>  <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">],</span>
+        <span class="p">]),</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;waterman_m&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;altitude&#39;</span><span class="p">:</span>   <span class="mi">2</span> <span class="o">*</span> <span class="n">_S3</span><span class="p">,</span>
+        <span class="s1">&#39;fullHeight&#39;</span><span class="p">:</span> <span class="n">_S3</span><span class="p">,</span>
+        <span class="s1">&#39;octants&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+            <span class="p">[</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">],</span>
+            <span class="p">[</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>  <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span>   <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">],</span>
+            <span class="p">[</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span>    <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">],</span>
+            <span class="p">[</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>  <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span>  <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">],</span>
+        <span class="p">]),</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="c1"># Waterman face geometry constants</span>
+<span class="n">_W_dYdL</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mf">6.0</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="p">(</span><span class="mf">4.0</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">8.0</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">])</span>
+<span class="n">_W_lonDiag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="p">(</span><span class="mf">4.0</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">8.0</span><span class="p">))</span>
+<span class="n">_W_sin15</span>   <span class="o">=</span> <span class="p">(</span><span class="n">_S3</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">8.0</span><span class="p">)</span>
+<span class="n">_W_cos15</span>   <span class="o">=</span> <span class="p">(</span><span class="n">_S3</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">8.0</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_linInterp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Linear interpolation; safe against x1==x2.&quot;&quot;&quot;</span>
+    <span class="n">denom</span> <span class="o">=</span> <span class="n">x2</span> <span class="o">-</span> <span class="n">x1</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">denom</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x1</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">denom</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">denom</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">y1</span> <span class="o">+</span> <span class="p">(</span><span class="n">y2</span> <span class="o">-</span> <span class="n">y1</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_joint_heights</span><span class="p">(</span><span class="n">lon</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the four Equal-Line-Delineation (ELD) keypoints for each meridian.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    lon : (N,) array</span>
+<span class="sd">        Absolute longitude values in radians (0 ≤ lon ≤ π/2).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    xELD, yELD : (N, 4) arrays</span>
+<span class="sd">        x and y coordinates of the four ELD boundary points.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span>
+    <span class="n">xELD</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">([(</span><span class="n">_S3</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">_S3</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">_S3</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">yELD</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">_W_dYdL</span><span class="p">)</span>
+
+    <span class="n">straight</span> <span class="o">=</span> <span class="n">lon</span> <span class="o">&lt;=</span> <span class="n">_W_lonDiag</span>
+    <span class="n">curved</span>   <span class="o">=</span> <span class="o">~</span><span class="n">straight</span>
+
+    <span class="n">xELD</span><span class="p">[</span><span class="n">straight</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">_S3</span>
+    <span class="c1"># yELD[straight, 3] already = dYdL[3] * lon from outer product</span>
+
+    <span class="k">if</span> <span class="n">curved</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">lon</span><span class="p">[</span><span class="n">curved</span><span class="p">]</span> <span class="o">-</span> <span class="n">_W_lonDiag</span>
+        <span class="n">xELD</span><span class="p">[</span><span class="n">curved</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">d</span> <span class="o">*</span> <span class="n">_W_dYdL</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="n">_W_sin15</span> <span class="o">+</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">_S3</span>
+        <span class="n">yELD</span><span class="p">[</span><span class="n">curved</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span>  <span class="n">d</span> <span class="o">*</span> <span class="n">_W_dYdL</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="n">_W_cos15</span> <span class="o">+</span> <span class="mf">1.0</span>
+
+    <span class="k">return</span> <span class="n">xELD</span><span class="p">,</span> <span class="n">yELD</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_face_forward</span><span class="p">(</span><span class="n">lat</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">lon</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Project a point on a generic octant face.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    lat, lon : (N,) arrays</span>
+<span class="sd">        Absolute latitude and longitude in radians (both ≥ 0).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    x, y : (N,) arrays</span>
+<span class="sd">        Coordinates in octant space.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>
+    <span class="n">xELD</span><span class="p">,</span> <span class="n">yELD</span> <span class="o">=</span> <span class="n">_joint_heights</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span>       <span class="c1"># (N, 4)</span>
+
+    <span class="n">dx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">xELD</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>             <span class="c1"># (N, 3)</span>
+    <span class="n">dy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">yELD</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">seg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dx</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">dy</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>           <span class="c1"># (N, 3) segment lengths</span>
+
+    <span class="n">totlen</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">seg</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>           <span class="c1"># (N,)</span>
+
+    <span class="c1"># Distance from pole</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">_linInterp</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">totlen</span><span class="p">)</span>  <span class="c1"># (N,)</span>
+
+    <span class="c1"># Remaining budget at each segment start: (N, 3)</span>
+    <span class="n">cumlen</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>
+                        <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">seg</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)])</span>
+    <span class="n">desir</span> <span class="o">=</span> <span class="n">d</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">-</span> <span class="n">cumlen</span>
+
+    <span class="c1"># Which segment handles the point?  (port of MATLAB i = 4 - sum(ind))</span>
+    <span class="n">fits</span>  <span class="o">=</span> <span class="n">seg</span> <span class="o">&gt;=</span> <span class="n">desir</span>                   <span class="c1"># (N, 3)</span>
+    <span class="n">sidx</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mi">3</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">fits</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>   <span class="c1"># 0-based</span>
+
+    <span class="n">row</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">dl</span>  <span class="o">=</span> <span class="n">desir</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="n">sidx</span><span class="p">]</span>
+    <span class="n">li</span>  <span class="o">=</span> <span class="n">seg</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="n">sidx</span><span class="p">]</span>
+    <span class="n">x0</span>  <span class="o">=</span> <span class="n">xELD</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="n">sidx</span><span class="p">];</span>     <span class="n">x1</span> <span class="o">=</span> <span class="n">xELD</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="n">sidx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">y0</span>  <span class="o">=</span> <span class="n">yELD</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="n">sidx</span><span class="p">];</span>     <span class="n">y1</span> <span class="o">=</span> <span class="n">yELD</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="n">sidx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">_linInterp</span><span class="p">(</span><span class="n">dl</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">li</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">_linInterp</span><span class="p">(</span><span class="n">dl</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">li</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_waterman_core</span><span class="p">(</span><span class="n">lat_rad</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">lon_rad</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">cfg</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Core Waterman forward projection (radians → dimensionless x, y).&quot;&quot;&quot;</span>
+    <span class="n">alt</span>  <span class="o">=</span> <span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;altitude&#39;</span><span class="p">]</span>
+    <span class="n">octs</span> <span class="o">=</span> <span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;octants&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Assign each point to an octant quadrant (0-based)</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">lon_rad</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">%</span> <span class="mi">4</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+    <span class="c1"># Longitude relative to the octant&#39;s reference meridian</span>
+    <span class="n">lonr</span> <span class="o">=</span> <span class="p">(</span><span class="n">lon_rad</span> <span class="o">-</span> <span class="n">octs</span><span class="p">[</span><span class="n">q</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+
+    <span class="c1"># Octant vertex position and rotation angle</span>
+    <span class="n">xP</span>    <span class="o">=</span> <span class="n">octs</span><span class="p">[</span><span class="n">q</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">alt</span>
+    <span class="n">yP</span>    <span class="o">=</span> <span class="n">octs</span><span class="p">[</span><span class="n">q</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">alt</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">octs</span><span class="p">[</span><span class="n">q</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+    <span class="c1"># Project onto the canonical face (lat ≥ 0, lonr ≥ 0)</span>
+    <span class="n">xf</span><span class="p">,</span> <span class="n">yf</span> <span class="o">=</span> <span class="n">_face_forward</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">lat_rad</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">lonr</span><span class="p">))</span>
+
+    <span class="n">xMj</span> <span class="o">=</span> <span class="n">xf</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">yMj</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="c1"># Reflect southern hemisphere over the equatorial edge</span>
+    <span class="n">south</span> <span class="o">=</span> <span class="n">lat_rad</span> <span class="o">&lt;</span> <span class="mi">0</span>
+    <span class="n">xMj</span><span class="p">[</span><span class="n">south</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">alt</span> <span class="o">-</span> <span class="n">xMj</span><span class="p">[</span><span class="n">south</span><span class="p">]</span>
+
+    <span class="c1"># Reflect west longitudes</span>
+    <span class="n">west</span> <span class="o">=</span> <span class="n">lonr</span> <span class="o">&lt;</span> <span class="mi">0</span>
+    <span class="n">yMj</span><span class="p">[</span><span class="n">west</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">yMj</span><span class="p">[</span><span class="n">west</span><span class="p">]</span>
+
+    <span class="c1"># Rotate onto the octant and translate</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">xP</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">*</span> <span class="n">xMj</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">*</span> <span class="n">yMj</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">yP</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">*</span> <span class="n">xMj</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">*</span> <span class="n">yMj</span> \
+        <span class="o">+</span> <span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;fullHeight&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">alt</span> <span class="o">/</span> <span class="mf">2.0</span>
+
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+
+
+<div class="viewcode-block" id="waterman_fwd">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.maptools.projections.html#global_geochemistry.maptools.projections.waterman_fwd">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">waterman_fwd</span><span class="p">(</span>
+    <span class="n">lon</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">lat</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">lon0</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">lat0</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>   <span class="c1"># unused — octahedral projections do not support lat0</span>
+    <span class="n">style</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;butterfly&#39;</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Waterman Butterfly or M projection forward transform.</span>
+
+<span class="sd">    Unfolds the sphere onto a regular octahedron and arranges the faces in</span>
+<span class="sd">    either the classic four-lobe Butterfly layout or the side-by-side M</span>
+<span class="sd">    layout.  Port of ``OctahedralProjection.m`` (GDrive waterman/).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    lon, lat : array-like</span>
+<span class="sd">        Geographic coordinates (decimal degrees).</span>
+<span class="sd">    lon0 : float</span>
+<span class="sd">        Longitudinal shift in degrees (shifts which meridian is centred).</span>
+<span class="sd">    lat0 : float</span>
+<span class="sd">        Ignored.</span>
+<span class="sd">    style : {&#39;butterfly&#39;, &#39;waterman_m&#39;}</span>
+<span class="sd">        Map layout.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    x, y : numpy.ndarray</span>
+<span class="sd">        Dimensionless projected coordinates.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="n">style</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_WATERMAN_CONFIGS</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown Waterman style &#39;</span><span class="si">{</span><span class="n">style</span><span class="si">}</span><span class="s2">&#39;. &quot;</span>
+                         <span class="sa">f</span><span class="s2">&quot;Choose from </span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">_WATERMAN_CONFIGS</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+    <span class="n">cfg</span> <span class="o">=</span> <span class="n">_WATERMAN_CONFIGS</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+    <span class="n">lon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="n">lon</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">lon_r</span> <span class="o">=</span> <span class="n">lon</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">lat_r</span> <span class="o">=</span> <span class="n">lat</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">lon0</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">lon_r</span> <span class="o">=</span> <span class="p">(</span><span class="n">lon_r</span> <span class="o">+</span> <span class="n">lon0</span> <span class="o">+</span> <span class="mf">180.0</span><span class="p">)</span> <span class="o">%</span> <span class="mf">360.0</span> <span class="o">-</span> <span class="mf">180.0</span>
+
+    <span class="n">lon_rad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lon_r</span><span class="p">)</span>
+    <span class="n">lat_rad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat_r</span><span class="p">)</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">lon_r</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">lon_r</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+    <span class="n">valid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">lon_rad</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">lat_rad</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">valid</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">valid</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">valid</span><span class="p">]</span> <span class="o">=</span> <span class="n">_waterman_core</span><span class="p">(</span><span class="n">lat_rad</span><span class="p">[</span><span class="n">valid</span><span class="p">],</span> <span class="n">lon_rad</span><span class="p">[</span><span class="n">valid</span><span class="p">],</span> <span class="n">cfg</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">shape</span><span class="p">),</span> <span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span></div>
+
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># pyproj wrapper for standard PROJ projections</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<span class="n">_PROJ_SENTINEL</span> <span class="o">=</span> <span class="mf">1e20</span>   <span class="c1"># pyproj returns ~1e30 for out-of-domain points</span>
+
+
+<div class="viewcode-block" id="pyproj_fwd">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.maptools.projections.html#global_geochemistry.maptools.projections.pyproj_fwd">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">pyproj_fwd</span><span class="p">(</span>
+    <span class="n">lon</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">lat</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">proj_string</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Forward projection via pyproj.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    lon, lat : array-like</span>
+<span class="sd">        Geographic coordinates (decimal degrees).</span>
+<span class="sd">    proj_string : str</span>
+<span class="sd">        Any PROJ4/PROJ6 projection string, e.g.</span>
+<span class="sd">        ``&#39;+proj=moll +lon_0=-150 +R=6371000&#39;``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    x, y : numpy.ndarray</span>
+<span class="sd">        Projected coordinates in metres.  Out-of-domain points and PROJ</span>
+<span class="sd">        sentinel values (|v| &gt; 1e20) are replaced with NaN.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">pyproj</span><span class="w"> </span><span class="kn">import</span> <span class="n">Proj</span>
+    <span class="n">lon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">Proj</span><span class="p">(</span><span class="n">proj_string</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">p</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">_PROJ_SENTINEL</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">y</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">_PROJ_SENTINEL</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span></div>
+
+
+
+<div class="viewcode-block" id="pyproj_inv">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.maptools.projections.html#global_geochemistry.maptools.projections.pyproj_inv">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">pyproj_inv</span><span class="p">(</span>
+    <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">proj_string</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Inverse projection via pyproj.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x, y : array-like</span>
+<span class="sd">        Projected coordinates in metres.</span>
+<span class="sd">    proj_string : str</span>
+<span class="sd">        PROJ projection string (same as used for the forward transform).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    lon, lat : numpy.ndarray</span>
+<span class="sd">        Geographic coordinates in decimal degrees.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">pyproj</span><span class="w"> </span><span class="kn">import</span> <span class="n">Proj</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">Proj</span><span class="p">(</span><span class="n">proj_string</span><span class="p">)</span>
+    <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span> <span class="o">=</span> <span class="n">p</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Derrick Hasterok.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

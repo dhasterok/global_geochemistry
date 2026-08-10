@@ -1,0 +1,540 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>global_geochemistry.geochem.processing.elements &#8212; global_geochemistry 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/global_geochemistry/geochem/processing/elements';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">global_geochemistry 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../generated/global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../generated/global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">global_geochemistry.geochem.processing.elements</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for global_geochemistry.geochem.processing.elements</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Element summation and grouping utilities for whole-rock geochemical data.</span>
+
+<span class="sd">Element concentrations in trace element columns are assumed to be in ppm</span>
+<span class="sd">(column names end in &#39;_ppm&#39;).  Sums follow the conventions of Taylor &amp;</span>
+<span class="sd">McLennan (1985) and Sun &amp; McDonough (1989) for REE groupings.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+
+<span class="c1"># -------------------------------------------------------------------------</span>
+<span class="c1"># REE definitions</span>
+<span class="c1"># -------------------------------------------------------------------------</span>
+
+<span class="n">_LREE_FULL</span>    <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;la_ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;ce_ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;pr_ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;nd_ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;sm_ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;eu_ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;gd_ppm&#39;</span><span class="p">]</span>
+<span class="n">_HREE_FULL</span>    <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;tb_ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;dy_ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;ho_ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;er_ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;tm_ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;yb_ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;lu_ppm&#39;</span><span class="p">]</span>
+<span class="n">_REE_FULL</span>     <span class="o">=</span> <span class="n">_LREE_FULL</span> <span class="o">+</span> <span class="n">_HREE_FULL</span>
+
+<span class="n">_LREE_REDUCED</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;la_ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;ce_ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;nd_ppm&#39;</span><span class="p">]</span>
+<span class="n">_HREE_REDUCED</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;er_ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;yb_ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;lu_ppm&#39;</span><span class="p">]</span>
+<span class="n">_MREE</span>         <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sm_ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;eu_ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;gd_ppm&#39;</span><span class="p">]</span>
+<span class="n">_REE_REDUCED</span>  <span class="o">=</span> <span class="n">_LREE_REDUCED</span> <span class="o">+</span> <span class="n">_MREE</span> <span class="o">+</span> <span class="n">_HREE_REDUCED</span>
+
+
+<div class="viewcode-block" id="sumree">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.geochem.processing.elements.html#global_geochemistry.geochem.processing.elements.sumree">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">sumree</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;full&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sum rare earth element concentrations into group totals.</span>
+
+<span class="sd">    Sums only detected values (&gt; 0); below-detection-limit (BDL) and NaN</span>
+<span class="sd">    entries are excluded from the running sum.  If *all* elements in a</span>
+<span class="sd">    group are BDL or absent, the group sum is set to NaN.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : pandas.DataFrame</span>
+<span class="sd">        Must contain ppm columns named e.g. ``&#39;la_ppm&#39;``, ``&#39;ce_ppm&#39;``, …</span>
+<span class="sd">    scheme : {&#39;full&#39;, &#39;reduced&#39;}</span>
+<span class="sd">        &#39;full&#39; (default): uses all 14 REE (La–Lu).</span>
+<span class="sd">        &#39;reduced&#39;: uses a subset (La, Ce, Nd | Sm, Eu, Gd | Er, Yb, Lu) to</span>
+<span class="sd">        reduce the impact of BDL values.</span>
+<span class="sd">    inplace : bool</span>
+<span class="sd">        Modify *data* in place.  Default False.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">        DataFrame with columns ``&#39;ree&#39;``, ``&#39;lree&#39;``, ``&#39;mree&#39;``, ``&#39;hree&#39;``</span>
+<span class="sd">        added (total, light, middle, heavy REE sums in ppm).</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The MATLAB original had a logic bug in the BDL-masking step</span>
+<span class="sd">    (``all(X &gt; 0)`` operated column-wise instead of row-wise).  This</span>
+<span class="sd">    implementation uses the correct row-wise check.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Taylor &amp; McLennan (1985) The continental crust: its composition and</span>
+<span class="sd">    evolution. Blackwell.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">scheme</span> <span class="o">==</span> <span class="s1">&#39;full&#39;</span><span class="p">:</span>
+        <span class="n">lree_cols</span> <span class="o">=</span> <span class="n">_LREE_FULL</span>
+        <span class="n">hree_cols</span> <span class="o">=</span> <span class="n">_HREE_FULL</span>
+        <span class="n">ree_cols</span>  <span class="o">=</span> <span class="n">_REE_FULL</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Computing REE sums using full element set.&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">scheme</span> <span class="o">==</span> <span class="s1">&#39;reduced&#39;</span><span class="p">:</span>
+        <span class="n">lree_cols</span> <span class="o">=</span> <span class="n">_LREE_REDUCED</span>
+        <span class="n">hree_cols</span> <span class="o">=</span> <span class="n">_HREE_REDUCED</span>
+        <span class="n">ree_cols</span>  <span class="o">=</span> <span class="n">_REE_REDUCED</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Computing REE sums using reduced element set.&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;scheme must be &#39;full&#39; or &#39;reduced&#39;, got &#39;</span><span class="si">{</span><span class="n">scheme</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">inplace</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_group_sum</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">cols</span><span class="p">):</span>
+        <span class="n">present</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cols</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">present</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+        <span class="n">vals</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">present</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">vals</span><span class="p">[</span><span class="n">vals</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>          <span class="c1"># treat BDL (≤ 0) as missing</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">vals</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">min_count</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># NaN if all missing</span>
+        <span class="k">return</span> <span class="n">s</span>
+
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;ree&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="n">_group_sum</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">ree_cols</span><span class="p">)</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;lree&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_group_sum</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">lree_cols</span><span class="p">)</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;mree&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_group_sum</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">_MREE</span><span class="p">)</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;hree&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_group_sum</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">hree_cols</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">data</span></div>
+
+
+
+<span class="c1"># -------------------------------------------------------------------------</span>
+<span class="c1"># K2O utilities</span>
+<span class="c1"># -------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="get_k2o">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.geochem.processing.elements.html#global_geochemistry.geochem.processing.elements.get_k2o">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_k2o</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return K2O column, preferring measured over converted values.</span>
+
+<span class="sd">    Looks for &#39;k2o&#39; first, then &#39;k_ppm&#39; converted to oxide.  Returns a</span>
+<span class="sd">    Series with NaN where neither is available.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : pandas.DataFrame</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.Series</span>
+<span class="sd">        K2O in wt%.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">global_geochemistry.utils.molecular</span><span class="w"> </span><span class="kn">import</span> <span class="n">MolecularWeightCalculator</span>
+    <span class="n">_mwc</span> <span class="o">=</span> <span class="n">MolecularWeightCalculator</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="s1">&#39;k2o&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;k2o&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">if</span> <span class="s1">&#39;k_ppm&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="c1"># ppm K → wt% K2O:  K_ppm × MW(K2O) / (2 × MW(K) × 1e4)</span>
+        <span class="n">factor</span> <span class="o">=</span> <span class="n">_mwc</span><span class="o">.</span><span class="n">molecular_weight</span><span class="p">(</span><span class="s1">&#39;K2O&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">_mwc</span><span class="o">.</span><span class="n">molecular_weight</span><span class="p">(</span><span class="s1">&#39;K&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e4</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;k_ppm&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">factor</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;k_ppm&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="fix_k">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.geochem.processing.elements.html#global_geochemistry.geochem.processing.elements.fix_k">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">fix_k</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fill missing K2O from K_ppm where K2O is absent or non-positive.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : pandas.DataFrame</span>
+<span class="sd">    inplace : bool</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">inplace</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">if</span> <span class="s1">&#39;k_ppm&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">data</span>
+    <span class="k">if</span> <span class="s1">&#39;k2o&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;k2o&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+    <span class="kn">from</span><span class="w"> </span><span class="nn">global_geochemistry.utils.molecular</span><span class="w"> </span><span class="kn">import</span> <span class="n">MolecularWeightCalculator</span>
+    <span class="n">_mwc</span> <span class="o">=</span> <span class="n">MolecularWeightCalculator</span><span class="p">()</span>
+    <span class="n">factor</span> <span class="o">=</span> <span class="n">_mwc</span><span class="o">.</span><span class="n">molecular_weight</span><span class="p">(</span><span class="s1">&#39;K2O&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">_mwc</span><span class="o">.</span><span class="n">molecular_weight</span><span class="p">(</span><span class="s1">&#39;K&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e4</span><span class="p">)</span>
+    <span class="n">k2o_from_ppm</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;k_ppm&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">factor</span>
+
+    <span class="n">fill_mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;k2o&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span> <span class="o">|</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;k2o&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;k_ppm&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">fill_mask</span><span class="p">,</span> <span class="s1">&#39;k2o&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">k2o_from_ppm</span><span class="p">[</span><span class="n">fill_mask</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">data</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Derrick Hasterok.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

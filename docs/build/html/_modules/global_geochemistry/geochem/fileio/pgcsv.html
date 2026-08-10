@@ -1,0 +1,749 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>global_geochemistry.geochem.fileio.pgcsv &#8212; global_geochemistry 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/global_geochemistry/geochem/fileio/pgcsv';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">global_geochemistry 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../generated/global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../generated/global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">global_geochemistry.geochem.fileio.pgcsv</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for global_geochemistry.geochem.fileio.pgcsv</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Convert geochemical Excel template files to database-ready CSV.</span>
+
+<span class="sd">Implements the MATLAB ``pgcsv.m`` / ``parsexls`` workflow in Python.</span>
+
+<span class="sd">The Excel templates have a **transposed** layout:</span>
+<span class="sd">- Each **row** is one variable (analyte, metadata field).</span>
+<span class="sd">- Each **column** is one sample.</span>
+<span class="sd">- The first column contains the variable name; subsequent columns contain</span>
+<span class="sd">  values.</span>
+<span class="sd">- Data begins at the row whose first cell is ``&#39;reference&#39;``; all rows</span>
+<span class="sd">  above it (metadata about the submission) are skipped.</span>
+
+<span class="sd">Processing steps applied to every file:</span>
+
+<span class="sd">1. Locate the ``&#39;reference&#39;`` row and use everything below it as the data</span>
+<span class="sd">   table.</span>
+<span class="sd">2. Normalise variable names: lower-case, whitespace → ``_``, strip</span>
+<span class="sd">   subscript Unicode characters, fix known OCR errors and naming variants.</span>
+<span class="sd">3. Convert units where the suffix encodes the unit:</span>
+<span class="sd">   ``_ppb`` → ×10³, ``_ppt`` → ×10⁻⁶, ``_per`` / ``_wtper`` → ×10⁴.</span>
+<span class="sd">4. Map below-detection-limit tokens (``bdl``, ``b.d.l.``, ``nd``, …) to</span>
+<span class="sd">   zero; ``&lt;value`` → negative; bare ``-`` → NaN.</span>
+<span class="sd">5. Merge duplicate variable names by averaging numeric values.</span>
+<span class="sd">6. Ensure required metadata columns are present (filled with empty string</span>
+<span class="sd">   if missing).</span>
+<span class="sd">7. Write a UTF-8 CSV to *output_dir* (one CSV per input file).</span>
+
+<span class="sd">Usage</span>
+<span class="sd">-----</span>
+<span class="sd">Process a single file::</span>
+
+<span class="sd">    pgcsv(&#39;path/to/file.xlsx&#39;, output_dir=&#39;outdir/&#39;)</span>
+
+<span class="sd">Process an entire directory::</span>
+
+<span class="sd">    pgcsv(&#39;path/to/spreadsheets/&#39;, output_dir=&#39;outdir/&#39;)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">unicodedata</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Column name aliases (lower-case → canonical name)</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<span class="n">_ALIASES</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;reference&#39;</span><span class="p">:</span>            <span class="s1">&#39;bibtex&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;bibkey&#39;</span><span class="p">:</span>               <span class="s1">&#39;bibtex&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;or&#39;</span><span class="p">:</span>                   <span class="s1">&#39;orth&#39;</span><span class="p">,</span>       <span class="c1"># SQL reserved word</span>
+    <span class="s1">&#39;group&#39;</span><span class="p">:</span>                <span class="s1">&#39;chem_group&#39;</span><span class="p">,</span> <span class="c1"># SQL reserved word</span>
+    <span class="s1">&#39;sfeo&#39;</span><span class="p">:</span>    <span class="s1">&#39;feo_tot&#39;</span><span class="p">,</span> <span class="s1">&#39;feot&#39;</span><span class="p">:</span>  <span class="s1">&#39;feo_tot&#39;</span><span class="p">,</span> <span class="s1">&#39;feo_t&#39;</span><span class="p">:</span>  <span class="s1">&#39;feo_tot&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;tfeo&#39;</span><span class="p">:</span>    <span class="s1">&#39;feo_tot&#39;</span><span class="p">,</span> <span class="s1">&#39;feo*&#39;</span><span class="p">:</span>  <span class="s1">&#39;feo_tot&#39;</span><span class="p">,</span> <span class="s1">&#39;feotot&#39;</span><span class="p">:</span> <span class="s1">&#39;feo_tot&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sfe2o3&#39;</span><span class="p">:</span>  <span class="s1">&#39;fe2o3_tot&#39;</span><span class="p">,</span> <span class="s1">&#39;fe2o3t&#39;</span><span class="p">:</span> <span class="s1">&#39;fe2o3_tot&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;tfe2o3&#39;</span><span class="p">:</span>  <span class="s1">&#39;fe2o3_tot&#39;</span><span class="p">,</span> <span class="s1">&#39;fe2o3_t&#39;</span><span class="p">:</span> <span class="s1">&#39;fe2o3_tot&#39;</span><span class="p">,</span> <span class="s1">&#39;fe2o3tot&#39;</span><span class="p">:</span> <span class="s1">&#39;fe2o3_tot&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;s_tot&#39;</span><span class="p">:</span>   <span class="s1">&#39;s_wtper&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;c_tot&#39;</span><span class="p">:</span>   <span class="s1">&#39;c_wtper&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;h2o+&#39;</span><span class="p">:</span>    <span class="s1">&#39;h2o_plus&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;h2o-&#39;</span><span class="p">:</span>    <span class="s1">&#39;h2o_minus&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;h2o?&#39;</span><span class="p">:</span>    <span class="s1">&#39;h2o_minus&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;geologic_province&#39;</span><span class="p">:</span>      <span class="s1">&#39;prov_name&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;subprovince_or_terrane&#39;</span><span class="p">:</span> <span class="s1">&#39;subprov1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lithologic_unit&#39;</span><span class="p">:</span>        <span class="s1">&#39;lith_name&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;rock_type&#39;</span><span class="p">:</span>              <span class="s1">&#39;rock_name&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;rock type&#39;</span><span class="p">:</span>              <span class="s1">&#39;rock_name&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;rock facies&#39;</span><span class="p">:</span>            <span class="s1">&#39;rock_composition&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;rock_facies&#39;</span><span class="p">:</span>            <span class="s1">&#39;rock_composition&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mage_ma&#39;</span><span class="p">:</span>     <span class="s1">&#39;mage&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mage_min_ma&#39;</span><span class="p">:</span> <span class="s1">&#39;mage_min&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mage_max_ma&#39;</span><span class="p">:</span> <span class="s1">&#39;mage_max&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mage_sd_ma&#39;</span><span class="p">:</span>  <span class="s1">&#39;mage_sd&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sum&#39;</span><span class="p">:</span>         <span class="s1">&#39;total&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sample_id&#39;</span><span class="p">:</span>   <span class="s1">&#39;sample_name&#39;</span><span class="p">,</span>
+    <span class="c1"># OCR / typo errors</span>
+    <span class="s1">&#39;na20&#39;</span><span class="p">:</span> <span class="s1">&#39;na2o&#39;</span><span class="p">,</span> <span class="s1">&#39;2o&#39;</span><span class="p">:</span> <span class="s1">&#39;na2o&#39;</span><span class="p">,</span> <span class="s1">&#39;20&#39;</span><span class="p">:</span> <span class="s1">&#39;na2o&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;k20&#39;</span><span class="p">:</span>  <span class="s1">&#39;k2o&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;a1203&#39;</span><span class="p">:</span> <span class="s1">&#39;al2o3&#39;</span><span class="p">,</span> <span class="s1">&#39;al203&#39;</span><span class="p">:</span> <span class="s1">&#39;al2o3&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;si02&#39;</span><span class="p">:</span>  <span class="s1">&#39;sio2&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ti02&#39;</span><span class="p">:</span>  <span class="s1">&#39;tio2&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;p205&#39;</span><span class="p">:</span>  <span class="s1">&#39;p2o5&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ca0&#39;</span><span class="p">:</span>   <span class="s1">&#39;cao&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mg0&#39;</span><span class="p">:</span>   <span class="s1">&#39;mgo&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mn0&#39;</span><span class="p">:</span>   <span class="s1">&#39;mno&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;fe0&#39;</span><span class="p">:</span>   <span class="s1">&#39;feo&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;fe203&#39;</span><span class="p">:</span> <span class="s1">&#39;fe2o3&#39;</span><span class="p">,</span> <span class="s1">&#39;fo203&#39;</span><span class="p">:</span> <span class="s1">&#39;fe2o3&#39;</span><span class="p">,</span>
+    <span class="c1"># Mg number aliases</span>
+    <span class="s1">&#39;mgo#&#39;</span><span class="p">:</span> <span class="s1">&#39;mg_num&#39;</span><span class="p">,</span> <span class="s1">&#39;mg#&#39;</span><span class="p">:</span> <span class="s1">&#39;mg_num&#39;</span><span class="p">,</span> <span class="s1">&#39;mg_#&#39;</span><span class="p">:</span> <span class="s1">&#39;mg_num&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mg_number&#39;</span><span class="p">:</span> <span class="s1">&#39;mg_num&#39;</span><span class="p">,</span> <span class="s1">&#39;mg number&#39;</span><span class="p">:</span> <span class="s1">&#39;mg_num&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mg #&#39;</span><span class="p">:</span> <span class="s1">&#39;mg_num&#39;</span><span class="p">,</span> <span class="s1">&#39;#mg&#39;</span><span class="p">:</span> <span class="s1">&#39;mg_num&#39;</span><span class="p">,</span> <span class="s1">&#39;mg-no&#39;</span><span class="p">:</span> <span class="s1">&#39;mg_num&#39;</span><span class="p">,</span>
+    <span class="c1"># LOI</span>
+    <span class="s1">&#39;l.o.i.&#39;</span><span class="p">:</span> <span class="s1">&#39;loi&#39;</span><span class="p">,</span> <span class="s1">&#39;l.o.i&#39;</span><span class="p">:</span> <span class="s1">&#39;loi&#39;</span><span class="p">,</span> <span class="s1">&#39;loss&#39;</span><span class="p">:</span> <span class="s1">&#39;loi&#39;</span><span class="p">,</span>
+    <span class="c1"># Isotope ratios</span>
+    <span class="s1">&#39;87rb_86sr&#39;</span><span class="p">:</span> <span class="s1">&#39;rb87_sr86&#39;</span><span class="p">,</span> <span class="s1">&#39;87sr_86sr&#39;</span><span class="p">:</span> <span class="s1">&#39;sr87_sr86&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;84sr_86sr&#39;</span><span class="p">:</span> <span class="s1">&#39;sr84_sr86&#39;</span><span class="p">,</span> <span class="s1">&#39;84sr_88sr&#39;</span><span class="p">:</span> <span class="s1">&#39;sr84_sr88&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;147sm_144nd&#39;</span><span class="p">:</span> <span class="s1">&#39;sm147_nd144&#39;</span><span class="p">,</span> <span class="s1">&#39;147sm_143nd&#39;</span><span class="p">:</span> <span class="s1">&#39;sm147_nd143&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;143nd_144nd&#39;</span><span class="p">:</span> <span class="s1">&#39;nd143_nd144&#39;</span><span class="p">,</span> <span class="s1">&#39;146nd_145nd&#39;</span><span class="p">:</span> <span class="s1">&#39;nd146_nd145&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;176hf_177hf&#39;</span><span class="p">:</span> <span class="s1">&#39;hf176_hf177&#39;</span><span class="p">,</span> <span class="s1">&#39;176lu_177hf&#39;</span><span class="p">:</span> <span class="s1">&#39;lu176_hf177&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;187re_188os&#39;</span><span class="p">:</span> <span class="s1">&#39;re187_os188&#39;</span><span class="p">,</span> <span class="s1">&#39;187os_188os&#39;</span><span class="p">:</span> <span class="s1">&#39;os187_os188&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;206pb_204pb&#39;</span><span class="p">:</span> <span class="s1">&#39;pb206_pb204&#39;</span><span class="p">,</span> <span class="s1">&#39;207pb_204pb&#39;</span><span class="p">:</span> <span class="s1">&#39;pb207_pb204&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;208pb_204pb&#39;</span><span class="p">:</span> <span class="s1">&#39;pb208_pb204&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;206pb_238u&#39;</span><span class="p">:</span> <span class="s1">&#39;pb206_u238&#39;</span><span class="p">,</span> <span class="s1">&#39;207pb_238u&#39;</span><span class="p">:</span> <span class="s1">&#39;pb207_u238&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;206pb_235u&#39;</span><span class="p">:</span> <span class="s1">&#39;pb206_u235&#39;</span><span class="p">,</span> <span class="s1">&#39;207pb_235u&#39;</span><span class="p">:</span> <span class="s1">&#39;pb207_u235&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;238u_232th&#39;</span><span class="p">:</span> <span class="s1">&#39;u238_th232&#39;</span><span class="p">,</span> <span class="s1">&#39;230th_232th&#39;</span><span class="p">:</span> <span class="s1">&#39;th230_th232&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;230th_238u&#39;</span><span class="p">:</span> <span class="s1">&#39;th230_u238&#39;</span><span class="p">,</span> <span class="s1">&#39;226ra_230th&#39;</span><span class="p">:</span> <span class="s1">&#39;ra226_th230&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;238u_204pb&#39;</span><span class="p">:</span> <span class="s1">&#39;u238_pb204&#39;</span><span class="p">,</span> <span class="s1">&#39;232th_204pb&#39;</span><span class="p">:</span> <span class="s1">&#39;th232_pb204&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># Uncertainty columns follow the same pattern with &#39;_uncertainty&#39; suffix</span>
+<span class="n">_ALIASES</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+    <span class="n">k</span> <span class="o">+</span> <span class="s1">&#39;_uncertainty&#39;</span><span class="p">:</span> <span class="n">v</span> <span class="o">+</span> <span class="s1">&#39;_uncertainty&#39;</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">_ALIASES</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">k</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;_uncertainty&#39;</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="c1"># Elemental symbols (ppm columns after unit stripping)</span>
+<span class="n">_ELEMENTS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;li&#39;</span><span class="p">,</span><span class="s1">&#39;na&#39;</span><span class="p">,</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">,</span><span class="s1">&#39;cs&#39;</span><span class="p">,</span><span class="s1">&#39;be&#39;</span><span class="p">,</span><span class="s1">&#39;mg&#39;</span><span class="p">,</span><span class="s1">&#39;ca&#39;</span><span class="p">,</span><span class="s1">&#39;sr&#39;</span><span class="p">,</span><span class="s1">&#39;ba&#39;</span><span class="p">,</span><span class="s1">&#39;sc&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;la&#39;</span><span class="p">,</span><span class="s1">&#39;ce&#39;</span><span class="p">,</span><span class="s1">&#39;pr&#39;</span><span class="p">,</span><span class="s1">&#39;nd&#39;</span><span class="p">,</span><span class="s1">&#39;sm&#39;</span><span class="p">,</span><span class="s1">&#39;eu&#39;</span><span class="p">,</span><span class="s1">&#39;gd&#39;</span><span class="p">,</span><span class="s1">&#39;tb&#39;</span><span class="p">,</span><span class="s1">&#39;dy&#39;</span><span class="p">,</span><span class="s1">&#39;ho&#39;</span><span class="p">,</span><span class="s1">&#39;er&#39;</span><span class="p">,</span><span class="s1">&#39;tm&#39;</span><span class="p">,</span><span class="s1">&#39;yb&#39;</span><span class="p">,</span><span class="s1">&#39;lu&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ti&#39;</span><span class="p">,</span><span class="s1">&#39;zr&#39;</span><span class="p">,</span><span class="s1">&#39;hf&#39;</span><span class="p">,</span><span class="s1">&#39;v&#39;</span><span class="p">,</span><span class="s1">&#39;nb&#39;</span><span class="p">,</span><span class="s1">&#39;ta&#39;</span><span class="p">,</span><span class="s1">&#39;cr&#39;</span><span class="p">,</span><span class="s1">&#39;mo&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">,</span><span class="s1">&#39;mn&#39;</span><span class="p">,</span><span class="s1">&#39;fe&#39;</span><span class="p">,</span><span class="s1">&#39;co&#39;</span><span class="p">,</span><span class="s1">&#39;ni&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;re&#39;</span><span class="p">,</span><span class="s1">&#39;ru&#39;</span><span class="p">,</span><span class="s1">&#39;os&#39;</span><span class="p">,</span><span class="s1">&#39;rh&#39;</span><span class="p">,</span><span class="s1">&#39;pd&#39;</span><span class="p">,</span><span class="s1">&#39;pt&#39;</span><span class="p">,</span><span class="s1">&#39;ir&#39;</span><span class="p">,</span><span class="s1">&#39;cu&#39;</span><span class="p">,</span><span class="s1">&#39;ag&#39;</span><span class="p">,</span><span class="s1">&#39;au&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;zn&#39;</span><span class="p">,</span><span class="s1">&#39;cd&#39;</span><span class="p">,</span><span class="s1">&#39;hg&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;al&#39;</span><span class="p">,</span><span class="s1">&#39;ga&#39;</span><span class="p">,</span><span class="s1">&#39;in&#39;</span><span class="p">,</span><span class="s1">&#39;tl&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="s1">&#39;si&#39;</span><span class="p">,</span><span class="s1">&#39;ge&#39;</span><span class="p">,</span><span class="s1">&#39;sn&#39;</span><span class="p">,</span><span class="s1">&#39;pb&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;n&#39;</span><span class="p">,</span><span class="s1">&#39;p&#39;</span><span class="p">,</span><span class="s1">&#39;as&#39;</span><span class="p">,</span><span class="s1">&#39;sb&#39;</span><span class="p">,</span><span class="s1">&#39;bi&#39;</span><span class="p">,</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="s1">&#39;se&#39;</span><span class="p">,</span><span class="s1">&#39;te&#39;</span><span class="p">,</span><span class="s1">&#39;f&#39;</span><span class="p">,</span><span class="s1">&#39;cl&#39;</span><span class="p">,</span><span class="s1">&#39;br&#39;</span><span class="p">,</span><span class="s1">&#39;i&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;u&#39;</span><span class="p">,</span><span class="s1">&#39;th&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># Numeric field names (wt%)</span>
+<span class="n">_NUMFIELDS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;sio2&#39;</span><span class="p">,</span><span class="s1">&#39;tio2&#39;</span><span class="p">,</span><span class="s1">&#39;al2o3&#39;</span><span class="p">,</span><span class="s1">&#39;fe2o3&#39;</span><span class="p">,</span><span class="s1">&#39;fe2o3_tot&#39;</span><span class="p">,</span><span class="s1">&#39;feo&#39;</span><span class="p">,</span><span class="s1">&#39;feo_tot&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mgo&#39;</span><span class="p">,</span><span class="s1">&#39;cao&#39;</span><span class="p">,</span><span class="s1">&#39;na2o&#39;</span><span class="p">,</span><span class="s1">&#39;k2o&#39;</span><span class="p">,</span><span class="s1">&#39;p2o5&#39;</span><span class="p">,</span><span class="s1">&#39;mno&#39;</span><span class="p">,</span><span class="s1">&#39;sro&#39;</span><span class="p">,</span><span class="s1">&#39;bao&#39;</span><span class="p">,</span><span class="s1">&#39;cr2o3&#39;</span><span class="p">,</span><span class="s1">&#39;nio&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;caco3&#39;</span><span class="p">,</span><span class="s1">&#39;so3&#39;</span><span class="p">,</span><span class="s1">&#39;h2o_tot&#39;</span><span class="p">,</span><span class="s1">&#39;h2o_plus&#39;</span><span class="p">,</span><span class="s1">&#39;h2o_minus&#39;</span><span class="p">,</span><span class="s1">&#39;co2&#39;</span><span class="p">,</span><span class="s1">&#39;loi&#39;</span><span class="p">,</span><span class="s1">&#39;total&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;latitude&#39;</span><span class="p">,</span><span class="s1">&#39;longitude&#39;</span><span class="p">,</span><span class="s1">&#39;mswd&#39;</span><span class="p">,</span><span class="s1">&#39;mmswd&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># Time fields</span>
+<span class="n">_TIMEFIELDS</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;age&#39;</span><span class="p">,</span><span class="s1">&#39;age_min&#39;</span><span class="p">,</span><span class="s1">&#39;age_max&#39;</span><span class="p">,</span><span class="s1">&#39;age_sd&#39;</span><span class="p">,</span><span class="s1">&#39;mage&#39;</span><span class="p">,</span><span class="s1">&#39;mage_min&#39;</span><span class="p">,</span><span class="s1">&#39;mage_max&#39;</span><span class="p">,</span><span class="s1">&#39;mage_sd&#39;</span><span class="p">}</span>
+
+<span class="c1"># Required metadata columns (added as blank strings if missing)</span>
+<span class="n">_REQUIRED</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;author&#39;</span><span class="p">,</span><span class="s1">&#39;title&#39;</span><span class="p">,</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;journal&#39;</span><span class="p">,</span><span class="s1">&#39;doi&#39;</span><span class="p">,</span><span class="s1">&#39;bibtex&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lith_name&#39;</span><span class="p">,</span><span class="s1">&#39;lith_alt_name&#39;</span><span class="p">,</span><span class="s1">&#39;prov_name&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># Below-detection-limit tokens → 0</span>
+<span class="n">_BDL_TOKENS</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;bdl&#39;</span><span class="p">,</span><span class="s1">&#39;b.d.l.&#39;</span><span class="p">,</span><span class="s1">&#39;b.d.l&#39;</span><span class="p">,</span><span class="s1">&#39;nd&#39;</span><span class="p">,</span><span class="s1">&#39;n.d.&#39;</span><span class="p">,</span><span class="s1">&#39;bd&#39;</span><span class="p">,</span><span class="s1">&#39;b.d.&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;dl&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;d.l.&#39;</span><span class="p">}</span>
+
+<span class="c1"># Subscript Unicode → ASCII digits</span>
+<span class="n">_SUBSCRIPTS</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">({</span>
+    <span class="s1">&#39;₀&#39;</span><span class="p">:</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;₁&#39;</span><span class="p">:</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;₂&#39;</span><span class="p">:</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;₃&#39;</span><span class="p">:</span><span class="s1">&#39;3&#39;</span><span class="p">,</span><span class="s1">&#39;₄&#39;</span><span class="p">:</span><span class="s1">&#39;4&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;₅&#39;</span><span class="p">:</span><span class="s1">&#39;5&#39;</span><span class="p">,</span><span class="s1">&#39;₆&#39;</span><span class="p">:</span><span class="s1">&#39;6&#39;</span><span class="p">,</span><span class="s1">&#39;₇&#39;</span><span class="p">:</span><span class="s1">&#39;7&#39;</span><span class="p">,</span><span class="s1">&#39;₈&#39;</span><span class="p">:</span><span class="s1">&#39;8&#39;</span><span class="p">,</span><span class="s1">&#39;₉&#39;</span><span class="p">:</span><span class="s1">&#39;9&#39;</span><span class="p">,</span>
+<span class="p">})</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_clean_name</span><span class="p">(</span><span class="n">raw</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Normalise a raw variable name from the Excel template.&quot;&quot;&quot;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">_SUBSCRIPTS</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">_bad</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\x85</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\u0338</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\u2028</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\u2029</span><span class="s1">&#39;</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">_bad</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>
+    <span class="n">paren</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;(&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">paren</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[:</span><span class="n">paren</span><span class="p">]</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[^a-zA-Z0-9 _.#+*\-?&lt;&gt;]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">s</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_resolve_name</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Apply aliases and strip unit suffixes from a cleaned variable name.&quot;&quot;&quot;</span>
+    <span class="c1"># Strip _uncertainty before alias lookup, then restore</span>
+    <span class="n">is_unc</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;_uncertainty&#39;</span><span class="p">)</span>
+    <span class="n">base</span> <span class="o">=</span> <span class="n">name</span><span class="p">[:</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="s1">&#39;_uncertainty&#39;</span><span class="p">)]</span> <span class="k">if</span> <span class="n">is_unc</span> <span class="k">else</span> <span class="n">name</span>
+    <span class="n">base</span> <span class="o">=</span> <span class="n">_ALIASES</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">base</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">base</span> <span class="o">+</span> <span class="s1">&#39;_uncertainty&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">is_unc</span> <span class="k">else</span> <span class="n">base</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_apply_units</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">series</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Strip unit suffix from *name* and convert *series* accordingly.</span>
+
+<span class="sd">    Returns the updated ``(name, series)`` pair.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;_ppb&#39;</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e3</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;_ppt&#39;</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-6</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;_per&#39;</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e4</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;_wtper&#39;</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e4</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">[:</span><span class="o">-</span><span class="mi">6</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;_ppm&#39;</span><span class="p">):</span>
+        <span class="c1"># already in ppm, just strip suffix</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">name</span><span class="p">,</span> <span class="n">s</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_is_numeric_field</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;True if this variable should be treated as a numeric column.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">_NUMFIELDS</span> <span class="ow">or</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">_TIMEFIELDS</span> <span class="ow">or</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">_ELEMENTS</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_parse_excel</span><span class="p">(</span><span class="n">raw</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Parse a transposed geochemical template DataFrame.</span>
+
+<span class="sd">    *raw* is the DataFrame as returned by :func:`pd.read_excel` with</span>
+<span class="sd">    ``header=None``.  Rows are variables, columns are samples.</span>
+
+<span class="sd">    Returns a tidy DataFrame (samples × variables).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Find the &#39;reference&#39; row (start of the data table)</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">raw</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]):</span>
+        <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;reference&#39;</span><span class="p">:</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">i</span>
+            <span class="k">break</span>
+    <span class="k">if</span> <span class="n">start</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Could not find &#39;reference&#39; row in Excel template.&quot;</span><span class="p">)</span>
+
+    <span class="n">block</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">start</span><span class="p">:]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">n_samples</span> <span class="o">=</span> <span class="n">block</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>   <span class="c1"># first col = var names</span>
+
+    <span class="n">cols</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">block</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">raw_name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">raw_name</span> <span class="ow">or</span> <span class="n">raw_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;nan&#39;</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="n">name</span> <span class="o">=</span> <span class="n">_clean_name</span><span class="p">(</span><span class="n">raw_name</span><span class="p">)</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">_resolve_name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+        <span class="n">values</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>   <span class="c1"># one value per sample</span>
+
+        <span class="c1"># Determine if this is a numeric field (after unit stripping)</span>
+        <span class="n">name_no_unit</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;_(ppb|ppt|per|wtper|ppm)$&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+        <span class="n">is_num</span> <span class="o">=</span> <span class="n">_is_numeric_field</span><span class="p">(</span><span class="n">name_no_unit</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">is_num</span><span class="p">:</span>
+            <span class="c1"># Apply BDL handling and &#39;&lt;&#39; / &#39;&gt;&#39; substitution</span>
+            <span class="n">cleaned</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+                <span class="n">sv</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">sv</span> <span class="ow">in</span> <span class="n">_BDL_TOKENS</span><span class="p">:</span>
+                    <span class="n">cleaned</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">sv</span> <span class="o">==</span> <span class="s1">&#39;-&#39;</span> <span class="ow">or</span> <span class="n">sv</span> <span class="o">==</span> <span class="s1">&#39;nan&#39;</span><span class="p">:</span>
+                    <span class="n">cleaned</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">sv</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;&lt;&#39;</span><span class="p">):</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">cleaned</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="nb">float</span><span class="p">(</span><span class="n">sv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">strip</span><span class="p">()))</span>
+                    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                        <span class="n">cleaned</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">sv</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">):</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">cleaned</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">sv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">strip</span><span class="p">()))</span>
+                    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                        <span class="n">cleaned</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">cleaned</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+                    <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
+                        <span class="n">cleaned</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+            <span class="n">series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">cleaned</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+            <span class="c1"># Apply unit conversion</span>
+            <span class="n">name</span><span class="p">,</span> <span class="n">series</span> <span class="o">=</span> <span class="n">_apply_units</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">series</span><span class="p">)</span>
+            <span class="c1"># Add _ppm suffix for elemental columns</span>
+            <span class="n">bare</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;_(ppb|ppt|per|wtper|ppm)$&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">bare</span> <span class="ow">in</span> <span class="n">_ELEMENTS</span><span class="p">:</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="n">bare</span> <span class="o">+</span> <span class="s1">&#39;_ppm&#39;</span>
+            <span class="n">values</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">series</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Text field — keep as strings, drop pure NaN values</span>
+            <span class="n">values</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="s1">&#39;&#39;</span> <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">values</span>
+            <span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">:</span>
+            <span class="c1"># Duplicate: merge by averaging numeric, keep first for text</span>
+            <span class="n">existing</span> <span class="o">=</span> <span class="n">cols</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">is_num</span><span class="p">:</span>
+                <span class="n">merged</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">existing</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span> <span class="k">else</span> <span class="kc">True</span><span class="p">:</span>
+                        <span class="n">merged</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="p">))</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span> <span class="k">else</span> <span class="kc">False</span><span class="p">:</span>
+                        <span class="n">merged</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">try</span><span class="p">:</span>
+                            <span class="n">merged</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+                        <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+                            <span class="n">merged</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+                <span class="n">cols</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged</span>
+            <span class="c1"># For text fields keep the first occurrence</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cols</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">values</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cols</span><span class="p">)</span>
+
+    <span class="c1"># Add required columns if missing</span>
+    <span class="k">for</span> <span class="n">req</span> <span class="ow">in</span> <span class="n">_REQUIRED</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">req</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">df</span><span class="p">[</span><span class="n">req</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+    <span class="k">return</span> <span class="n">df</span>
+
+
+<div class="viewcode-block" id="pgcsv">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.geochem.fileio.pgcsv.html#global_geochemistry.geochem.fileio.pgcsv.pgcsv">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">pgcsv</span><span class="p">(</span><span class="n">input_path</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert geochemical Excel template file(s) to database-ready CSV.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    input_path : str or path-like</span>
+<span class="sd">        Path to a single ``.xls`` / ``.xlsx`` file, or a directory</span>
+<span class="sd">        containing such files.  Files with other extensions are skipped.</span>
+<span class="sd">    output_dir : str or path-like, optional</span>
+<span class="sd">        Directory to write CSV files.  Defaults to the same directory as</span>
+<span class="sd">        each input file.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list of pathlib.Path</span>
+<span class="sd">        Paths of the CSV files written.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">input_path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">input_path</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">input_path</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>
+            <span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">input_path</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">suffix</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;.xls&#39;</span><span class="p">,</span> <span class="s1">&#39;.xlsx&#39;</span><span class="p">)</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="n">input_path</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">input_path</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Not found: </span><span class="si">{</span><span class="n">input_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">written</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">_parse_excel</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+
+            <span class="n">out_dir</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span> <span class="k">if</span> <span class="n">output_dir</span> <span class="k">else</span> <span class="n">f</span><span class="o">.</span><span class="n">parent</span>
+            <span class="n">out_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">out_path</span> <span class="o">=</span> <span class="n">out_dir</span> <span class="o">/</span> <span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">stem</span> <span class="o">+</span> <span class="s1">&#39;.csv&#39;</span><span class="p">)</span>
+            <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">out_path</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+            <span class="n">written</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out_path</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Wrote </span><span class="si">{</span><span class="n">out_path</span><span class="si">}</span><span class="s2">  (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="si">}</span><span class="s2"> samples, </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="s2"> columns)&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Skipping </span><span class="si">{</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">exc</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">written</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Derrick Hasterok.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,688 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>global_geochemistry.plotting.spider &#8212; global_geochemistry 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/global_geochemistry/plotting/spider';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">global_geochemistry 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../generated/global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../generated/global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">global_geochemistry.plotting.spider</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for global_geochemistry.plotting.spider</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Created on Wed Nov 22 16:56:39 2023</span>
+
+<span class="sd">@author: Shavin Kaluthantri</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">pi</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">sem</span><span class="p">,</span> <span class="n">norm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.interpolate</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearNDInterpolator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">global_geochemistry.utils.molecular</span><span class="w"> </span><span class="kn">import</span> <span class="n">MolecularWeightCalculator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">global_geochemistry.geochem.processing.censored</span><span class="w"> </span><span class="kn">import</span> <span class="n">gausscensor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.figure</span><span class="w"> </span><span class="kn">import</span> <span class="n">Figure</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<div class="viewcode-block" id="plot_spider_norm">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.plotting.spider.html#global_geochemistry.plotting.spider.plot_spider_norm">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_spider_norm</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">ref_data</span><span class="p">,</span> <span class="n">norm_ref_data</span><span class="p">,</span> <span class="n">layer</span><span class="p">,</span><span class="n">el_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;Quanta&#39;</span><span class="p">,</span> <span class="n">quantiles</span><span class="o">=</span><span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    
+    <span class="n">el_list_lower</span> <span class="o">=</span> <span class="p">[</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">el</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">el_list</span><span class="p">]</span>
+    <span class="c1"># Filter ref_dataerence data</span>
+    <span class="n">ref_data_chem</span> <span class="o">=</span> <span class="n">ref_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">ref_data</span><span class="p">[</span><span class="s1">&#39;reference&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">norm_ref_data</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">ref_data</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">norm_ref_data</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ref_data</span><span class="p">[</span><span class="s1">&#39;layer&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">layer</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ref_data</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)]</span>
+    <span class="n">plot_inf</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="n">el_list</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">el_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Cs&#39;</span><span class="p">,</span> <span class="s1">&#39;Rb&#39;</span><span class="p">,</span> <span class="s1">&#39;Ba&#39;</span><span class="p">,</span> <span class="s1">&#39;Th&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;U&#39;</span><span class="p">,</span> <span class="s1">&#39;Nb&#39;</span><span class="p">,</span> <span class="s1">&#39;Ta&#39;</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;La&#39;</span><span class="p">,</span> <span class="s1">&#39;Ce&#39;</span><span class="p">,</span> <span class="s1">&#39;Pb&#39;</span><span class="p">,</span> <span class="s1">&#39;Mo&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Pr&#39;</span><span class="p">,</span> <span class="s1">&#39;Sr&#39;</span><span class="p">,</span> <span class="s1">&#39;Ga&#39;</span><span class="p">,</span> <span class="s1">&#39;Zr&#39;</span><span class="p">,</span> <span class="s1">&#39;Hf&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Nd&#39;</span><span class="p">,</span> <span class="s1">&#39;Sm&#39;</span><span class="p">,</span> <span class="s1">&#39;Eu&#39;</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;Ti&#39;</span><span class="p">,</span> <span class="s1">&#39;Gd&#39;</span><span class="p">,</span> <span class="s1">&#39;Tb&#39;</span><span class="p">,</span> <span class="s1">&#39;Dy&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="s1">&#39;Ho&#39;</span><span class="p">,</span> <span class="s1">&#39;Er&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Tm&#39;</span><span class="p">,</span> <span class="s1">&#39;Yb&#39;</span><span class="p">,</span> <span class="s1">&#39;Lu&#39;</span><span class="p">,</span> <span class="s1">&#39;Zn&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;Mn&#39;</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;Sc&#39;</span><span class="p">,</span> <span class="s1">&#39;Co&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;Cu&#39;</span><span class="p">,</span> <span class="s1">&#39;Ni&#39;</span><span class="p">,</span> <span class="s1">&#39;Cr&#39;</span><span class="p">]</span>
+    
+    
+    <span class="c1"># If no axes are provided, create new axes</span>
+    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">polar</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">fig</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">figure</span>
+
+
+    <span class="c1"># Number of variables we&#39;re plotting</span>
+    <span class="n">num_vars</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">el_list</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="s1">&#39;ppm&#39;</span> <span class="ow">in</span> <span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">):</span>
+        <span class="c1"># data.columns = [col[:2].lower() for col in data.columns]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">ref_data</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+            <span class="n">ref_data</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">ref_data</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+        <span class="n">ref_data_chem</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">ref_data_chem</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ref_data</span> <span class="o">=</span> <span class="n">ox2ppm</span><span class="p">(</span><span class="n">el_list</span><span class="p">,</span> <span class="n">ref_data</span><span class="p">)</span>
+        
+        
+    <span class="c1"># ref_data = ox2ppm(el_list, ref_data)</span>
+    <span class="c1"># el_list = [elemts.lower()]</span>
+    
+    <span class="n">ymodel</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;mu&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s1">&#39;sigma&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">}</span>
+    
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">el_list</span><span class="p">:</span>
+        
+        <span class="n">y</span><span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">el</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="n">el</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">y</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">):</span> 
+            <span class="k">if</span> <span class="n">style</span> <span class="o">==</span> <span class="s1">&#39;MeanSD&#39;</span> <span class="ow">or</span> <span class="n">style</span> <span class="o">==</span> <span class="s1">&#39;MeanSE&#39;</span><span class="p">:</span>
+                <span class="n">ymodel</span><span class="p">[</span><span class="s1">&#39;mu&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+                <span class="n">ymodel</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+            <span class="k">elif</span> <span class="n">style</span><span class="o">==</span><span class="s1">&#39;Quanta&#39;</span><span class="p">:</span>
+                <span class="n">y_q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">q</span><span class="o">=</span><span class="n">quantiles</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span> <span class="c1">#censorred data</span>
+            <span class="n">ymodel</span><span class="p">,</span> <span class="n">y_q</span> <span class="o">=</span> <span class="n">gausscensor</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">scale</span> <span class="o">=</span> <span class="s1">&#39;log&#39;</span><span class="p">,</span><span class="n">q</span><span class="o">=</span><span class="n">quantiles</span><span class="p">);</span> 
+            <span class="n">y_q</span> <span class="o">=</span> <span class="n">y_q</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+        
+        
+        <span class="k">if</span> <span class="n">style</span> <span class="o">==</span> <span class="s1">&#39;MeanSD&#39;</span> <span class="ow">or</span> <span class="n">style</span> <span class="o">==</span> <span class="s1">&#39;MeanSE&#39;</span><span class="p">:</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">ymodel</span><span class="p">[</span><span class="s1">&#39;mu&#39;</span><span class="p">],</span> <span class="n">ymodel</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">]])</span>
+        <span class="k">elif</span> <span class="n">style</span><span class="o">==</span><span class="s1">&#39;Quanta&#39;</span><span class="p">:</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y_q</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span>
+    
+    <span class="n">result_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span> <span class="s1">&#39;mu&#39;</span><span class="p">,</span><span class="s1">&#39;sigma&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">style</span> <span class="o">!=</span> <span class="s1">&#39;Quanta&#39;</span> <span class="k">else</span> <span class="p">[</span><span class="s1">&#39;Q&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">q</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">quantiles</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">el_list_lower</span><span class="p">)</span>
+    
+    <span class="n">ref_series</span> <span class="o">=</span> <span class="n">ref_data_chem</span><span class="p">[</span><span class="n">el_list_lower</span><span class="p">]</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+    
+    
+    <span class="k">if</span> <span class="n">style</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;MeanSD&#39;</span><span class="p">,</span> <span class="s1">&#39;MeanSE&#39;</span><span class="p">]:</span>
+            
+        <span class="n">result_df</span><span class="p">[</span><span class="s1">&#39;mu_norm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="n">result_df</span><span class="p">[</span><span class="s1">&#39;mu&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">ref_series</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+        <span class="n">result_df</span><span class="p">[</span><span class="s1">&#39;sigma_norm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">result_df</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">ref_series</span><span class="p">))</span>
+        
+        <span class="n">result_df</span><span class="p">[</span><span class="s1">&#39;se&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">result_df</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">]</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">result_df</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">])</span>
+        <span class="n">result_df</span><span class="p">[</span><span class="s1">&#39;se_norm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">result_df</span><span class="p">[</span><span class="s1">&#39;sigma_norm&#39;</span><span class="p">]</span>
+        
+        <span class="n">plot_inf</span><span class="p">[</span><span class="s1">&#39;dimention_names&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Element&#39;</span><span class="p">,</span> <span class="s1">&#39;Concentration Data&#39;</span><span class="p">]</span> 
+        <span class="n">plot_inf</span> <span class="p">[</span><span class="s1">&#39;variable_units&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;log10 (ppm)&#39;</span><span class="p">]</span>
+        
+    <span class="k">elif</span> <span class="n">style</span> <span class="o">==</span> <span class="s1">&#39;Quanta&#39;</span><span class="p">:</span>
+        <span class="n">result_df</span><span class="p">[</span><span class="n">result_df</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">((</span><span class="mi">10</span><span class="o">**</span><span class="n">result_df</span><span class="p">[</span><span class="n">result_df</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">ref_series</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+        
+        <span class="n">plot_inf</span> <span class="p">[</span><span class="s1">&#39;variable_names&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">result_df</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="n">result_df</span><span class="p">[</span><span class="s1">&#39;elid&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">result_df</span><span class="p">))</span>
+    
+    <span class="c1"># fig = Figure()</span>
+    <span class="c1"># ax = fig.add_subplot(111)</span>
+    <span class="n">ax</span><span class="p">,</span> <span class="n">yl</span> <span class="o">=</span> <span class="n">plot_data</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">result_df</span><span class="p">,</span><span class="n">c</span><span class="p">,</span> <span class="n">style</span><span class="p">,</span><span class="n">el_list</span><span class="p">,</span><span class="n">Q</span><span class="o">=</span><span class="n">quantiles</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">label</span><span class="p">)</span> 
+    
+    <span class="c1"># add element list to results to add more information to export</span>
+    <span class="n">result_df</span><span class="p">[</span><span class="s1">&#39;element&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">el_list</span>
+    
+    <span class="k">return</span> <span class="n">ax</span><span class="p">,</span> <span class="n">yl</span><span class="p">,</span> <span class="n">result_df</span></div>
+
+    <span class="c1"># df = pd.DataFrame(results, columns=[&#39;N&#39;, &#39;mu&#39;, &#39;mu_norm&#39;, &#39;sigma&#39;, &#39;sigma_norm&#39;] if style != &#39;Quanta&#39; else [&#39;Q&#39; + str(int(q*100)) for q in Q] + [&#39;N&#39;])</span>
+    
+<div class="viewcode-block" id="logax">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.plotting.spider.html#global_geochemistry.plotting.spider.logax">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">logax</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">lim</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">tick_label_rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Produces log-axes limits and labels.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    ax (matplotlib.axes.Axes): The axes to modify.</span>
+<span class="sd">    lim (list): The log10 values of the axes limits.</span>
+<span class="sd">    axis (str): &#39;x&#39; or &#39;y&#39; to add ticks to x- or y-axis, default is &#39;y&#39;.</span>
+<span class="sd">    label (str): Label for the axis.</span>
+<span class="sd">    tick_label_rotation (float): Angle of text rotation, default is 0.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Create tick marks and labels</span>
+    <span class="n">mt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">ticks</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">tick_labels</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">lim</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">lim</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">ticks</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">i</span> <span class="o">+</span> <span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">mt</span><span class="p">])</span>
+        <span class="n">tick_labels</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="mi">10</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mt</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="c1"># Apply settings based on the axis</span>
+    <span class="k">if</span> <span class="n">axis</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;x&#39;</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">ticks</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">tick_labels</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="n">tick_label_rotation</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">10</span><span class="o">**</span><span class="n">lim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">10</span><span class="o">**</span><span class="n">lim</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+        <span class="k">if</span> <span class="n">label</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">axis</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">ticks</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">tick_labels</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="n">tick_label_rotation</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">10</span><span class="o">**</span><span class="n">lim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">10</span><span class="o">**</span><span class="n">lim</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+        <span class="k">if</span> <span class="n">label</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Incorrect axis argument. Please use &quot;x&quot; or &quot;y&quot;.&#39;</span><span class="p">)</span></div>
+
+    
+    
+    
+<div class="viewcode-block" id="fillinterval">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.plotting.spider.html#global_geochemistry.plotting.spider.fillinterval">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">fillinterval</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">alpha</span><span class="p">):</span>
+
+
+    <span class="c1"># Flattening and combining x and y for filling the interval</span>
+    <span class="c1"># x[:,1] =  x[:,1][::-1]</span>
+    <span class="c1"># y[:,1] =  y[:,1][::-1]</span>
+
+    <span class="c1"># Filling the interval in the plot</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">y</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="plot_data">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.plotting.spider.html#global_geochemistry.plotting.spider.plot_data">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_data</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">style</span><span class="p">,</span><span class="n">el_list</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s1">&#39;elid&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s1">&#39;elid&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">style</span> <span class="o">==</span> <span class="s1">&#39;MeanSD&#39;</span><span class="p">:</span>
+        <span class="n">ind</span> <span class="o">=</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;mu_norm&#39;</span><span class="p">])</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="s1">&#39;elid&#39;</span><span class="p">]</span>
+        <span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="s1">&#39;mu_norm&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="s1">&#39;sigma_norm&#39;</span><span class="p">],</span> 
+                        <span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="s1">&#39;mu_norm&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="s1">&#39;sigma_norm&#39;</span><span class="p">]])</span>
+        <span class="n">y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="s1">&#39;mu_norm&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="s1">&#39;sigma_norm&#39;</span><span class="p">],</span> 
+                        <span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="s1">&#39;mu_norm&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="s1">&#39;sigma_norm&#39;</span><span class="p">]])</span>
+
+        <span class="n">fillinterval</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">)</span>
+        <span class="n">fillinterval</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="s1">&#39;mu_norm&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">C</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+
+    
+    <span class="k">elif</span> <span class="n">style</span> <span class="o">==</span> <span class="s1">&#39;MeanSE&#39;</span><span class="p">:</span>
+        <span class="n">ind</span> <span class="o">=</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;mu_norm&#39;</span><span class="p">])</span>
+        <span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span><span class="s1">&#39;mu_norm&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span><span class="s1">&#39;se_norm&#39;</span><span class="p">],</span> <span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span><span class="s1">&#39;mu_norm&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span><span class="s1">&#39;se_norm&#39;</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
+        <span class="n">y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span><span class="s1">&#39;mu_norm&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span><span class="s1">&#39;se_norm&#39;</span><span class="p">],</span> <span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span><span class="s1">&#39;mu_norm&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span><span class="s1">&#39;se_norm&#39;</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span> 
+
+        <span class="n">fillinterval</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">)</span>
+        <span class="n">fillinterval</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span><span class="s1">&#39;mu_norm&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">C</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+    
+    <span class="k">elif</span> <span class="n">style</span> <span class="o">==</span> <span class="s1">&#39;Quanta&#39;</span><span class="p">:</span>
+        <span class="n">Q</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">ind</span> <span class="o">=</span> <span class="o">~</span><span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">Q</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="s1">&#39;elid&#39;</span><span class="p">],</span> <span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="n">Q</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">color</span><span class="o">=</span><span class="n">C</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+            <span class="n">yl</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])),</span> <span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]))]</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">ind</span> <span class="o">=</span> <span class="o">~</span><span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">Q</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="p">[</span><span class="n">Q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Q</span><span class="p">[</span><span class="mi">1</span><span class="p">]]]</span><span class="o">.</span><span class="n">values</span>
+            <span class="n">fillinterval</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">y</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+            <span class="n">yl</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])),</span> <span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]))]</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">ind</span> <span class="o">=</span> <span class="o">~</span><span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">Q</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="p">[</span><span class="n">Q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Q</span><span class="p">[</span><span class="mi">2</span><span class="p">]]]</span><span class="o">.</span><span class="n">values</span>
+            <span class="n">fillinterval</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">y</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="n">Q</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">color</span><span class="o">=</span><span class="n">C</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+            <span class="n">yl</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])),</span> <span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]))]</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="n">ind</span> <span class="o">=</span> <span class="o">~</span><span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">Q</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="p">[</span><span class="n">Q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Q</span><span class="p">[</span><span class="mi">4</span><span class="p">]]]</span><span class="o">.</span><span class="n">values</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">C</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="p">[</span><span class="n">Q</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">Q</span><span class="p">[</span><span class="mi">3</span><span class="p">]]]</span><span class="o">.</span><span class="n">values</span>
+            <span class="n">fillinterval</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">y</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="n">Q</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span> <span class="n">color</span><span class="o">=</span><span class="n">C</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+            <span class="n">yl</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])),</span> <span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">]))]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">Q</span><span class="p">:</span>
+                <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="s1">&#39;elid&#39;</span><span class="p">],</span> <span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">C</span><span class="p">)</span>
+    
+ <span class="c1"># Set y-limits for the axes</span>
+    <span class="c1"># yl = [np.floor(t.min().min()), np.ceil(t.max().max())]</span>
+    <span class="c1"># ax.set_ylim(yl)   </span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">el_list</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+    <span class="n">logax</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">yl</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">yl</span><span class="p">)</span> 
+    <span class="k">return</span> <span class="n">ax</span><span class="p">,</span> <span class="n">yl</span></div>
+
+
+
+<span class="c1"># # Repeat first value to close the circle in the plot</span>
+<span class="c1"># norm_data.loc[len(norm_data)] = norm_data.iloc[0]</span>
+
+<span class="c1"># # Draw one axe per variable and add labels</span>
+<span class="c1"># labels = el_list + [el_list[0]]</span>
+<span class="c1"># ax.set_xticks(angles)</span>
+<span class="c1"># ax.set_xticklabels(labels)</span>
+
+<span class="c1"># if style == &#39;MeanSD&#39;:</span>
+<span class="c1">#     means = norm_data.mean()</span>
+<span class="c1">#     std_devs = norm_data.std()</span>
+<span class="c1">#     means = np.concatenate((means.values, [means.values[0]]))</span>
+<span class="c1">#     std_devs = np.concatenate((std_devs.values, [std_devs.values[0]]))</span>
+<span class="c1">#     ax.plot(angles, means, &#39;b-&#39;, linewidth=1.5, label=&#39;Mean&#39;)</span>
+<span class="c1">#     ax.fill_between(angles, means - std_devs, means + std_devs, color=&#39;blue&#39;, alpha=0.3, label=&#39;SD&#39;)</span>
+
+<span class="c1"># elif style == &#39;MeanSE&#39;:</span>
+<span class="c1">#     means = norm_data.mean()</span>
+<span class="c1">#     errors = sem(norm_data, axis=0)</span>
+<span class="c1">#     means = np.concatenate((means.values, [means.values[0]]))</span>
+<span class="c1">#     errors = np.concatenate((errors, [errors[0]]))</span>
+<span class="c1">#     ax.plot(angles, means, &#39;r-&#39;, linewidth=1.5, label=&#39;Mean&#39;)</span>
+<span class="c1">#     ax.fill_between(angles, means - errors, means + errors, color=&#39;red&#39;, alpha=0.3, label=&#39;SE&#39;)</span>
+
+<span class="c1"># elif style == &#39;Quanta&#39;:</span>
+<span class="c1">#     for q in quantiles:</span>
+<span class="c1">#         quantile_values = norm_data.quantile(q)</span>
+<span class="c1">#         quantile_values = np.concatenate((quantile_values.values, [quantile_values.values[0]]))</span>
+<span class="c1">#         q = int(q*100)</span>
+<span class="c1">#         ax.plot(angles, quantile_values, linewidth=1, linestyle=&#39;solid&#39;, label=f&#39;{q}th Percentile&#39;)</span>
+
+<span class="c1"># else:</span>
+<span class="c1">#     raise ValueError(&#39;Unknown style specified&#39;)</span>
+
+<span class="c1"># ax.legend(loc=&#39;upper right&#39;)</span>
+
+
+<div class="viewcode-block" id="ox2ppm">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.plotting.spider.html#global_geochemistry.plotting.spider.ox2ppm">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">ox2ppm</span><span class="p">(</span><span class="n">element_list</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="n">mol_cal</span> <span class="o">=</span> <span class="n">MolecularWeightCalculator</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">element_list</span><span class="p">:</span>
+        <span class="n">oxide</span> <span class="o">=</span> <span class="n">element</span> <span class="o">+</span> <span class="s2">&quot;O&quot;</span>
+        <span class="k">if</span> <span class="n">oxide</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">molar_mass_element</span> <span class="o">=</span> <span class="n">mol_cal</span><span class="o">.</span><span class="n">molecular_weight</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+            <span class="n">molar_mass_oxide</span> <span class="o">=</span> <span class="n">mol_cal</span><span class="o">.</span><span class="n">molecular_weight</span><span class="p">(</span><span class="n">oxide</span><span class="p">)</span>
+            <span class="n">conversion_factor</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;K&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Al&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Fe&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Ni&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Mn&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Cr&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">:</span> <span class="mi">2</span>
+            <span class="p">}</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">data</span><span class="p">[</span><span class="n">element</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;_ppm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">conversion_factor</span> <span class="o">*</span> <span class="n">molar_mass_element</span> <span class="o">/</span> <span class="n">molar_mass_oxide</span> <span class="o">*</span> <span class="n">data</span><span class="p">[</span><span class="n">oxide</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10000</span>
+    <span class="k">return</span> <span class="n">data</span></div>
+
+
+<span class="c1"># ref_data = pd.read_excel(&#39;earthref.xlsx&#39;)</span>
+
+<span class="c1"># # data = pd.read_csv(&#39;/Users/a1904121/LaserMapExplorer/laser_mapping/Alex_garnet_maps/processed data/RM01.csv&#39;)</span>
+<span class="c1"># data = pd.read_csv(&#39;/Users/shavinkalu/Library/CloudStorage/GoogleDrive-a1904121@adelaide.edu.au/.shortcut-targets-by-id/1r_MeSExALnv9lHE58GoG7pbtC8TOwSk4/laser_mapping/Alex_garnet_maps/processed data/RM01.csv&#39;)</span>
+<span class="c1"># el_list = data.columns[5:10]</span>
+
+
+<span class="c1"># i = 1</span>
+
+
+<span class="c1"># # # plot_spider_norm(data, ref_data, norm_ref_data, layer,el_list=None, style=&#39;Quanta&#39;, quantiles=[0.05, 0.25, 0.5, 0.75, 0.95], ref_data_field=&#39;sio2&#39;, ref_data_val=&#39;median&#39;, ax=None)</span>
+<span class="c1"># fig, ax = plot_spider_norm(data = data[el_list.values],ref_data = ref_data,norm_ref_data =  ref_data[&#39;model&#39;][i], layer = ref_data[&#39;layer&#39;][i],el_list= el_list ,style = &#39;Quanta&#39;)</span>
+
+<span class="c1"># plt.show()</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Derrick Hasterok.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

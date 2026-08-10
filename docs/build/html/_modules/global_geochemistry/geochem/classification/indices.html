@@ -1,0 +1,664 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>global_geochemistry.geochem.classification.indices &#8212; global_geochemistry 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/global_geochemistry/geochem/classification/indices';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">global_geochemistry 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../generated/global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../generated/global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">global_geochemistry.geochem.classification.indices</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for global_geochemistry.geochem.classification.indices</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Geochemical classification indices for igneous and sedimentary rocks.</span>
+
+<span class="sd">All input oxide columns are assumed to be in wt% with iron as FeO_tot.</span>
+<span class="sd">Below-detection-limit values (≤ 0) are treated as zero.</span>
+
+<span class="sd">References:</span>
+<span class="sd">    Frost et al. (2001) A geochemical classification for granitic rocks.</span>
+<span class="sd">    Journal of Petrology 42, 2033–2048.</span>
+
+<span class="sd">    Debon &amp; LeFort (1983) A chemical-mineralogical classification of common</span>
+<span class="sd">    plutonic rocks. Trans. R. Soc. Edinb. Earth Sci. 73, 135–149.</span>
+
+<span class="sd">    De La Roche et al. (1980) A classification of volcanic and plutonic rocks</span>
+<span class="sd">    using R1–R2 diagram. Earth and Planetary Science Letters 48, 69–79.</span>
+
+<span class="sd">    Price &amp; Velbel (2003) Chemical weathering indices applied to weathering</span>
+<span class="sd">    profiles developed on heterogeneous felsic metamorphic parent rocks.</span>
+<span class="sd">    Chemical Geology 202, 397–416.</span>
+
+<span class="sd">    O&#39;Neill, H.St.C. (2016) The smoothness and shapes of chondrite-normalised</span>
+<span class="sd">    rare earth element patterns in basalts. Journal of Petrology 57, 1463–1508.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">global_geochemistry.utils.molecular</span><span class="w"> </span><span class="kn">import</span> <span class="n">MolecularWeightCalculator</span>
+
+<span class="n">_mwc</span> <span class="o">=</span> <span class="n">MolecularWeightCalculator</span><span class="p">()</span>
+
+<span class="c1"># Precomputed molecular weights for the common major oxides</span>
+<span class="n">_MW</span> <span class="o">=</span> <span class="p">{</span><span class="n">ox</span><span class="p">:</span> <span class="n">_mwc</span><span class="o">.</span><span class="n">molecular_weight</span><span class="p">(</span><span class="n">ox</span><span class="p">)</span> <span class="k">for</span> <span class="n">ox</span> <span class="ow">in</span>
+       <span class="p">[</span><span class="s1">&#39;SiO2&#39;</span><span class="p">,</span> <span class="s1">&#39;TiO2&#39;</span><span class="p">,</span> <span class="s1">&#39;Al2O3&#39;</span><span class="p">,</span> <span class="s1">&#39;FeO&#39;</span><span class="p">,</span> <span class="s1">&#39;MgO&#39;</span><span class="p">,</span> <span class="s1">&#39;CaO&#39;</span><span class="p">,</span> <span class="s1">&#39;Na2O&#39;</span><span class="p">,</span> <span class="s1">&#39;K2O&#39;</span><span class="p">,</span> <span class="s1">&#39;P2O5&#39;</span><span class="p">]}</span>
+
+
+<div class="viewcode-block" id="geochem_index">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.geochem.classification.indices.html#global_geochemistry.geochem.classification.indices.geochem_index">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">geochem_index</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute standard geochemical classification indices.</span>
+
+<span class="sd">    Requires normalized oxide columns (lowercase): sio2, tio2, al2o3,</span>
+<span class="sd">    feo_tot, mgo, cao, na2o, k2o, p2o5.  Missing columns are treated as zero.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : pandas.DataFrame</span>
+<span class="sd">    inplace : bool</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">        Input data with the following columns added:</span>
+
+<span class="sd">        Mg_number   Mg/(Mg + 0.85×Fe) molar — Frost et al. (2001)</span>
+<span class="sd">        Fe_number   FeO/(FeO + MgO) by weight — Frost et al. (2001)</span>
+<span class="sd">        MALI        Modified Alkali-Lime Index: Na2O + K2O − CaO — Frost et al.</span>
+<span class="sd">        CAI         Calcic-Alkalic Index (deviation from calc-alkalic line)</span>
+<span class="sd">        ASI         Aluminium Saturation Index — Frost et al. (2001)</span>
+<span class="sd">        AI          Agpaitic Index: Al2O3 / (Na2O + K2O) molar</span>
+<span class="sd">        maficity    Mg + Fe + Ti molar — Debon &amp; LeFort (1983)</span>
+<span class="sd">        spar        Feldspar index — Debon &amp; LeFort (1983)</span>
+<span class="sd">        qtzindex    Quartz index — Debon &amp; LeFort (1983)</span>
+<span class="sd">        CIA         Chemical Index of Alteration — Price &amp; Velbel (2003)</span>
+<span class="sd">        WIP         Weathering Index of Parker — Price &amp; Velbel (2003)</span>
+<span class="sd">        CPA         Chemical Proxy of Alteration — Buggle et al. (2011)</span>
+<span class="sd">        R1, R2      Roche et al. (1980) discriminants</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">inplace</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get</span><span class="p">(</span><span class="n">col</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">v</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">v</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">v</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>    <span class="c1"># BDL → 0</span>
+        <span class="k">return</span> <span class="n">v</span>
+
+    <span class="n">sio2</span>  <span class="o">=</span> <span class="n">_get</span><span class="p">(</span><span class="s1">&#39;sio2&#39;</span><span class="p">)</span>
+    <span class="n">tio2</span>  <span class="o">=</span> <span class="n">_get</span><span class="p">(</span><span class="s1">&#39;tio2&#39;</span><span class="p">)</span>
+    <span class="n">al2o3</span> <span class="o">=</span> <span class="n">_get</span><span class="p">(</span><span class="s1">&#39;al2o3&#39;</span><span class="p">)</span>
+    <span class="n">feo</span>   <span class="o">=</span> <span class="n">_get</span><span class="p">(</span><span class="s1">&#39;feo_tot&#39;</span><span class="p">)</span>
+    <span class="n">mgo</span>   <span class="o">=</span> <span class="n">_get</span><span class="p">(</span><span class="s1">&#39;mgo&#39;</span><span class="p">)</span>
+    <span class="n">cao</span>   <span class="o">=</span> <span class="n">_get</span><span class="p">(</span><span class="s1">&#39;cao&#39;</span><span class="p">)</span>
+    <span class="n">na2o</span>  <span class="o">=</span> <span class="n">_get</span><span class="p">(</span><span class="s1">&#39;na2o&#39;</span><span class="p">)</span>
+    <span class="n">k2o</span>   <span class="o">=</span> <span class="n">_get</span><span class="p">(</span><span class="s1">&#39;k2o&#39;</span><span class="p">)</span>
+    <span class="n">p2o5</span>  <span class="o">=</span> <span class="n">_get</span><span class="p">(</span><span class="s1">&#39;p2o5&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Mole fractions (wt% / molecular weight)</span>
+    <span class="n">n_sio2</span>  <span class="o">=</span> <span class="n">sio2</span>  <span class="o">/</span> <span class="n">_MW</span><span class="p">[</span><span class="s1">&#39;SiO2&#39;</span><span class="p">]</span>
+    <span class="n">n_tio2</span>  <span class="o">=</span> <span class="n">tio2</span>  <span class="o">/</span> <span class="n">_MW</span><span class="p">[</span><span class="s1">&#39;TiO2&#39;</span><span class="p">]</span>
+    <span class="n">n_al2o3</span> <span class="o">=</span> <span class="n">al2o3</span> <span class="o">/</span> <span class="n">_MW</span><span class="p">[</span><span class="s1">&#39;Al2O3&#39;</span><span class="p">]</span>
+    <span class="n">n_feo</span>   <span class="o">=</span> <span class="n">feo</span>   <span class="o">/</span> <span class="n">_MW</span><span class="p">[</span><span class="s1">&#39;FeO&#39;</span><span class="p">]</span>
+    <span class="n">n_mgo</span>   <span class="o">=</span> <span class="n">mgo</span>   <span class="o">/</span> <span class="n">_MW</span><span class="p">[</span><span class="s1">&#39;MgO&#39;</span><span class="p">]</span>
+    <span class="n">n_cao</span>   <span class="o">=</span> <span class="n">cao</span>   <span class="o">/</span> <span class="n">_MW</span><span class="p">[</span><span class="s1">&#39;CaO&#39;</span><span class="p">]</span>
+    <span class="n">n_na2o</span>  <span class="o">=</span> <span class="n">na2o</span>  <span class="o">/</span> <span class="n">_MW</span><span class="p">[</span><span class="s1">&#39;Na2O&#39;</span><span class="p">]</span>
+    <span class="n">n_k2o</span>   <span class="o">=</span> <span class="n">k2o</span>   <span class="o">/</span> <span class="n">_MW</span><span class="p">[</span><span class="s1">&#39;K2O&#39;</span><span class="p">]</span>
+    <span class="n">n_p2o5</span>  <span class="o">=</span> <span class="n">p2o5</span>  <span class="o">/</span> <span class="n">_MW</span><span class="p">[</span><span class="s1">&#39;P2O5&#39;</span><span class="p">]</span>
+
+    <span class="c1"># CaO adjusted for apatite contribution (remove 10/3 P2O5 moles of CaO)</span>
+    <span class="n">n_ca_noap</span> <span class="o">=</span> <span class="p">(</span><span class="n">n_cao</span> <span class="o">-</span> <span class="p">(</span><span class="mf">10.0</span> <span class="o">/</span> <span class="mf">3.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">n_p2o5</span><span class="p">)</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_safe</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Replace inf with NaN.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">series</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+    <span class="c1"># Mg number: Mg/(Mg + 0.85 Fe) molar</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Mg_number&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_safe</span><span class="p">(</span><span class="n">n_mgo</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_mgo</span> <span class="o">+</span> <span class="mf">0.85</span> <span class="o">*</span> <span class="n">n_feo</span><span class="p">))</span>
+
+    <span class="c1"># Fe number: FeO/(FeO + MgO) by weight — Frost et al. (2001)</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Fe_number&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_safe</span><span class="p">(</span><span class="n">feo</span> <span class="o">/</span> <span class="p">(</span><span class="n">feo</span> <span class="o">+</span> <span class="n">mgo</span><span class="p">))</span>
+
+    <span class="c1"># MALI: Modified Alkali-Lime Index</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;MALI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">na2o</span> <span class="o">+</span> <span class="n">k2o</span> <span class="o">-</span> <span class="n">cao</span>
+
+    <span class="c1"># CAI: Calcic-Alkalic Index (deviation from dividing line)</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;CAI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;MALI&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="p">(</span><span class="o">-</span><span class="mf">44.72</span> <span class="o">+</span> <span class="mf">1.094</span> <span class="o">*</span> <span class="n">sio2</span> <span class="o">-</span> <span class="mf">0.00527</span> <span class="o">*</span> <span class="n">sio2</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># ASI: Aluminium Saturation Index — Frost et al. (2001)</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;ASI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_safe</span><span class="p">(</span><span class="n">n_al2o3</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_ca_noap</span> <span class="o">+</span> <span class="n">n_na2o</span> <span class="o">+</span> <span class="n">n_k2o</span><span class="p">))</span>
+
+    <span class="c1"># AI: Agpaitic Index</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;AI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_safe</span><span class="p">(</span><span class="n">n_al2o3</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_na2o</span> <span class="o">+</span> <span class="n">n_k2o</span><span class="p">))</span>
+
+    <span class="c1"># Maficity — Debon &amp; LeFort (1983)</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;maficity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">n_mgo</span> <span class="o">+</span> <span class="n">n_feo</span> <span class="o">+</span> <span class="n">n_tio2</span>
+
+    <span class="c1"># Feldspar index — Debon &amp; LeFort (1983)</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;spar&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n_k2o</span> <span class="o">-</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">n_na2o</span> <span class="o">+</span> <span class="n">n_cao</span> <span class="o">-</span> <span class="p">(</span><span class="mf">10.0</span> <span class="o">/</span> <span class="mf">3.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">n_p2o5</span><span class="p">)</span>
+
+    <span class="c1"># Quartz index — Debon &amp; LeFort (1983)</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;qtzindex&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">n_sio2</span> <span class="o">/</span> <span class="mf">3.0</span> <span class="o">-</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">n_na2o</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n_k2o</span> <span class="o">+</span> <span class="n">n_ca_noap</span> <span class="o">/</span> <span class="mf">3.0</span><span class="p">)</span>
+
+    <span class="c1"># CIA — Price &amp; Velbel (2003)</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;CIA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_safe</span><span class="p">(</span>
+        <span class="mi">100</span> <span class="o">*</span> <span class="n">n_al2o3</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_al2o3</span> <span class="o">+</span> <span class="n">n_ca_noap</span> <span class="o">+</span> <span class="n">n_na2o</span> <span class="o">+</span> <span class="n">n_k2o</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="c1"># WIP — Price &amp; Velbel (2003)</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;WIP&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">n_na2o</span> <span class="o">/</span> <span class="mf">0.35</span> <span class="o">+</span> <span class="n">n_mgo</span> <span class="o">/</span> <span class="mf">0.9</span> <span class="o">+</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">n_k2o</span> <span class="o">+</span> <span class="n">n_cao</span> <span class="o">/</span> <span class="mf">0.7</span><span class="p">)</span>
+
+    <span class="c1"># CPA — Buggle et al. (2011)</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;CPA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_safe</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">n_al2o3</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_al2o3</span> <span class="o">+</span> <span class="n">n_na2o</span><span class="p">))</span>
+
+    <span class="c1"># R1 &amp; R2 — De La Roche et al. (1980)</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;R1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">n_sio2</span> <span class="o">-</span> <span class="mi">22</span> <span class="o">*</span> <span class="p">(</span><span class="n">n_na2o</span> <span class="o">+</span> <span class="n">n_k2o</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">n_feo</span> <span class="o">+</span> <span class="n">n_tio2</span><span class="p">)</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;R2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">n_cao</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n_mgo</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n_al2o3</span>
+
+    <span class="k">return</span> <span class="n">data</span></div>
+
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># REE lambda coefficients (O&#39;Neill 2016)</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<span class="c1"># REE column names expected in the DataFrame</span>
+<span class="n">_REE_COLS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;la_ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;ce_ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;pr_ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;nd_ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;sm_ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;eu_ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;gd_ppm&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;tb_ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;dy_ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;ho_ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;er_ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;tm_ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;yb_ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;lu_ppm&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">_EU_IDX</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># index of Eu in the 14-element list</span>
+
+<span class="c1"># REE ionic radii in Å — Shannon (1976), 8-coordinate</span>
+<span class="n">_REE_R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="mf">1.160</span><span class="p">,</span> <span class="mf">1.143</span><span class="p">,</span> <span class="mf">1.126</span><span class="p">,</span> <span class="mf">1.109</span><span class="p">,</span> <span class="mf">1.079</span><span class="p">,</span> <span class="mf">1.066</span><span class="p">,</span> <span class="mf">1.053</span><span class="p">,</span>
+    <span class="mf">1.040</span><span class="p">,</span> <span class="mf">1.027</span><span class="p">,</span> <span class="mf">1.015</span><span class="p">,</span> <span class="mf">1.004</span><span class="p">,</span> <span class="mf">0.994</span><span class="p">,</span> <span class="mf">0.985</span><span class="p">,</span> <span class="mf">0.977</span><span class="p">,</span>
+<span class="p">])</span>
+
+<span class="c1"># CI chondrite normalisation — O&#39;Neill (2016) Table 1</span>
+<span class="n">_CI</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="mf">0.2472</span><span class="p">,</span> <span class="mf">0.6308</span><span class="p">,</span> <span class="mf">0.0950</span><span class="p">,</span> <span class="mf">0.4793</span><span class="p">,</span> <span class="mf">0.15419</span><span class="p">,</span> <span class="mf">0.0592</span><span class="p">,</span> <span class="mf">0.2059</span><span class="p">,</span>
+    <span class="mf">0.0375</span><span class="p">,</span> <span class="mf">0.2540</span><span class="p">,</span> <span class="mf">0.0554</span><span class="p">,</span> <span class="mf">0.1645</span><span class="p">,</span> <span class="mf">0.0258</span><span class="p">,</span>  <span class="mf">0.1684</span><span class="p">,</span> <span class="mf">0.0251</span><span class="p">,</span>
+<span class="p">])</span>
+
+<span class="c1"># Orthonormal polynomial root constants — O&#39;Neill (2016)</span>
+<span class="n">_B1</span> <span class="o">=</span> <span class="n">_REE_R</span> <span class="o">-</span> <span class="mf">1.054769</span>
+<span class="n">_B2</span> <span class="o">=</span> <span class="p">(</span><span class="n">_REE_R</span> <span class="o">-</span> <span class="mf">1.005327429</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">_REE_R</span> <span class="o">-</span> <span class="mf">1.128236038</span><span class="p">)</span>
+<span class="n">_B3</span> <span class="o">=</span> <span class="p">(</span><span class="n">_REE_R</span> <span class="o">-</span> <span class="mf">1.060548105</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">_REE_R</span> <span class="o">-</span> <span class="mf">1.145519887</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">_REE_R</span> <span class="o">-</span> <span class="mf">0.991412204</span><span class="p">)</span>
+<span class="n">_B4</span> <span class="o">=</span> <span class="p">((</span><span class="n">_REE_R</span> <span class="o">-</span> <span class="mf">1.104414973</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">_REE_R</span> <span class="o">-</span> <span class="mf">1.153426708</span><span class="p">)</span>
+       <span class="o">*</span> <span class="p">(</span><span class="n">_REE_R</span> <span class="o">-</span> <span class="mf">0.984820219</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">_REE_R</span> <span class="o">-</span> <span class="mf">1.030518142</span><span class="p">))</span>
+
+<span class="c1"># Basis matrix (5 × 14): basis[k, i] = k-th basis function at REE i</span>
+<span class="n">_BASIS</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">14</span><span class="p">),</span> <span class="n">_B1</span><span class="p">,</span> <span class="n">_B2</span><span class="p">,</span> <span class="n">_B3</span><span class="p">,</span> <span class="n">_B4</span><span class="p">])</span>
+
+<span class="c1"># Operator sub-matrices (5 × 14): A_all[k, j, i] = r_i^j * Bk_i</span>
+<span class="n">_A_ALL</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span>
+    <span class="n">_REE_R</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="o">**</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span>                  <span class="c1"># A1: r^j</span>
+    <span class="p">(</span><span class="n">_REE_R</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="o">**</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">])</span> <span class="o">*</span> <span class="n">_B1</span><span class="p">,</span>          <span class="c1"># A2: r^j * B1</span>
+    <span class="p">(</span><span class="n">_REE_R</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="o">**</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">])</span> <span class="o">*</span> <span class="n">_B2</span><span class="p">,</span>          <span class="c1"># A3: r^j * B2</span>
+    <span class="p">(</span><span class="n">_REE_R</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="o">**</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">])</span> <span class="o">*</span> <span class="n">_B3</span><span class="p">,</span>          <span class="c1"># A4: r^j * B3</span>
+    <span class="p">(</span><span class="n">_REE_R</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="o">**</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">])</span> <span class="o">*</span> <span class="n">_B4</span><span class="p">,</span>          <span class="c1"># A5: r^j * B4</span>
+<span class="p">])</span>  <span class="c1"># shape (5, 5, 14): [basis_idx, poly_order, ree_idx]</span>
+
+<span class="n">_EU_MASK</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+<span class="n">_EU_MASK</span><span class="p">[</span><span class="n">_EU_IDX</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+
+
+<div class="viewcode-block" id="lambdaree">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.geochem.classification.indices.html#global_geochemistry.geochem.classification.indices.lambdaree">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">lambdaree</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">min_ree</span><span class="o">=</span><span class="mi">7</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Orthonormal polynomial fit to chondrite-normalised REE patterns.</span>
+
+<span class="sd">    Computes lambda0–lambda4 coefficients and a chi-squared misfit (MSWD)</span>
+<span class="sd">    for each sample, following the method of O&#39;Neill (2016).  Eu is excluded</span>
+<span class="sd">    from the fit because of its susceptibility to redox fractionation.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : pandas.DataFrame</span>
+<span class="sd">        Must contain REE columns in ppm (la_ppm … lu_ppm).  Missing or</span>
+<span class="sd">        non-positive values are treated as NaN.</span>
+<span class="sd">    normalize : bool</span>
+<span class="sd">        Divide by CI chondrite before taking log (default True).</span>
+<span class="sd">    min_ree : int</span>
+<span class="sd">        Minimum number of non-NaN, non-Eu REE required to attempt a fit</span>
+<span class="sd">        (default 7).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">        Input DataFrame with seven new columns:</span>
+<span class="sd">        lambda0–lambda4, nree (number used), lambda_mswd.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    O&#39;Neill, H.St.C. (2016) The smoothness and shapes of chondrite-normalised</span>
+<span class="sd">    rare earth element patterns in basalts. J. Petrology 57, 1463–1508.</span>
+<span class="sd">    Original algorithm by Hugh O&#39;Neill (Excel, Dec 2013); MATLAB port by</span>
+<span class="sd">    D. Hasterok (2020).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="c1"># Build (n × 14) sample matrix; set ≤0 values to NaN</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">_REE_COLS</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">vals</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+            <span class="n">sample</span><span class="p">[:,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">vals</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">vals</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="n">divide</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">invalid</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">normalize</span><span class="p">:</span>
+            <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">sample</span> <span class="o">/</span> <span class="n">_CI</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+
+    <span class="n">lam</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="n">nree</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="n">chi2</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">X</span>   <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+        <span class="n">ind</span> <span class="o">=</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">_EU_MASK</span>
+        <span class="k">if</span> <span class="n">ind</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">min_ree</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="n">nree</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">ind</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+        <span class="c1"># Operator matrix A (5 × 5): col m = sum over selected REE of _A_ALL[m, :, i]</span>
+        <span class="c1"># Index in two steps to avoid numpy mixed advanced/basic indexing reordering</span>
+        <span class="n">A_mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">_A_ALL</span><span class="p">[</span><span class="n">m</span><span class="p">][:,</span> <span class="n">ind</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
+        <span class="p">)</span>  <span class="c1"># (5, 5)</span>
+
+        <span class="c1"># Data vector d (5,): d[j] = Σ_i X[i] * r[i]^j  (using A1 = _A_ALL[0])</span>
+        <span class="n">d_vec</span> <span class="o">=</span> <span class="p">(</span><span class="n">_A_ALL</span><span class="p">[</span><span class="mi">0</span><span class="p">][:,</span> <span class="n">ind</span><span class="p">]</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="n">ind</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># (5,)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A_mat</span><span class="p">,</span> <span class="n">d_vec</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">LinAlgError</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="n">lam</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">Q</span>
+
+        <span class="n">Xm</span>       <span class="o">=</span> <span class="n">Q</span> <span class="o">@</span> <span class="n">_BASIS</span>                       <span class="c1"># (14,)</span>
+        <span class="n">resid</span>    <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">-</span> <span class="n">Xm</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+        <span class="n">chi2</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>  <span class="o">=</span> <span class="p">(</span><span class="n">resid</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1e-4</span> <span class="o">*</span> <span class="p">(</span><span class="n">ind</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="mi">4</span><span class="p">))</span>
+
+    <span class="n">out</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="s1">&#39;lambda0&#39;</span><span class="p">,</span> <span class="s1">&#39;lambda1&#39;</span><span class="p">,</span> <span class="s1">&#39;lambda2&#39;</span><span class="p">,</span> <span class="s1">&#39;lambda3&#39;</span><span class="p">,</span> <span class="s1">&#39;lambda4&#39;</span><span class="p">]):</span>
+        <span class="n">out</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">lam</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;nree&#39;</span><span class="p">]</span>         <span class="o">=</span> <span class="n">nree</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;lambda_mswd&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="n">chi2</span>
+    <span class="k">return</span> <span class="n">out</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Derrick Hasterok.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

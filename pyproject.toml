@@ -10,12 +10,9 @@ dependencies = [
     "numpy",
     "pandas",
     "matplotlib",
+    "shapely",
     "scipy",
 ]
-
-# NOTE: internal imports still use `from src.*` style and must be updated to
-# `from global_geochemistry.*` (or relative imports) before this package is
-# fully installable.
 
 [tool.setuptools]
 packages = [
@@ -38,3 +35,6 @@ packages = [
 
 [tool.setuptools.package-dir]
 "global_geochemistry" = "src"
+
+[tool.setuptools.package-data]
+global_geochemistry = ["data/*"]

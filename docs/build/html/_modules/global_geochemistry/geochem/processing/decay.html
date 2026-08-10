@@ -1,0 +1,547 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>global_geochemistry.geochem.processing.decay &#8212; global_geochemistry 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/global_geochemistry/geochem/processing/decay';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">global_geochemistry 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../generated/global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../generated/global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">global_geochemistry.geochem.processing.decay</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for global_geochemistry.geochem.processing.decay</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Radioactive decay correction for elemental concentrations.</span>
+
+<span class="sd">``decaycorrect(el, C, age, ref=&#39;r88&#39;)``</span>
+<span class="sd">    Given present-day concentration(s) ``C`` of element ``el``, return the</span>
+<span class="sd">    concentration at time ``age`` Ma in the past by accounting for the</span>
+<span class="sd">    radioactive decay of that element&#39;s radioactive isotopes.</span>
+
+<span class="sd">The correction inverts the decay equation:</span>
+
+<span class="sd">    C_present = C_stable + Σ_i  abundance_i × C_past × exp(−λ_i × age)</span>
+
+<span class="sd">Solving for C_past:</span>
+
+<span class="sd">    C_past = C_stable / (1 − Σ abundance_i) is *not* used — instead the</span>
+<span class="sd">    standard form is:</span>
+
+<span class="sd">    C_past = C_stable + Σ_i  abundance_i × C_present × exp(+λ_i × age)</span>
+
+<span class="sd">where ``C_stable = (1 − Σ abundance_i) × C_present`` is the non-radioactive</span>
+<span class="sd">fraction of the element that does not change with time.</span>
+
+<span class="sd">Available reference sets (``ref`` parameter):</span>
+
+<span class="sd">    ``&#39;hg17&#39;``  Hasterok &amp; Gard (in-house)</span>
+<span class="sd">    ``&#39;r88&#39;``   Rybach (1988)</span>
+<span class="sd">    ``&#39;ts14&#39;``  Turcotte &amp; Schubert (2014)</span>
+<span class="sd">    ``&#39;d12&#39;``   Dye (2012)</span>
+
+<span class="sd">Only the five heat-producing parent elements are correctable:</span>
+<span class="sd">K, Rb, Sm, Th, U.  All other elements are returned unchanged.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Isotope constants  (adapted from radconst.csv)</span>
+<span class="c1"># Each entry: {&#39;half_life&#39;: Ma, &#39;abundance&#39;: fraction of natural element}</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<span class="n">_RADCONST</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]]]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;hg17&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;k&#39;</span><span class="p">:</span>  <span class="p">[{</span><span class="s1">&#39;half_life&#39;</span><span class="p">:</span> <span class="mf">1248.0</span><span class="p">,</span>     <span class="s1">&#39;abundance&#39;</span><span class="p">:</span> <span class="mf">1.170e-4</span><span class="p">}],</span>
+        <span class="s1">&#39;rb&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;half_life&#39;</span><span class="p">:</span> <span class="mf">49700.0</span><span class="p">,</span>    <span class="s1">&#39;abundance&#39;</span><span class="p">:</span> <span class="mf">0.27830</span><span class="p">}],</span>
+        <span class="s1">&#39;sm&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;half_life&#39;</span><span class="p">:</span> <span class="mf">7_000_000.</span><span class="p">,</span> <span class="s1">&#39;abundance&#39;</span><span class="p">:</span> <span class="mf">0.11240</span><span class="p">}],</span>
+        <span class="s1">&#39;th&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;half_life&#39;</span><span class="p">:</span> <span class="mf">14000.0</span><span class="p">,</span>    <span class="s1">&#39;abundance&#39;</span><span class="p">:</span> <span class="mf">1.00000</span><span class="p">}],</span>
+        <span class="s1">&#39;u&#39;</span><span class="p">:</span>  <span class="p">[{</span><span class="s1">&#39;half_life&#39;</span><span class="p">:</span> <span class="mf">704.0</span><span class="p">,</span>      <span class="s1">&#39;abundance&#39;</span><span class="p">:</span> <span class="mf">7.204e-3</span><span class="p">},</span>   <span class="c1"># ²³⁵U</span>
+               <span class="p">{</span><span class="s1">&#39;half_life&#39;</span><span class="p">:</span> <span class="mf">4468.0</span><span class="p">,</span>     <span class="s1">&#39;abundance&#39;</span><span class="p">:</span> <span class="mf">0.992742</span><span class="p">}],</span>  <span class="c1"># ²³⁸U</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;r88&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;k&#39;</span><span class="p">:</span>  <span class="p">[{</span><span class="s1">&#39;half_life&#39;</span><span class="p">:</span> <span class="mf">1230.0</span><span class="p">,</span>     <span class="s1">&#39;abundance&#39;</span><span class="p">:</span> <span class="mf">1.170e-4</span><span class="p">}],</span>
+        <span class="s1">&#39;rb&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;half_life&#39;</span><span class="p">:</span> <span class="mf">49700.0</span><span class="p">,</span>    <span class="s1">&#39;abundance&#39;</span><span class="p">:</span> <span class="mf">1.00000</span><span class="p">}],</span>
+        <span class="s1">&#39;sm&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;half_life&#39;</span><span class="p">:</span> <span class="mf">7_000_000.</span><span class="p">,</span> <span class="s1">&#39;abundance&#39;</span><span class="p">:</span> <span class="mf">1.00000</span><span class="p">}],</span>
+        <span class="s1">&#39;th&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;half_life&#39;</span><span class="p">:</span> <span class="mf">13900.0</span><span class="p">,</span>    <span class="s1">&#39;abundance&#39;</span><span class="p">:</span> <span class="mf">1.00000</span><span class="p">}],</span>
+        <span class="s1">&#39;u&#39;</span><span class="p">:</span>  <span class="p">[{</span><span class="s1">&#39;half_life&#39;</span><span class="p">:</span> <span class="mf">713.0</span><span class="p">,</span>      <span class="s1">&#39;abundance&#39;</span><span class="p">:</span> <span class="mf">7.110e-3</span><span class="p">},</span>   <span class="c1"># ²³⁵U</span>
+               <span class="p">{</span><span class="s1">&#39;half_life&#39;</span><span class="p">:</span> <span class="mf">4510.0</span><span class="p">,</span>     <span class="s1">&#39;abundance&#39;</span><span class="p">:</span> <span class="mf">0.99280</span><span class="p">}],</span>   <span class="c1"># ²³⁸U</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;ts14&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;k&#39;</span><span class="p">:</span>  <span class="p">[{</span><span class="s1">&#39;half_life&#39;</span><span class="p">:</span> <span class="mf">1250.0</span><span class="p">,</span>     <span class="s1">&#39;abundance&#39;</span><span class="p">:</span> <span class="mf">1.190e-4</span><span class="p">}],</span>
+        <span class="s1">&#39;rb&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;half_life&#39;</span><span class="p">:</span> <span class="mf">49700.0</span><span class="p">,</span>    <span class="s1">&#39;abundance&#39;</span><span class="p">:</span> <span class="mf">1.00000</span><span class="p">}],</span>
+        <span class="s1">&#39;sm&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;half_life&#39;</span><span class="p">:</span> <span class="mf">7_000_000.</span><span class="p">,</span> <span class="s1">&#39;abundance&#39;</span><span class="p">:</span> <span class="mf">1.00000</span><span class="p">}],</span>
+        <span class="s1">&#39;th&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;half_life&#39;</span><span class="p">:</span> <span class="mf">14000.0</span><span class="p">,</span>    <span class="s1">&#39;abundance&#39;</span><span class="p">:</span> <span class="mf">1.00000</span><span class="p">}],</span>
+        <span class="s1">&#39;u&#39;</span><span class="p">:</span>  <span class="p">[{</span><span class="s1">&#39;half_life&#39;</span><span class="p">:</span> <span class="mf">704.0</span><span class="p">,</span>      <span class="s1">&#39;abundance&#39;</span><span class="p">:</span> <span class="mf">7.100e-3</span><span class="p">},</span>   <span class="c1"># ²³⁵U</span>
+               <span class="p">{</span><span class="s1">&#39;half_life&#39;</span><span class="p">:</span> <span class="mf">4470.0</span><span class="p">,</span>     <span class="s1">&#39;abundance&#39;</span><span class="p">:</span> <span class="mf">0.99280</span><span class="p">}],</span>   <span class="c1"># ²³⁸U</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;d12&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;k&#39;</span><span class="p">:</span>  <span class="p">[{</span><span class="s1">&#39;half_life&#39;</span><span class="p">:</span> <span class="mf">1280.0</span><span class="p">,</span>     <span class="s1">&#39;abundance&#39;</span><span class="p">:</span> <span class="mf">1.170e-4</span><span class="p">}],</span>
+        <span class="s1">&#39;rb&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;half_life&#39;</span><span class="p">:</span> <span class="mf">49700.0</span><span class="p">,</span>    <span class="s1">&#39;abundance&#39;</span><span class="p">:</span> <span class="mf">1.00000</span><span class="p">}],</span>
+        <span class="s1">&#39;sm&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;half_life&#39;</span><span class="p">:</span> <span class="mf">7_000_000.</span><span class="p">,</span> <span class="s1">&#39;abundance&#39;</span><span class="p">:</span> <span class="mf">1.00000</span><span class="p">}],</span>
+        <span class="s1">&#39;th&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;half_life&#39;</span><span class="p">:</span> <span class="mf">14000.0</span><span class="p">,</span>    <span class="s1">&#39;abundance&#39;</span><span class="p">:</span> <span class="mf">1.00000</span><span class="p">}],</span>
+        <span class="s1">&#39;u&#39;</span><span class="p">:</span>  <span class="p">[{</span><span class="s1">&#39;half_life&#39;</span><span class="p">:</span> <span class="mf">704.0</span><span class="p">,</span>      <span class="s1">&#39;abundance&#39;</span><span class="p">:</span> <span class="mf">7.204e-3</span><span class="p">},</span>   <span class="c1"># ²³⁵U</span>
+               <span class="p">{</span><span class="s1">&#39;half_life&#39;</span><span class="p">:</span> <span class="mf">4460.0</span><span class="p">,</span>     <span class="s1">&#39;abundance&#39;</span><span class="p">:</span> <span class="mf">0.992796</span><span class="p">}],</span>  <span class="c1"># ²³⁸U</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="c1"># Elements correctable by this module (case-insensitive, _ppm suffix stripped)</span>
+<span class="n">DECAY_ELEMENTS</span><span class="p">:</span> <span class="nb">frozenset</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">({</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">,</span> <span class="s1">&#39;sm&#39;</span><span class="p">,</span> <span class="s1">&#39;th&#39;</span><span class="p">,</span> <span class="s1">&#39;u&#39;</span><span class="p">})</span>
+
+
+<div class="viewcode-block" id="decaycorrect">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.geochem.processing.decay.html#global_geochemistry.geochem.processing.decay.decaycorrect">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">decaycorrect</span><span class="p">(</span><span class="n">el</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">ref</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;r88&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Correct element concentration(s) to their values at *age* Ma in the past.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    el : str</span>
+<span class="sd">        Element name.  Case-insensitive; a trailing ``&#39;_ppm&#39;`` suffix is</span>
+<span class="sd">        stripped (e.g. ``&#39;th_ppm&#39;`` is treated the same as ``&#39;Th&#39;``).</span>
+<span class="sd">        Correctable elements: K, Rb, Sm, Th, U.  Any other element is</span>
+<span class="sd">        returned unchanged.</span>
+<span class="sd">    C : array-like</span>
+<span class="sd">        Present-day concentration(s) in ppm (or any consistent unit).</span>
+<span class="sd">        Must be non-negative; negative / NaN values are passed through</span>
+<span class="sd">        unchanged.</span>
+<span class="sd">    age : float or array-like</span>
+<span class="sd">        Time in the past in Ma.  Scalar is broadcast to the length of *C*.</span>
+<span class="sd">    ref : {&#39;r88&#39;, &#39;hg17&#39;, &#39;ts14&#39;, &#39;d12&#39;}</span>
+<span class="sd">        Reference for isotope constants (default ``&#39;r88&#39;``, Rybach 1988).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">        Corrected concentrations in the same units as *C*.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; decaycorrect(&#39;Th&#39;, 10.0, 2500)   # Th at 2500 Ma</span>
+<span class="sd">    &gt;&gt;&gt; decaycorrect(&#39;u_ppm&#39;, data[&#39;u_ppm&#39;].to_numpy(), data[&#39;avg_age&#39;].to_numpy())</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The correction:</span>
+
+<span class="sd">        C_past = C_stable + Σᵢ abundance_i × C × exp(λᵢ × age)</span>
+
+<span class="sd">    where ``C_stable = (1 − Σ abundance_i) × C`` and ``λᵢ = ln2 / t½_i``.</span>
+
+<span class="sd">    For Rb and Sm with ``ref=&#39;r88&#39;``, ``&#39;ts14&#39;``, or ``&#39;d12&#39;``, ``abundance=1``</span>
+<span class="sd">    so ``C_stable = 0`` — all atoms are assumed to have been radioactive</span>
+<span class="sd">    (a conservative approximation for these minor contributors).</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Rybach (1988) *Determination of heat production rate*, in Haenel et al.,</span>
+<span class="sd">    Handbook of Terrestrial Heat-Flow Density Determination.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ref_key</span> <span class="o">=</span> <span class="n">ref</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">ref_key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_RADCONST</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Unknown ref &#39;</span><span class="si">{</span><span class="n">ref</span><span class="si">}</span><span class="s2">&#39;.  Choose from: </span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">_RADCONST</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Strip _ppm suffix, normalise to lowercase</span>
+    <span class="n">el_key</span> <span class="o">=</span> <span class="n">el</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">el_key</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;_ppm&#39;</span><span class="p">):</span>
+        <span class="n">el_key</span> <span class="o">=</span> <span class="n">el_key</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span>
+
+    <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">el_key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">DECAY_ELEMENTS</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">C</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="n">isotopes</span> <span class="o">=</span> <span class="n">_RADCONST</span><span class="p">[</span><span class="n">ref_key</span><span class="p">][</span><span class="n">el_key</span><span class="p">]</span>
+
+    <span class="n">age</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">age</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">age</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">broadcast_to</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="n">C</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+    <span class="c1"># Stable fraction of the element (does not change with time)</span>
+    <span class="n">total_abundance</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">iso</span><span class="p">[</span><span class="s1">&#39;abundance&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">iso</span> <span class="ow">in</span> <span class="n">isotopes</span><span class="p">)</span>
+    <span class="n">C_stable</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">total_abundance</span><span class="p">)</span> <span class="o">*</span> <span class="n">C</span>
+
+    <span class="c1"># Sum radiogenic contributions decayed back to time = age</span>
+    <span class="n">C_past</span> <span class="o">=</span> <span class="n">C_stable</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">iso</span> <span class="ow">in</span> <span class="n">isotopes</span><span class="p">:</span>
+        <span class="n">lam</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span> <span class="o">/</span> <span class="n">iso</span><span class="p">[</span><span class="s1">&#39;half_life&#39;</span><span class="p">]</span>  <span class="c1"># 1/Ma</span>
+        <span class="n">C_past</span> <span class="o">=</span> <span class="n">C_past</span> <span class="o">+</span> <span class="n">iso</span><span class="p">[</span><span class="s1">&#39;abundance&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">C</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">lam</span> <span class="o">*</span> <span class="n">age</span><span class="p">)</span>
+
+    <span class="c1"># Preserve NaN / negative input values unchanged</span>
+    <span class="n">bad</span> <span class="o">=</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">C</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">C_past</span><span class="p">[</span><span class="n">bad</span><span class="p">]</span> <span class="o">=</span> <span class="n">C</span><span class="p">[</span><span class="n">bad</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">C_past</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Derrick Hasterok.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

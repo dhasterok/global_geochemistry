@@ -1,0 +1,978 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>global_geochemistry.plotting.radar &#8212; global_geochemistry 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/global_geochemistry/plotting/radar';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">global_geochemistry 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../generated/global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../generated/global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">global_geochemistry.plotting.radar</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for global_geochemistry.plotting.radar</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Radar (spider) and sequential radar plots.</span>
+
+<span class="sd">Two functions:</span>
+<span class="sd">- ``radar_prep``  —  aggregate a DataFrame into per-group stats for ``radarplot``</span>
+<span class="sd">- ``radarplot``   —  draw the plot on a plain matplotlib Axes (no polar projection)</span>
+
+<span class="sd">Two styles (``style`` parameter):</span>
+<span class="sd">- ``&#39;web&#39;``     Classic spider/radar web.  Each group becomes a closed polygon.</span>
+<span class="sd">                Quantile bands are drawn as shaded rings between inner/outer lines.</span>
+<span class="sd">- ``&#39;series&#39;``  Sequential radar.  Each row of the input array is one lap around</span>
+<span class="sd">                the spokes; consecutive laps are connected, with a colormap</span>
+<span class="sd">                encoding the sequence so you can see how the pattern evolves.</span>
+<span class="sd">                Direction (clockwise / counterclockwise) is selectable.</span>
+
+<span class="sd">Examples</span>
+<span class="sd">--------</span>
+<span class="sd">Basic web from a DataFrame::</span>
+
+<span class="sd">    import pandas as pd</span>
+<span class="sd">    from global_geochemistry.plotting.radar import radar_prep, radarplot</span>
+
+<span class="sd">    fields = [&#39;SiO2&#39;, &#39;TiO2&#39;, &#39;Al2O3&#39;, &#39;FeOT&#39;, &#39;MgO&#39;, &#39;CaO&#39;, &#39;Na2O&#39;, &#39;K2O&#39;]</span>
+<span class="sd">    prep = radar_prep(df, fields, group_field=&#39;rock_type&#39;,</span>
+<span class="sd">                      groups=[&#39;basalt&#39;, &#39;andesite&#39;, &#39;rhyolite&#39;],</span>
+<span class="sd">                      quantiles=[0.25, 0.50, 0.75])</span>
+<span class="sd">    fig, ax = plt.subplots(figsize=(7, 7))</span>
+<span class="sd">    radarplot(**prep, ax=ax)</span>
+
+<span class="sd">Set per-axis ranges and log scale::</span>
+
+<span class="sd">    radarplot(**prep, ax=ax,</span>
+<span class="sd">              axis_lim={&#39;SiO2&#39;: (40, 80), &#39;TiO2&#39;: (0.1, 3)},</span>
+<span class="sd">              log=[&#39;TiO2&#39;, &#39;K2O&#39;],</span>
+<span class="sd">              axis_labels={&#39;TiO2&#39;: &#39;TiO₂ (log)&#39;})</span>
+
+<span class="sd">Sequential / time-series style::</span>
+
+<span class="sd">    # data: 2-D array (n_obs, n_fields)</span>
+<span class="sd">    fig, ax = plt.subplots(figsize=(7, 7))</span>
+<span class="sd">    radarplot(vals=data, fields=fields, style=&#39;series&#39;,</span>
+<span class="sd">              clockwise=True, cmap=&#39;plasma&#39;, ax=ax)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.patches</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpatches</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">LineCollection</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mcolors</span>
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Data preparation</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="radar_prep">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.plotting.radar.html#global_geochemistry.plotting.radar.radar_prep">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">radar_prep</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">,</span>
+    <span class="n">fields</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">group_field</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">groups</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">quantiles</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Aggregate a DataFrame into per-group statistics for :func:`radarplot`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : pandas.DataFrame</span>
+<span class="sd">        Source data table.</span>
+<span class="sd">    fields : list of str</span>
+<span class="sd">        Column names that form the spokes of the radar.</span>
+<span class="sd">    group_field : str, optional</span>
+<span class="sd">        Column used to partition rows into groups.  If *None*, the whole</span>
+<span class="sd">        dataset is treated as a single group.</span>
+<span class="sd">    groups : list, optional</span>
+<span class="sd">        Values of *group_field* to include, in plotting order.  If *None*,</span>
+<span class="sd">        all unique values are used (sorted).</span>
+<span class="sd">    quantiles : list of float, optional</span>
+<span class="sd">        Quantile levels, e.g. ``[0.25, 0.50, 0.75]``.  If *None*, the mean</span>
+<span class="sd">        is computed.  Supported counts: 1, 2, 3, 5.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict</span>
+<span class="sd">        Keys ``&#39;vals&#39;``, ``&#39;fields&#39;``, ``&#39;groups&#39;``, ``&#39;quantiles&#39;`` —</span>
+<span class="sd">        suitable for unpacking directly into :func:`radarplot` (``**prep``).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">group_field</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">group_field</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+        <span class="n">_groups</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">groups</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">_groups</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">group_field</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">_groups</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">groups</span><span class="p">)</span>
+
+    <span class="n">n_groups</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">_groups</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">quantiles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">n_q</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">quantiles</span><span class="p">)</span>
+        <span class="n">vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">n_groups</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">fields</span><span class="p">),</span> <span class="n">n_q</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">g</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">_groups</span><span class="p">):</span>
+            <span class="n">subset</span> <span class="o">=</span> <span class="n">data</span> <span class="k">if</span> <span class="n">g</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">group_field</span><span class="p">]</span> <span class="o">==</span> <span class="n">g</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">q</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">quantiles</span><span class="p">):</span>
+                <span class="n">vals</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">subset</span><span class="p">[</span><span class="n">fields</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">q</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">n_groups</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">fields</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">g</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">_groups</span><span class="p">):</span>
+            <span class="n">subset</span> <span class="o">=</span> <span class="n">data</span> <span class="k">if</span> <span class="n">g</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">group_field</span><span class="p">]</span> <span class="o">==</span> <span class="n">g</span><span class="p">]</span>
+            <span class="n">vals</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">subset</span><span class="p">[</span><span class="n">fields</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">vals</span><span class="o">=</span><span class="n">vals</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="n">fields</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="n">_groups</span><span class="p">,</span> <span class="n">quantiles</span><span class="o">=</span><span class="n">quantiles</span><span class="p">)</span></div>
+
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Parameter resolution helpers</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_resolve_tick_fields</span><span class="p">(</span><span class="n">tick_fields</span><span class="p">,</span> <span class="n">n_fields</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a list of field indices that should receive tick labels.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">tick_fields</span> <span class="o">==</span> <span class="s1">&#39;all&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_fields</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">tick_fields</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tick_fields</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">integer</span><span class="p">)):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">tick_fields</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">tick_fields</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_resolve_log</span><span class="p">(</span><span class="n">log</span><span class="p">,</span> <span class="n">fields</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a boolean mask of length n_fields for log-scaled axes.&quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">log</span><span class="p">,</span> <span class="p">(</span><span class="nb">bool</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">bool_</span><span class="p">)):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">bool</span><span class="p">(</span><span class="n">log</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">log</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">mask</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">item</span><span class="p">)]</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="p">(</span><span class="nb">bool</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">bool_</span><span class="p">)):</span>
+            <span class="n">mask</span><span class="p">[:]</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">mask</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">item</span><span class="p">)]</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="n">mask</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_resolve_axis_lim</span><span class="p">(</span><span class="n">axis_lim</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">auto_min</span><span class="p">,</span> <span class="n">auto_max</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Merge user-supplied limits with auto-computed ones.</span>
+
+<span class="sd">    *axis_lim* can be:</span>
+<span class="sd">    - ``None`` — use auto for all fields</span>
+<span class="sd">    - ``dict`` mapping field name or index to ``(lo, hi)`` — partial override</span>
+<span class="sd">    - array-like of shape ``(2, n_fields)`` — full explicit limits</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">out_min</span> <span class="o">=</span> <span class="n">auto_min</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">out_max</span> <span class="o">=</span> <span class="n">auto_max</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">axis_lim</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">axis_lim</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="p">(</span><span class="n">lo</span><span class="p">,</span> <span class="n">hi</span><span class="p">)</span> <span class="ow">in</span> <span class="n">axis_lim</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="nb">int</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">lo</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">out_min</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">lo</span>
+            <span class="k">if</span> <span class="n">hi</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">out_max</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">hi</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">axis_lim</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+        <span class="n">out_min</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">out_max</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="c1"># Fix zero-span axes</span>
+    <span class="n">flat</span> <span class="o">=</span> <span class="n">out_min</span> <span class="o">==</span> <span class="n">out_max</span>
+    <span class="n">out_min</span><span class="p">[</span><span class="n">flat</span><span class="p">]</span> <span class="o">-=</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">out_min</span><span class="p">[</span><span class="n">flat</span><span class="p">])</span> <span class="o">+</span> <span class="mf">1e-9</span>
+    <span class="n">out_max</span><span class="p">[</span><span class="n">flat</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">out_max</span><span class="p">[</span><span class="n">flat</span><span class="p">])</span> <span class="o">+</span> <span class="mf">1e-9</span>
+
+    <span class="k">return</span> <span class="n">out_min</span><span class="p">,</span> <span class="n">out_max</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_resolve_axis_labels</span><span class="p">(</span><span class="n">axis_labels</span><span class="p">,</span> <span class="n">fields</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return display label list, applying any overrides from *axis_labels*.</span>
+
+<span class="sd">    *axis_labels* can be:</span>
+<span class="sd">    - ``None`` — use *fields* as-is</span>
+<span class="sd">    - ``list`` of str — full replacement (must match length of *fields*)</span>
+<span class="sd">    - ``dict`` mapping field name or index to display string — partial override</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">axis_labels</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">labels</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">axis_labels</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">axis_labels</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="nb">int</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+            <span class="n">labels</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+        <span class="k">return</span> <span class="n">labels</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">axis_labels</span><span class="p">)</span>
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Internal geometry helpers</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_spoke_angles</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">clockwise</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="n">sign</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span> <span class="k">if</span> <span class="n">clockwise</span> <span class="k">else</span> <span class="mf">1.0</span>
+    <span class="k">return</span> <span class="n">start</span> <span class="o">+</span> <span class="n">sign</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="n">n</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_to_xy</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">theta</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">r</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">r</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_normalize_vals</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="n">axis_min</span><span class="p">,</span> <span class="n">axis_max</span><span class="p">,</span> <span class="n">r_inner</span><span class="p">,</span> <span class="n">r_outer</span><span class="p">,</span> <span class="n">log_mask</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Map each field&#39;s values to [r_inner, r_outer], with per-field log support.</span>
+
+<span class="sd">    *vals* shape: (..., n_fields).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">axis_min</span><span class="p">)):</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">vals</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+        <span class="n">lo</span><span class="p">,</span> <span class="n">hi</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">axis_min</span><span class="p">[</span><span class="n">j</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">axis_max</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">log_mask</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+            <span class="n">lo_s</span> <span class="o">=</span> <span class="n">lo</span> <span class="k">if</span> <span class="n">lo</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mf">1e-300</span>
+            <span class="n">hi_s</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">hi</span><span class="p">,</span> <span class="n">lo_s</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">1e-9</span><span class="p">))</span>
+            <span class="n">v_n</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">lo_s</span><span class="p">))</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">lo_s</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">hi_s</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">lo_s</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">span</span> <span class="o">=</span> <span class="n">hi</span> <span class="o">-</span> <span class="n">lo</span> <span class="k">if</span> <span class="n">hi</span> <span class="o">!=</span> <span class="n">lo</span> <span class="k">else</span> <span class="mf">1.0</span>
+            <span class="n">v_n</span> <span class="o">=</span> <span class="p">(</span><span class="n">v</span> <span class="o">-</span> <span class="n">lo</span><span class="p">)</span> <span class="o">/</span> <span class="n">span</span>
+        <span class="n">result</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">r_inner</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">v_n</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">r_outer</span> <span class="o">-</span> <span class="n">r_inner</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_field_tick_vals</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">axis_min</span><span class="p">,</span> <span class="n">axis_max</span><span class="p">,</span> <span class="n">n_ticks</span><span class="p">,</span> <span class="n">log_mask</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return n_ticks+1 data values for ring tick labels on field *j*.&quot;&quot;&quot;</span>
+    <span class="n">lo</span><span class="p">,</span> <span class="n">hi</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">axis_min</span><span class="p">[</span><span class="n">j</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">axis_max</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">log_mask</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+        <span class="n">lo_s</span> <span class="o">=</span> <span class="n">lo</span> <span class="k">if</span> <span class="n">lo</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mf">1e-300</span>
+        <span class="n">hi_s</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">hi</span><span class="p">,</span> <span class="n">lo_s</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">1e-9</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">lo_s</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">hi_s</span><span class="p">),</span> <span class="n">n_ticks</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">lo</span><span class="p">,</span> <span class="n">hi</span><span class="p">,</span> <span class="n">n_ticks</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_label_alignment</span><span class="p">(</span><span class="n">theta</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;ha/va alignment pointing away from the centre along spoke *theta*.&quot;&quot;&quot;</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+    <span class="n">ha</span> <span class="o">=</span> <span class="s1">&#39;center&#39;</span> <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.15</span> <span class="k">else</span> <span class="p">(</span><span class="s1">&#39;left&#39;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s1">&#39;right&#39;</span><span class="p">)</span>
+    <span class="n">va</span> <span class="o">=</span> <span class="s1">&#39;center&#39;</span> <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.15</span> <span class="k">else</span> <span class="p">(</span><span class="s1">&#39;bottom&#39;</span> <span class="k">if</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s1">&#39;top&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;ha&#39;</span><span class="p">:</span> <span class="n">ha</span><span class="p">,</span> <span class="s1">&#39;va&#39;</span><span class="p">:</span> <span class="n">va</span><span class="p">}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_draw_web</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">thetas</span><span class="p">,</span> <span class="n">n_ticks</span><span class="p">,</span> <span class="n">r_outer</span><span class="p">,</span> <span class="n">r_inner</span><span class="p">,</span> <span class="n">grey</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Draw dashed radial spokes and dotted concentric isocurve rings.&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">thetas</span><span class="p">:</span>
+        <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="n">_to_xy</span><span class="p">(</span><span class="n">r_inner</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+        <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">_to_xy</span><span class="p">(</span><span class="n">r_outer</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">],</span> <span class="p">[</span><span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">],</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">grey</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">ring_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">r_inner</span><span class="p">,</span> <span class="n">r_outer</span><span class="p">,</span> <span class="n">n_ticks</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">theta_ring</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">thetas</span><span class="p">,</span> <span class="n">thetas</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">ring_r</span><span class="p">:</span>
+        <span class="n">xr</span><span class="p">,</span> <span class="n">yr</span> <span class="o">=</span> <span class="n">_to_xy</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">theta_ring</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xr</span><span class="p">,</span> <span class="n">yr</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">grey</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ring_r</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_draw_tick_labels</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">thetas</span><span class="p">,</span> <span class="n">ring_r</span><span class="p">,</span> <span class="n">axis_min</span><span class="p">,</span> <span class="n">axis_max</span><span class="p">,</span> <span class="n">n_ticks</span><span class="p">,</span>
+                      <span class="n">precision</span><span class="p">,</span> <span class="n">tick_field_indices</span><span class="p">,</span> <span class="n">log_mask</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Place numeric scale labels along each spoke listed in *tick_field_indices*.&quot;&quot;&quot;</span>
+    <span class="n">pad</span> <span class="o">=</span> <span class="mf">0.025</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">tick_field_indices</span><span class="p">:</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">thetas</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+        <span class="n">cx</span><span class="p">,</span> <span class="n">cy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">tick_vals</span> <span class="o">=</span> <span class="n">_field_tick_vals</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">axis_min</span><span class="p">,</span> <span class="n">axis_max</span><span class="p">,</span> <span class="n">n_ticks</span><span class="p">,</span> <span class="n">log_mask</span><span class="p">)</span>
+        <span class="n">kw</span> <span class="o">=</span> <span class="n">_label_alignment</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">tv</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ring_r</span><span class="p">,</span> <span class="n">tick_vals</span><span class="p">):</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="n">r</span> <span class="o">+</span> <span class="n">pad</span><span class="p">)</span> <span class="o">*</span> <span class="n">cx</span><span class="p">,</span> <span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="n">pad</span><span class="p">)</span> <span class="o">*</span> <span class="n">cy</span><span class="p">,</span>
+                    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">tv</span><span class="si">:</span><span class="s1">.</span><span class="si">{</span><span class="n">precision</span><span class="si">}</span><span class="s1">g</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+                    <span class="n">fontsize</span><span class="o">=</span><span class="mf">6.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;0.35&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_draw_field_labels</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">thetas</span><span class="p">,</span> <span class="n">r_outer</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.12</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Place bold field-name labels at spoke tips.&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">lbl</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">thetas</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">_to_xy</span><span class="p">(</span><span class="n">r_outer</span> <span class="o">+</span> <span class="n">pad</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+        <span class="n">kw</span> <span class="o">=</span> <span class="n">_label_alignment</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lbl</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Public plot function</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<span class="n">_DEFAULT_COLORS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;#1f77b4&#39;</span><span class="p">,</span> <span class="s1">&#39;#ff7f0e&#39;</span><span class="p">,</span> <span class="s1">&#39;#2ca02c&#39;</span><span class="p">,</span> <span class="s1">&#39;#d62728&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;#9467bd&#39;</span><span class="p">,</span> <span class="s1">&#39;#8c564b&#39;</span><span class="p">,</span> <span class="s1">&#39;#e377c2&#39;</span><span class="p">,</span> <span class="s1">&#39;#7f7f7f&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;#bcbd22&#39;</span><span class="p">,</span> <span class="s1">&#39;#17becf&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<div class="viewcode-block" id="radarplot">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.plotting.radar.html#global_geochemistry.plotting.radar.radarplot">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">radarplot</span><span class="p">(</span>
+    <span class="n">vals</span><span class="p">,</span>
+    <span class="n">fields</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">groups</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">quantiles</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">style</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;web&#39;</span><span class="p">,</span>
+    <span class="n">ax</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="c1"># axis configuration</span>
+    <span class="n">n_ticks</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">precision</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">axis_lim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">axis_labels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">tick_fields</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span>
+    <span class="c1"># web-style options</span>
+    <span class="n">colors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">alpha_fill</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.15</span><span class="p">,</span>
+    <span class="n">clockwise</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">legend_loc</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;upper right&#39;</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="c1"># series-style options</span>
+    <span class="n">cmap</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;viridis&#39;</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Draw a radar (spider) or sequential radar plot.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    vals : array-like</span>
+<span class="sd">        For ``style=&#39;web&#39;``: shape ``(n_groups, n_fields)`` or</span>
+<span class="sd">        ``(n_groups, n_fields, n_quantiles)``.</span>
+<span class="sd">        For ``style=&#39;series&#39;``: shape ``(n_obs, n_fields)`` — each row is</span>
+<span class="sd">        one lap around the spokes.</span>
+<span class="sd">    fields : list of str</span>
+<span class="sd">        Data field names — also used as spoke labels unless *axis_labels*</span>
+<span class="sd">        overrides them.</span>
+<span class="sd">    groups : list, optional</span>
+<span class="sd">        Group names for the legend (``style=&#39;web&#39;``).</span>
+<span class="sd">    quantiles : list of float, optional</span>
+<span class="sd">        Quantile levels matching the third axis of *vals*.</span>
+<span class="sd">    style : ``&#39;web&#39;`` | ``&#39;series&#39;``</span>
+<span class="sd">        Plot style.  Default ``&#39;web&#39;``.</span>
+<span class="sd">    ax : matplotlib.axes.Axes, optional</span>
+<span class="sd">        Target axes.  Created if *None*.</span>
+<span class="sd">    n_ticks : int</span>
+<span class="sd">        Number of concentric ring intervals.  Default 4.</span>
+<span class="sd">    precision : int</span>
+<span class="sd">        Significant figures for tick labels.  Default 3.</span>
+<span class="sd">    axis_lim : None | dict | array-like (2, n_fields)</span>
+<span class="sd">        Per-axis data limits.</span>
+
+<span class="sd">        - ``None`` — auto-compute from data (default).</span>
+<span class="sd">        - ``dict`` mapping field name or index to ``(lo, hi)`` — partial</span>
+<span class="sd">          override; unspecified fields remain auto-computed.  Pass ``None``</span>
+<span class="sd">          for either bound to keep it auto, e.g.</span>
+<span class="sd">          ``{&#39;SiO2&#39;: (40, 80), &#39;TiO2&#39;: (None, 5)}``.</span>
+<span class="sd">        - Array-like of shape ``(2, n_fields)`` — full explicit ``[min; max]``.</span>
+<span class="sd">    log : bool | list of str | list of int</span>
+<span class="sd">        Log-scale axes.</span>
+
+<span class="sd">        - ``False`` (default) — all linear.</span>
+<span class="sd">        - ``True`` — all log.</span>
+<span class="sd">        - List of field names or indices — only those fields use log scale.</span>
+<span class="sd">    axis_labels : None | list of str | dict</span>
+<span class="sd">        Display labels for spokes, overriding *fields*.</span>
+
+<span class="sd">        - ``None`` — use *fields* as-is (default).</span>
+<span class="sd">        - ``list`` — full replacement, same length as *fields*.</span>
+<span class="sd">        - ``dict`` mapping field name or index to display string — partial</span>
+<span class="sd">          override; e.g. ``{&#39;TiO2&#39;: &#39;TiO₂ (log)&#39;}``.</span>
+<span class="sd">    tick_fields : ``&#39;all&#39;`` | None | int | list of int</span>
+<span class="sd">        Which spokes get numeric tick labels.</span>
+
+<span class="sd">        - ``&#39;all&#39;`` — label every spoke (default).</span>
+<span class="sd">        - ``None`` — no tick labels.</span>
+<span class="sd">        - ``int`` or list of int — label only those spoke indices.</span>
+<span class="sd">    colors : list, optional</span>
+<span class="sd">        Per-group colours for ``style=&#39;web&#39;``.  Cycles through the default</span>
+<span class="sd">        Matplotlib colour sequence if *None*.</span>
+<span class="sd">    alpha_fill : float</span>
+<span class="sd">        Transparency of quantile-band fills.  Default 0.15.</span>
+<span class="sd">    clockwise : bool</span>
+<span class="sd">        Spoke direction from the top.  Default ``True``.</span>
+<span class="sd">    legend_loc : str</span>
+<span class="sd">        Legend location.  Default ``&#39;upper right&#39;``.</span>
+<span class="sd">    linewidth : float</span>
+<span class="sd">        Data line width.  Default 1.0.</span>
+<span class="sd">    cmap : str</span>
+<span class="sd">        Colormap for ``style=&#39;series&#39;``.  Default ``&#39;viridis&#39;``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    matplotlib.axes.Axes</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">style</span> <span class="o">=</span> <span class="n">style</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">n_fields</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
+
+    <span class="n">log_mask</span> <span class="o">=</span> <span class="n">_resolve_log</span><span class="p">(</span><span class="n">log</span><span class="p">,</span> <span class="n">fields</span><span class="p">)</span>
+    <span class="n">tick_idx</span> <span class="o">=</span> <span class="n">_resolve_tick_fields</span><span class="p">(</span><span class="n">tick_fields</span><span class="p">,</span> <span class="n">n_fields</span><span class="p">)</span>
+    <span class="n">display_labels</span> <span class="o">=</span> <span class="n">_resolve_axis_labels</span><span class="p">(</span><span class="n">axis_labels</span><span class="p">,</span> <span class="n">fields</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">style</span> <span class="o">==</span> <span class="s1">&#39;web&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_radarplot_web</span><span class="p">(</span>
+            <span class="n">ax</span><span class="p">,</span> <span class="n">vals</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">display_labels</span><span class="p">,</span> <span class="n">groups</span><span class="p">,</span> <span class="n">quantiles</span><span class="p">,</span>
+            <span class="n">n_ticks</span><span class="p">,</span> <span class="n">precision</span><span class="p">,</span> <span class="n">axis_lim</span><span class="p">,</span> <span class="n">log_mask</span><span class="p">,</span> <span class="n">tick_idx</span><span class="p">,</span>
+            <span class="n">colors</span><span class="p">,</span> <span class="n">alpha_fill</span><span class="p">,</span> <span class="n">clockwise</span><span class="p">,</span> <span class="n">legend_loc</span><span class="p">,</span> <span class="n">linewidth</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="n">style</span> <span class="o">==</span> <span class="s1">&#39;series&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_radarplot_series</span><span class="p">(</span>
+            <span class="n">ax</span><span class="p">,</span> <span class="n">vals</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">display_labels</span><span class="p">,</span>
+            <span class="n">n_ticks</span><span class="p">,</span> <span class="n">precision</span><span class="p">,</span> <span class="n">axis_lim</span><span class="p">,</span> <span class="n">log_mask</span><span class="p">,</span> <span class="n">tick_idx</span><span class="p">,</span>
+            <span class="n">clockwise</span><span class="p">,</span> <span class="n">cmap</span><span class="p">,</span> <span class="n">linewidth</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown style &#39;</span><span class="si">{</span><span class="n">style</span><span class="si">}</span><span class="s2">&#39;. Choose &#39;web&#39; or &#39;series&#39;.&quot;</span><span class="p">)</span></div>
+
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Web style</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_radarplot_web</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">vals</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">display_labels</span><span class="p">,</span> <span class="n">groups</span><span class="p">,</span> <span class="n">quantiles</span><span class="p">,</span>
+                   <span class="n">n_ticks</span><span class="p">,</span> <span class="n">precision</span><span class="p">,</span> <span class="n">axis_lim</span><span class="p">,</span> <span class="n">log_mask</span><span class="p">,</span> <span class="n">tick_idx</span><span class="p">,</span>
+                   <span class="n">colors</span><span class="p">,</span> <span class="n">alpha_fill</span><span class="p">,</span> <span class="n">clockwise</span><span class="p">,</span> <span class="n">legend_loc</span><span class="p">,</span> <span class="n">linewidth</span><span class="p">):</span>
+    <span class="n">n_fields</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
+    <span class="n">grey</span> <span class="o">=</span> <span class="s1">&#39;0.6&#39;</span>
+
+    <span class="c1"># Normalise to (n_groups, n_fields, n_q)</span>
+    <span class="k">if</span> <span class="n">vals</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">vals3</span> <span class="o">=</span> <span class="n">vals</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+        <span class="n">n_groups</span> <span class="o">=</span> <span class="n">vals</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">n_q</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">vals3</span> <span class="o">=</span> <span class="n">vals</span>
+        <span class="n">n_groups</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">n_q</span> <span class="o">=</span> <span class="n">vals</span><span class="o">.</span><span class="n">shape</span>
+
+    <span class="c1"># Auto-compute limits from the full quantile range, then apply overrides</span>
+    <span class="n">auto_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">vals3</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">auto_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">vals3</span><span class="p">[:,</span> <span class="p">:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">axis_min</span><span class="p">,</span> <span class="n">axis_max</span> <span class="o">=</span> <span class="n">_resolve_axis_lim</span><span class="p">(</span><span class="n">axis_lim</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">auto_min</span><span class="p">,</span> <span class="n">auto_max</span><span class="p">)</span>
+
+    <span class="n">r_inner</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_ticks</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">r_outer</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+    <span class="n">thetas</span> <span class="o">=</span> <span class="n">_spoke_angles</span><span class="p">(</span><span class="n">n_fields</span><span class="p">,</span> <span class="n">clockwise</span><span class="o">=</span><span class="n">clockwise</span><span class="p">)</span>
+    <span class="n">ring_r</span> <span class="o">=</span> <span class="n">_draw_web</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">thetas</span><span class="p">,</span> <span class="n">n_ticks</span><span class="p">,</span> <span class="n">r_outer</span><span class="p">,</span> <span class="n">r_inner</span><span class="p">,</span> <span class="n">grey</span><span class="p">)</span>
+    <span class="n">_draw_field_labels</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">thetas</span><span class="p">,</span> <span class="n">r_outer</span><span class="p">,</span> <span class="n">display_labels</span><span class="p">)</span>
+    <span class="n">_draw_tick_labels</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">thetas</span><span class="p">,</span> <span class="n">ring_r</span><span class="p">,</span> <span class="n">axis_min</span><span class="p">,</span> <span class="n">axis_max</span><span class="p">,</span>
+                      <span class="n">n_ticks</span><span class="p">,</span> <span class="n">precision</span><span class="p">,</span> <span class="n">tick_idx</span><span class="p">,</span> <span class="n">log_mask</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">colors</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">colors</span> <span class="o">=</span> <span class="p">(</span><span class="n">_DEFAULT_COLORS</span> <span class="o">*</span> <span class="p">((</span><span class="n">n_groups</span> <span class="o">//</span> <span class="nb">len</span><span class="p">(</span><span class="n">_DEFAULT_COLORS</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))[:</span><span class="n">n_groups</span><span class="p">]</span>
+
+    <span class="n">theta_closed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">thetas</span><span class="p">,</span> <span class="n">thetas</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">legend_handles</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_groups</span><span class="p">):</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">_draw_group</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">vals3</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">axis_min</span><span class="p">,</span> <span class="n">axis_max</span><span class="p">,</span> <span class="n">r_inner</span><span class="p">,</span> <span class="n">r_outer</span><span class="p">,</span>
+                    <span class="n">log_mask</span><span class="p">,</span> <span class="n">n_q</span><span class="p">,</span> <span class="n">theta_closed</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">alpha_fill</span><span class="p">,</span> <span class="n">linewidth</span><span class="p">)</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">groups</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">if</span> <span class="p">(</span><span class="n">groups</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">groups</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="n">legend_handles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mpatches</span><span class="o">.</span><span class="n">Patch</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">groups</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">any</span><span class="p">(</span><span class="n">g</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="n">legend_handles</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">legend_loc</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+    <span class="n">_finish_ax</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">r_outer</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ax</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_draw_group</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">g_vals</span><span class="p">,</span> <span class="n">axis_min</span><span class="p">,</span> <span class="n">axis_max</span><span class="p">,</span> <span class="n">r_inner</span><span class="p">,</span> <span class="n">r_outer</span><span class="p">,</span>
+                <span class="n">log_mask</span><span class="p">,</span> <span class="n">n_q</span><span class="p">,</span> <span class="n">theta_closed</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">alpha_fill</span><span class="p">,</span> <span class="n">linewidth</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Draw one group&#39;s polygon(s) for the web style.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_r</span><span class="p">(</span><span class="n">q_idx</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">_normalize_vals</span><span class="p">(</span>
+            <span class="n">g_vals</span><span class="p">[:,</span> <span class="n">q_idx</span><span class="p">],</span> <span class="n">axis_min</span><span class="p">,</span> <span class="n">axis_max</span><span class="p">,</span> <span class="n">r_inner</span><span class="p">,</span> <span class="n">r_outer</span><span class="p">,</span> <span class="n">log_mask</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_line</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
+        <span class="n">rc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">rc</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta_closed</span><span class="p">),</span> <span class="n">rc</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta_closed</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">n_q</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">r0</span> <span class="o">=</span> <span class="n">_r</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">_line</span><span class="p">(</span><span class="n">r0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="n">linewidth</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r0</span><span class="p">,</span> <span class="n">r0</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta_closed</span><span class="p">),</span>
+                                                     <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta_closed</span><span class="p">)])),</span>
+                <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha_fill</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">n_q</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">_fill_band</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">theta_closed</span><span class="p">,</span> <span class="n">_r</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">_r</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">color</span><span class="p">,</span> <span class="n">alpha_fill</span><span class="p">)</span>
+        <span class="n">_line</span><span class="p">(</span><span class="n">_r</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="n">linewidth</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">n_q</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">_fill_band</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">theta_closed</span><span class="p">,</span> <span class="n">_r</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">_r</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">color</span><span class="p">,</span> <span class="n">alpha_fill</span><span class="p">)</span>
+        <span class="n">_line</span><span class="p">(</span><span class="n">_r</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="n">linewidth</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">n_q</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">ri</span> <span class="ow">in</span> <span class="p">(</span><span class="n">_r</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">_r</span><span class="p">(</span><span class="mi">4</span><span class="p">)):</span>
+            <span class="n">_line</span><span class="p">(</span><span class="n">ri</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="n">linewidth</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">_fill_band</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">theta_closed</span><span class="p">,</span> <span class="n">_r</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">_r</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">color</span><span class="p">,</span> <span class="n">alpha_fill</span><span class="p">)</span>
+        <span class="n">_line</span><span class="p">(</span><span class="n">_r</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="n">linewidth</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">r_all</span> <span class="o">=</span> <span class="p">[</span><span class="n">_r</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_q</span><span class="p">)]</span>
+        <span class="n">_fill_band</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">theta_closed</span><span class="p">,</span> <span class="n">r_all</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">r_all</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="p">,</span> <span class="n">alpha_fill</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">ri</span> <span class="ow">in</span> <span class="n">r_all</span><span class="p">:</span>
+            <span class="n">_line</span><span class="p">(</span><span class="n">ri</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="n">linewidth</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_fill_band</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">theta_closed</span><span class="p">,</span> <span class="n">r_lo</span><span class="p">,</span> <span class="n">r_hi</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">alpha</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fill the annular region between two radius arrays.&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_xy</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
+        <span class="n">rc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">rc</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta_closed</span><span class="p">),</span> <span class="n">rc</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta_closed</span><span class="p">)</span>
+
+    <span class="n">xo</span><span class="p">,</span> <span class="n">yo</span> <span class="o">=</span> <span class="n">_xy</span><span class="p">(</span><span class="n">r_hi</span><span class="p">)</span>
+    <span class="n">xi</span><span class="p">,</span> <span class="n">yi</span> <span class="o">=</span> <span class="n">_xy</span><span class="p">(</span><span class="n">r_lo</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">xo</span><span class="p">,</span> <span class="n">xi</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="n">xo</span><span class="p">[</span><span class="mi">0</span><span class="p">]]])</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">yo</span><span class="p">,</span> <span class="n">yi</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="n">yo</span><span class="p">[</span><span class="mi">0</span><span class="p">]]])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Series style</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_radarplot_series</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">vals</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">display_labels</span><span class="p">,</span>
+                      <span class="n">n_ticks</span><span class="p">,</span> <span class="n">precision</span><span class="p">,</span> <span class="n">axis_lim</span><span class="p">,</span> <span class="n">log_mask</span><span class="p">,</span> <span class="n">tick_idx</span><span class="p">,</span>
+                      <span class="n">clockwise</span><span class="p">,</span> <span class="n">cmap</span><span class="p">,</span> <span class="n">linewidth</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sequential radar: each row of *vals* is one lap; consecutive laps connect.&quot;&quot;&quot;</span>
+    <span class="n">n_obs</span><span class="p">,</span> <span class="n">n_fields</span> <span class="o">=</span> <span class="n">vals</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">grey</span> <span class="o">=</span> <span class="s1">&#39;0.6&#39;</span>
+
+    <span class="n">auto_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">auto_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">axis_min</span><span class="p">,</span> <span class="n">axis_max</span> <span class="o">=</span> <span class="n">_resolve_axis_lim</span><span class="p">(</span><span class="n">axis_lim</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">auto_min</span><span class="p">,</span> <span class="n">auto_max</span><span class="p">)</span>
+
+    <span class="n">r_inner</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_ticks</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">r_outer</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+    <span class="n">thetas</span> <span class="o">=</span> <span class="n">_spoke_angles</span><span class="p">(</span><span class="n">n_fields</span><span class="p">,</span> <span class="n">clockwise</span><span class="o">=</span><span class="n">clockwise</span><span class="p">)</span>
+    <span class="n">ring_r</span> <span class="o">=</span> <span class="n">_draw_web</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">thetas</span><span class="p">,</span> <span class="n">n_ticks</span><span class="p">,</span> <span class="n">r_outer</span><span class="p">,</span> <span class="n">r_inner</span><span class="p">,</span> <span class="n">grey</span><span class="p">)</span>
+    <span class="n">_draw_field_labels</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">thetas</span><span class="p">,</span> <span class="n">r_outer</span><span class="p">,</span> <span class="n">display_labels</span><span class="p">)</span>
+    <span class="n">_draw_tick_labels</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">thetas</span><span class="p">,</span> <span class="n">ring_r</span><span class="p">,</span> <span class="n">axis_min</span><span class="p">,</span> <span class="n">axis_max</span><span class="p">,</span>
+                      <span class="n">n_ticks</span><span class="p">,</span> <span class="n">precision</span><span class="p">,</span> <span class="n">tick_idx</span><span class="p">,</span> <span class="n">log_mask</span><span class="p">)</span>
+
+    <span class="n">r_norm</span> <span class="o">=</span> <span class="n">_normalize_vals</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="n">axis_min</span><span class="p">,</span> <span class="n">axis_max</span><span class="p">,</span> <span class="n">r_inner</span><span class="p">,</span> <span class="n">r_outer</span><span class="p">,</span> <span class="n">log_mask</span><span class="p">)</span>
+
+    <span class="n">pts_x</span><span class="p">,</span> <span class="n">pts_y</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_obs</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_fields</span><span class="p">):</span>
+            <span class="n">pts_x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r_norm</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">thetas</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span>
+            <span class="n">pts_y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r_norm</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">thetas</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span>
+        <span class="c1"># Close each lap back to the first spoke</span>
+        <span class="n">pts_x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r_norm</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">thetas</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="n">pts_y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r_norm</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">thetas</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+    <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">pts_x</span><span class="p">,</span> <span class="n">pts_y</span><span class="p">])</span>
+    <span class="n">segments</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">pts</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">pts</span><span class="p">[</span><span class="mi">1</span><span class="p">:]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">color_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">segments</span><span class="p">))</span>
+
+    <span class="n">lc</span> <span class="o">=</span> <span class="n">LineCollection</span><span class="p">(</span><span class="n">segments</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">mcolors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                        <span class="n">linewidth</span><span class="o">=</span><span class="n">linewidth</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span><span class="p">)</span>
+    <span class="n">lc</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">color_vals</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><span class="n">lc</span><span class="p">)</span>
+
+    <span class="n">sm</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">mcolors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_obs</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">sm</span><span class="o">.</span><span class="n">set_array</span><span class="p">([])</span>
+    <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Observation&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+
+    <span class="n">_finish_ax</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">r_outer</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ax</span>
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Shared axis finish</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_finish_ax</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">r_outer</span><span class="p">):</span>
+    <span class="n">lim</span> <span class="o">=</span> <span class="n">r_outer</span> <span class="o">*</span> <span class="mf">1.35</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="n">lim</span><span class="p">,</span> <span class="n">lim</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="n">lim</span><span class="p">,</span> <span class="n">lim</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Derrick Hasterok.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

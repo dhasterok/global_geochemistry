@@ -1,0 +1,999 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>global_geochemistry.geochem.classification.cipw &#8212; global_geochemistry 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/global_geochemistry/geochem/classification/cipw';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">global_geochemistry 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../generated/global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../generated/global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">global_geochemistry.geochem.classification.cipw</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for global_geochemistry.geochem.classification.cipw</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">CIPW normative mineralogy.</span>
+
+<span class="sd">Implements the sequential mineral assignment of Cross, Iddings, Pirsson &amp;</span>
+<span class="sd">Washington.  All mole calculations follow Verma et al. (2002, 2003).  The</span>
+<span class="sd">iron speciation formula is from Le Maitre (1976).</span>
+
+<span class="sd">References:</span>
+<span class="sd">    Verma, S.P., Torres-Alvarado, I.S., Sotelo-Rodriguez, Z.T. (2002)</span>
+<span class="sd">    SINCLAS: standard igneous norm and volcanic rock classification system.</span>
+<span class="sd">    Computers &amp; Geosciences 28, 711–724.</span>
+
+<span class="sd">    Le Maitre, R.W. (1976) Some problems of the projection of chemical data</span>
+<span class="sd">    into mineralogical classifications.  Contrib. Mineral. Petrol. 56, 181–189.</span>
+
+<span class="sd">Note on MATLAB bug fixed here:</span>
+<span class="sd">    cipwnorm.m line 192 used m.Tn (zero at that point) instead of m.Tnp when</span>
+<span class="sd">    reducing CaO during the Sphene/Rutile step.  This is corrected below.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">global_geochemistry.utils.molecular</span><span class="w"> </span><span class="kn">import</span> <span class="n">MolecularWeightCalculator</span>
+
+<span class="n">_mwc</span> <span class="o">=</span> <span class="n">MolecularWeightCalculator</span><span class="p">()</span>
+
+<span class="c1"># Frequently used molecular weights (g/mol)</span>
+<span class="n">_MW</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">ox</span><span class="p">:</span> <span class="n">_mwc</span><span class="o">.</span><span class="n">molecular_weight</span><span class="p">(</span><span class="n">ox</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">ox</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;SiO2&#39;</span><span class="p">,</span> <span class="s1">&#39;TiO2&#39;</span><span class="p">,</span> <span class="s1">&#39;Al2O3&#39;</span><span class="p">,</span> <span class="s1">&#39;Fe2O3&#39;</span><span class="p">,</span> <span class="s1">&#39;FeO&#39;</span><span class="p">,</span> <span class="s1">&#39;MnO&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;MgO&#39;</span><span class="p">,</span> <span class="s1">&#39;CaO&#39;</span><span class="p">,</span> <span class="s1">&#39;Na2O&#39;</span><span class="p">,</span> <span class="s1">&#39;K2O&#39;</span><span class="p">,</span> <span class="s1">&#39;P2O5&#39;</span><span class="p">,</span> <span class="s1">&#39;CO2&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">_Rfe</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">_MW</span><span class="p">[</span><span class="s1">&#39;FeO&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">_MW</span><span class="p">[</span><span class="s1">&#39;Fe2O3&#39;</span><span class="p">]</span>   <span class="c1"># ≈ 0.8998</span>
+
+<span class="c1"># Constitutional (formula) weights of normative minerals (g/mol)</span>
+<span class="c1"># Source: Verma et al. (2002) Table 2 / minweight.csv</span>
+<span class="n">_W</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Qz&#39;</span><span class="p">:</span>     <span class="mf">60.0843</span><span class="p">,</span>      <span class="c1"># SiO2</span>
+    <span class="s1">&#39;C&#39;</span><span class="p">:</span>     <span class="mf">101.961276</span><span class="p">,</span>    <span class="c1"># Al2O3</span>
+    <span class="s1">&#39;Or&#39;</span><span class="p">:</span>    <span class="mf">556.663076</span><span class="p">,</span>    <span class="c1"># K2O.Al2O3.6SiO2</span>
+    <span class="s1">&#39;Ab&#39;</span><span class="p">:</span>    <span class="mf">524.446016</span><span class="p">,</span>    <span class="c1"># Na2O.Al2O3.6SiO2</span>
+    <span class="s1">&#39;An&#39;</span><span class="p">:</span>    <span class="mf">278.207276</span><span class="p">,</span>    <span class="c1"># CaO.Al2O3.2SiO2</span>
+    <span class="s1">&#39;Ne&#39;</span><span class="p">:</span>    <span class="mf">284.108816</span><span class="p">,</span>    <span class="c1"># Na2O.Al2O3.2SiO2</span>
+    <span class="s1">&#39;Lc&#39;</span><span class="p">:</span>    <span class="mf">436.494476</span><span class="p">,</span>    <span class="c1"># K2O.Al2O3.4SiO2</span>
+    <span class="s1">&#39;Kp&#39;</span><span class="p">:</span>    <span class="mf">316.325876</span><span class="p">,</span>    <span class="c1"># K2O.Al2O3.2SiO2</span>
+    <span class="s1">&#39;Ac&#39;</span><span class="p">:</span>    <span class="mf">462.004339</span><span class="p">,</span>    <span class="c1"># Na2O.Fe2O3.4SiO2</span>
+    <span class="s1">&#39;Ns&#39;</span><span class="p">:</span>    <span class="mf">122.063239</span><span class="p">,</span>    <span class="c1"># Na2O.SiO2</span>
+    <span class="s1">&#39;Ks&#39;</span><span class="p">:</span>    <span class="mf">154.2803</span><span class="p">,</span>      <span class="c1"># K2O.SiO2</span>
+    <span class="s1">&#39;Di_Mg&#39;</span><span class="p">:</span> <span class="mf">216.5504</span><span class="p">,</span>      <span class="c1"># CaO.MgO.2SiO2</span>
+    <span class="s1">&#39;Di_Fe_corr&#39;</span><span class="p">:</span> <span class="mf">176.246</span><span class="p">,</span>  <span class="c1"># CaO + 2SiO2 part (FeO/MnO added at runtime)</span>
+    <span class="s1">&#39;Wo&#39;</span><span class="p">:</span>    <span class="mf">116.1617</span><span class="p">,</span>      <span class="c1"># CaO.SiO2</span>
+    <span class="s1">&#39;Hy_Mg&#39;</span><span class="p">:</span> <span class="mf">100.3886</span><span class="p">,</span>      <span class="c1"># MgO.SiO2</span>
+    <span class="s1">&#39;Hy_Fe_corr&#39;</span><span class="p">:</span>  <span class="mf">60.0843</span><span class="p">,</span> <span class="c1"># SiO2 part (FeO/MnO added at runtime)</span>
+    <span class="s1">&#39;Ol_Mg&#39;</span><span class="p">:</span> <span class="mf">140.6931</span><span class="p">,</span>      <span class="c1"># 2MgO.SiO2</span>
+    <span class="s1">&#39;Ol_Fe_corr&#39;</span><span class="p">:</span>  <span class="mf">60.0843</span><span class="p">,</span> <span class="c1"># SiO2 part (2x FeO/MnO added at runtime)</span>
+    <span class="s1">&#39;Cs&#39;</span><span class="p">:</span>    <span class="mf">172.2391</span><span class="p">,</span>      <span class="c1"># 2CaO.SiO2</span>
+    <span class="s1">&#39;Tn&#39;</span><span class="p">:</span>    <span class="mf">196.0275</span><span class="p">,</span>      <span class="c1"># CaO.TiO2.SiO2</span>
+    <span class="s1">&#39;Pf&#39;</span><span class="p">:</span>    <span class="mf">135.9432</span><span class="p">,</span>      <span class="c1"># CaO.TiO2</span>
+    <span class="s1">&#39;Ap&#39;</span><span class="p">:</span>    <span class="mf">328.869191</span><span class="p">,</span>    <span class="c1"># 3CaO.P2O5.(1/3)CaO</span>
+    <span class="s1">&#39;Nc&#39;</span><span class="p">:</span>    <span class="mf">105.988339</span><span class="p">,</span>    <span class="c1"># Na2O.CO2</span>
+    <span class="s1">&#39;Cc&#39;</span><span class="p">:</span>    <span class="mf">100.0868</span><span class="p">,</span>      <span class="c1"># CaO.CO2</span>
+    <span class="s1">&#39;He&#39;</span><span class="p">:</span>    <span class="mf">159.6882</span><span class="p">,</span>      <span class="c1"># Fe2O3</span>
+    <span class="s1">&#39;Ru&#39;</span><span class="p">:</span>     <span class="mf">79.8658</span><span class="p">,</span>      <span class="c1"># TiO2</span>
+    <span class="s1">&#39;Mt_corr&#39;</span><span class="p">:</span> <span class="mf">159.6882</span><span class="p">,</span>    <span class="c1"># Fe2O3 part (FeO/MnO added at runtime)</span>
+    <span class="s1">&#39;Il_corr&#39;</span><span class="p">:</span>  <span class="mf">79.8658</span><span class="p">,</span>    <span class="c1"># TiO2 part (FeO/MnO added at runtime)</span>
+<span class="p">}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_fe_ratio_lemaitre</span><span class="p">(</span><span class="n">sio2</span><span class="p">,</span> <span class="n">na2o</span><span class="p">,</span> <span class="n">k2o</span><span class="p">,</span> <span class="n">is_volcanic</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fe2O3/FeO ratio from Le Maitre (1976) empirical formula.&quot;&quot;&quot;</span>
+    <span class="n">ratio</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+        <span class="n">is_volcanic</span><span class="p">,</span>
+        <span class="mf">0.93</span> <span class="o">-</span> <span class="mf">0.0042</span> <span class="o">*</span> <span class="n">sio2</span> <span class="o">-</span> <span class="mf">0.022</span> <span class="o">*</span> <span class="p">(</span><span class="n">na2o</span> <span class="o">+</span> <span class="n">k2o</span><span class="p">),</span>
+        <span class="mf">0.88</span> <span class="o">-</span> <span class="mf">0.0016</span> <span class="o">*</span> <span class="n">sio2</span> <span class="o">-</span> <span class="mf">0.027</span> <span class="o">*</span> <span class="p">(</span><span class="n">na2o</span> <span class="o">+</span> <span class="n">k2o</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">ratio</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_prepare</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">is_volcanic</span><span class="p">,</span> <span class="n">use_measured_fe</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Anhydrous normalisation and Fe2O3/FeO split.</span>
+
+<span class="sd">    Returns arrays (all per 100 g anhydrous):</span>
+<span class="sd">        n_sio2, n_tio2, n_al2o3, n_feo, n_fe2o3, n_mno,</span>
+<span class="sd">        n_mgo, n_cao, n_na2o, n_k2o, n_p2o5, n_co2,</span>
+<span class="sd">        xfeo, xmno, xfer, xmgr</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">col</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+        <span class="n">arr</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span>
+        <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan_to_num</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">nan</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>   <span class="c1"># negative values → 0</span>
+
+    <span class="n">sio2</span>  <span class="o">=</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;sio2&#39;</span><span class="p">)</span>
+    <span class="n">tio2</span>  <span class="o">=</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;tio2&#39;</span><span class="p">)</span>
+    <span class="n">al2o3</span> <span class="o">=</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;al2o3&#39;</span><span class="p">)</span>
+    <span class="n">mno</span>   <span class="o">=</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;mno&#39;</span><span class="p">)</span>
+    <span class="n">mgo</span>   <span class="o">=</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;mgo&#39;</span><span class="p">)</span>
+    <span class="n">cao</span>   <span class="o">=</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;cao&#39;</span><span class="p">)</span>
+    <span class="n">na2o</span>  <span class="o">=</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;na2o&#39;</span><span class="p">)</span>
+    <span class="n">k2o</span>   <span class="o">=</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;k2o&#39;</span><span class="p">)</span>
+    <span class="n">p2o5</span>  <span class="o">=</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;p2o5&#39;</span><span class="p">)</span>
+    <span class="n">co2</span>   <span class="o">=</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;co2&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Determine feo and fe2o3 from whatever iron columns are present</span>
+    <span class="n">feo_tot</span> <span class="o">=</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;feo_tot&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="s1">&#39;feo_tot&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="k">else</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;feo&#39;</span><span class="p">)</span>
+    <span class="n">feo_raw</span> <span class="o">=</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;feo&#39;</span><span class="p">)</span>
+    <span class="n">fe2o3_raw</span> <span class="o">=</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;fe2o3&#39;</span><span class="p">)</span>
+
+    <span class="n">has_both</span> <span class="o">=</span> <span class="p">(</span><span class="n">feo_raw</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">fe2o3_raw</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">feot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">has_both</span><span class="p">,</span> <span class="n">feo_raw</span> <span class="o">+</span> <span class="n">_Rfe</span> <span class="o">*</span> <span class="n">fe2o3_raw</span><span class="p">,</span> <span class="n">feo_tot</span><span class="p">)</span>
+
+    <span class="c1"># Fe ratio: use measured when both present, else Le Maitre (1976)</span>
+    <span class="n">fe_ratio</span> <span class="o">=</span> <span class="n">_fe_ratio_lemaitre</span><span class="p">(</span><span class="n">sio2</span><span class="p">,</span> <span class="n">na2o</span><span class="p">,</span> <span class="n">k2o</span><span class="p">,</span> <span class="n">is_volcanic</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">use_measured_fe</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="n">invalid</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">divide</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">):</span>
+            <span class="n">raw_ratio</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">feo_raw</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">fe2o3_raw</span> <span class="o">/</span> <span class="n">feo_raw</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+        <span class="n">fe_ratio</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">has_both</span><span class="p">,</span> <span class="n">raw_ratio</span><span class="p">,</span> <span class="n">fe_ratio</span><span class="p">)</span>
+
+    <span class="n">feo</span>   <span class="o">=</span> <span class="n">feot</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">_Rfe</span> <span class="o">*</span> <span class="n">fe_ratio</span><span class="p">)</span>
+    <span class="n">fe2o3</span> <span class="o">=</span> <span class="p">(</span><span class="n">feot</span> <span class="o">-</span> <span class="n">feo</span><span class="p">)</span> <span class="o">/</span> <span class="n">_Rfe</span>
+
+    <span class="c1"># Anhydrous normalisation (oxides 1–11, excluding LOI and CO2)</span>
+    <span class="n">oxsum</span> <span class="o">=</span> <span class="n">sio2</span> <span class="o">+</span> <span class="n">tio2</span> <span class="o">+</span> <span class="n">al2o3</span> <span class="o">+</span> <span class="n">feo</span> <span class="o">+</span> <span class="n">fe2o3</span> <span class="o">+</span> <span class="n">mno</span> <span class="o">+</span> <span class="n">mgo</span> <span class="o">+</span> <span class="n">cao</span> <span class="o">+</span> <span class="n">na2o</span> <span class="o">+</span> <span class="n">k2o</span> <span class="o">+</span> <span class="n">p2o5</span>
+    <span class="n">oxsum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">oxsum</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">oxsum</span><span class="p">)</span>
+    <span class="n">scale</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">/</span> <span class="n">oxsum</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">norm</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">scale</span>
+
+    <span class="n">sio2</span>  <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">sio2</span><span class="p">);</span>   <span class="n">tio2</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">tio2</span><span class="p">);</span>  <span class="n">al2o3</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">al2o3</span><span class="p">)</span>
+    <span class="n">feo</span>   <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">feo</span><span class="p">);</span>  <span class="n">fe2o3</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">fe2o3</span><span class="p">);</span>  <span class="n">mno</span>   <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">mno</span><span class="p">)</span>
+    <span class="n">mgo</span>   <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">mgo</span><span class="p">);</span>  <span class="n">cao</span>   <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">cao</span><span class="p">);</span>    <span class="n">na2o</span>  <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">na2o</span><span class="p">)</span>
+    <span class="n">k2o</span>   <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">k2o</span><span class="p">);</span>  <span class="n">p2o5</span>  <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">p2o5</span><span class="p">)</span>
+
+    <span class="c1"># Mole fractions (per 100 g)</span>
+    <span class="n">n_sio2</span>  <span class="o">=</span> <span class="n">sio2</span>  <span class="o">/</span> <span class="n">_MW</span><span class="p">[</span><span class="s1">&#39;SiO2&#39;</span><span class="p">]</span>
+    <span class="n">n_tio2</span>  <span class="o">=</span> <span class="n">tio2</span>  <span class="o">/</span> <span class="n">_MW</span><span class="p">[</span><span class="s1">&#39;TiO2&#39;</span><span class="p">]</span>
+    <span class="n">n_al2o3</span> <span class="o">=</span> <span class="n">al2o3</span> <span class="o">/</span> <span class="n">_MW</span><span class="p">[</span><span class="s1">&#39;Al2O3&#39;</span><span class="p">]</span>
+    <span class="n">n_fe2o3</span> <span class="o">=</span> <span class="n">fe2o3</span> <span class="o">/</span> <span class="n">_MW</span><span class="p">[</span><span class="s1">&#39;Fe2O3&#39;</span><span class="p">]</span>
+    <span class="n">n_mno</span>   <span class="o">=</span> <span class="n">mno</span>   <span class="o">/</span> <span class="n">_MW</span><span class="p">[</span><span class="s1">&#39;MnO&#39;</span><span class="p">]</span>
+    <span class="n">n_mgo</span>   <span class="o">=</span> <span class="n">mgo</span>   <span class="o">/</span> <span class="n">_MW</span><span class="p">[</span><span class="s1">&#39;MgO&#39;</span><span class="p">]</span>
+    <span class="n">n_cao</span>   <span class="o">=</span> <span class="n">cao</span>   <span class="o">/</span> <span class="n">_MW</span><span class="p">[</span><span class="s1">&#39;CaO&#39;</span><span class="p">]</span>
+    <span class="n">n_na2o</span>  <span class="o">=</span> <span class="n">na2o</span>  <span class="o">/</span> <span class="n">_MW</span><span class="p">[</span><span class="s1">&#39;Na2O&#39;</span><span class="p">]</span>
+    <span class="n">n_k2o</span>   <span class="o">=</span> <span class="n">k2o</span>   <span class="o">/</span> <span class="n">_MW</span><span class="p">[</span><span class="s1">&#39;K2O&#39;</span><span class="p">]</span>
+    <span class="n">n_p2o5</span>  <span class="o">=</span> <span class="n">p2o5</span>  <span class="o">/</span> <span class="n">_MW</span><span class="p">[</span><span class="s1">&#39;P2O5&#39;</span><span class="p">]</span>
+    <span class="n">n_co2</span>   <span class="o">=</span> <span class="n">co2</span>   <span class="o">/</span> <span class="n">_MW</span><span class="p">[</span><span class="s1">&#39;CO2&#39;</span><span class="p">]</span>   <span class="c1"># not normalised; used directly</span>
+
+    <span class="c1"># n_feo lumps FeO + MnO (Verma convention)</span>
+    <span class="n">n_feo</span> <span class="o">=</span> <span class="n">feo</span> <span class="o">/</span> <span class="n">_MW</span><span class="p">[</span><span class="s1">&#39;FeO&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">n_mno</span>
+
+    <span class="c1"># FeO/MnO partition within the combined Fe+Mn mole pool.</span>
+    <span class="c1"># These fractions are fixed at the start (MnO never oxidised separately).</span>
+    <span class="n">xfeo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">n_feo</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">feo</span> <span class="o">/</span> <span class="n">_MW</span><span class="p">[</span><span class="s1">&#39;FeO&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">n_feo</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="n">xmno</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">n_feo</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n_mno</span> <span class="o">/</span> <span class="n">n_feo</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+    <span class="c1"># xfer / xmgr (Mg vs Fe+Mn partition) are computed in cipwnorm AFTER</span>
+    <span class="c1"># ilmenite and magnetite steps consume some of the n_feo pool.</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">n_sio2</span><span class="p">,</span> <span class="n">n_tio2</span><span class="p">,</span> <span class="n">n_al2o3</span><span class="p">,</span> <span class="n">n_feo</span><span class="p">,</span> <span class="n">n_fe2o3</span><span class="p">,</span> <span class="n">n_mno</span><span class="p">,</span>
+            <span class="n">n_mgo</span><span class="p">,</span> <span class="n">n_cao</span><span class="p">,</span> <span class="n">n_na2o</span><span class="p">,</span> <span class="n">n_k2o</span><span class="p">,</span> <span class="n">n_p2o5</span><span class="p">,</span> <span class="n">n_co2</span><span class="p">,</span>
+            <span class="n">xfeo</span><span class="p">,</span> <span class="n">xmno</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="cipwnorm">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.geochem.classification.cipw.html#global_geochemistry.geochem.classification.cipw.cipwnorm">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">cipwnorm</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">is_volcanic</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">co2_mode</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute CIPW normative mineralogy.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : pandas.DataFrame</span>
+<span class="sd">        Whole-rock major oxide data (wt%).  Must contain at minimum &#39;sio2&#39;,</span>
+<span class="sd">        &#39;feo_tot&#39; (or &#39;feo&#39;/&#39;fe2o3&#39;), &#39;mgo&#39;, &#39;cao&#39;, &#39;na2o&#39;, &#39;k2o&#39;.</span>
+<span class="sd">    is_volcanic : array-like of bool, optional</span>
+<span class="sd">        True for volcanic rocks, False for plutonic.  Used for Le Maitre</span>
+<span class="sd">        (1976) Fe-ratio calibration.  Defaults to True for all samples.</span>
+<span class="sd">    co2_mode : {&#39;ignore&#39;, &#39;cancrinite&#39;, &#39;calcite&#39;}</span>
+<span class="sd">        How to handle CO2.  &#39;ignore&#39; (default) sets CO2 to 0.  &#39;cancrinite&#39;</span>
+<span class="sd">        assigns CO2 to Na2O first, then CaO.  &#39;calcite&#39; assigns CO2 to CaO.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">        Normative mineral proportions (wt%), one column per mineral, plus</span>
+<span class="sd">        derived indices.  Same index as *data*.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Mineral abbreviations follow Kretz (1983) / Siivola &amp; Schmid (2007).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">is_volcanic</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">is_volcanic</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">is_volcanic</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">is_volcanic</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+
+    <span class="p">(</span><span class="n">n_sio2</span><span class="p">,</span> <span class="n">n_tio2</span><span class="p">,</span> <span class="n">n_al2o3</span><span class="p">,</span> <span class="n">n_feo</span><span class="p">,</span> <span class="n">n_fe2o3</span><span class="p">,</span> <span class="n">n_mno</span><span class="p">,</span>
+     <span class="n">n_mgo</span><span class="p">,</span> <span class="n">n_cao</span><span class="p">,</span> <span class="n">n_na2o</span><span class="p">,</span> <span class="n">n_k2o</span><span class="p">,</span> <span class="n">n_p2o5</span><span class="p">,</span> <span class="n">n_co2</span><span class="p">,</span>
+     <span class="n">xfeo</span><span class="p">,</span> <span class="n">xmno</span><span class="p">)</span> <span class="o">=</span> <span class="n">_prepare</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">is_volcanic</span><span class="p">)</span>
+
+    <span class="c1"># Working copies (moles, consumed as minerals are assigned)</span>
+    <span class="n">q_sio2</span>  <span class="o">=</span> <span class="n">n_sio2</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">q_tio2</span>  <span class="o">=</span> <span class="n">n_tio2</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">q_al2o3</span> <span class="o">=</span> <span class="n">n_al2o3</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">q_feo</span>   <span class="o">=</span> <span class="n">n_feo</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">q_fe2o3</span> <span class="o">=</span> <span class="n">n_fe2o3</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">q_cao</span>   <span class="o">=</span> <span class="n">n_cao</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">q_na2o</span>  <span class="o">=</span> <span class="n">n_na2o</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">q_k2o</span>   <span class="o">=</span> <span class="n">n_k2o</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">q_p2o5</span>  <span class="o">=</span> <span class="n">n_p2o5</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">q_co2</span>   <span class="o">=</span> <span class="n">n_co2</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">if</span> <span class="n">co2_mode</span> <span class="o">!=</span> <span class="s1">&#39;ignore&#39;</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="c1"># Provisional mineral moles (intermediate values)</span>
+    <span class="c1"># Final minerals are named without suffix; provisionals have _p suffix</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_alloc</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="n">Ap_p</span> <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>    <span class="c1"># apatite provisional</span>
+    <span class="n">Nc</span>   <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>    <span class="c1"># cancrinite (sodium carbonate)</span>
+    <span class="n">Cc</span>   <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>    <span class="c1"># calcite</span>
+    <span class="n">Il</span>   <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>    <span class="c1"># ilmenite</span>
+    <span class="n">Orp</span>  <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>    <span class="c1"># orthoclase provisional</span>
+    <span class="n">Ks</span>   <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>    <span class="c1"># potassium metasilicate</span>
+    <span class="n">Abp</span>  <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>    <span class="c1"># albite provisional</span>
+    <span class="n">Ac</span>   <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>    <span class="c1"># acmite</span>
+    <span class="n">Ns</span>   <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>    <span class="c1"># sodium metasilicate</span>
+    <span class="n">An</span>   <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>    <span class="c1"># anorthite</span>
+    <span class="n">Cor</span>  <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>    <span class="c1"># corundum (excess Al2O3)</span>
+    <span class="n">Tnp</span>  <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>    <span class="c1"># sphene provisional</span>
+    <span class="n">Ru</span>   <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>    <span class="c1"># rutile</span>
+    <span class="n">Mt</span>   <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>    <span class="c1"># magnetite</span>
+    <span class="n">Hm</span>   <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>    <span class="c1"># hematite</span>
+    <span class="n">Dip</span>  <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>    <span class="c1"># diopside provisional</span>
+    <span class="n">Wop</span>  <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>    <span class="c1"># wollastonite provisional</span>
+    <span class="n">Hyp</span>  <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>    <span class="c1"># hypersthene provisional</span>
+
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="c1"># Step 1: Apatite  (uses P2O5 and CaO)</span>
+    <span class="c1"># Ca5(PO4)3(OH,F,Cl) → 3CaO.P2O5.(1/3)CaO  → ratio CaO:P2O5 = 10/3</span>
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="n">ind</span> <span class="o">=</span> <span class="n">q_cao</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="mi">10</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">q_p2o5</span>
+    <span class="n">Ap_p</span><span class="p">[</span> <span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_p2o5</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_cao</span><span class="p">[</span> <span class="n">ind</span><span class="p">]</span> <span class="o">-=</span> <span class="p">(</span><span class="mi">10</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">Ap_p</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_p2o5</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>  <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="n">Ap_p</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span> <span class="o">*</span> <span class="n">q_cao</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_p2o5</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">-=</span> <span class="n">Ap_p</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_cao</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>  <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="n">free_p2o5</span> <span class="o">=</span> <span class="n">q_p2o5</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>    <span class="c1"># any P2O5 not in apatite</span>
+
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="c1"># Step 2: CO2 minerals (cancrinite or calcite; default: skip)</span>
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="k">if</span> <span class="n">co2_mode</span> <span class="o">==</span> <span class="s1">&#39;cancrinite&#39;</span><span class="p">:</span>
+        <span class="n">ind</span> <span class="o">=</span> <span class="n">q_na2o</span> <span class="o">&gt;=</span> <span class="n">q_co2</span>
+        <span class="n">Nc</span><span class="p">[</span> <span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_co2</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+        <span class="n">q_na2o</span><span class="p">[</span> <span class="n">ind</span><span class="p">]</span> <span class="o">-=</span> <span class="n">Nc</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+        <span class="n">q_co2</span><span class="p">[</span>  <span class="n">ind</span><span class="p">]</span>  <span class="o">=</span> <span class="mf">0.0</span>
+
+        <span class="n">Nc</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_na2o</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+        <span class="n">q_co2</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">-=</span> <span class="n">Nc</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+        <span class="n">q_na2o</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>  <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="k">elif</span> <span class="n">co2_mode</span> <span class="o">==</span> <span class="s1">&#39;calcite&#39;</span><span class="p">:</span>
+        <span class="n">ind</span> <span class="o">=</span> <span class="n">q_cao</span> <span class="o">&gt;=</span> <span class="n">q_co2</span>
+        <span class="n">Cc</span><span class="p">[</span> <span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_co2</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+        <span class="n">q_cao</span><span class="p">[</span> <span class="n">ind</span><span class="p">]</span> <span class="o">-=</span> <span class="n">Cc</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+        <span class="n">q_co2</span><span class="p">[</span> <span class="n">ind</span><span class="p">]</span>  <span class="o">=</span> <span class="mf">0.0</span>
+
+        <span class="n">Cc</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_cao</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+        <span class="n">q_co2</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">-=</span> <span class="n">Cc</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+        <span class="n">q_cao</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>  <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="n">free_co2</span> <span class="o">=</span> <span class="n">q_co2</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="c1"># Step 3: Ilmenite  (uses TiO2 and FeO+MnO)</span>
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="n">ind</span> <span class="o">=</span> <span class="n">q_feo</span> <span class="o">&gt;=</span> <span class="n">q_tio2</span>
+    <span class="n">Il</span><span class="p">[</span> <span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_tio2</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_feo</span><span class="p">[</span> <span class="n">ind</span><span class="p">]</span> <span class="o">-=</span> <span class="n">Il</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_tio2</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>  <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="n">Il</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_feo</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_tio2</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">-=</span> <span class="n">Il</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_feo</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>   <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="c1"># Step 4: Orthoclase provisional  (uses K2O and Al2O3)</span>
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="n">ind</span> <span class="o">=</span> <span class="n">q_al2o3</span> <span class="o">&gt;=</span> <span class="n">q_k2o</span>
+    <span class="n">Orp</span><span class="p">[</span> <span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_k2o</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_al2o3</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">-=</span> <span class="n">Orp</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_k2o</span><span class="p">[</span>  <span class="n">ind</span><span class="p">]</span>  <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="n">Orp</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_al2o3</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_k2o</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">-=</span> <span class="n">Orp</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_al2o3</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="n">Ks</span> <span class="o">=</span> <span class="n">q_k2o</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>     <span class="c1"># excess K2O → potassium metasilicate</span>
+
+    <span class="n">Y</span> <span class="o">=</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">Orp</span> <span class="o">+</span> <span class="n">Ks</span>      <span class="c1"># running SiO2 tally (moles needed by minerals so far)</span>
+
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="c1"># Step 5: Albite provisional  (uses Na2O and Al2O3)</span>
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="n">ind</span> <span class="o">=</span> <span class="n">q_al2o3</span> <span class="o">&gt;=</span> <span class="n">q_na2o</span>
+    <span class="n">Abp</span><span class="p">[</span> <span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_na2o</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_al2o3</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">-=</span> <span class="n">Abp</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_na2o</span><span class="p">[</span> <span class="n">ind</span><span class="p">]</span>  <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="n">Abp</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_al2o3</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_na2o</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">-=</span> <span class="n">Abp</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_al2o3</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="n">Y</span> <span class="o">+=</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">Abp</span>
+
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="c1"># Step 6: Acmite / sodium metasilicate  (uses excess Na2O and Fe2O3)</span>
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="n">ind</span> <span class="o">=</span> <span class="n">q_na2o</span> <span class="o">&gt;=</span> <span class="n">q_fe2o3</span>
+    <span class="n">Ac</span><span class="p">[</span> <span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_fe2o3</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_na2o</span><span class="p">[</span> <span class="n">ind</span><span class="p">]</span> <span class="o">-=</span> <span class="n">Ac</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_fe2o3</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>  <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="n">Ac</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_na2o</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_fe2o3</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">-=</span> <span class="n">Ac</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_na2o</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>  <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="n">Ns</span> <span class="o">=</span> <span class="n">q_na2o</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>   <span class="c1"># residual Na2O → sodium metasilicate</span>
+    <span class="n">Y</span> <span class="o">+=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">Ac</span> <span class="o">+</span> <span class="n">Ns</span>
+
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="c1"># Step 7: Anorthite / corundum  (uses CaO and Al2O3)</span>
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="n">ind</span> <span class="o">=</span> <span class="n">q_al2o3</span> <span class="o">&gt;=</span> <span class="n">q_cao</span>
+    <span class="n">An</span><span class="p">[</span> <span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_cao</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_al2o3</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">-=</span> <span class="n">An</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_cao</span><span class="p">[</span>  <span class="n">ind</span><span class="p">]</span>  <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="n">An</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_al2o3</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_cao</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">-=</span> <span class="n">An</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_al2o3</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="n">Cor</span> <span class="o">=</span> <span class="n">q_al2o3</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>   <span class="c1"># residual Al2O3 → corundum</span>
+    <span class="n">Y</span> <span class="o">+=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">An</span>
+
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="c1"># Step 8: Sphene provisional / rutile  (uses TiO2 and CaO)</span>
+    <span class="c1"># Bug fix: MATLAB used m.Tn (=0) instead of m.Tnp here.</span>
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="n">ind</span> <span class="o">=</span> <span class="n">q_cao</span> <span class="o">&gt;=</span> <span class="n">q_tio2</span>
+    <span class="n">Tnp</span><span class="p">[</span> <span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_tio2</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_cao</span><span class="p">[</span> <span class="n">ind</span><span class="p">]</span> <span class="o">-=</span> <span class="n">Tnp</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>    <span class="c1"># fixed: was -= m.Tn (always 0 in MATLAB)</span>
+    <span class="n">q_tio2</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>  <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="n">Tnp</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_cao</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_tio2</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">-=</span> <span class="n">Tnp</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_cao</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>  <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="n">Ru</span> <span class="o">=</span> <span class="n">q_tio2</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>   <span class="c1"># residual TiO2 → rutile</span>
+    <span class="n">Y</span> <span class="o">+=</span> <span class="n">Tnp</span>
+
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="c1"># Step 9: Magnetite / hematite  (uses Fe2O3 and FeO+MnO)</span>
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="n">ind</span> <span class="o">=</span> <span class="n">q_fe2o3</span> <span class="o">&gt;=</span> <span class="n">q_feo</span>
+    <span class="n">Mt</span><span class="p">[</span> <span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_feo</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_fe2o3</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">-=</span> <span class="n">Mt</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_feo</span><span class="p">[</span>  <span class="n">ind</span><span class="p">]</span>  <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="n">Mt</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_fe2o3</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_feo</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">-=</span> <span class="n">Mt</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_fe2o3</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="n">Hm</span> <span class="o">=</span> <span class="n">q_fe2o3</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>   <span class="c1"># residual Fe2O3 → hematite</span>
+
+    <span class="c1"># Mg vs Fe+Mn partition — computed here using REMAINING q_feo (after Il + Mt),</span>
+    <span class="c1"># matching MATLAB cipwnorm.m lines 217–220.</span>
+    <span class="n">n_femg_remaining</span> <span class="o">=</span> <span class="n">q_feo</span> <span class="o">+</span> <span class="n">n_mgo</span>
+    <span class="n">xfer</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">n_femg_remaining</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">q_feo</span> <span class="o">/</span> <span class="n">n_femg_remaining</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="n">xmgr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">n_femg_remaining</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n_mgo</span> <span class="o">/</span> <span class="n">n_femg_remaining</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="c1"># Step 10: Diopside / wollastonite / hypersthene</span>
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="n">n_femg</span> <span class="o">=</span> <span class="n">n_femg_remaining</span>
+
+    <span class="n">ind</span> <span class="o">=</span> <span class="n">q_cao</span> <span class="o">&gt;=</span> <span class="n">n_femg</span>
+    <span class="n">Dip</span><span class="p">[</span> <span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">n_femg</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_cao</span><span class="p">[</span> <span class="n">ind</span><span class="p">]</span> <span class="o">-=</span> <span class="n">Dip</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">n_femg</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>  <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="n">Dip</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_cao</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">n_femg</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">-=</span> <span class="n">Dip</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">q_cao</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span>  <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="n">Wop</span> <span class="o">=</span> <span class="n">q_cao</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>      <span class="c1"># residual CaO → wollastonite</span>
+    <span class="n">Hyp</span> <span class="o">=</span> <span class="n">n_femg</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>     <span class="c1"># residual (Fe,Mg)O → hypersthene</span>
+
+    <span class="n">Y</span> <span class="o">+=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">Dip</span> <span class="o">+</span> <span class="n">Wop</span> <span class="o">+</span> <span class="n">Hyp</span>
+
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="c1"># Step 11: Quartz / undersaturation deficit</span>
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">q_sio2</span> <span class="o">-</span> <span class="n">Y</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">Y</span> <span class="o">-</span> <span class="n">q_sio2</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="n">unsat</span> <span class="o">=</span> <span class="n">D</span> <span class="o">&gt;</span> <span class="mf">0.0</span>
+
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="c1"># Step 12: Olivine / hypersthene adjustment</span>
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="n">Olp</span>  <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>
+    <span class="n">Hy</span>   <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>
+    <span class="n">D1</span>   <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>
+
+    <span class="n">ind</span> <span class="o">=</span> <span class="n">D</span> <span class="o">&lt;</span> <span class="n">Hyp</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">Olp</span><span class="p">[</span> <span class="n">unsat</span> <span class="o">&amp;</span>  <span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">D</span><span class="p">[</span><span class="n">unsat</span> <span class="o">&amp;</span> <span class="n">ind</span><span class="p">]</span>
+    <span class="n">Hy</span><span class="p">[</span>  <span class="n">unsat</span> <span class="o">&amp;</span>  <span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">Hyp</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">D</span><span class="p">)[</span><span class="n">unsat</span> <span class="o">&amp;</span> <span class="n">ind</span><span class="p">]</span>
+    <span class="n">D1</span><span class="p">[</span>  <span class="n">unsat</span> <span class="o">&amp;</span>  <span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="n">Olp</span><span class="p">[</span> <span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">Hyp</span><span class="p">[</span><span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">Hy</span><span class="p">[</span>  <span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">D1</span><span class="p">[</span>  <span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">D</span> <span class="o">-</span> <span class="n">Hyp</span><span class="o">/</span><span class="mi">2</span><span class="p">)[</span><span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+
+    <span class="c1"># Saturated: no olivine, keep full Hy</span>
+    <span class="n">Hy</span><span class="p">[</span><span class="o">~</span><span class="n">unsat</span><span class="p">]</span> <span class="o">=</span> <span class="n">Hyp</span><span class="p">[</span><span class="o">~</span><span class="n">unsat</span><span class="p">]</span>
+
+    <span class="n">unsat</span> <span class="o">=</span> <span class="n">D1</span> <span class="o">&gt;</span> <span class="mf">0.0</span>
+
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="c1"># Step 13: Sphene / perovskite</span>
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="n">Pf</span> <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>
+    <span class="n">Tn</span> <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>
+    <span class="n">D2</span> <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>
+
+    <span class="n">ind</span> <span class="o">=</span> <span class="n">D1</span> <span class="o">&lt;</span> <span class="n">Tnp</span>
+    <span class="n">Pf</span><span class="p">[</span> <span class="n">unsat</span> <span class="o">&amp;</span>  <span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">D1</span><span class="p">[</span><span class="n">unsat</span> <span class="o">&amp;</span> <span class="n">ind</span><span class="p">]</span>
+    <span class="n">Tn</span><span class="p">[</span> <span class="n">unsat</span> <span class="o">&amp;</span>  <span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">Tnp</span> <span class="o">-</span> <span class="n">D1</span><span class="p">)[</span><span class="n">unsat</span> <span class="o">&amp;</span> <span class="n">ind</span><span class="p">]</span>
+    <span class="n">D2</span><span class="p">[</span> <span class="n">unsat</span> <span class="o">&amp;</span>  <span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="n">Pf</span><span class="p">[</span> <span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">Tnp</span><span class="p">[</span><span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">Tn</span><span class="p">[</span> <span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">D2</span><span class="p">[</span> <span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">D1</span> <span class="o">-</span> <span class="n">Tnp</span><span class="p">)[</span><span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+
+    <span class="n">unsat</span> <span class="o">=</span> <span class="n">D2</span> <span class="o">&gt;</span> <span class="mf">0.0</span>
+
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="c1"># Step 14: Nepheline / albite</span>
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="n">Ne</span>   <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>
+    <span class="n">Abpp</span> <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>
+    <span class="n">Ab</span>   <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>
+    <span class="n">D3</span>   <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>
+
+    <span class="n">ind</span> <span class="o">=</span> <span class="n">D2</span> <span class="o">&lt;</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">Abp</span>
+    <span class="n">Ne</span><span class="p">[</span>   <span class="n">unsat</span> <span class="o">&amp;</span>  <span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">D2</span><span class="p">[</span><span class="n">unsat</span> <span class="o">&amp;</span> <span class="n">ind</span><span class="p">]</span> <span class="o">/</span> <span class="mi">4</span>
+    <span class="n">Abpp</span><span class="p">[</span> <span class="n">unsat</span> <span class="o">&amp;</span>  <span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">Abp</span> <span class="o">-</span> <span class="n">D2</span><span class="o">/</span><span class="mi">4</span><span class="p">)[</span><span class="n">unsat</span> <span class="o">&amp;</span> <span class="n">ind</span><span class="p">]</span>
+    <span class="n">D3</span><span class="p">[</span>   <span class="n">unsat</span> <span class="o">&amp;</span>  <span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="n">Ne</span><span class="p">[</span>   <span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">Abp</span><span class="p">[</span><span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">Abpp</span><span class="p">[</span> <span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">D3</span><span class="p">[</span>   <span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">D2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">Abp</span><span class="p">)[</span><span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+
+    <span class="n">Ab</span><span class="p">[</span> <span class="n">unsat</span><span class="p">]</span> <span class="o">=</span> <span class="n">Abpp</span><span class="p">[</span><span class="n">unsat</span><span class="p">]</span>
+    <span class="n">Ab</span><span class="p">[</span><span class="o">~</span><span class="n">unsat</span><span class="p">]</span> <span class="o">=</span> <span class="n">Abp</span><span class="p">[</span><span class="o">~</span><span class="n">unsat</span><span class="p">]</span>
+
+    <span class="n">unsat</span> <span class="o">=</span> <span class="n">D3</span> <span class="o">&gt;</span> <span class="mf">0.0</span>
+
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="c1"># Step 15: Leucite / orthoclase</span>
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="n">Lcp</span>  <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>
+    <span class="n">Orpp</span> <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>
+    <span class="n">Or</span>   <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>
+    <span class="n">D4</span>   <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>
+
+    <span class="n">ind</span> <span class="o">=</span> <span class="n">D3</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">Orp</span>
+    <span class="n">Lcp</span><span class="p">[</span>  <span class="n">unsat</span> <span class="o">&amp;</span>  <span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">D3</span><span class="p">[</span><span class="n">unsat</span> <span class="o">&amp;</span> <span class="n">ind</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">Orpp</span><span class="p">[</span> <span class="n">unsat</span> <span class="o">&amp;</span>  <span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">Orp</span> <span class="o">-</span> <span class="n">D3</span><span class="o">/</span><span class="mi">2</span><span class="p">)[</span><span class="n">unsat</span> <span class="o">&amp;</span> <span class="n">ind</span><span class="p">]</span>
+    <span class="n">D4</span><span class="p">[</span>   <span class="n">unsat</span> <span class="o">&amp;</span>  <span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="n">Lcp</span><span class="p">[</span>  <span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">Orp</span><span class="p">[</span><span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">Orpp</span><span class="p">[</span> <span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">D4</span><span class="p">[</span>   <span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">D3</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">Orp</span><span class="p">)[</span><span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+
+    <span class="n">Or</span><span class="p">[</span> <span class="n">unsat</span><span class="p">]</span> <span class="o">=</span> <span class="n">Orpp</span><span class="p">[</span><span class="n">unsat</span><span class="p">]</span>
+    <span class="n">Or</span><span class="p">[</span><span class="o">~</span><span class="n">unsat</span><span class="p">]</span> <span class="o">=</span> <span class="n">Orp</span><span class="p">[</span><span class="o">~</span><span class="n">unsat</span><span class="p">]</span>
+
+    <span class="n">unsat</span> <span class="o">=</span> <span class="n">D4</span> <span class="o">&gt;</span> <span class="mf">0.0</span>
+
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="c1"># Step 16: Dicalcium silicate / wollastonite</span>
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="n">Cs</span>   <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>
+    <span class="n">Wopp</span> <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>
+    <span class="n">Wo</span>   <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>
+    <span class="n">D5</span>   <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>
+
+    <span class="n">ind</span> <span class="o">=</span> <span class="n">D4</span> <span class="o">&lt;</span> <span class="n">Wop</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">Cs</span><span class="p">[</span>   <span class="n">unsat</span> <span class="o">&amp;</span>  <span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">D4</span><span class="p">[</span><span class="n">unsat</span> <span class="o">&amp;</span> <span class="n">ind</span><span class="p">]</span>
+    <span class="n">Wopp</span><span class="p">[</span> <span class="n">unsat</span> <span class="o">&amp;</span>  <span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">Wop</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">D4</span><span class="p">)[</span><span class="n">unsat</span> <span class="o">&amp;</span> <span class="n">ind</span><span class="p">]</span>
+    <span class="n">D5</span><span class="p">[</span>   <span class="n">unsat</span> <span class="o">&amp;</span>  <span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="n">Cs</span><span class="p">[</span>   <span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">Wop</span><span class="p">[</span><span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">Wopp</span><span class="p">[</span> <span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">D5</span><span class="p">[</span>   <span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">D4</span> <span class="o">-</span> <span class="n">Wop</span><span class="o">/</span><span class="mi">2</span><span class="p">)[</span><span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+
+    <span class="n">Wo</span><span class="p">[</span> <span class="n">unsat</span><span class="p">]</span> <span class="o">=</span> <span class="n">Wopp</span><span class="p">[</span><span class="n">unsat</span><span class="p">]</span>
+    <span class="n">Wo</span><span class="p">[</span><span class="o">~</span><span class="n">unsat</span><span class="p">]</span> <span class="o">=</span> <span class="n">Wop</span><span class="p">[</span><span class="o">~</span><span class="n">unsat</span><span class="p">]</span>
+
+    <span class="n">unsat</span> <span class="o">=</span> <span class="n">D5</span> <span class="o">&gt;</span> <span class="mf">0.0</span>
+
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="c1"># Step 17: Adjust diopside / dicalcium silicate / olivine</span>
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="n">Olpp</span> <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>
+    <span class="n">Dipp</span> <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>
+    <span class="n">Di</span>   <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>
+    <span class="n">Ol</span>   <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>
+    <span class="n">D6</span>   <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>
+
+    <span class="n">ind</span> <span class="o">=</span> <span class="n">D5</span> <span class="o">&lt;</span> <span class="n">Dip</span>
+    <span class="n">Cs</span><span class="p">[</span>   <span class="n">unsat</span> <span class="o">&amp;</span>  <span class="n">ind</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">D5</span><span class="o">/</span><span class="mi">2</span><span class="p">)[</span><span class="n">unsat</span> <span class="o">&amp;</span> <span class="n">ind</span><span class="p">]</span>
+    <span class="n">Olpp</span><span class="p">[</span> <span class="n">unsat</span> <span class="o">&amp;</span>  <span class="n">ind</span><span class="p">]</span>  <span class="o">=</span> <span class="p">(</span><span class="n">Olp</span> <span class="o">+</span> <span class="n">D5</span><span class="o">/</span><span class="mi">2</span><span class="p">)[</span><span class="n">unsat</span> <span class="o">&amp;</span> <span class="n">ind</span><span class="p">]</span>
+    <span class="n">Dipp</span><span class="p">[</span> <span class="n">unsat</span> <span class="o">&amp;</span>  <span class="n">ind</span><span class="p">]</span>  <span class="o">=</span> <span class="p">(</span><span class="n">Dip</span> <span class="o">-</span> <span class="n">D5</span><span class="p">)[</span><span class="n">unsat</span> <span class="o">&amp;</span> <span class="n">ind</span><span class="p">]</span>
+    <span class="n">D6</span><span class="p">[</span>   <span class="n">unsat</span> <span class="o">&amp;</span>  <span class="n">ind</span><span class="p">]</span>  <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="n">Cs</span><span class="p">[</span>   <span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">Dip</span><span class="o">/</span><span class="mi">2</span><span class="p">)[</span><span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">Olpp</span><span class="p">[</span> <span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span>  <span class="o">=</span> <span class="p">(</span><span class="n">Olp</span> <span class="o">+</span> <span class="n">Dip</span><span class="o">/</span><span class="mi">2</span><span class="p">)[</span><span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">Dipp</span><span class="p">[</span> <span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span>  <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">D6</span><span class="p">[</span>   <span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span>  <span class="o">=</span> <span class="p">(</span><span class="n">D5</span> <span class="o">-</span> <span class="n">Dip</span><span class="p">)[</span><span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+
+    <span class="n">Ol</span><span class="p">[</span> <span class="n">unsat</span><span class="p">]</span> <span class="o">=</span> <span class="n">Olpp</span><span class="p">[</span><span class="n">unsat</span><span class="p">]</span>
+    <span class="n">Ol</span><span class="p">[</span><span class="o">~</span><span class="n">unsat</span><span class="p">]</span> <span class="o">=</span> <span class="n">Olp</span><span class="p">[</span><span class="o">~</span><span class="n">unsat</span><span class="p">]</span>
+    <span class="n">Di</span><span class="p">[</span> <span class="n">unsat</span><span class="p">]</span> <span class="o">=</span> <span class="n">Dipp</span><span class="p">[</span><span class="n">unsat</span><span class="p">]</span>
+    <span class="n">Di</span><span class="p">[</span><span class="o">~</span><span class="n">unsat</span><span class="p">]</span> <span class="o">=</span> <span class="n">Dip</span><span class="p">[</span><span class="o">~</span><span class="n">unsat</span><span class="p">]</span>
+
+    <span class="n">unsat</span> <span class="o">=</span> <span class="n">D6</span> <span class="o">&gt;</span> <span class="mf">0.0</span>
+
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="c1"># Step 18: Kaliophilite / leucite</span>
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="n">Kp</span>   <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>
+    <span class="n">Lcpp</span> <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>
+    <span class="n">Lc</span>   <span class="o">=</span> <span class="n">_alloc</span><span class="p">()</span>
+
+    <span class="n">ind</span> <span class="o">=</span> <span class="n">Lcp</span> <span class="o">&gt;=</span> <span class="n">D6</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">Kp</span><span class="p">[</span>   <span class="n">unsat</span> <span class="o">&amp;</span>  <span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">D6</span><span class="o">/</span><span class="mi">2</span><span class="p">)[</span><span class="n">unsat</span> <span class="o">&amp;</span> <span class="n">ind</span><span class="p">]</span>
+    <span class="n">Lcpp</span><span class="p">[</span> <span class="n">unsat</span> <span class="o">&amp;</span>  <span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">Lcp</span> <span class="o">-</span> <span class="n">D6</span><span class="o">/</span><span class="mi">2</span><span class="p">)[</span><span class="n">unsat</span> <span class="o">&amp;</span> <span class="n">ind</span><span class="p">]</span>
+
+    <span class="n">Kp</span><span class="p">[</span>   <span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">Lcp</span><span class="p">[</span><span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">Lcpp</span><span class="p">[</span> <span class="n">unsat</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="n">Lc</span><span class="p">[</span> <span class="n">unsat</span><span class="p">]</span> <span class="o">=</span> <span class="n">Lcpp</span><span class="p">[</span><span class="n">unsat</span><span class="p">]</span>
+    <span class="n">Lc</span><span class="p">[</span><span class="o">~</span><span class="n">unsat</span><span class="p">]</span> <span class="o">=</span> <span class="n">Lcp</span><span class="p">[</span><span class="o">~</span><span class="n">unsat</span><span class="p">]</span>
+
+    <span class="n">defsio2</span> <span class="o">=</span> <span class="n">D6</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">Kp</span>   <span class="c1"># SiO2 deficit after all adjustments</span>
+
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="c1"># Convert moles → wt% (multiply by effective molecular weight)</span>
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="c1"># Variable-composition minerals: weight depends on FeO/MnO split</span>
+    <span class="n">fe_mn_wt</span> <span class="o">=</span> <span class="n">_MW</span><span class="p">[</span><span class="s1">&#39;FeO&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">xfeo</span> <span class="o">+</span> <span class="n">_MW</span><span class="p">[</span><span class="s1">&#39;MnO&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">xmno</span>   <span class="c1"># effective Fe+Mn MW</span>
+
+    <span class="n">out</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_quartz&#39;</span><span class="p">]</span>          <span class="o">=</span> <span class="n">Q</span>   <span class="o">*</span> <span class="n">_W</span><span class="p">[</span><span class="s1">&#39;Qz&#39;</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_corundum&#39;</span><span class="p">]</span>        <span class="o">=</span> <span class="n">Cor</span> <span class="o">*</span> <span class="n">_W</span><span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_orthoclase&#39;</span><span class="p">]</span>      <span class="o">=</span> <span class="n">Or</span>  <span class="o">*</span> <span class="n">_W</span><span class="p">[</span><span class="s1">&#39;Or&#39;</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_albite&#39;</span><span class="p">]</span>          <span class="o">=</span> <span class="n">Ab</span>  <span class="o">*</span> <span class="n">_W</span><span class="p">[</span><span class="s1">&#39;Ab&#39;</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_anorthite&#39;</span><span class="p">]</span>       <span class="o">=</span> <span class="n">An</span>  <span class="o">*</span> <span class="n">_W</span><span class="p">[</span><span class="s1">&#39;An&#39;</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_nepheline&#39;</span><span class="p">]</span>       <span class="o">=</span> <span class="n">Ne</span>  <span class="o">*</span> <span class="n">_W</span><span class="p">[</span><span class="s1">&#39;Ne&#39;</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_leucite&#39;</span><span class="p">]</span>         <span class="o">=</span> <span class="n">Lc</span>  <span class="o">*</span> <span class="n">_W</span><span class="p">[</span><span class="s1">&#39;Lc&#39;</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_kaliophilite&#39;</span><span class="p">]</span>    <span class="o">=</span> <span class="n">Kp</span>  <span class="o">*</span> <span class="n">_W</span><span class="p">[</span><span class="s1">&#39;Kp&#39;</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_acmite&#39;</span><span class="p">]</span>          <span class="o">=</span> <span class="n">Ac</span>  <span class="o">*</span> <span class="n">_W</span><span class="p">[</span><span class="s1">&#39;Ac&#39;</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_sodium_ms&#39;</span><span class="p">]</span>       <span class="o">=</span> <span class="n">Ns</span>  <span class="o">*</span> <span class="n">_W</span><span class="p">[</span><span class="s1">&#39;Ns&#39;</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_potassium_ms&#39;</span><span class="p">]</span>    <span class="o">=</span> <span class="n">Ks</span>  <span class="o">*</span> <span class="n">_W</span><span class="p">[</span><span class="s1">&#39;Ks&#39;</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_diopside_mg&#39;</span><span class="p">]</span>     <span class="o">=</span> <span class="n">Di</span> <span class="o">*</span> <span class="n">xmgr</span> <span class="o">*</span> <span class="n">_W</span><span class="p">[</span><span class="s1">&#39;Di_Mg&#39;</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_diopside_fe&#39;</span><span class="p">]</span>     <span class="o">=</span> <span class="n">Di</span> <span class="o">*</span> <span class="n">xfer</span> <span class="o">*</span> <span class="p">(</span><span class="n">fe_mn_wt</span> <span class="o">+</span> <span class="n">_W</span><span class="p">[</span><span class="s1">&#39;Di_Fe_corr&#39;</span><span class="p">])</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_wollastonite&#39;</span><span class="p">]</span>    <span class="o">=</span> <span class="n">Wo</span>  <span class="o">*</span> <span class="n">_W</span><span class="p">[</span><span class="s1">&#39;Wo&#39;</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_hypersthene_mg&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="n">Hy</span> <span class="o">*</span> <span class="n">xmgr</span> <span class="o">*</span> <span class="n">_W</span><span class="p">[</span><span class="s1">&#39;Hy_Mg&#39;</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_hypersthene_fe&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="n">Hy</span> <span class="o">*</span> <span class="n">xfer</span> <span class="o">*</span> <span class="p">(</span><span class="n">fe_mn_wt</span> <span class="o">+</span> <span class="n">_W</span><span class="p">[</span><span class="s1">&#39;Hy_Fe_corr&#39;</span><span class="p">])</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_olivine_mg&#39;</span><span class="p">]</span>      <span class="o">=</span> <span class="n">Ol</span> <span class="o">*</span> <span class="n">xmgr</span> <span class="o">*</span> <span class="n">_W</span><span class="p">[</span><span class="s1">&#39;Ol_Mg&#39;</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_olivine_fe&#39;</span><span class="p">]</span>      <span class="o">=</span> <span class="n">Ol</span> <span class="o">*</span> <span class="n">xfer</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">fe_mn_wt</span> <span class="o">+</span> <span class="n">_W</span><span class="p">[</span><span class="s1">&#39;Ol_Fe_corr&#39;</span><span class="p">])</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_dicalcium_si&#39;</span><span class="p">]</span>    <span class="o">=</span> <span class="n">Cs</span>  <span class="o">*</span> <span class="n">_W</span><span class="p">[</span><span class="s1">&#39;Cs&#39;</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_magnetite&#39;</span><span class="p">]</span>       <span class="o">=</span> <span class="n">Mt</span>  <span class="o">*</span> <span class="p">(</span><span class="n">fe_mn_wt</span> <span class="o">+</span> <span class="n">_W</span><span class="p">[</span><span class="s1">&#39;Mt_corr&#39;</span><span class="p">])</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_ilmenite&#39;</span><span class="p">]</span>        <span class="o">=</span> <span class="n">Il</span>  <span class="o">*</span> <span class="p">(</span><span class="n">fe_mn_wt</span> <span class="o">+</span> <span class="n">_W</span><span class="p">[</span><span class="s1">&#39;Il_corr&#39;</span><span class="p">])</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_hematite&#39;</span><span class="p">]</span>        <span class="o">=</span> <span class="n">Hm</span>  <span class="o">*</span> <span class="n">_W</span><span class="p">[</span><span class="s1">&#39;He&#39;</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_sphene&#39;</span><span class="p">]</span>          <span class="o">=</span> <span class="n">Tn</span>  <span class="o">*</span> <span class="n">_W</span><span class="p">[</span><span class="s1">&#39;Tn&#39;</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_perovskite&#39;</span><span class="p">]</span>      <span class="o">=</span> <span class="n">Pf</span>  <span class="o">*</span> <span class="n">_W</span><span class="p">[</span><span class="s1">&#39;Pf&#39;</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_rutile&#39;</span><span class="p">]</span>          <span class="o">=</span> <span class="n">Ru</span>  <span class="o">*</span> <span class="n">_W</span><span class="p">[</span><span class="s1">&#39;Ru&#39;</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_apatite&#39;</span><span class="p">]</span>         <span class="o">=</span> <span class="n">Ap_p</span> <span class="o">*</span> <span class="n">_W</span><span class="p">[</span><span class="s1">&#39;Ap&#39;</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_cancrinite&#39;</span><span class="p">]</span>      <span class="o">=</span> <span class="n">Nc</span>  <span class="o">*</span> <span class="n">_W</span><span class="p">[</span><span class="s1">&#39;Nc&#39;</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_calcite&#39;</span><span class="p">]</span>         <span class="o">=</span> <span class="n">Cc</span>  <span class="o">*</span> <span class="n">_W</span><span class="p">[</span><span class="s1">&#39;Cc&#39;</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_free_p2o5&#39;</span><span class="p">]</span>       <span class="o">=</span> <span class="n">free_p2o5</span> <span class="o">*</span> <span class="n">_MW</span><span class="p">[</span><span class="s1">&#39;P2O5&#39;</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_free_co2&#39;</span><span class="p">]</span>        <span class="o">=</span> <span class="n">free_co2</span>  <span class="o">*</span> <span class="n">_MW</span><span class="p">[</span><span class="s1">&#39;CO2&#39;</span><span class="p">]</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_defsio2&#39;</span><span class="p">]</span>         <span class="o">=</span> <span class="o">-</span><span class="n">defsio2</span>  <span class="o">*</span> <span class="n">_MW</span><span class="p">[</span><span class="s1">&#39;SiO2&#39;</span><span class="p">]</span>   <span class="c1"># negative = deficit</span>
+
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="c1"># Derived indices</span>
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="n">salic</span>  <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_quartz&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_orthoclase&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_albite&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_anorthite&#39;</span><span class="p">]</span>
+    <span class="n">femic</span>  <span class="o">=</span> <span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_diopside_mg&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_diopside_fe&#39;</span><span class="p">]</span> <span class="o">+</span>
+              <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_hypersthene_mg&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_hypersthene_fe&#39;</span><span class="p">]</span> <span class="o">+</span>
+              <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_olivine_mg&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_olivine_fe&#39;</span><span class="p">]</span> <span class="o">+</span>
+              <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_magnetite&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_ilmenite&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_hematite&#39;</span><span class="p">])</span>
+    <span class="n">DI</span>     <span class="o">=</span> <span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_quartz&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_orthoclase&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_albite&#39;</span><span class="p">]</span> <span class="o">+</span>
+              <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_nepheline&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_leucite&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_kaliophilite&#39;</span><span class="p">])</span>
+    <span class="n">An_frac</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Ab</span> <span class="o">+</span> <span class="n">An</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">An</span> <span class="o">/</span> <span class="p">(</span><span class="n">Ab</span> <span class="o">+</span> <span class="n">An</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_salic&#39;</span><span class="p">]</span>     <span class="o">=</span> <span class="n">salic</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_femic&#39;</span><span class="p">]</span>     <span class="o">=</span> <span class="n">femic</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_di&#39;</span><span class="p">]</span>        <span class="o">=</span> <span class="n">DI</span>               <span class="c1"># differentiation index</span>
+    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;cipw_an_index&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="n">An_frac</span> <span class="o">*</span> <span class="mi">100</span>    <span class="c1"># anorthite index</span>
+
+    <span class="k">return</span> <span class="n">out</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Derrick Hasterok.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

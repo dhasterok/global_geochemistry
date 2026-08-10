@@ -1,0 +1,679 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>global_geochemistry.geophys.ecm1 &#8212; global_geochemistry 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/global_geochemistry/geophys/ecm1';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">global_geochemistry 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../generated/global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../generated/global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">global_geochemistry.geophys.ecm1</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for global_geochemistry.geophys.ecm1</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">ECM1 global crustal structure model.</span>
+
+<span class="sd">Provides 1°×1° global estimates of crustal layer thicknesses, seismic</span>
+<span class="sd">velocities, and densities.</span>
+
+<span class="sd">Typical usage</span>
+<span class="sd">-------------</span>
+<span class="sd">&gt;&gt;&gt; from src.geophys.ecm1 import load_ecm1, interpolate_to_points, plot_ecm1</span>
+<span class="sd">&gt;&gt;&gt; df = load_ecm1()</span>
+<span class="sd">&gt;&gt;&gt; hc = interpolate_to_points(lons, lats, &#39;Hc&#39;)   # crustal thickness (km)</span>
+<span class="sd">&gt;&gt;&gt; ax = plot_ecm1(&#39;Hc&#39;, projection=&#39;robinson&#39;)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">functools</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Column metadata</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<span class="n">COLUMN_INFO</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Hcc&#39;</span><span class="p">:</span>  <span class="s1">&#39;Crystalline crust thickness (km)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Sed&#39;</span><span class="p">:</span>  <span class="s1">&#39;Sediment thickness (km)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Hc&#39;</span><span class="p">:</span>   <span class="s1">&#39;Total crust thickness (km)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Type&#39;</span><span class="p">:</span> <span class="s1">&#39;Crust type code&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;DLy1&#39;</span><span class="p">:</span> <span class="s1">&#39;Upper crust layer thickness (km)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;DLy2&#39;</span><span class="p">:</span> <span class="s1">&#39;Middle crust layer thickness (km)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;DLy3&#39;</span><span class="p">:</span> <span class="s1">&#39;Lower crust layer thickness (km)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;TLy1&#39;</span><span class="p">:</span> <span class="s1">&#39;Upper crust base temperature (°C)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;TLy2&#39;</span><span class="p">:</span> <span class="s1">&#39;Middle crust base temperature (°C)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;TLy3&#39;</span><span class="p">:</span> <span class="s1">&#39;Lower crust base temperature (°C)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;VP1&#39;</span><span class="p">:</span>  <span class="s1">&#39;Upper crust P-wave velocity (km/s)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;VP2&#39;</span><span class="p">:</span>  <span class="s1">&#39;Middle crust P-wave velocity (km/s)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;VP3&#39;</span><span class="p">:</span>  <span class="s1">&#39;Lower crust P-wave velocity (km/s)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;VS1&#39;</span><span class="p">:</span>  <span class="s1">&#39;Upper crust S-wave velocity (km/s)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;VS2&#39;</span><span class="p">:</span>  <span class="s1">&#39;Middle crust S-wave velocity (km/s)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;VS3&#39;</span><span class="p">:</span>  <span class="s1">&#39;Lower crust S-wave velocity (km/s)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;VPN&#39;</span><span class="p">:</span>  <span class="s1">&#39;Pn velocity — uppermost mantle (km/s)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;VSN&#39;</span><span class="p">:</span>  <span class="s1">&#39;Sn velocity — uppermost mantle (km/s)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;RHO1&#39;</span><span class="p">:</span> <span class="s1">&#39;Upper crust density (g/cm³)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;RHO2&#39;</span><span class="p">:</span> <span class="s1">&#39;Middle crust density (g/cm³)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;RHO3&#39;</span><span class="p">:</span> <span class="s1">&#39;Lower crust density (g/cm³)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;RHON&#39;</span><span class="p">:</span> <span class="s1">&#39;Upper mantle density (g/cm³)&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">_COLUMNS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;Numb&#39;</span><span class="p">,</span> <span class="s1">&#39;Lon&#39;</span><span class="p">,</span> <span class="s1">&#39;Lat&#39;</span><span class="p">,</span> <span class="s1">&#39;Hcc&#39;</span><span class="p">,</span> <span class="s1">&#39;Sed&#39;</span><span class="p">,</span> <span class="s1">&#39;Hc&#39;</span><span class="p">,</span> <span class="s1">&#39;Type&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;DLy1&#39;</span><span class="p">,</span> <span class="s1">&#39;DLy2&#39;</span><span class="p">,</span> <span class="s1">&#39;DLy3&#39;</span><span class="p">,</span> <span class="s1">&#39;TLy1&#39;</span><span class="p">,</span> <span class="s1">&#39;TLy2&#39;</span><span class="p">,</span> <span class="s1">&#39;TLy3&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;VP1&#39;</span><span class="p">,</span> <span class="s1">&#39;VP2&#39;</span><span class="p">,</span> <span class="s1">&#39;VP3&#39;</span><span class="p">,</span> <span class="s1">&#39;VS1&#39;</span><span class="p">,</span> <span class="s1">&#39;VS2&#39;</span><span class="p">,</span> <span class="s1">&#39;VS3&#39;</span><span class="p">,</span> <span class="s1">&#39;VPN&#39;</span><span class="p">,</span> <span class="s1">&#39;VSN&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;RHO1&#39;</span><span class="p">,</span> <span class="s1">&#39;RHO2&#39;</span><span class="p">,</span> <span class="s1">&#39;RHO3&#39;</span><span class="p">,</span> <span class="s1">&#39;RHON&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="c1"># Regular 1°×1° grid cell centres</span>
+<span class="n">_LONS</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">179.5</span><span class="p">,</span> <span class="mf">180.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>    <span class="c1"># 360 values, west→east</span>
+<span class="n">_LATS_ASC</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">89.5</span><span class="p">,</span>   <span class="mf">90.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>    <span class="c1"># 180 values, south→north</span>
+<span class="c1">#   File stores data north→south; we flip on load so arrays index [lat_asc, lon]</span>
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Path resolution</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_resolve_ecm1_path</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Find ECM1.txt via data_registry.json or raise FileNotFoundError.&quot;&quot;&quot;</span>
+    <span class="n">registry_path</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span>
+        <span class="o">/</span> <span class="s1">&#39;data_access&#39;</span> <span class="o">/</span> <span class="s1">&#39;data_registry.json&#39;</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">registry_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="k">with</span> <span class="n">registry_path</span><span class="o">.</span><span class="n">open</span><span class="p">()</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">registry</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">ds</span> <span class="ow">in</span> <span class="n">registry</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;datasets&#39;</span><span class="p">,</span> <span class="p">[]):</span>
+            <span class="k">if</span> <span class="n">ds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;ECM1&#39;</span><span class="p">:</span>
+                <span class="n">loc</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">loc</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+                    <span class="k">return</span> <span class="n">loc</span>
+    <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span>
+        <span class="s1">&#39;ECM1.txt not found. Update the &quot;location&quot; field for &quot;ECM1&quot; in &#39;</span>
+        <span class="s1">&#39;data_access/data_registry.json or pass path= explicitly to load_ecm1().&#39;</span>
+    <span class="p">)</span>
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Core loader (cached)</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="load_ecm1">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.geophys.ecm1.html#global_geochemistry.geophys.ecm1.load_ecm1">[docs]</a>
+<span class="nd">@functools</span><span class="o">.</span><span class="n">lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_ecm1</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load the ECM1 crustal model into a DataFrame.</span>
+
+<span class="sd">    The result is cached after the first call; subsequent calls with the</span>
+<span class="sd">    same *path* are instant.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    path : str, optional</span>
+<span class="sd">        Path to ECM1.txt.  Resolved from data_registry.json when *None*.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">        64,800 rows × 25 columns.  See :data:`COLUMN_INFO` for descriptions.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">if</span> <span class="n">path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">_resolve_ecm1_path</span><span class="p">()</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">_COLUMNS</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span></div>
+
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Grid extraction</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="to_grid">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.geophys.ecm1.html#global_geochemistry.geophys.ecm1.to_grid">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">to_grid</span><span class="p">(</span><span class="n">column</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return an ECM1 field as a 2-D grid for :func:`~matplotlib.axes.Axes.pcolormesh`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    column : str</span>
+<span class="sd">        ECM1 column name (e.g. ``&#39;Hc&#39;`` for total crustal thickness).</span>
+<span class="sd">    path : str, optional</span>
+<span class="sd">        Passed to :func:`load_ecm1`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    lons : (361,) ndarray</span>
+<span class="sd">        Cell-edge longitudes (−180 → 180).</span>
+<span class="sd">    lats : (181,) ndarray</span>
+<span class="sd">        Cell-edge latitudes (−90 → 90).</span>
+<span class="sd">    grid : (180, 360) ndarray</span>
+<span class="sd">        Field values on the 1°×1° grid, indexed ``[lat, lon]`` with lat</span>
+<span class="sd">        increasing south→north.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">load_ecm1</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">grid</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">180</span><span class="p">,</span> <span class="mi">360</span><span class="p">)</span>   <span class="c1"># file order: lat descending</span>
+    <span class="n">grid</span> <span class="o">=</span> <span class="n">grid</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>                          <span class="c1"># flip to lat ascending</span>
+    <span class="n">lons</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">180.0</span><span class="p">,</span> <span class="mf">181.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>          <span class="c1"># 361 cell edges</span>
+    <span class="n">lats</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">90.0</span><span class="p">,</span>   <span class="mf">91.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>          <span class="c1"># 181 cell edges</span>
+    <span class="k">return</span> <span class="n">lons</span><span class="p">,</span> <span class="n">lats</span><span class="p">,</span> <span class="n">grid</span></div>
+
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Interpolation</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="interpolate_to_points">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.geophys.ecm1.html#global_geochemistry.geophys.ecm1.interpolate_to_points">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">interpolate_to_points</span><span class="p">(</span>
+    <span class="n">lon</span><span class="p">,</span>
+    <span class="n">lat</span><span class="p">,</span>
+    <span class="n">column</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;linear&#39;</span><span class="p">,</span>
+    <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Interpolate an ECM1 field to arbitrary geographic points.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    lon, lat : array-like</span>
+<span class="sd">        Query longitudes / latitudes in decimal degrees.  NaN values are</span>
+<span class="sd">        propagated as NaN in the output.</span>
+<span class="sd">    column : str</span>
+<span class="sd">        ECM1 column to interpolate (e.g. ``&#39;Hc&#39;``).</span>
+<span class="sd">    method : {&#39;linear&#39;, &#39;nearest&#39;}</span>
+<span class="sd">        Interpolation method passed to</span>
+<span class="sd">        :class:`~scipy.interpolate.RegularGridInterpolator`.</span>
+<span class="sd">    path : str, optional</span>
+<span class="sd">        Passed to :func:`load_ecm1`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">        Interpolated values, same length as the input arrays.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.interpolate</span><span class="w"> </span><span class="kn">import</span> <span class="n">RegularGridInterpolator</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">load_ecm1</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">grid</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">180</span><span class="p">,</span> <span class="mi">360</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>  <span class="c1"># lat ascending</span>
+
+    <span class="n">interp</span> <span class="o">=</span> <span class="n">RegularGridInterpolator</span><span class="p">(</span>
+        <span class="p">(</span><span class="n">_LATS_ASC</span><span class="p">,</span> <span class="n">_LONS</span><span class="p">),</span> <span class="n">grid</span><span class="p">,</span>
+        <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>
+        <span class="n">bounds_error</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">fill_value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">lon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+    <span class="c1"># Clamp longitudes to [-180, 180] to handle slight out-of-range values</span>
+    <span class="n">lon</span> <span class="o">=</span> <span class="p">((</span><span class="n">lon</span> <span class="o">+</span> <span class="mi">180</span><span class="p">)</span> <span class="o">%</span> <span class="mi">360</span><span class="p">)</span> <span class="o">-</span> <span class="mi">180</span>
+
+    <span class="n">valid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lon</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">valid</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+        <span class="n">result</span><span class="p">[</span><span class="n">valid</span><span class="p">]</span> <span class="o">=</span> <span class="n">interp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">lat</span><span class="p">[</span><span class="n">valid</span><span class="p">],</span> <span class="n">lon</span><span class="p">[</span><span class="n">valid</span><span class="p">]]))</span>
+    <span class="k">return</span> <span class="n">result</span></div>
+
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Mapping</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="plot_ecm1">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.geophys.ecm1.html#global_geochemistry.geophys.ecm1.plot_ecm1">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_ecm1</span><span class="p">(</span>
+    <span class="n">column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;Hc&#39;</span><span class="p">,</span>
+    <span class="n">projection</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;geographic&#39;</span><span class="p">,</span>
+    <span class="n">lon0</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">lat0</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">colorbar</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;viridis&#39;</span><span class="p">,</span>
+    <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kw</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot an ECM1 field as a pseudocolor map.</span>
+
+<span class="sd">    Overlays correctly on axes created by :func:`~src.maptools.coast.plotcoast`</span>
+<span class="sd">    using the same *projection*, *lon0*, and *lat0*.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    column : str</span>
+<span class="sd">        ECM1 column to plot.  Default ``&#39;Hc&#39;`` (total crustal thickness).</span>
+<span class="sd">    projection : str</span>
+<span class="sd">        Projection name — same options as :func:`~src.maptools.coast.plotcoast`.</span>
+<span class="sd">    lon0, lat0 : float</span>
+<span class="sd">        Map centre (must match the base map).</span>
+<span class="sd">    ax : matplotlib.axes.Axes, optional</span>
+<span class="sd">        Target axes.  Created if *None*.</span>
+<span class="sd">    colorbar : bool</span>
+<span class="sd">        Attach a colorbar to *ax*.</span>
+<span class="sd">    cmap : str</span>
+<span class="sd">        Matplotlib colormap name.</span>
+<span class="sd">    path : str, optional</span>
+<span class="sd">        Passed to :func:`load_ecm1`.</span>
+<span class="sd">    **kw</span>
+<span class="sd">        Forwarded to :func:`~matplotlib.axes.Axes.pcolormesh`</span>
+<span class="sd">        (e.g. ``vmin``, ``vmax``, ``shading``).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    matplotlib.axes.Axes</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+    <span class="c1"># Lazy import so the module loads without requiring maptools</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">_sys</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">_pathlib</span>
+    <span class="n">_root</span> <span class="o">=</span> <span class="n">_pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span>
+    <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">_root</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+        <span class="n">_sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">_root</span><span class="p">))</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">src.maptools.coast</span><span class="w"> </span><span class="kn">import</span> <span class="n">_project</span>
+
+    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+    <span class="n">kw</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;shading&#39;</span><span class="p">,</span> <span class="s1">&#39;flat&#39;</span><span class="p">)</span>
+
+    <span class="n">lons_e</span><span class="p">,</span> <span class="n">lats_e</span><span class="p">,</span> <span class="n">grid</span> <span class="o">=</span> <span class="n">to_grid</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">projection</span> <span class="o">==</span> <span class="s1">&#39;geographic&#39;</span><span class="p">:</span>
+        <span class="c1"># Shift so lon0 is at centre</span>
+        <span class="n">lon_mesh</span><span class="p">,</span> <span class="n">lat_mesh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">lons_e</span> <span class="o">-</span> <span class="n">lon0</span><span class="p">,</span> <span class="n">lats_e</span><span class="p">)</span>
+        <span class="n">pcm</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">lon_mesh</span><span class="p">,</span> <span class="n">lat_mesh</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Project the (N+1)×(M+1) edge mesh; pcolormesh handles irregular quads</span>
+        <span class="n">lon_mesh</span><span class="p">,</span> <span class="n">lat_mesh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">lons_e</span><span class="p">,</span> <span class="n">lats_e</span><span class="p">)</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">_project</span><span class="p">(</span>
+            <span class="n">lon_mesh</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">),</span>
+            <span class="n">lat_mesh</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">),</span>
+            <span class="n">projection</span><span class="p">,</span> <span class="n">lon0</span><span class="p">,</span> <span class="n">lat0</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">lon_mesh</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">lat_mesh</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="c1"># Mask cells that project to NaN (outside map boundary)</span>
+        <span class="n">valid_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">&amp;</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">y</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">masked_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">valid_mask</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+        <span class="n">pcm</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">masked_grid</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">colorbar</span><span class="p">:</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">COLUMN_INFO</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">column</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">pcm</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.02</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ax</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Derrick Hasterok.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

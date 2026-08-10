@@ -1,0 +1,1186 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>global_geochemistry.maptools.transforms &#8212; global_geochemistry 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/global_geochemistry/maptools/transforms';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">global_geochemistry 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../generated/global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../generated/global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">global_geochemistry.maptools.transforms</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for global_geochemistry.maptools.transforms</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Geodetic coordinate transforms and great-circle paths.</span>
+
+<span class="sd">Coordinate transforms</span>
+<span class="sd">---------------------</span>
+<span class="sd">``ll2utm(lon, lat, datum=&#39;wgs84&#39;)``</span>
+<span class="sd">    Geographic (lon, lat) → UTM (easting, northing, zone).</span>
+
+<span class="sd">``utm2ll(easting, northing, zone, datum=&#39;wgs84&#39;)``</span>
+<span class="sd">    UTM (easting, northing, zone) → geographic (lon, lat).</span>
+
+<span class="sd">``mercator(lon, lat, datum=&#39;wgs84&#39;, lon0=0.0)``</span>
+<span class="sd">    Forward ellipsoidal Mercator projection.</span>
+
+<span class="sd">``inv_mercator(x, y, datum=&#39;wgs84&#39;, lon0=0.0)``</span>
+<span class="sd">    Inverse Mercator projection.</span>
+
+<span class="sd">``polarstereo_fwd(lon, lat, lat_c=-70, lon0=0, a=..., e=...)``</span>
+<span class="sd">    Polar stereographic forward projection (NSIDC/SCAR convention).</span>
+
+<span class="sd">``polarstereo_inv(x, y, lat_c=-70, lon0=0, a=..., e=...)``</span>
+<span class="sd">    Polar stereographic inverse projection.</span>
+
+<span class="sd">``authalic_lat(lat, datum=&#39;wgs84&#39;)``</span>
+<span class="sd">    Geodetic → authalic latitude and equivalent sphere radius.</span>
+
+<span class="sd">Spherical geometry</span>
+<span class="sd">------------------</span>
+<span class="sd">``gcpoints(P, Q, n)``</span>
+<span class="sd">    Compute *n* equally-spaced points along the great-circle arc from P</span>
+<span class="sd">    to Q (each a ``(lon, lat)`` pair in degrees).</span>
+
+<span class="sd">``sphangle(P, Q)``</span>
+<span class="sd">    Angular separation between two points on the sphere (degrees).</span>
+
+<span class="sd">``smallcircle(lon0, lat0, delta, n=360)``</span>
+<span class="sd">    Points on the small circle of angular radius *delta* about (lon0, lat0).</span>
+
+<span class="sd">Area calculations</span>
+<span class="sd">-----------------</span>
+<span class="sd">``pixarea(lat1, lat2, lon1, lon2, datum=None)``</span>
+<span class="sd">    Fractional area of a lat/lon quad pixel on a sphere.</span>
+
+<span class="sd">``rectarea(lonlim, latlim, R=6371.0)``</span>
+<span class="sd">    Area of a lat/lon rectangle in km².</span>
+
+<span class="sd">All longitude/latitude in decimal degrees.  Negative zone values from</span>
+<span class="sd">:func:`ll2utm` / :func:`utm2ll` indicate the southern hemisphere.</span>
+
+<span class="sd">References</span>
+<span class="sd">----------</span>
+<span class="sd">Snyder, J.P. (1987) *Map Projections — A Working Manual*.</span>
+<span class="sd">USGS Professional Paper 1395. US Government Printing Office.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Reference ellipsoid parameters</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<span class="n">_DATUMS</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># (semimajor a [m], semiminor b [m])</span>
+    <span class="s1">&#39;nad27&#39;</span><span class="p">:</span>         <span class="p">(</span><span class="mf">6_378_206.4</span><span class="p">,</span>   <span class="mf">6_356_583.8</span><span class="p">),</span>
+    <span class="s1">&#39;clarke1866&#39;</span><span class="p">:</span>    <span class="p">(</span><span class="mf">6_378_206.4</span><span class="p">,</span>   <span class="mf">6_356_583.8</span><span class="p">),</span>
+    <span class="s1">&#39;clarke1880&#39;</span><span class="p">:</span>    <span class="p">(</span><span class="mf">6_378_249.1</span><span class="p">,</span>   <span class="mf">6_356_514.9</span><span class="p">),</span>
+    <span class="s1">&#39;nad83&#39;</span><span class="p">:</span>         <span class="p">(</span><span class="mf">6_378_137.0</span><span class="p">,</span>   <span class="mf">6_356_752.3</span><span class="p">),</span>
+    <span class="s1">&#39;wgs84&#39;</span><span class="p">:</span>         <span class="p">(</span><span class="mf">6_378_137.0</span><span class="p">,</span>   <span class="mf">6_356_752.3</span><span class="p">),</span>
+    <span class="s1">&#39;grs80&#39;</span><span class="p">:</span>         <span class="p">(</span><span class="mf">6_378_137.0</span><span class="p">,</span>   <span class="mf">6_356_752.3</span><span class="p">),</span>
+    <span class="s1">&#39;wgrs80&#39;</span><span class="p">:</span>        <span class="p">(</span><span class="mf">6_378_137.0</span><span class="p">,</span>   <span class="mf">6_356_752.3</span><span class="p">),</span>
+    <span class="s1">&#39;wgrs84&#39;</span><span class="p">:</span>        <span class="p">(</span><span class="mf">6_378_137.0</span><span class="p">,</span>   <span class="mf">6_356_752.3</span><span class="p">),</span>
+    <span class="s1">&#39;nztm&#39;</span><span class="p">:</span>          <span class="p">(</span><span class="mf">6_378_137.0</span><span class="p">,</span>   <span class="mf">6_356_752.3</span><span class="p">),</span>
+    <span class="s1">&#39;australian1965&#39;</span><span class="p">:(</span><span class="mf">6_378_160.0</span><span class="p">,</span>   <span class="mf">6_356_774.7</span><span class="p">),</span>
+    <span class="s1">&#39;australian1984&#39;</span><span class="p">:(</span><span class="mf">6_378_160.0</span><span class="p">,</span>   <span class="mf">6_356_774.7</span><span class="p">),</span>
+    <span class="s1">&#39;gda84&#39;</span><span class="p">:</span>         <span class="p">(</span><span class="mf">6_378_160.0</span><span class="p">,</span>   <span class="mf">6_356_774.7</span><span class="p">),</span>
+    <span class="s1">&#39;australian1994&#39;</span><span class="p">:(</span><span class="mf">6_377_137.0</span><span class="p">,</span>   <span class="mf">6_355_755.7</span><span class="p">),</span>
+    <span class="s1">&#39;gda94&#39;</span><span class="p">:</span>         <span class="p">(</span><span class="mf">6_377_137.0</span><span class="p">,</span>   <span class="mf">6_355_755.7</span><span class="p">),</span>
+    <span class="s1">&#39;krasovsky1940&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">6_378_245.0</span><span class="p">,</span>   <span class="mf">6_356_863.0</span><span class="p">),</span>
+    <span class="s1">&#39;intl1924&#39;</span><span class="p">:</span>      <span class="p">(</span><span class="mf">6_378_388.0</span><span class="p">,</span>   <span class="mf">6_356_911.9</span><span class="p">),</span>
+    <span class="s1">&#39;hayford1909&#39;</span><span class="p">:</span>   <span class="p">(</span><span class="mf">6_378_388.0</span><span class="p">,</span>   <span class="mf">6_356_911.9</span><span class="p">),</span>
+    <span class="s1">&#39;nzmg&#39;</span><span class="p">:</span>          <span class="p">(</span><span class="mf">6_378_388.0</span><span class="p">,</span>   <span class="mf">6_356_911.9</span><span class="p">),</span>
+    <span class="s1">&#39;airy1830&#39;</span><span class="p">:</span>      <span class="p">(</span><span class="mf">6_377_563.4</span><span class="p">,</span>   <span class="mf">6_356_356.9</span><span class="p">),</span>
+    <span class="s1">&#39;bessel1841&#39;</span><span class="p">:</span>    <span class="p">(</span><span class="mf">6_377_397.155</span><span class="p">,</span> <span class="mf">6_356_079.0</span><span class="p">),</span>
+    <span class="s1">&#39;everest1830&#39;</span><span class="p">:</span>   <span class="p">(</span><span class="mf">6_377_376.3</span><span class="p">,</span>   <span class="mf">6_356_075.4</span><span class="p">),</span>
+<span class="p">}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_get_datum</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_DATUMS</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown datum &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;. Available: </span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">_DATUMS</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_DATUMS</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_eccentricity</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">b</span> <span class="o">/</span> <span class="n">a</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># UTM false origins by datum</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_false_origin</span><span class="p">(</span><span class="n">datum</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">zone</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return (false_easting, false_northing) for a datum.&quot;&quot;&quot;</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">datum</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">d</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;australian1984&#39;</span><span class="p">,</span> <span class="s1">&#39;gda84&#39;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1e7</span>
+    <span class="k">if</span> <span class="n">d</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;australian1994&#39;</span><span class="p">,</span> <span class="s1">&#39;gda94&#39;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mf">5e5</span><span class="p">,</span> <span class="mf">1e7</span>
+    <span class="k">if</span> <span class="n">d</span> <span class="o">==</span> <span class="s1">&#39;nztm&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">1_600_000.0</span><span class="p">,</span> <span class="mf">10_000_000.0</span>
+    <span class="k">return</span> <span class="mf">5e5</span><span class="p">,</span> <span class="mf">0.0</span>
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># ll2utm</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="ll2utm">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.maptools.transforms.html#global_geochemistry.maptools.transforms.ll2utm">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">ll2utm</span><span class="p">(</span>
+    <span class="n">lon</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">lat</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">datum</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;wgs84&#39;</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert geographic coordinates to UTM.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    lon, lat : array-like</span>
+<span class="sd">        Longitude and latitude in decimal degrees.</span>
+<span class="sd">    datum : str</span>
+<span class="sd">        Reference ellipsoid name (default ``&#39;wgs84&#39;``).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    easting, northing : ndarray</span>
+<span class="sd">        UTM coordinates in metres.</span>
+<span class="sd">    zone : ndarray of int</span>
+<span class="sd">        UTM zone number (1–60).  Negative for southern hemisphere.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">lon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+    <span class="c1"># Wrap longitudes &gt; 180</span>
+    <span class="n">lon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">lon</span> <span class="o">&gt;=</span> <span class="mi">180</span><span class="p">,</span> <span class="n">lon</span> <span class="o">-</span> <span class="mi">360</span><span class="p">,</span> <span class="n">lon</span><span class="p">)</span>
+
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">_get_datum</span><span class="p">(</span><span class="n">datum</span><span class="p">)</span>
+    <span class="n">ecc</span>  <span class="o">=</span> <span class="n">_eccentricity</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="n">feast</span><span class="p">,</span> <span class="n">fnorth</span> <span class="o">=</span> <span class="n">_false_origin</span><span class="p">(</span><span class="n">datum</span><span class="p">)</span>
+
+    <span class="n">zone</span>  <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">((</span><span class="n">lon</span> <span class="o">+</span> <span class="mi">180</span><span class="p">)</span> <span class="o">/</span> <span class="mi">6</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">lon0</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">6</span> <span class="o">*</span> <span class="p">(</span><span class="n">zone</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">-</span> <span class="mi">180</span><span class="p">)</span>
+
+    <span class="n">lat_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>
+    <span class="n">lon_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span>
+
+    <span class="n">k0</span> <span class="o">=</span> <span class="mf">0.9996</span>
+    <span class="n">ep</span> <span class="o">=</span> <span class="n">ecc</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">ecc</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">N</span> <span class="o">=</span> <span class="n">a</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">ecc</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">lat_r</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">lat_r</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">ep</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lat_r</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="p">(</span><span class="n">lon_r</span> <span class="o">-</span> <span class="n">lon0</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lat_r</span><span class="p">)</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="p">(</span>
+        <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">ecc</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">4</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">ecc</span><span class="o">**</span><span class="mi">4</span><span class="o">/</span><span class="mi">64</span> <span class="o">-</span> <span class="mi">5</span><span class="o">*</span><span class="n">ecc</span><span class="o">**</span><span class="mi">6</span><span class="o">/</span><span class="mi">256</span><span class="p">)</span> <span class="o">*</span> <span class="n">lat_r</span>
+        <span class="o">-</span> <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">ecc</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">8</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">ecc</span><span class="o">**</span><span class="mi">4</span><span class="o">/</span><span class="mi">32</span> <span class="o">+</span> <span class="mi">45</span><span class="o">*</span><span class="n">ecc</span><span class="o">**</span><span class="mi">6</span><span class="o">/</span><span class="mi">1024</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">lat_r</span><span class="p">)</span>
+        <span class="o">+</span> <span class="p">(</span><span class="mi">15</span><span class="o">*</span><span class="n">ecc</span><span class="o">**</span><span class="mi">4</span><span class="o">/</span><span class="mi">256</span> <span class="o">+</span> <span class="mi">45</span><span class="o">*</span><span class="n">ecc</span><span class="o">**</span><span class="mi">6</span><span class="o">/</span><span class="mi">1024</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">lat_r</span><span class="p">)</span>
+        <span class="o">-</span> <span class="mi">35</span><span class="o">*</span><span class="n">ecc</span><span class="o">**</span><span class="mi">6</span><span class="o">/</span><span class="mi">3072</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="n">lat_r</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">easting</span> <span class="o">=</span> <span class="n">k0</span> <span class="o">*</span> <span class="n">N</span> <span class="o">*</span> <span class="p">(</span>
+        <span class="n">A</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">T</span> <span class="o">+</span> <span class="n">C</span><span class="p">)</span> <span class="o">*</span> <span class="n">A</span><span class="o">**</span><span class="mi">3</span> <span class="o">/</span> <span class="mi">6</span>
+        <span class="o">+</span> <span class="p">(</span><span class="mi">5</span> <span class="o">-</span> <span class="mi">18</span><span class="o">*</span><span class="n">T</span> <span class="o">+</span> <span class="n">T</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">72</span><span class="o">*</span><span class="n">C</span> <span class="o">-</span> <span class="mi">58</span><span class="o">*</span><span class="n">ep</span><span class="p">)</span> <span class="o">*</span> <span class="n">A</span><span class="o">**</span><span class="mi">5</span> <span class="o">/</span> <span class="mi">120</span>
+    <span class="p">)</span> <span class="o">+</span> <span class="n">feast</span>
+
+    <span class="n">northing</span> <span class="o">=</span> <span class="n">k0</span> <span class="o">*</span> <span class="p">(</span>
+        <span class="n">M</span> <span class="o">+</span> <span class="n">N</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">lat_r</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span>
+            <span class="n">A</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span>
+            <span class="o">+</span> <span class="p">(</span><span class="mi">5</span> <span class="o">-</span> <span class="n">T</span> <span class="o">+</span> <span class="mi">9</span><span class="o">*</span><span class="n">C</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">C</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">A</span><span class="o">**</span><span class="mi">4</span> <span class="o">/</span> <span class="mi">24</span>
+            <span class="o">+</span> <span class="p">(</span><span class="mi">61</span> <span class="o">-</span> <span class="mi">58</span><span class="o">*</span><span class="n">T</span> <span class="o">+</span> <span class="n">T</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">600</span><span class="o">*</span><span class="n">C</span> <span class="o">-</span> <span class="mi">300</span><span class="o">*</span><span class="n">ep</span><span class="p">)</span> <span class="o">*</span> <span class="n">A</span><span class="o">**</span><span class="mi">6</span> <span class="o">/</span> <span class="mi">720</span>
+        <span class="p">)</span>
+    <span class="p">)</span> <span class="o">+</span> <span class="n">fnorth</span>
+
+    <span class="n">zone</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">lat</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">zone</span><span class="p">,</span> <span class="n">zone</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">easting</span><span class="p">,</span> <span class="n">northing</span><span class="p">,</span> <span class="n">zone</span></div>
+
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># utm2ll</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="utm2ll">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.maptools.transforms.html#global_geochemistry.maptools.transforms.utm2ll">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">utm2ll</span><span class="p">(</span>
+    <span class="n">easting</span><span class="p">:</span>  <span class="nb">float</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">northing</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">zone</span><span class="p">:</span>     <span class="nb">int</span>   <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">datum</span><span class="p">:</span>    <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;wgs84&#39;</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert UTM coordinates to geographic (lon, lat).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    easting, northing : array-like</span>
+<span class="sd">        UTM coordinates in metres.</span>
+<span class="sd">    zone : int or array-like</span>
+<span class="sd">        UTM zone number.  Negative values indicate the southern hemisphere.</span>
+<span class="sd">    datum : str</span>
+<span class="sd">        Reference ellipsoid name (default ``&#39;wgs84&#39;``).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    lon, lat : ndarray</span>
+<span class="sd">        Decimal degrees.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">easting</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">easting</span><span class="p">,</span>  <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">northing</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">northing</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">zone</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">zone</span><span class="p">,</span>     <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="n">zabs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">zone</span><span class="p">)</span>
+
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">_get_datum</span><span class="p">(</span><span class="n">datum</span><span class="p">)</span>
+    <span class="n">ecc</span>  <span class="o">=</span> <span class="n">_eccentricity</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="n">feast</span><span class="p">,</span> <span class="n">fnorth</span> <span class="o">=</span> <span class="n">_false_origin</span><span class="p">(</span><span class="n">datum</span><span class="p">)</span>
+
+    <span class="n">lon0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">6</span> <span class="o">*</span> <span class="p">(</span><span class="n">zabs</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">-</span> <span class="mi">180</span><span class="p">)</span>
+
+    <span class="n">k0</span> <span class="o">=</span> <span class="mf">0.9996</span>
+    <span class="n">ep</span> <span class="o">=</span> <span class="n">ecc</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">ecc</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">e1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">ecc</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">ecc</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">easting</span>  <span class="o">-</span> <span class="n">feast</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">northing</span> <span class="o">-</span> <span class="n">fnorth</span>
+
+    <span class="n">M</span>   <span class="o">=</span> <span class="n">y</span> <span class="o">/</span> <span class="n">k0</span>
+    <span class="n">mu</span>  <span class="o">=</span> <span class="n">M</span> <span class="o">/</span> <span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">ecc</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">4</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">ecc</span><span class="o">**</span><span class="mi">4</span><span class="o">/</span><span class="mi">64</span> <span class="o">-</span> <span class="mi">5</span><span class="o">*</span><span class="n">ecc</span><span class="o">**</span><span class="mi">6</span><span class="o">/</span><span class="mi">256</span> <span class="o">-</span> <span class="mi">7</span><span class="o">*</span><span class="n">ecc</span><span class="o">**</span><span class="mi">8</span><span class="o">/</span><span class="mi">1024</span><span class="p">))</span>
+
+    <span class="n">lat1</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">mu</span>
+        <span class="o">+</span> <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">e1</span><span class="o">/</span><span class="mi">2</span>   <span class="o">-</span> <span class="mi">27</span><span class="o">*</span><span class="n">e1</span><span class="o">**</span><span class="mi">3</span><span class="o">/</span><span class="mi">32</span><span class="p">)</span>  <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">mu</span><span class="p">)</span>
+        <span class="o">+</span> <span class="p">(</span><span class="mi">21</span><span class="o">*</span><span class="n">e1</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">16</span> <span class="o">-</span> <span class="mi">55</span><span class="o">*</span><span class="n">e1</span><span class="o">**</span><span class="mi">4</span><span class="o">/</span><span class="mi">32</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">mu</span><span class="p">)</span>
+        <span class="o">+</span> <span class="p">(</span><span class="mi">151</span><span class="o">*</span><span class="n">e1</span><span class="o">**</span><span class="mi">3</span><span class="o">/</span><span class="mi">96</span><span class="p">)</span>              <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="n">mu</span><span class="p">)</span>
+        <span class="o">+</span> <span class="p">(</span><span class="mi">1097</span><span class="o">*</span><span class="n">e1</span><span class="o">**</span><span class="mi">4</span><span class="o">/</span><span class="mi">512</span><span class="p">)</span>            <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">8</span><span class="o">*</span><span class="n">mu</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">C1</span> <span class="o">=</span> <span class="n">ep</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lat1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">T1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">lat1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">N1</span> <span class="o">=</span> <span class="n">a</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">ecc</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">lat1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">R1</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">ecc</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">ecc</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">lat1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mf">1.5</span>
+    <span class="n">D</span>  <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="p">(</span><span class="n">N1</span> <span class="o">*</span> <span class="n">k0</span><span class="p">)</span>
+
+    <span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span>
+        <span class="n">lat1</span>
+        <span class="o">-</span> <span class="p">(</span><span class="n">N1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">lat1</span><span class="p">)</span> <span class="o">/</span> <span class="n">R1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span>
+            <span class="n">D</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span>
+            <span class="o">-</span> <span class="p">(</span><span class="mi">5</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">T1</span> <span class="o">+</span> <span class="mi">10</span><span class="o">*</span><span class="n">C1</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">C1</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">9</span><span class="o">*</span><span class="n">ep</span><span class="p">)</span> <span class="o">*</span> <span class="n">D</span><span class="o">**</span><span class="mi">4</span> <span class="o">/</span> <span class="mi">24</span>
+            <span class="o">+</span> <span class="p">(</span><span class="mi">61</span> <span class="o">+</span> <span class="mi">90</span><span class="o">*</span><span class="n">T1</span> <span class="o">+</span> <span class="mi">298</span><span class="o">*</span><span class="n">C1</span> <span class="o">+</span> <span class="mi">45</span><span class="o">*</span><span class="n">T1</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">252</span><span class="o">*</span><span class="n">ep</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">C1</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">D</span><span class="o">**</span><span class="mi">6</span> <span class="o">/</span> <span class="mi">720</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">lon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span>
+        <span class="n">lon0</span>
+        <span class="o">+</span> <span class="p">(</span><span class="n">D</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">T1</span> <span class="o">+</span> <span class="n">C1</span><span class="p">)</span> <span class="o">*</span> <span class="n">D</span><span class="o">**</span><span class="mi">3</span> <span class="o">/</span> <span class="mi">6</span>
+           <span class="o">+</span> <span class="p">(</span><span class="mi">5</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">C1</span> <span class="o">+</span> <span class="mi">28</span><span class="o">*</span><span class="n">T1</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">C1</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">8</span><span class="o">*</span><span class="n">ep</span> <span class="o">+</span> <span class="mi">24</span><span class="o">*</span><span class="n">T1</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">D</span><span class="o">**</span><span class="mi">5</span> <span class="o">/</span> <span class="mi">120</span><span class="p">)</span>
+        <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lat1</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span></div>
+
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Spherical geometry utilities</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="sphangle">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.maptools.transforms.html#global_geochemistry.maptools.transforms.sphangle">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">sphangle</span><span class="p">(</span><span class="n">P</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">Q</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Great-circle angular distance between P and Q (degrees).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    P, Q : (lon, lat) in decimal degrees.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">lon1</span><span class="p">,</span> <span class="n">lat1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">P</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">lon2</span><span class="p">,</span> <span class="n">lat2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">Q</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">Q</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">dlat</span> <span class="o">=</span> <span class="n">lat2</span> <span class="o">-</span> <span class="n">lat1</span>
+    <span class="n">dlon</span> <span class="o">=</span> <span class="n">lon2</span> <span class="o">-</span> <span class="n">lon1</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">dlat</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lat1</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lat2</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">dlon</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">a</span><span class="p">)))</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_rotmat</span><span class="p">(</span><span class="n">lon_deg</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">lat_deg</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">angle_deg</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;3-D rotation matrix: rotate *angle_deg* about the axis at (lon, lat).&quot;&quot;&quot;</span>
+    <span class="n">lon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lon_deg</span><span class="p">)</span>
+    <span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat_deg</span><span class="p">)</span>
+    <span class="n">a</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">angle_deg</span><span class="p">)</span>
+
+    <span class="c1"># Euler axis in Cartesian</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lon</span><span class="p">),</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">lon</span><span class="p">),</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">lat</span><span class="p">),</span>
+    <span class="p">])</span>
+    <span class="n">ca</span><span class="p">,</span> <span class="n">sa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">ux</span><span class="p">,</span> <span class="n">uy</span><span class="p">,</span> <span class="n">uz</span> <span class="o">=</span> <span class="n">u</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+        <span class="p">[</span><span class="n">ca</span> <span class="o">+</span> <span class="n">ux</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">ca</span><span class="p">),</span>    <span class="n">ux</span><span class="o">*</span><span class="n">uy</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">ca</span><span class="p">)</span> <span class="o">-</span> <span class="n">uz</span><span class="o">*</span><span class="n">sa</span><span class="p">,</span> <span class="n">ux</span><span class="o">*</span><span class="n">uz</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">ca</span><span class="p">)</span> <span class="o">+</span> <span class="n">uy</span><span class="o">*</span><span class="n">sa</span><span class="p">],</span>
+        <span class="p">[</span><span class="n">uy</span><span class="o">*</span><span class="n">ux</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">ca</span><span class="p">)</span> <span class="o">+</span> <span class="n">uz</span><span class="o">*</span><span class="n">sa</span><span class="p">,</span> <span class="n">ca</span> <span class="o">+</span> <span class="n">uy</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">ca</span><span class="p">),</span>    <span class="n">uy</span><span class="o">*</span><span class="n">uz</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">ca</span><span class="p">)</span> <span class="o">-</span> <span class="n">ux</span><span class="o">*</span><span class="n">sa</span><span class="p">],</span>
+        <span class="p">[</span><span class="n">uz</span><span class="o">*</span><span class="n">ux</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">ca</span><span class="p">)</span> <span class="o">-</span> <span class="n">uy</span><span class="o">*</span><span class="n">sa</span><span class="p">,</span> <span class="n">uz</span><span class="o">*</span><span class="n">uy</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">ca</span><span class="p">)</span> <span class="o">+</span> <span class="n">ux</span><span class="o">*</span><span class="n">sa</span><span class="p">,</span> <span class="n">ca</span> <span class="o">+</span> <span class="n">uz</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">ca</span><span class="p">)</span>  <span class="p">],</span>
+    <span class="p">])</span>
+
+
+<div class="viewcode-block" id="gcpoints">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.maptools.transforms.html#global_geochemistry.maptools.transforms.gcpoints">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">gcpoints</span><span class="p">(</span>
+    <span class="n">P</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">,</span>
+    <span class="n">Q</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">,</span>
+    <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute *n* points along the great-circle arc from P to Q.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    P, Q : (lon, lat) in decimal degrees.</span>
+<span class="sd">    n : int</span>
+<span class="sd">        Number of output points (including endpoints).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    lon, lat : ndarray</span>
+<span class="sd">        Coordinates of the *n* arc points in decimal degrees.</span>
+<span class="sd">    R : ndarray, shape (3, 3)</span>
+<span class="sd">        Combined rotation matrix that maps P → (0, 0) and Q → equator.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_cart</span><span class="p">(</span><span class="n">lon_deg</span><span class="p">,</span> <span class="n">lat_deg</span><span class="p">):</span>
+        <span class="n">lo</span><span class="p">,</span> <span class="n">la</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lon_deg</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat_deg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">la</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lo</span><span class="p">),</span>
+                         <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">la</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">lo</span><span class="p">),</span>
+                         <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">la</span><span class="p">)])</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_sph</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="n">r</span><span class="p">))</span>
+        <span class="n">lon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="k">return</span> <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span>
+
+    <span class="c1"># Step 1: Rotate P to (0, 0)</span>
+    <span class="n">R1</span> <span class="o">=</span> <span class="n">_rotmat</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="n">P</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>   <span class="c1"># rotate about south pole by lon(P)</span>
+    <span class="n">R2</span> <span class="o">=</span> <span class="n">_rotmat</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>   <span class="c1"># rotate about (90°, 0) by lat(P)</span>
+
+    <span class="n">q</span>  <span class="o">=</span> <span class="n">to_cart</span><span class="p">(</span><span class="o">*</span><span class="n">Q</span><span class="p">)</span>
+    <span class="n">qp</span> <span class="o">=</span> <span class="n">R2</span> <span class="o">@</span> <span class="n">R1</span> <span class="o">@</span> <span class="n">q</span>
+    <span class="n">Qp_lon</span><span class="p">,</span> <span class="n">Qp_lat</span> <span class="o">=</span> <span class="n">to_sph</span><span class="p">(</span><span class="n">qp</span><span class="p">)</span>
+
+    <span class="c1"># Step 2: Rotate Q&#39; to the equator</span>
+    <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="n">divide</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">invalid</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">):</span>
+        <span class="n">cosQp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">Qp_lon</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">Qp_lat</span><span class="p">))</span>
+        <span class="n">ang</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">cosQp</span><span class="p">)</span>
+        <span class="n">Omega</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">Qp_lon</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">ang</span><span class="p">))</span>
+        <span class="p">)</span>
+    <span class="k">if</span> <span class="n">Qp_lat</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">Omega</span> <span class="o">=</span> <span class="o">-</span><span class="n">Omega</span>
+
+    <span class="n">R3</span> <span class="o">=</span> <span class="n">_rotmat</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Omega</span><span class="p">)</span>
+    <span class="n">R</span>  <span class="o">=</span> <span class="n">R3</span> <span class="o">@</span> <span class="n">R2</span> <span class="o">@</span> <span class="n">R1</span>
+
+    <span class="c1"># Q&#39;&#39; longitude on equator</span>
+    <span class="n">qpp</span> <span class="o">=</span> <span class="n">R</span> <span class="o">@</span> <span class="n">q</span>
+    <span class="n">Qpp_lon</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">to_sph</span><span class="p">(</span><span class="n">qpp</span><span class="p">)</span>
+
+    <span class="c1"># Step 3: Generate n equatorial points (0,0) → (Qpp_lon, 0) and un-rotate</span>
+    <span class="n">lons_eq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">Qpp_lon</span><span class="p">),</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">eq_pts</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">row_stack</span><span class="p">([</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lons_eq</span><span class="p">),</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">lons_eq</span><span class="p">),</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">),</span>
+    <span class="p">])</span>
+
+    <span class="n">arc</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">eq_pts</span>  <span class="c1"># un-rotate</span>
+    <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span> <span class="o">=</span> <span class="n">to_sph</span><span class="p">(</span><span class="n">arc</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">R</span></div>
+
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Authalic latitude</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_q_authalic</span><span class="p">(</span><span class="n">ecc</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">phi</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Snyder q function (eq. 3-12) used in authalic latitude computation.&quot;&quot;&quot;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="n">divide</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">invalid</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">ecc</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span>
+            <span class="n">s</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">ecc</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">s</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+            <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">ecc</span> <span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">ecc</span> <span class="o">*</span> <span class="n">s</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">ecc</span><span class="p">)</span>
+        <span class="p">)</span>
+
+
+<div class="viewcode-block" id="authalic_lat">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.maptools.transforms.html#global_geochemistry.maptools.transforms.authalic_lat">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">authalic_lat</span><span class="p">(</span>
+    <span class="n">lat</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">datum</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;wgs84&#39;</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert geodetic latitude to authalic latitude.</span>
+
+<span class="sd">    The authalic sphere is the equal-area sphere approximating the reference</span>
+<span class="sd">    ellipsoid (Snyder 1987, pp. 16–17, eqs 3-11 to 3-13).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    lat : array-like</span>
+<span class="sd">        Geodetic latitude in decimal degrees.</span>
+<span class="sd">    datum : str</span>
+<span class="sd">        Reference ellipsoid (default ``&#39;wgs84&#39;``).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    alat : ndarray</span>
+<span class="sd">        Authalic latitude in decimal degrees.</span>
+<span class="sd">    Re : float</span>
+<span class="sd">        Radius of the equal-area sphere in metres.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">_get_datum</span><span class="p">(</span><span class="n">datum</span><span class="p">)</span>
+    <span class="n">ecc</span>  <span class="o">=</span> <span class="n">_eccentricity</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="n">phi</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>
+    <span class="n">q</span>    <span class="o">=</span> <span class="n">_q_authalic</span><span class="p">(</span><span class="n">ecc</span><span class="p">,</span> <span class="n">phi</span><span class="p">)</span>
+    <span class="n">qp</span>   <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">_q_authalic</span><span class="p">(</span><span class="n">ecc</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">alat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">q</span> <span class="o">/</span> <span class="n">qp</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)))</span>
+    <span class="n">Re</span>   <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">qp</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">alat</span><span class="p">,</span> <span class="n">Re</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_geodetic_from_authalic</span><span class="p">(</span><span class="n">beta</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">ecc</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Series: authalic latitude (radians) → geodetic latitude (radians).</span>
+
+<span class="sd">    Accurate to &lt; 0.5 mm for WGS84 (Bowring 1983).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">e2</span><span class="p">,</span> <span class="n">e4</span><span class="p">,</span> <span class="n">e6</span> <span class="o">=</span> <span class="n">ecc</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">ecc</span><span class="o">**</span><span class="mi">4</span><span class="p">,</span> <span class="n">ecc</span><span class="o">**</span><span class="mi">6</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">beta</span>
+        <span class="o">+</span> <span class="p">(</span><span class="n">e2</span><span class="o">/</span><span class="mi">3</span>      <span class="o">+</span> <span class="mi">31</span><span class="o">*</span><span class="n">e4</span><span class="o">/</span><span class="mi">180</span>   <span class="o">+</span> <span class="mi">517</span><span class="o">*</span><span class="n">e6</span><span class="o">/</span><span class="mi">5040</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">beta</span><span class="p">)</span>
+        <span class="o">+</span> <span class="p">(</span><span class="mi">23</span><span class="o">*</span><span class="n">e4</span><span class="o">/</span><span class="mi">360</span> <span class="o">+</span> <span class="mi">251</span><span class="o">*</span><span class="n">e6</span><span class="o">/</span><span class="mi">3780</span><span class="p">)</span>               <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">beta</span><span class="p">)</span>
+        <span class="o">+</span> <span class="p">(</span><span class="mi">761</span><span class="o">*</span><span class="n">e6</span><span class="o">/</span><span class="mi">45360</span><span class="p">)</span>                           <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="n">beta</span><span class="p">)</span>
+    <span class="p">)</span>
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Mercator projection</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="mercator">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.maptools.transforms.html#global_geochemistry.maptools.transforms.mercator">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">mercator</span><span class="p">(</span>
+    <span class="n">lon</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">lat</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">datum</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;wgs84&#39;</span><span class="p">,</span>
+    <span class="n">lon0</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Forward ellipsoidal Mercator projection (authalic-sphere form).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    lon, lat : array-like</span>
+<span class="sd">        Geographic coordinates in decimal degrees.</span>
+<span class="sd">    datum : str</span>
+<span class="sd">        Reference ellipsoid (default ``&#39;wgs84&#39;``).</span>
+<span class="sd">    lon0 : float</span>
+<span class="sd">        Central meridian in decimal degrees (default 0).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    x, y : ndarray</span>
+<span class="sd">        Map coordinates in metres.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">lon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">alat</span><span class="p">,</span> <span class="n">Re</span> <span class="o">=</span> <span class="n">authalic_lat</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">datum</span><span class="p">)</span>
+    <span class="n">alat_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">alat</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">Re</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lon</span> <span class="o">-</span> <span class="n">lon0</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="n">divide</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">invalid</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">):</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">Re</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">+</span> <span class="n">alat_r</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span></div>
+
+
+
+<div class="viewcode-block" id="inv_mercator">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.maptools.transforms.html#global_geochemistry.maptools.transforms.inv_mercator">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">inv_mercator</span><span class="p">(</span>
+    <span class="n">x</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">y</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">datum</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;wgs84&#39;</span><span class="p">,</span>
+    <span class="n">lon0</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Inverse ellipsoidal Mercator projection (authalic-sphere form).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x, y : array-like</span>
+<span class="sd">        Map coordinates in metres.</span>
+<span class="sd">    datum : str</span>
+<span class="sd">        Reference ellipsoid (default ``&#39;wgs84&#39;``).</span>
+<span class="sd">    lon0 : float</span>
+<span class="sd">        Central meridian in decimal degrees (default 0).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    lon, lat : ndarray</span>
+<span class="sd">        Geographic coordinates in decimal degrees.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">_get_datum</span><span class="p">(</span><span class="n">datum</span><span class="p">)</span>
+    <span class="n">ecc</span>  <span class="o">=</span> <span class="n">_eccentricity</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="n">Re</span>   <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">_q_authalic</span><span class="p">(</span><span class="n">ecc</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">lon</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">Re</span><span class="p">)</span> <span class="o">+</span> <span class="n">lon0</span>
+    <span class="n">alat</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">y</span> <span class="o">/</span> <span class="n">Re</span><span class="p">))</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">lat</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">_geodetic_from_authalic</span><span class="p">(</span><span class="n">alat</span><span class="p">,</span> <span class="n">ecc</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span></div>
+
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Polar stereographic projection (NSIDC / SCAR convention)</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<span class="n">_WGS84_A</span> <span class="o">=</span> <span class="mf">6_378_137.0</span>    <span class="c1"># semi-major axis [m]</span>
+<span class="n">_WGS84_E</span> <span class="o">=</span> <span class="mf">0.08181919</span>     <span class="c1"># eccentricity</span>
+
+
+<div class="viewcode-block" id="polarstereo_fwd">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.maptools.transforms.html#global_geochemistry.maptools.transforms.polarstereo_fwd">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">polarstereo_fwd</span><span class="p">(</span>
+    <span class="n">lon</span><span class="p">:</span>   <span class="nb">float</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">lat</span><span class="p">:</span>   <span class="nb">float</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">lat_c</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">-</span><span class="mf">70.0</span><span class="p">,</span>
+    <span class="n">lon0</span><span class="p">:</span>  <span class="nb">float</span> <span class="o">=</span>   <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">a</span><span class="p">:</span>     <span class="nb">float</span> <span class="o">=</span> <span class="n">_WGS84_A</span><span class="p">,</span>
+    <span class="n">e</span><span class="p">:</span>     <span class="nb">float</span> <span class="o">=</span> <span class="n">_WGS84_E</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Polar stereographic forward projection.</span>
+
+<span class="sd">    Used by NSIDC and SCAR for Antarctic/Arctic sea-ice grids.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    lon, lat : array-like</span>
+<span class="sd">        Geographic coordinates in decimal degrees.</span>
+<span class="sd">    lat_c : float</span>
+<span class="sd">        Standard parallel (latitude of true scale) in degrees.</span>
+<span class="sd">        Negative for south-polar aspect (default ``-70``).</span>
+<span class="sd">    lon0 : float</span>
+<span class="sd">        Central meridian (positive-Y axis) in degrees (default ``0``).</span>
+<span class="sd">    a : float</span>
+<span class="sd">        Semi-major axis in metres (default WGS84).</span>
+<span class="sd">    e : float</span>
+<span class="sd">        Eccentricity (default WGS84).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    x, y : ndarray</span>
+<span class="sd">        Map coordinates in metres.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Snyder (1987) pp. 154–163, polar stereographic with known phi_c.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">lon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+    <span class="n">phi</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>
+    <span class="n">lam</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span>
+    <span class="n">phi_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat_c</span><span class="p">)</span>
+    <span class="n">lam0</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lon0</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">phi_c</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">pm</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">phi</span><span class="p">,</span> <span class="n">phi_c</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">lam0</span> <span class="o">=</span> <span class="o">-</span><span class="n">phi</span><span class="p">,</span> <span class="o">-</span><span class="n">phi_c</span><span class="p">,</span> <span class="o">-</span><span class="n">lam</span><span class="p">,</span> <span class="o">-</span><span class="n">lam0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pm</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_t</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">-</span> <span class="n">p</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span>
+            <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">e</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">p</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">e</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+        <span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="n">e</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">t_c</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">_t</span><span class="p">(</span><span class="n">phi_c</span><span class="p">))</span>
+    <span class="n">m_c</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi_c</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">e</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi_c</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">rho</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">m_c</span> <span class="o">*</span> <span class="n">_t</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span> <span class="o">/</span> <span class="n">t_c</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">pm</span> <span class="o">*</span> <span class="n">rho</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">lam</span> <span class="o">-</span> <span class="n">lam0</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">pm</span> <span class="o">*</span> <span class="n">rho</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lam</span> <span class="o">-</span> <span class="n">lam0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span></div>
+
+
+
+<div class="viewcode-block" id="polarstereo_inv">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.maptools.transforms.html#global_geochemistry.maptools.transforms.polarstereo_inv">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">polarstereo_inv</span><span class="p">(</span>
+    <span class="n">x</span><span class="p">:</span>     <span class="nb">float</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">y</span><span class="p">:</span>     <span class="nb">float</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">lat_c</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">-</span><span class="mf">70.0</span><span class="p">,</span>
+    <span class="n">lon0</span><span class="p">:</span>  <span class="nb">float</span> <span class="o">=</span>   <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">a</span><span class="p">:</span>     <span class="nb">float</span> <span class="o">=</span> <span class="n">_WGS84_A</span><span class="p">,</span>
+    <span class="n">e</span><span class="p">:</span>     <span class="nb">float</span> <span class="o">=</span> <span class="n">_WGS84_E</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Polar stereographic inverse projection.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x, y : array-like</span>
+<span class="sd">        Map coordinates in metres.</span>
+<span class="sd">    lat_c : float</span>
+<span class="sd">        Standard parallel in degrees (default ``-70``).</span>
+<span class="sd">    lon0 : float</span>
+<span class="sd">        Central meridian in degrees (default ``0``).</span>
+<span class="sd">    a : float</span>
+<span class="sd">        Semi-major axis in metres (default WGS84).</span>
+<span class="sd">    e : float</span>
+<span class="sd">        Eccentricity (default WGS84).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    lon, lat : ndarray</span>
+<span class="sd">        Geographic coordinates in decimal degrees.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Snyder (1987) pp. 154–163.  Series form (not iterative).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+    <span class="n">phi_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat_c</span><span class="p">)</span>
+    <span class="n">lam0</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lon0</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">phi_c</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">pm</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">phi_c</span><span class="p">,</span> <span class="n">lam0</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">phi_c</span><span class="p">,</span> <span class="o">-</span><span class="n">lam0</span><span class="p">,</span> <span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="o">-</span><span class="n">y</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pm</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="n">t_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">-</span> <span class="n">phi_c</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span>
+        <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">e</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi_c</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">e</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi_c</span><span class="p">))</span>
+    <span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="n">e</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">m_c</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi_c</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">e</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi_c</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">rho</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">t</span>    <span class="o">=</span> <span class="n">rho</span> <span class="o">*</span> <span class="n">t_c</span> <span class="o">/</span> <span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">m_c</span><span class="p">)</span>
+
+    <span class="c1"># Series expansion (Snyder p. 162) instead of iteration</span>
+    <span class="n">chi</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">e2</span><span class="p">,</span> <span class="n">e4</span><span class="p">,</span> <span class="n">e6</span><span class="p">,</span> <span class="n">e8</span> <span class="o">=</span> <span class="n">e</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">e</span><span class="o">**</span><span class="mi">4</span><span class="p">,</span> <span class="n">e</span><span class="o">**</span><span class="mi">6</span><span class="p">,</span> <span class="n">e</span><span class="o">**</span><span class="mi">8</span>
+    <span class="n">phi</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">chi</span>
+        <span class="o">+</span> <span class="p">(</span><span class="n">e2</span><span class="o">/</span><span class="mi">2</span>   <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">e4</span><span class="o">/</span><span class="mi">24</span>   <span class="o">+</span> <span class="n">e6</span><span class="o">/</span><span class="mi">12</span>     <span class="o">+</span> <span class="mi">13</span><span class="o">*</span><span class="n">e8</span><span class="o">/</span><span class="mi">360</span><span class="p">)</span>  <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">chi</span><span class="p">)</span>
+        <span class="o">+</span> <span class="p">(</span><span class="mi">7</span><span class="o">*</span><span class="n">e4</span><span class="o">/</span><span class="mi">48</span>  <span class="o">+</span> <span class="mi">29</span><span class="o">*</span><span class="n">e6</span><span class="o">/</span><span class="mi">240</span> <span class="o">+</span> <span class="mi">811</span><span class="o">*</span><span class="n">e8</span><span class="o">/</span><span class="mi">11520</span><span class="p">)</span>          <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">chi</span><span class="p">)</span>
+        <span class="o">+</span> <span class="p">(</span><span class="mi">7</span><span class="o">*</span><span class="n">e6</span><span class="o">/</span><span class="mi">120</span> <span class="o">+</span> <span class="mi">81</span><span class="o">*</span><span class="n">e8</span><span class="o">/</span><span class="mi">1120</span><span class="p">)</span>                        <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="n">chi</span><span class="p">)</span>
+        <span class="o">+</span> <span class="p">(</span><span class="mi">4279</span><span class="o">*</span><span class="n">e8</span><span class="o">/</span><span class="mi">161280</span><span class="p">)</span>                               <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">8</span><span class="o">*</span><span class="n">chi</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">lam</span>  <span class="o">=</span> <span class="n">lam0</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="n">phi</span> <span class="o">=</span> <span class="n">pm</span> <span class="o">*</span> <span class="n">phi</span>
+    <span class="n">lam</span> <span class="o">=</span> <span class="n">pm</span> <span class="o">*</span> <span class="n">lam</span>
+    <span class="n">lam</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">lam</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">lam</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span></div>
+
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Small circles</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="smallcircle">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.maptools.transforms.html#global_geochemistry.maptools.transforms.smallcircle">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">smallcircle</span><span class="p">(</span>
+    <span class="n">lon0</span><span class="p">:</span>  <span class="nb">float</span><span class="p">,</span>
+    <span class="n">lat0</span><span class="p">:</span>  <span class="nb">float</span><span class="p">,</span>
+    <span class="n">delta</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">n</span><span class="p">:</span>     <span class="nb">int</span> <span class="o">=</span> <span class="mi">360</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Points on the small circle of angular radius *delta* about (lon0, lat0).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    lon0, lat0 : float</span>
+<span class="sd">        Centre of the small circle in decimal degrees.</span>
+<span class="sd">    delta : float</span>
+<span class="sd">        Angular radius in degrees.</span>
+<span class="sd">    n : int</span>
+<span class="sd">        Number of output points (default 360).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    clon, clat : ndarray</span>
+<span class="sd">        Longitudes and latitudes in decimal degrees.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Build circle around north pole, then rotate to (lon0, lat0)</span>
+    <span class="n">clon_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">clat_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mf">90.0</span> <span class="o">-</span> <span class="n">delta</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">row_stack</span><span class="p">([</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">clat_r</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">clon_r</span><span class="p">),</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">clat_r</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">clon_r</span><span class="p">),</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">clat_r</span><span class="p">),</span>
+    <span class="p">])</span>
+
+    <span class="c1"># R maps (lon0, lat0) → north pole; R.T is the inverse</span>
+    <span class="n">R</span>  <span class="o">=</span> <span class="n">_rotmat</span><span class="p">(</span><span class="n">lon0</span> <span class="o">-</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">90</span> <span class="o">-</span> <span class="n">lat0</span><span class="p">)</span>
+    <span class="n">qp</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">q</span>
+
+    <span class="n">clon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">qp</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">qp</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">clat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">qp</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">clon</span><span class="p">,</span> <span class="n">clat</span></div>
+
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Area calculations</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="pixarea">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.maptools.transforms.html#global_geochemistry.maptools.transforms.pixarea">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">pixarea</span><span class="p">(</span>
+    <span class="n">lat1</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">lat2</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">lon1</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">lon2</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">datum</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fractional area of a lat/lon quad pixel on a sphere.</span>
+
+<span class="sd">    Returns the area as a dimensionless fraction of the total sphere surface</span>
+<span class="sd">    (integrates to 1 over the entire globe).  Multiply by 4π R² to convert</span>
+<span class="sd">    to absolute area.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    lat1, lat2 : array-like</span>
+<span class="sd">        Southern and northern bounding latitudes in degrees.</span>
+<span class="sd">    lon1, lon2 : array-like</span>
+<span class="sd">        Western and eastern bounding longitudes in degrees.</span>
+<span class="sd">    datum : str or None</span>
+<span class="sd">        When given, latitudes are converted to authalic latitude before</span>
+<span class="sd">        the area calculation (ellipsoidal correction).  Use ``None``</span>
+<span class="sd">        (default) for the spherical formula.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    A : ndarray</span>
+<span class="sd">        Dimensionless fractional area.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">lat1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lat1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">lat2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lat2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">lon1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lon1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">lon2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lon2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">datum</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">lat1</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">authalic_lat</span><span class="p">(</span><span class="n">lat1</span><span class="p">,</span> <span class="n">datum</span><span class="p">)</span>
+        <span class="n">lat2</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">authalic_lat</span><span class="p">(</span><span class="n">lat2</span><span class="p">,</span> <span class="n">datum</span><span class="p">)</span>
+
+    <span class="n">r1</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat1</span><span class="p">)</span>
+    <span class="n">r2</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat2</span><span class="p">)</span>
+    <span class="n">dlon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">lon2</span> <span class="o">-</span> <span class="n">lon1</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">dlon</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">r2</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">r1</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="rectarea">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.maptools.transforms.html#global_geochemistry.maptools.transforms.rectarea">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">rectarea</span><span class="p">(</span>
+    <span class="n">lonlim</span><span class="p">:</span> <span class="nb">tuple</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">latlim</span><span class="p">:</span> <span class="nb">tuple</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">R</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">6371.0</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Area of a lat/lon rectangle on a sphere.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    lonlim : (lon_min, lon_max)</span>
+<span class="sd">        Longitude limits in degrees.</span>
+<span class="sd">    latlim : (lat_min, lat_max)</span>
+<span class="sd">        Latitude limits in degrees.</span>
+<span class="sd">    R : float</span>
+<span class="sd">        Sphere radius in km (default 6371 km).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        Area in km².</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">lat1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">latlim</span><span class="p">))</span>
+    <span class="n">lat2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">latlim</span><span class="p">))</span>
+    <span class="n">dlon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">lonlim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">lonlim</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">R</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">dlon</span> <span class="o">*</span> <span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">lat2</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">lat1</span><span class="p">))</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Derrick Hasterok.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

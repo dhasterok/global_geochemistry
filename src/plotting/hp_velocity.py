@@ -10,7 +10,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.odr import ODR, Model, RealData
 
-from src.plotting.whisker import whisker
+from global_geochemistry.plotting.whisker import whisker
 
 
 # ── axis / field configuration ────────────────────────────────────────────────

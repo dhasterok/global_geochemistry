@@ -1,0 +1,634 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>global_geochemistry.plotting.hp_velocity &#8212; global_geochemistry 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/global_geochemistry.plotting.hp_velocity';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="global_geochemistry.plotting.radar" href="global_geochemistry.plotting.radar.html" />
+    <link rel="prev" title="global_geochemistry.plotting.colormap" href="global_geochemistry.plotting.colormap.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">global_geochemistry 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="global_geochemistry.geochem.html">global_geochemistry.geochem</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="global_geochemistry.geochem.classification.html">global_geochemistry.geochem.classification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.classification.cipw.html">global_geochemistry.geochem.classification.cipw</a></li>
+<li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.classification.igneous.html">global_geochemistry.geochem.classification.igneous</a></li>
+<li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.classification.indices.html">global_geochemistry.geochem.classification.indices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.classification.metamorphic.html">global_geochemistry.geochem.classification.metamorphic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.classification.sedimentary.html">global_geochemistry.geochem.classification.sedimentary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.geochem.el_v_el_plot.html">global_geochemistry.geochem.el_v_el_plot</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="global_geochemistry.geochem.fileio.html">global_geochemistry.geochem.fileio</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.fileio.database.html">global_geochemistry.geochem.fileio.database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.fileio.ecread.html">global_geochemistry.geochem.fileio.ecread</a></li>
+<li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.fileio.pgcsv.html">global_geochemistry.geochem.fileio.pgcsv</a></li>
+<li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.fileio.pipeline.html">global_geochemistry.geochem.fileio.pipeline</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="global_geochemistry.geochem.physprop.html">global_geochemistry.geochem.physprop</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.physprop.density.html">global_geochemistry.geochem.physprop.density</a></li>
+<li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.physprop.heat.html">global_geochemistry.geochem.physprop.heat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.physprop.seismic.html">global_geochemistry.geochem.physprop.seismic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.physprop.thermal.html">global_geochemistry.geochem.physprop.thermal</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="global_geochemistry.geochem.plotting.html">global_geochemistry.geochem.plotting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.plotting.harker.html">global_geochemistry.geochem.plotting.harker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.plotting.spider.html">global_geochemistry.geochem.plotting.spider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.plotting.timeseries.html">global_geochemistry.geochem.plotting.timeseries</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="global_geochemistry.geochem.processing.html">global_geochemistry.geochem.processing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.processing.ages.html">global_geochemistry.geochem.processing.ages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.processing.censored.html">global_geochemistry.geochem.processing.censored</a></li>
+<li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.processing.decay.html">global_geochemistry.geochem.processing.decay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.processing.elements.html">global_geochemistry.geochem.processing.elements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.processing.iron.html">global_geochemistry.geochem.processing.iron</a></li>
+<li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.processing.normalize.html">global_geochemistry.geochem.processing.normalize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.processing.refcorrect.html">global_geochemistry.geochem.processing.refcorrect</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="global_geochemistry.geochem.ref_models.html">global_geochemistry.geochem.ref_models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.ref_models.refchem.html">global_geochemistry.geochem.ref_models.refchem</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="global_geochemistry.geophys.html">global_geochemistry.geophys</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.geophys.ecm1.html">global_geochemistry.geophys.ecm1</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="global_geochemistry.maptools.html">global_geochemistry.maptools</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.maptools.coast.html">global_geochemistry.maptools.coast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.maptools.projections.html">global_geochemistry.maptools.projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.maptools.tectonic.html">global_geochemistry.maptools.tectonic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.maptools.transforms.html">global_geochemistry.maptools.transforms</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="global_geochemistry.modelling.html">global_geochemistry.modelling</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="global_geochemistry.modelling.inversion.html">global_geochemistry.modelling.inversion</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="global_geochemistry.modelling.inversion.models.html">global_geochemistry.modelling.inversion.models</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="global_geochemistry.plotting.html">global_geochemistry.plotting</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.plotting.colormap.html">global_geochemistry.plotting.colormap</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">global_geochemistry.plotting.hp_velocity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.plotting.radar.html">global_geochemistry.plotting.radar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.plotting.scatter.html">global_geochemistry.plotting.scatter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.plotting.ternary.html">global_geochemistry.plotting.ternary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.plotting.whisker.html">global_geochemistry.plotting.whisker</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="global_geochemistry.tectonics.html">global_geochemistry.tectonics</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="global_geochemistry.utils.html">global_geochemistry.utils</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.utils.elements.html">global_geochemistry.utils.elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.utils.format.html">global_geochemistry.utils.format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.utils.molecular.html">global_geochemistry.utils.molecular</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="global_geochemistry.html" class="nav-link">global_geochemistry</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="global_geochemistry.plotting.html" class="nav-link">global_geochemistry.plotting</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">global_geochemistry.plotting.hp_velocity</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-global_geochemistry.plotting.hp_velocity">
+<span id="global-geochemistry-plotting-hp-velocity"></span><h1>global_geochemistry.plotting.hp_velocity<a class="headerlink" href="#module-global_geochemistry.plotting.hp_velocity" title="Link to this heading">#</a></h1>
+<p>Heat-production vs seismic-velocity plotting utilities.</p>
+<p>Ports of matlab/plotting/hpVplot.m, hpax.m, and hpVhist.m.</p>
+<p class="rubric">Functions</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#global_geochemistry.plotting.hp_velocity.hp_ax" title="global_geochemistry.plotting.hp_velocity.hp_ax"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hp_ax</span></code></a>([lim, axis, ax])</p></td>
+<td><p>Configure an axis as a log-scale heat-production axis.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#global_geochemistry.plotting.hp_velocity.hp_velocity_hist" title="global_geochemistry.plotting.hp_velocity.hp_velocity_hist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hp_velocity_hist</span></code></a>(sio2, V, A, rho, sio2_edges)</p></td>
+<td><p>SiO₂-binned histograms of log₁₀(A), density, and velocity.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#global_geochemistry.plotting.hp_velocity.hp_velocity_plot" title="global_geochemistry.plotting.hp_velocity.hp_velocity_plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hp_velocity_plot</span></code></a>(V, A[, field, color, ...])</p></td>
+<td><p>Plot log₁₀(heat production) vs seismic velocity with binned quantiles.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="global_geochemistry.plotting.hp_velocity.hp_ax">
+<span class="sig-prename descclassname"><span class="pre">global_geochemistry.plotting.hp_velocity.</span></span><span class="sig-name descname"><span class="pre">hp_ax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(-2,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'y'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/global_geochemistry/plotting/hp_velocity.html#hp_ax"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#global_geochemistry.plotting.hp_velocity.hp_ax" title="Link to this definition">#</a></dt>
+<dd><p>Configure an axis as a log-scale heat-production axis.</p>
+<p>Mirrors MATLAB <code class="docutils literal notranslate"><span class="pre">hpax</span></code>.  The axis displays values in μW m⁻³ but the
+underlying data is log₁₀(heat production).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lim</strong> (<em>(</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>)</em>) – (min, max) exponents, e.g. <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">1)</span></code> gives 0.01 – 10 μW m⁻³.</p></li>
+<li><p><strong>axis</strong> (<em>{'x'</em><em>, </em><em>'y'}</em>)</p></li>
+<li><p><strong>ax</strong> (<em>matplotlib Axes</em><em>, </em><em>optional</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="global_geochemistry.plotting.hp_velocity.hp_velocity_hist">
+<span class="sig-prename descclassname"><span class="pre">global_geochemistry.plotting.hp_velocity.</span></span><span class="sig-name descname"><span class="pre">hp_velocity_hist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sio2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">V</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sio2_edges</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/global_geochemistry/plotting/hp_velocity.html#hp_velocity_hist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#global_geochemistry.plotting.hp_velocity.hp_velocity_hist" title="Link to this definition">#</a></dt>
+<dd><p>SiO₂-binned histograms of log₁₀(A), density, and velocity.</p>
+<p>Mirrors MATLAB <code class="docutils literal notranslate"><span class="pre">hpVhist</span></code>.  Produces a grid of <code class="docutils literal notranslate"><span class="pre">n_bins</span> <span class="pre">×</span> <span class="pre">3</span></code>
+subplots: log₁₀(heat production) | density | P-velocity, one row per
+SiO₂ interval (bottom row = lowest SiO₂).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sio2</strong> (<em>array-like</em>) – SiO₂ wt% for each sample.</p></li>
+<li><p><strong>V</strong> (<em>array-like</em>) – P-velocity (km s⁻¹).</p></li>
+<li><p><strong>A</strong> (<em>array-like</em>) – Heat production (μW m⁻³, positive).</p></li>
+<li><p><strong>rho</strong> (<em>array-like</em>) – Density (kg m⁻³).</p></li>
+<li><p><strong>sio2_edges</strong> (<em>array-like</em>) – SiO₂ bin edges, e.g. <code class="docutils literal notranslate"><span class="pre">[45,</span> <span class="pre">52,</span> <span class="pre">63,</span> <span class="pre">75]</span></code>.</p></li>
+<li><p><strong>axes</strong> (<em>array</em><em> of </em><em>Axes</em><em>, </em><em>shape</em><em> (</em><em>n_bins</em><em>, </em><em>3</em><em>)</em><em>, </em><em>optional</em>) – Supply pre-created axes; otherwise a new figure is created.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>fig</strong> (<em>matplotlib Figure</em>)</p></li>
+<li><p><strong>axes</strong> (<em>ndarray of Axes</em>)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="global_geochemistry.plotting.hp_velocity.hp_velocity_plot">
+<span class="sig-prename descclassname"><span class="pre">global_geochemistry.plotting.hp_velocity.</span></span><span class="sig-name descname"><span class="pre">hp_velocity_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">V</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'p_velocity'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bin_edges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(-2,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">A_raw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/global_geochemistry/plotting/hp_velocity.html#hp_velocity_plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#global_geochemistry.plotting.hp_velocity.hp_velocity_plot" title="Link to this definition">#</a></dt>
+<dd><p>Plot log₁₀(heat production) vs seismic velocity with binned quantiles.</p>
+<p>Mirrors MATLAB <code class="docutils literal notranslate"><span class="pre">hpVplot</span></code>.  Each velocity bin is rendered as a
+box-and-whisker (2.5 / 25 / 50 / 75 / 97.5 percentiles).  A weighted
+least-squares line is fitted to the bin medians within <em>xfit</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>V</strong> (<em>array-like</em>) – Velocity values (km s⁻¹ for P/S, km for Moho depth).</p></li>
+<li><p><strong>A</strong> (<em>array-like</em>) – Heat production values (μW m⁻³, positive).</p></li>
+<li><p><strong>field</strong> (<em>{'p_velocity'</em><em>, </em><em>'s_velocity'</em><em>, </em><em>'vmoho'}</em>)</p></li>
+<li><p><strong>color</strong> (<em>colour spec</em><em>, </em><em>optional</em>) – Default is a steel blue <code class="docutils literal notranslate"><span class="pre">(54,</span> <span class="pre">169,</span> <span class="pre">225)</span> <span class="pre">/</span> <span class="pre">255</span></code>.</p></li>
+<li><p><strong>bin_edges</strong> (<em>array-like</em><em>, </em><em>optional</em>) – Override the default bin edges for <em>field</em>.</p></li>
+<li><p><strong>min_count</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Minimum number of points in a bin to include in the fit.</p></li>
+<li><p><strong>ylim</strong> (<em>(</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>)</em>) – log₁₀ y-axis limits.</p></li>
+<li><p><strong>ax</strong> (<em>matplotlib Axes</em><em>, </em><em>optional</em>)</p></li>
+<li><p><strong>A_raw</strong> (<em>array-like</em><em>, </em><em>optional</em>) – Raw heat-production values with the BDL convention (positive =
+detected, negative = BDL with known detection limit, zero = BDL
+with unknown detection limit).  When provided, per-bin Y quantiles
+are estimated via <code class="docutils literal notranslate"><span class="pre">gausscensor</span></code> rather than <code class="docutils literal notranslate"><span class="pre">numpy.quantile</span></code>.
+Must have the same length as <em>A</em>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>m</strong> (<em>ndarray, shape (2,)</em>) – [slope, intercept] of weighted fit.</p></li>
+<li><p><strong>m_err</strong> (<em>ndarray, shape (2,)</em>) – 1-sigma uncertainties on m.</p></li>
+<li><p><strong>C</strong> (<em>float</em>) – Signed correlation coefficient (sign taken from slope).</p></li>
+<li><p><strong>bin_edges</strong> (<em>ndarray</em>) – The bin edges actually used (for histogram reuse).</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="global_geochemistry.plotting.colormap.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">global_geochemistry.plotting.colormap</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="global_geochemistry.plotting.radar.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">global_geochemistry.plotting.radar</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global_geochemistry.plotting.hp_velocity.hp_ax"><code class="docutils literal notranslate"><span class="pre">hp_ax()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global_geochemistry.plotting.hp_velocity.hp_velocity_hist"><code class="docutils literal notranslate"><span class="pre">hp_velocity_hist()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global_geochemistry.plotting.hp_velocity.hp_velocity_plot"><code class="docutils literal notranslate"><span class="pre">hp_velocity_plot()</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/generated/global_geochemistry.plotting.hp_velocity.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Derrick Hasterok.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

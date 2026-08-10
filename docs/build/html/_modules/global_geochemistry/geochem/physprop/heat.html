@@ -1,0 +1,1417 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>global_geochemistry.geochem.physprop.heat &#8212; global_geochemistry 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/global_geochemistry/geochem/physprop/heat';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">global_geochemistry 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../generated/global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../generated/global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">global_geochemistry.geochem.physprop.heat</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for global_geochemistry.geochem.physprop.heat</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Radiogenic heat production estimation from whole-rock geochemistry.</span>
+
+<span class="sd">Two computation methods are available:</span>
+
+<span class="sd">``&#39;mcdonough&#39;`` (default)</span>
+<span class="sd">    McDonough et al. (2020), Geochem. Geophys. Geosyst. 21, e2019GC008865.</span>
+<span class="sd">    Equation given in that paper (all concentrations in ppm)::</span>
+
+<span class="sd">        h [μW kg⁻¹] = 10⁻⁶ × (98.29 C_U + 26.18 C_Th</span>
+<span class="sd">                                + 3.387×10⁻³ C_K</span>
+<span class="sd">                                + 0.01139 C_Rb + 0.04595 C_Sm)</span>
+
+<span class="sd">    Rb and Sm are optional (combined ~0.2% of UCC heat production).</span>
+
+<span class="sd">``&#39;rybach&#39;``</span>
+<span class="sd">    Rybach (1988) in Haenel et al. (eds), Handbook of Terrestrial Heat-Flow.</span>
+<span class="sd">    ::</span>
+
+<span class="sd">        H [μW kg⁻¹] = 10⁻⁵ × (9.52 C_U + 2.56 C_Th + 3.48 C_K)</span>
+
+<span class="sd">    where C_U, C_Th in ppm and C_K in wt% elemental K (not K₂O).</span>
+
+<span class="sd">BDL convention in input DataFrame columns</span>
+<span class="sd">------------------------------------------</span>
+<span class="sd">    ``x &gt; 0``   measured above detection limit — used directly.</span>
+<span class="sd">    ``x &lt; 0``   below detection limit (BDL); ``|x|`` is the detection limit.</span>
+<span class="sd">    ``x = 0``   BDL with unknown detection limit.</span>
+<span class="sd">    ``x = NaN`` not measured; optionally predicted from correlated elements.</span>
+
+<span class="sd">Missing-value prediction (``estimate_missing=True``)</span>
+<span class="sd">----------------------------------------------------</span>
+<span class="sd">    U ↔ Th    via rock-type median log₁₀(Th/U).</span>
+<span class="sd">    Rb        from K (K/Rb ≈ 300 for continental crust).</span>
+<span class="sd">    Sm        from Nd (Sm/Nd ≈ 0.22 for upper continental crust).</span>
+
+<span class="sd">Gaussian censoring (``censor_bdl=True``)</span>
+<span class="sd">----------------------------------------</span>
+<span class="sd">    Uses the Michael &amp; Schucany (1986) method implemented in</span>
+<span class="sd">    ``src.processing.censored.gausscensor`` to fit a log-normal distribution</span>
+<span class="sd">    to each element, then substitutes the conditional expectation</span>
+<span class="sd">    E[log₁₀ X | X ≤ d] for each BDL observation with detection limit *d*.</span>
+
+<span class="sd">Interval censoring</span>
+<span class="sd">------------------</span>
+<span class="sd">    Trace-element concentrations are often reported to 2–3 significant figures,</span>
+<span class="sd">    creating apparent interval censoring.  With more than ~10 values per decade</span>
+<span class="sd">    the effect on heat-production statistics is negligible compared to typical</span>
+<span class="sd">    5–10% analytical uncertainty and is not corrected here.</span>
+
+<span class="sd">References</span>
+<span class="sd">----------</span>
+<span class="sd">McDonough, W.F., Šrámek, O., &amp; Mound, J.E. (2020) Radiogenic heating and</span>
+<span class="sd">    its influence on Rocky Planet dynamics. Geochem. Geophys. Geosyst. 21,</span>
+<span class="sd">    e2019GC008865. https://doi.org/10.1029/2019GC008865</span>
+
+<span class="sd">Rybach, L. (1988) Determination of heat production rate. In: Haenel R.,</span>
+<span class="sd">    Rybach L., Stegena L. (eds) Handbook of Terrestrial Heat-Flow Density</span>
+<span class="sd">    Determination. Kluwer, Dordrecht. pp. 125–142.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span> <span class="k">as</span> <span class="n">_norm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">global_geochemistry.utils.molecular</span><span class="w"> </span><span class="kn">import</span> <span class="n">MolecularWeightCalculator</span>
+
+<span class="n">_mwc</span> <span class="o">=</span> <span class="n">MolecularWeightCalculator</span><span class="p">()</span>
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Molecular-weight constants</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<span class="n">_K2O_TO_K</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">_mwc</span><span class="o">.</span><span class="n">molecular_weight</span><span class="p">(</span><span class="s1">&#39;K&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="n">_mwc</span><span class="o">.</span><span class="n">molecular_weight</span><span class="p">(</span><span class="s1">&#39;K2O&#39;</span><span class="p">)</span>
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Heat-production coefficients</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Units stored for each element:</span>
+<span class="c1">#   u, th, rb, sm : μW kg⁻¹ per ppm of the natural element</span>
+<span class="c1">#   k              : μW kg⁻¹ per wt% of elemental K  (NOT K₂O)</span>
+<span class="c1">#</span>
+<span class="c1"># McDonough (2020) formula in ppm for all elements:</span>
+<span class="c1">#   h = 1e-6 × (98.29 U + 26.18 Th + 3.387e-3 K_ppm + 0.01139 Rb + 0.04595 Sm)</span>
+<span class="c1"># Converted to per wt% K: 3.387e-3 × 1e-6 × 1e4 wt%⁻¹ = 3.387e-5</span>
+
+<span class="n">_HP_CONSTANTS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;rybach&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;u&#39;</span> <span class="p">:</span> <span class="mf">9.52e-5</span><span class="p">,</span>
+        <span class="s1">&#39;th&#39;</span><span class="p">:</span> <span class="mf">2.56e-5</span><span class="p">,</span>
+        <span class="s1">&#39;k&#39;</span> <span class="p">:</span> <span class="mf">3.48e-5</span><span class="p">,</span>
+        <span class="s1">&#39;rb&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="s1">&#39;sm&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="s1">&#39;_ref&#39;</span><span class="p">:</span> <span class="s1">&#39;Rybach (1988)&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;mcdonough&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;u&#39;</span> <span class="p">:</span> <span class="mf">9.829e-5</span><span class="p">,</span>
+        <span class="s1">&#39;th&#39;</span><span class="p">:</span> <span class="mf">2.618e-5</span><span class="p">,</span>
+        <span class="s1">&#39;k&#39;</span> <span class="p">:</span> <span class="mf">3.387e-5</span><span class="p">,</span>
+        <span class="s1">&#39;rb&#39;</span><span class="p">:</span> <span class="mf">1.139e-8</span><span class="p">,</span>
+        <span class="s1">&#39;sm&#39;</span><span class="p">:</span> <span class="mf">4.595e-8</span><span class="p">,</span>
+        <span class="s1">&#39;_ref&#39;</span><span class="p">:</span> <span class="s1">&#39;McDonough et al. (2020) GC008865&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="c1"># Legacy Rybach constants kept for compute_hp() backward compatibility</span>
+<span class="n">_CK</span>    <span class="o">=</span> <span class="mf">3.48</span>
+<span class="n">_CU</span>    <span class="o">=</span> <span class="mf">9.52</span>
+<span class="n">_CTH</span>   <span class="o">=</span> <span class="mf">2.56</span>
+<span class="n">_SCALE</span> <span class="o">=</span> <span class="mf">1e-5</span>
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Time-dependent heat production — nuclear constants</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<span class="c1"># Age of Solar System formation (Bouvier &amp; Wadhwa 2010)</span>
+<span class="n">_T_SS</span> <span class="o">=</span> <span class="mf">4568.0</span>  <span class="c1"># Ma</span>
+
+<span class="c1"># Per-isotope data for time-correction of long-lived nuclides (McDonough 2020).</span>
+<span class="c1"># Tuple: (half_life_Ma, H_per_kg_isotope [W/kg], present-day mass-fraction in element)</span>
+<span class="c1"># The mass fractions are the PRESENT-DAY (t=0) isotopic abundances.</span>
+<span class="c1"># K, Rb, Sm: only one isotope contributes meaningfully to heat.</span>
+<span class="c1"># U: two isotopes (²³⁸U and ²³⁵U) with very different half-lives — must be kept separate.</span>
+<span class="n">_ISO_LONG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;238U&#39;</span><span class="p">:</span>  <span class="p">(</span><span class="mf">4468.0</span><span class="p">,</span>    <span class="mf">9.474e-5</span><span class="p">,</span>  <span class="mf">0.992742</span><span class="p">),</span>  <span class="c1"># fraction of natural U</span>
+    <span class="s1">&#39;235U&#39;</span><span class="p">:</span>  <span class="p">(</span><span class="mf">703.8</span><span class="p">,</span>     <span class="mf">5.688e-4</span><span class="p">,</span>  <span class="mf">0.007204</span><span class="p">),</span>  <span class="c1"># fraction of natural U</span>
+    <span class="s1">&#39;232Th&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">14050.0</span><span class="p">,</span>   <span class="mf">2.638e-5</span><span class="p">,</span>  <span class="mf">1.000000</span><span class="p">),</span>  <span class="c1"># essentially monoisotopic</span>
+    <span class="s1">&#39;40K&#39;</span><span class="p">:</span>   <span class="p">(</span><span class="mf">1248.0</span><span class="p">,</span>    <span class="mf">2.902e-5</span><span class="p">,</span>  <span class="mf">1.167e-4</span><span class="p">),</span>  <span class="c1"># fraction of natural K</span>
+    <span class="s1">&#39;87Rb&#39;</span><span class="p">:</span>  <span class="p">(</span><span class="mf">49700.0</span><span class="p">,</span>   <span class="mf">4.09e-8</span><span class="p">,</span>   <span class="mf">0.27835</span><span class="p">),</span>   <span class="c1"># fraction of natural Rb</span>
+    <span class="s1">&#39;147Sm&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">106000.0</span><span class="p">,</span>  <span class="mf">3.063e-7</span><span class="p">,</span>  <span class="mf">0.15000</span><span class="p">),</span>   <span class="c1"># fraction of natural Sm</span>
+<span class="p">}</span>
+
+<span class="c1"># Short-lived nuclides for Hadean / early Solar System calculations.</span>
+<span class="c1"># These are fully extinct in the modern Earth.  Their initial concentrations</span>
+<span class="c1"># are inferred from canonical abundance ratios at Solar System formation (t_SS).</span>
+<span class="c1">#</span>
+<span class="c1"># Tuple: (half_life_Ma, H_per_kg_isotope [W/kg], default_initial_ratio,</span>
+<span class="c1">#         mass_ratio_to_stable, f_stable_in_element, source_element_column)</span>
+<span class="c1">#</span>
+<span class="c1"># Initial ratio definitions:</span>
+<span class="c1">#   26Al : (²⁶Al/²⁷Al)_0 × (26/27)  → ppm ²⁶Al from al_ppm</span>
+<span class="c1">#   60Fe : (⁶⁰Fe/⁵⁶Fe)_0 × (60/56) × f_56Fe → ppm ⁶⁰Fe from fe_ppm</span>
+<span class="c1">#   10Be : (¹⁰Be/⁹Be)_0  × (10/9)   → ppm ¹⁰Be from be_ppm</span>
+<span class="c1">#   244Pu: (²⁴⁴Pu/²³⁸U)_0 × (244/238) × f_238U → ppm ²⁴⁴Pu from u_ppm</span>
+<span class="c1">#   146Sm: (¹⁴⁶Sm/¹⁴⁴Sm)_0 × (146/144) × f_144Sm → ppm ¹⁴⁶Sm from sm_ppm</span>
+<span class="c1">#</span>
+<span class="c1"># H values computed from λ × N_A/M × Q_deposited.  Q values from literature:</span>
+<span class="c1">#   26Al: ~3.12 MeV deposited (Castillo-Rogez et al. 2009)</span>
+<span class="c1">#   60Fe: ~3.56 MeV (two-step β chain through ⁶⁰Co; Moskovitz &amp; Gaidos 2011)</span>
+<span class="c1">#   10Be: ~0.556 MeV β (most deposited)</span>
+<span class="c1">#   244Pu: ~5.80 MeV α decay (dominant channel)</span>
+<span class="c1">#   146Sm: ~2.53 MeV α decay</span>
+<span class="c1">#</span>
+<span class="c1"># Initial ratios (default): canonical Solar System values.</span>
+<span class="c1"># ⁶⁰Fe/⁵⁶Fe_0 = 1e-6 is the upper estimate; recent meteoritic data range from</span>
+<span class="c1"># 1e-8 to 1e-6 — this is the most uncertain parameter here.</span>
+<span class="n">_ISO_SHORT</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;26Al&#39;</span><span class="p">:</span>  <span class="p">(</span><span class="mf">0.717</span><span class="p">,</span>   <span class="mf">0.355</span><span class="p">,</span>   <span class="mf">5.23e-5</span><span class="p">,</span> <span class="mi">26</span><span class="o">/</span><span class="mi">27</span><span class="p">,</span>     <span class="mf">1.0000</span><span class="p">,</span> <span class="s1">&#39;al_ppm&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;60Fe&#39;</span><span class="p">:</span>  <span class="p">(</span><span class="mf">2.62</span><span class="p">,</span>    <span class="mf">0.048</span><span class="p">,</span>   <span class="mf">1.0e-6</span><span class="p">,</span>  <span class="mi">60</span><span class="o">/</span><span class="mi">56</span><span class="p">,</span>     <span class="mf">0.9172</span><span class="p">,</span> <span class="s1">&#39;fe_ppm&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;10Be&#39;</span><span class="p">:</span>  <span class="p">(</span><span class="mf">1.387</span><span class="p">,</span>   <span class="mf">0.028</span><span class="p">,</span>   <span class="mf">7.0e-4</span><span class="p">,</span>  <span class="mi">10</span><span class="o">/</span><span class="mi">9</span><span class="p">,</span>      <span class="mf">1.0000</span><span class="p">,</span> <span class="s1">&#39;be_ppm&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;244Pu&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">81.3</span><span class="p">,</span>    <span class="mf">6.20e-4</span><span class="p">,</span> <span class="mf">6.8e-3</span><span class="p">,</span>  <span class="mi">244</span><span class="o">/</span><span class="mi">238</span><span class="p">,</span>   <span class="mf">0.9927</span><span class="p">,</span> <span class="s1">&#39;u_ppm&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;146Sm&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">103.0</span><span class="p">,</span>   <span class="mf">3.56e-4</span><span class="p">,</span> <span class="mf">8.2e-3</span><span class="p">,</span>  <span class="mi">146</span><span class="o">/</span><span class="mi">144</span><span class="p">,</span>   <span class="mf">0.0308</span><span class="p">,</span> <span class="s1">&#39;sm_ppm&#39;</span><span class="p">),</span>
+<span class="p">}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_hp_time_factors</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Element-level time-correction factors at time *t* (Ma, positive = past).</span>
+
+<span class="sd">    Returns a dict with keys ``&#39;u&#39;``, ``&#39;th&#39;``, ``&#39;k&#39;``, ``&#39;rb&#39;``, ``&#39;sm&#39;``.</span>
+<span class="sd">    Multiplying the present-day coefficient for each element by its factor gives</span>
+<span class="sd">    the coefficient that should be used at time *t*.</span>
+
+<span class="sd">    The U factor accounts for the different decay rates of ²³⁸U and ²³⁵U using</span>
+<span class="sd">    their present-day isotopic abundances and per-isotope heat production rates.</span>
+<span class="sd">    At t = 0 every factor equals 1.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    t : float or array-like</span>
+<span class="sd">        Time in Ma.  Positive = past; negative = future.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict of numpy.ndarray</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+    <span class="c1"># U: two components with very different half-lives</span>
+    <span class="n">t12_238</span><span class="p">,</span> <span class="n">H_238</span><span class="p">,</span> <span class="n">f_238</span> <span class="o">=</span> <span class="n">_ISO_LONG</span><span class="p">[</span><span class="s1">&#39;238U&#39;</span><span class="p">]</span>
+    <span class="n">t12_235</span><span class="p">,</span> <span class="n">H_235</span><span class="p">,</span> <span class="n">f_235</span> <span class="o">=</span> <span class="n">_ISO_LONG</span><span class="p">[</span><span class="s1">&#39;235U&#39;</span><span class="p">]</span>
+    <span class="n">l238</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">t12_238</span>   <span class="c1"># 1/Ma</span>
+    <span class="n">l235</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">t12_235</span>
+
+    <span class="n">c238_0</span> <span class="o">=</span> <span class="n">f_238</span> <span class="o">*</span> <span class="n">H_238</span>
+    <span class="n">c235_0</span> <span class="o">=</span> <span class="n">f_235</span> <span class="o">*</span> <span class="n">H_235</span>
+    <span class="n">c_U0</span>   <span class="o">=</span> <span class="n">c238_0</span> <span class="o">+</span> <span class="n">c235_0</span>     <span class="c1"># denominator (= present-day combined)</span>
+
+    <span class="n">gU</span> <span class="o">=</span> <span class="p">(</span><span class="n">c238_0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">l238</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">c235_0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">l235</span> <span class="o">*</span> <span class="n">t</span><span class="p">))</span> <span class="o">/</span> <span class="n">c_U0</span>
+
+    <span class="c1"># Single-isotope elements</span>
+    <span class="n">gTh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">_ISO_LONG</span><span class="p">[</span><span class="s1">&#39;232Th&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+    <span class="n">gK</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">_ISO_LONG</span><span class="p">[</span><span class="s1">&#39;40K&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>   <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+    <span class="n">gRb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">_ISO_LONG</span><span class="p">[</span><span class="s1">&#39;87Rb&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>  <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+    <span class="n">gSm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">_ISO_LONG</span><span class="p">[</span><span class="s1">&#39;147Sm&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;u&#39;</span><span class="p">:</span> <span class="n">gU</span><span class="p">,</span> <span class="s1">&#39;th&#39;</span><span class="p">:</span> <span class="n">gTh</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">:</span> <span class="n">gK</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">:</span> <span class="n">gRb</span><span class="p">,</span> <span class="s1">&#39;sm&#39;</span><span class="p">:</span> <span class="n">gSm</span><span class="p">}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_short_lived_hp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">t_ss</span><span class="o">=</span><span class="n">_T_SS</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
+                    <span class="n">Al</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">Fe</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">Be</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                    <span class="n">Sm</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">U</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                    <span class="n">al26_al27_0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fe60_fe56_0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                    <span class="n">be10_be9_0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sm146_sm144_0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                    <span class="n">pu244_u238_0</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Heat production from short-lived nuclides at time *t* (μW kg⁻¹).</span>
+
+<span class="sd">    Concentrations at time *t* are computed as::</span>
+
+<span class="sd">        C_i(t) = C_i(t_ss) × exp(−λ_i × (t_ss − t))</span>
+
+<span class="sd">    where ``C_i(t_ss)`` is inferred from the canonical initial abundance ratio</span>
+<span class="sd">    (see ``_ISO_SHORT``).  Returns zero for t ≤ 0 (present/future, where</span>
+<span class="sd">    all short-lived nuclides are effectively extinct).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    t : float or array-like</span>
+<span class="sd">        Age in Ma (positive = past).  Scalar or per-sample array.</span>
+<span class="sd">    t_ss : float</span>
+<span class="sd">        Solar System formation age in Ma.  Default 4568.0.</span>
+<span class="sd">    Al, Fe, Be : array-like or None</span>
+<span class="sd">        Present-day Al, Fe, Be concentrations in ppm.  Required for ²⁶Al,</span>
+<span class="sd">        ⁶⁰Fe, ¹⁰Be contributions respectively.</span>
+<span class="sd">    Sm, U : array-like or None</span>
+<span class="sd">        Present-day Sm and U in ppm, required for ¹⁴⁶Sm and ²⁴⁴Pu.</span>
+<span class="sd">    al26_al27_0, fe60_fe56_0, be10_be9_0, sm146_sm144_0, pu244_u238_0 : float or None</span>
+<span class="sd">        Override canonical initial abundance ratios.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">        Short-lived heat production in μW kg⁻¹.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+    <span class="c1"># Determine output shape from the first non-None element array</span>
+    <span class="n">ref</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="p">(</span><span class="n">Al</span><span class="p">,</span> <span class="n">Fe</span><span class="p">,</span> <span class="n">Be</span><span class="p">,</span> <span class="n">Sm</span><span class="p">,</span> <span class="n">U</span><span class="p">)</span> <span class="k">if</span> <span class="n">a</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ref</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">ref</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_contrib</span><span class="p">(</span><span class="n">iso_key</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">ratio_override</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add contribution from one short-lived nuclide.</span>
+
+<span class="sd">        C : array-like, present-day element concentration in ppm.</span>
+<span class="sd">        H [W/kg_isotope] × C [ppm] = μW/kg_rock  (1e-6 × 1e6 cancel).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">t12</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">ratio0</span><span class="p">,</span> <span class="n">mass_ratio</span><span class="p">,</span> <span class="n">f_stable</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">_ISO_SHORT</span><span class="p">[</span><span class="n">iso_key</span><span class="p">]</span>
+        <span class="n">lam</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">t12</span>   <span class="c1"># 1/Ma</span>
+        <span class="n">ratio</span> <span class="o">=</span> <span class="n">ratio_override</span> <span class="k">if</span> <span class="n">ratio_override</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">ratio0</span>
+
+        <span class="c1"># Initial concentration of short-lived isotope at t_ss [ppm]</span>
+        <span class="n">C0</span> <span class="o">=</span> <span class="n">ratio</span> <span class="o">*</span> <span class="n">mass_ratio</span> <span class="o">*</span> <span class="n">f_stable</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+        <span class="c1"># Decay from t_ss to t:  exp(−λ × (t_ss − t))</span>
+        <span class="c1"># t ≤ 0  → contribution = 0 (all extinct by present day)</span>
+        <span class="c1"># t &gt; t_ss → clamp to t_ss (concentration at formation)</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">t_ss</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">),</span> <span class="mf">0.0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">decay</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">t</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">lam</span> <span class="o">*</span> <span class="n">dt</span><span class="p">),</span> <span class="mf">0.0</span><span class="p">)</span>
+
+        <span class="c1"># Broadcast C0 × decay (C0 may be (N,), decay may be scalar or (N,))</span>
+        <span class="k">return</span> <span class="n">H</span> <span class="o">*</span> <span class="n">C0</span> <span class="o">*</span> <span class="n">decay</span>
+
+    <span class="k">if</span> <span class="n">Al</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">h</span> <span class="o">+</span> <span class="n">_contrib</span><span class="p">(</span><span class="s1">&#39;26Al&#39;</span><span class="p">,</span>  <span class="n">Al</span><span class="p">,</span> <span class="n">al26_al27_0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">Fe</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">h</span> <span class="o">+</span> <span class="n">_contrib</span><span class="p">(</span><span class="s1">&#39;60Fe&#39;</span><span class="p">,</span>  <span class="n">Fe</span><span class="p">,</span> <span class="n">fe60_fe56_0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">Be</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">h</span> <span class="o">+</span> <span class="n">_contrib</span><span class="p">(</span><span class="s1">&#39;10Be&#39;</span><span class="p">,</span>  <span class="n">Be</span><span class="p">,</span> <span class="n">be10_be9_0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">U</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">h</span> <span class="o">+</span> <span class="n">_contrib</span><span class="p">(</span><span class="s1">&#39;244Pu&#39;</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span>  <span class="n">pu244_u238_0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">Sm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">h</span> <span class="o">+</span> <span class="n">_contrib</span><span class="p">(</span><span class="s1">&#39;146Sm&#39;</span><span class="p">,</span> <span class="n">Sm</span><span class="p">,</span> <span class="n">sm146_sm144_0</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">h</span>
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Low-level heat-production computation</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="radiogenic_hp">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.geochem.physprop.heat.html#global_geochemistry.geochem.physprop.heat.radiogenic_hp">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">radiogenic_hp</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">Th</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">Rb</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">Sm</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;mcdonough&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute specific heat production (μW kg⁻¹) from element concentrations.</span>
+
+<span class="sd">    All inputs must be *positive* (detected) values; apply BDL handling and</span>
+<span class="sd">    missing-value prediction before calling this function.  NaN propagates</span>
+<span class="sd">    through the calculation.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    U, Th : array-like</span>
+<span class="sd">        Uranium and thorium concentrations in ppm.</span>
+<span class="sd">    K : array-like</span>
+<span class="sd">        Elemental potassium in wt% (**not** K₂O).</span>
+<span class="sd">    Rb, Sm : array-like or None</span>
+<span class="sd">        Rubidium and samarium in ppm.  Ignored unless *method* is ``&#39;mcdonough&#39;``.</span>
+<span class="sd">    method : {&#39;mcdonough&#39;, &#39;rybach&#39;}</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">        Heat production in μW kg⁻¹.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_HP_CONSTANTS</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;method must be one of </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">_HP_CONSTANTS</span><span class="p">)</span><span class="si">}</span><span class="s2">; got </span><span class="si">{</span><span class="n">method</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">_HP_CONSTANTS</span><span class="p">[</span><span class="n">method</span><span class="p">]</span>
+
+    <span class="n">U</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">U</span><span class="p">,</span>  <span class="nb">float</span><span class="p">)</span>
+    <span class="n">Th</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
+    <span class="n">K</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">K</span><span class="p">,</span>  <span class="nb">float</span><span class="p">)</span>
+
+    <span class="n">h</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">U</span> <span class="o">+</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;th&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">Th</span> <span class="o">+</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;k&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">K</span>
+
+    <span class="k">if</span> <span class="n">Rb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;rb&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">h</span> <span class="o">+</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;rb&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">Rb</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">Sm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;sm&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">h</span> <span class="o">+</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;sm&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">Sm</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">h</span></div>
+
+
+
+<div class="viewcode-block" id="radiogenic_hp_at_time">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.geochem.physprop.heat.html#global_geochemistry.geochem.physprop.heat.radiogenic_hp_at_time">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">radiogenic_hp_at_time</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">Th</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span>
+                           <span class="n">Rb</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">Sm</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                           <span class="n">method</span><span class="o">=</span><span class="s1">&#39;mcdonough&#39;</span><span class="p">,</span>
+                           <span class="n">early_earth</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                           <span class="n">Al</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">Fe</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">Be</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                           <span class="n">al26_al27_0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fe60_fe56_0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                           <span class="n">be10_be9_0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sm146_sm144_0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                           <span class="n">pu244_u238_0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                           <span class="n">t_ss</span><span class="o">=</span><span class="n">_T_SS</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute specific heat production (μW kg⁻¹) at time *t*.</span>
+
+<span class="sd">    Each long-lived isotope&#39;s contribution is scaled by ``exp(λᵢ × t)``</span>
+<span class="sd">    relative to its present-day value, using present-day isotopic abundances</span>
+<span class="sd">    and per-isotope heat-production rates.  The U correction accounts</span>
+<span class="sd">    separately for ²³⁸U and ²³⁵U.</span>
+
+<span class="sd">    Optionally includes short-lived extinct nuclides that matter in the</span>
+<span class="sd">    Hadean and early Solar System (see ``early_earth``).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    t : float or array-like</span>
+<span class="sd">        Time in Ma.  **Positive = past, negative = future.**</span>
+<span class="sd">        May be a scalar (same time for all samples) or a per-sample array</span>
+<span class="sd">        (e.g. ``data[&#39;avg_age&#39;].to_numpy()``).</span>
+<span class="sd">    U, Th : array-like</span>
+<span class="sd">        Present-day uranium and thorium concentrations in ppm.</span>
+<span class="sd">    K : array-like</span>
+<span class="sd">        Present-day elemental potassium in wt% (**not** K₂O).</span>
+<span class="sd">    Rb, Sm : array-like or None</span>
+<span class="sd">        Present-day rubidium and samarium in ppm.  Only used for</span>
+<span class="sd">        ``method=&#39;mcdonough&#39;``.</span>
+<span class="sd">    method : {&#39;mcdonough&#39;, &#39;rybach&#39;}</span>
+<span class="sd">    early_earth : bool</span>
+<span class="sd">        Include short-lived nuclides: ²⁶Al, ⁶⁰Fe, ¹⁰Be, ²⁴⁴Pu, ¹⁴⁶Sm.</span>
+<span class="sd">        Only significant for t ≳ 3900 Ma (¹⁴⁶Sm, ²⁴⁴Pu) and</span>
+<span class="sd">        t ≳ 4500 Ma (²⁶Al, ⁶⁰Fe, ¹⁰Be).  Al, Fe, Be must be supplied.</span>
+<span class="sd">    Al : array-like or None</span>
+<span class="sd">        Aluminium in ppm — required for ²⁶Al.</span>
+<span class="sd">    Fe : array-like or None</span>
+<span class="sd">        Iron in ppm — required for ⁶⁰Fe.</span>
+<span class="sd">    Be : array-like or None</span>
+<span class="sd">        Beryllium in ppm — required for ¹⁰Be.</span>
+<span class="sd">    al26_al27_0 : float or None</span>
+<span class="sd">        Override canonical ²⁶Al/²⁷Al initial ratio (default 5.23 × 10⁻⁵).</span>
+<span class="sd">    fe60_fe56_0 : float or None</span>
+<span class="sd">        Override canonical ⁶⁰Fe/⁵⁶Fe initial ratio (default 1.0 × 10⁻⁶;</span>
+<span class="sd">        highly uncertain — published estimates span 10⁻⁸ to 10⁻⁶).</span>
+<span class="sd">    be10_be9_0 : float or None</span>
+<span class="sd">        Override canonical ¹⁰Be/⁹Be initial ratio (default 7.0 × 10⁻⁴).</span>
+<span class="sd">    sm146_sm144_0 : float or None</span>
+<span class="sd">        Override canonical ¹⁴⁶Sm/¹⁴⁴Sm initial ratio (default 8.2 × 10⁻³).</span>
+<span class="sd">    pu244_u238_0 : float or None</span>
+<span class="sd">        Override canonical ²⁴⁴Pu/²³⁸U initial ratio (default 6.8 × 10⁻³).</span>
+<span class="sd">    t_ss : float</span>
+<span class="sd">        Solar System formation age in Ma.  Default 4568.0.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">        Heat production in μW kg⁻¹.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Time-correction factors are defined so that the present-day (t = 0)</span>
+<span class="sd">    result is identical to ``radiogenic_hp``.  For future times (t &lt; 0)</span>
+<span class="sd">    all factors are &lt; 1.</span>
+
+<span class="sd">    Short-lived nuclide H values (W kg⁻¹ of isotope) are calculated from</span>
+<span class="sd">    λ N_A/M × Q_deposited using the energies listed in ``_ISO_SHORT``; there</span>
+<span class="sd">    is ~15% uncertainty in Q for ²⁶Al depending on what fraction of the γ</span>
+<span class="sd">    ray energy is retained.  For ⁶⁰Fe the initial ⁶⁰Fe/⁵⁶Fe ratio is the</span>
+<span class="sd">    dominant uncertainty (two orders of magnitude spread in the literature).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_HP_CONSTANTS</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;method must be one of </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">_HP_CONSTANTS</span><span class="p">)</span><span class="si">}</span><span class="s2">; got </span><span class="si">{</span><span class="n">method</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">g</span> <span class="o">=</span> <span class="n">_hp_time_factors</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">_HP_CONSTANTS</span><span class="p">[</span><span class="n">method</span><span class="p">]</span>
+
+    <span class="n">U</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">U</span><span class="p">,</span>  <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">Th</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">K</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">K</span><span class="p">,</span>  <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+    <span class="n">h</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">g</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">U</span> <span class="o">+</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;th&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">g</span><span class="p">[</span><span class="s1">&#39;th&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">Th</span> <span class="o">+</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;k&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">g</span><span class="p">[</span><span class="s1">&#39;k&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">K</span>
+
+    <span class="k">if</span> <span class="n">Rb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;rb&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">h</span> <span class="o">+</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;rb&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">g</span><span class="p">[</span><span class="s1">&#39;rb&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">Rb</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">Sm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;sm&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">h</span> <span class="o">+</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;sm&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">g</span><span class="p">[</span><span class="s1">&#39;sm&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">Sm</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">early_earth</span><span class="p">:</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">h</span> <span class="o">+</span> <span class="n">_short_lived_hp</span><span class="p">(</span>
+            <span class="n">t</span><span class="p">,</span> <span class="n">t_ss</span><span class="o">=</span><span class="n">t_ss</span><span class="p">,</span>
+            <span class="n">Al</span><span class="o">=</span><span class="n">Al</span><span class="p">,</span> <span class="n">Fe</span><span class="o">=</span><span class="n">Fe</span><span class="p">,</span> <span class="n">Be</span><span class="o">=</span><span class="n">Be</span><span class="p">,</span>
+            <span class="n">Sm</span><span class="o">=</span><span class="n">Sm</span><span class="p">,</span> <span class="n">U</span><span class="o">=</span><span class="n">U</span><span class="p">,</span>
+            <span class="n">al26_al27_0</span><span class="o">=</span><span class="n">al26_al27_0</span><span class="p">,</span> <span class="n">fe60_fe56_0</span><span class="o">=</span><span class="n">fe60_fe56_0</span><span class="p">,</span>
+            <span class="n">be10_be9_0</span><span class="o">=</span><span class="n">be10_be9_0</span><span class="p">,</span> <span class="n">sm146_sm144_0</span><span class="o">=</span><span class="n">sm146_sm144_0</span><span class="p">,</span>
+            <span class="n">pu244_u238_0</span><span class="o">=</span><span class="n">pu244_u238_0</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">h</span></div>
+
+
+
+<div class="viewcode-block" id="compute_hp">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.geochem.physprop.heat.html#global_geochemistry.geochem.physprop.heat.compute_hp">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_hp</span><span class="p">(</span><span class="n">k2o</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">th</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute specific heat production (μW kg⁻¹) — Rybach (1988).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    k2o : array-like</span>
+<span class="sd">        K₂O concentration (wt%).</span>
+<span class="sd">    u, th : array-like</span>
+<span class="sd">        U and Th concentrations (ppm).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">        Heat production in μW kg⁻¹.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">k2o</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">k2o</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
+    <span class="n">u</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">u</span><span class="p">,</span>   <span class="nb">float</span><span class="p">)</span>
+    <span class="n">th</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">th</span><span class="p">,</span>  <span class="nb">float</span><span class="p">)</span>
+    <span class="n">k</span>   <span class="o">=</span> <span class="n">_K2O_TO_K</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">k2o</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_SCALE</span> <span class="o">*</span> <span class="p">(</span><span class="n">_CK</span> <span class="o">*</span> <span class="n">k</span> <span class="o">+</span> <span class="n">_CU</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">+</span> <span class="n">_CTH</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">th</span><span class="p">))</span></div>
+
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># BDL censoring helper</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_bdl_censor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;element&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Replace BDL values with conditional log-normal expectations.</span>
+
+<span class="sd">    Uses ``gausscensor`` to fit a log-normal distribution to the full</span>
+<span class="sd">    array (detected + censored), then substitutes E[log₁₀ X | X ≤ d]</span>
+<span class="sd">    (truncated-normal conditional mean) for each BDL sample.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x : numpy.ndarray</span>
+<span class="sd">        Measured values following the BDL flag convention:</span>
+<span class="sd">        positive = detected, negative = BDL with |x| as detection limit,</span>
+<span class="sd">        zero = BDL with unknown detection limit.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">        Copy of *x* with BDL values replaced by positive estimates.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">is_bdl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_bdl</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">x</span>
+
+    <span class="c1"># Unknown DL (zero): substitute median of known DLs</span>
+    <span class="n">known_dls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="n">default_dl</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">known_dls</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">known_dls</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+                  <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="mi">10</span> <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">()</span>
+                  <span class="k">else</span> <span class="mf">0.01</span><span class="p">)</span>
+    <span class="n">zero_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">zero_mask</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">zero_mask</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">default_dl</span>
+
+    <span class="c1"># Fit log-normal using gausscensor</span>
+    <span class="n">mu</span> <span class="o">=</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">global_geochemistry.geochem.processing.censored</span><span class="w"> </span><span class="kn">import</span> <span class="n">gausscensor</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">gausscensor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="s1">&#39;log10&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+            <span class="n">stats</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">stats</span> <span class="o">=</span> <span class="n">result</span>
+        <span class="n">mu</span>    <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;mu&#39;</span><span class="p">])</span>
+        <span class="n">sigma</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">])</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="n">x_out</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">is_bdl</span><span class="p">)[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">mu</span><span class="p">)</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">sigma</span><span class="p">)</span> <span class="ow">or</span> <span class="n">sigma</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">d</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">x_out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+            <span class="k">continue</span>
+
+        <span class="n">log_d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+        <span class="n">z_d</span>   <span class="o">=</span> <span class="p">(</span><span class="n">log_d</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma</span>
+        <span class="n">phi_z</span> <span class="o">=</span> <span class="n">_norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">z_d</span><span class="p">)</span>
+        <span class="n">Phi_z</span> <span class="o">=</span> <span class="n">_norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">z_d</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">Phi_z</span> <span class="o">&gt;</span> <span class="mf">1e-10</span><span class="p">:</span>
+            <span class="c1"># Conditional expectation E[log10 X | log10 X ≤ log10 d]</span>
+            <span class="n">E_log_x</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">-</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">phi_z</span> <span class="o">/</span> <span class="n">Phi_z</span>
+            <span class="n">x_out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">10.0</span> <span class="o">**</span> <span class="n">E_log_x</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x_out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">is_bdl</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  hpest: </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> BDL </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s1"> values replaced by censored estimates&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">x_out</span>
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Element extraction helpers</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_col_or_nan</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return column as float array, or NaN array if absent.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="get_k2o">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.geochem.physprop.heat.html#global_geochemistry.geochem.physprop.heat.get_k2o">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_k2o</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return K₂O (wt%) as a numpy array, converting from K_ppm if needed.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="s1">&#39;k2o&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;k2o&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s1">&#39;k_ppm&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">factor</span> <span class="o">=</span> <span class="n">_mwc</span><span class="o">.</span><span class="n">molecular_weight</span><span class="p">(</span><span class="s1">&#39;K2O&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">_mwc</span><span class="o">.</span><span class="n">molecular_weight</span><span class="p">(</span><span class="s1">&#39;K&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e4</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;k_ppm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="o">*</span> <span class="n">factor</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span></div>
+
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Main HP estimator</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="hpest">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.geochem.physprop.heat.html#global_geochemistry.geochem.physprop.heat.hpest">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">hpest</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;mcdonough&#39;</span><span class="p">,</span> <span class="n">include_rb</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">include_sm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+          <span class="n">estimate_missing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">censor_bdl</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+          <span class="n">bdl_k2o</span><span class="o">=-</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">bdl_u</span><span class="o">=-</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">bdl_th</span><span class="o">=-</span><span class="mf">1.0</span><span class="p">,</span>
+          <span class="n">t</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">early_earth</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+          <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Estimate radiogenic heat production from whole-rock geochemistry.</span>
+
+<span class="sd">    Adds ``heat_production_mass`` (μW kg⁻¹) and ``heat_production``</span>
+<span class="sd">    (μW m⁻³) columns.  Density is taken from ``density_model`` if present.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : pandas.DataFrame</span>
+<span class="sd">        Must contain ``u_ppm``, ``th_ppm``, and either ``k2o`` or ``k_ppm``.</span>
+<span class="sd">        Optionally ``rb_ppm``, ``sm_ppm``, ``nd_ppm``.</span>
+<span class="sd">    method : {&#39;mcdonough&#39;, &#39;rybach&#39;}</span>
+<span class="sd">        Heat-production formula.  ``&#39;mcdonough&#39;`` (default) uses updated</span>
+<span class="sd">        decay constants from McDonough et al. (2020).</span>
+<span class="sd">    include_rb : bool</span>
+<span class="sd">        Include Rb contribution (McDonough only, default False).</span>
+<span class="sd">    include_sm : bool</span>
+<span class="sd">        Include Sm contribution (McDonough only, default False).</span>
+<span class="sd">    estimate_missing : bool</span>
+<span class="sd">        If True (default), predict missing or BDL concentrations from</span>
+<span class="sd">        correlated elements before computing HP:</span>
+
+<span class="sd">        - U ↔ Th  via rock-type median log₁₀(Th/U).</span>
+<span class="sd">        - Rb from K (K/Rb ≈ 300 for continental crust).</span>
+<span class="sd">        - Sm from Nd (Sm/Nd ≈ 0.22 for upper continental crust).</span>
+
+<span class="sd">        Predictions are only applied where the target element is missing/BDL</span>
+<span class="sd">        *and* the source element is positively measured.</span>
+<span class="sd">    censor_bdl : bool</span>
+<span class="sd">        If True (default), remaining BDL values after prediction are</span>
+<span class="sd">        substituted with a Gaussian-censoring estimate (conditional</span>
+<span class="sd">        log-normal expectation via ``gausscensor``).  If False, the</span>
+<span class="sd">        absolute value of the detection limit is used directly.</span>
+<span class="sd">    bdl_k2o, bdl_u, bdl_th : float</span>
+<span class="sd">        Substitute detection limit for elements whose reported value is</span>
+<span class="sd">        exactly zero (unknown DL).  Negative values flag BDL.</span>
+<span class="sd">    t : float, array-like, or None</span>
+<span class="sd">        Time in Ma at which to compute HP (positive = past, negative = future).</span>
+<span class="sd">        If None (default), computes present-day HP using ``radiogenic_hp``.</span>
+<span class="sd">        May be a scalar (single time for all samples) or a per-sample array</span>
+<span class="sd">        the same length as *data* (e.g. ``data[&#39;avg_age&#39;].to_numpy()``).</span>
+<span class="sd">        When set, uses isotope-decay-corrected coefficients via</span>
+<span class="sd">        ``radiogenic_hp_at_time``.</span>
+<span class="sd">    early_earth : bool</span>
+<span class="sd">        Include short-lived extinct nuclides (²⁶Al, ⁶⁰Fe, ¹⁰Be, ²⁴⁴Pu,</span>
+<span class="sd">        ¹⁴⁶Sm).  Only meaningful for t ≳ 3900 Ma (¹⁴⁶Sm, ²⁴⁴Pu) and</span>
+<span class="sd">        t ≳ 4400 Ma (²⁶Al, ⁶⁰Fe, ¹⁰Be).  Requires ``t`` to be set.</span>
+<span class="sd">        Al and Fe are extracted from ``al2o3`` and ``feo_tot`` columns and</span>
+<span class="sd">        converted to elemental ppm; Be is taken from ``be_ppm`` if present.</span>
+<span class="sd">    verbose : bool</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">        Modified copy of *data* with columns added:</span>
+
+<span class="sd">        heat_production_mass   μW kg⁻¹ (mass-specific)</span>
+<span class="sd">        heat_production        μW m⁻³  (volumetric; requires density_model)</span>
+<span class="sd">        heat_production_bdl    bool — True where any BDL substitution was made</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_HP_CONSTANTS</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;method must be one of </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">_HP_CONSTANTS</span><span class="p">)</span><span class="si">}</span><span class="s2">; got </span><span class="si">{</span><span class="n">method</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">n</span>    <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">_HP_CONSTANTS</span><span class="p">[</span><span class="n">method</span><span class="p">]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  hpest: method = </span><span class="si">{</span><span class="n">method</span><span class="si">!r}</span><span class="s1">  (</span><span class="si">{</span><span class="n">c</span><span class="p">[</span><span class="s2">&quot;_ref&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="c1"># 1. Extract raw element concentrations                               #</span>
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+
+    <span class="n">k2o_raw</span>  <span class="o">=</span> <span class="n">get_k2o</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">u_raw</span>    <span class="o">=</span> <span class="n">_col_or_nan</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;u_ppm&#39;</span><span class="p">)</span>
+    <span class="n">th_raw</span>   <span class="o">=</span> <span class="n">_col_or_nan</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;th_ppm&#39;</span><span class="p">)</span>
+    <span class="n">rb_raw</span>   <span class="o">=</span> <span class="n">_col_or_nan</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;rb_ppm&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">include_rb</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="n">sm_raw</span>   <span class="o">=</span> <span class="n">_col_or_nan</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;sm_ppm&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">include_sm</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="n">nd_raw</span>   <span class="o">=</span> <span class="n">_col_or_nan</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;nd_ppm&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Rock-type masks for ratio-based prediction</span>
+    <span class="n">grp</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;rock_group&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+           <span class="k">if</span> <span class="s1">&#39;rock_group&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="k">else</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span><span class="p">))</span>
+    <span class="n">org</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;rock_origin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+           <span class="k">if</span> <span class="s1">&#39;rock_origin&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="k">else</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span><span class="p">))</span>
+    <span class="n">ign_mask</span> <span class="o">=</span> <span class="p">((</span><span class="n">grp</span> <span class="o">==</span> <span class="s1">&#39;igneous&#39;</span><span class="p">)</span> <span class="o">|</span>
+                <span class="n">org</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;metaigneous&#39;</span><span class="p">,</span> <span class="s1">&#39;metavolcanic&#39;</span><span class="p">,</span> <span class="s1">&#39;metaplutonic&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+    <span class="n">sed_mask</span> <span class="o">=</span> <span class="p">((</span><span class="n">grp</span> <span class="o">==</span> <span class="s1">&#39;sedimentary&#39;</span><span class="p">)</span> <span class="o">|</span>
+                <span class="p">(</span><span class="n">org</span> <span class="o">==</span> <span class="s1">&#39;metasedimentary&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="c1"># 2. Substitute zero-BDL with default detection limits               #</span>
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+
+    <span class="n">k2o_raw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">k2o_raw</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">k2o_raw</span> <span class="o">==</span> <span class="mi">0</span><span class="p">),</span> <span class="n">bdl_k2o</span><span class="p">,</span> <span class="n">k2o_raw</span><span class="p">)</span>
+    <span class="n">u_raw</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">u_raw</span><span class="p">)</span>   <span class="o">&amp;</span> <span class="p">(</span><span class="n">u_raw</span>   <span class="o">==</span> <span class="mi">0</span><span class="p">),</span> <span class="n">bdl_u</span><span class="p">,</span>   <span class="n">u_raw</span><span class="p">)</span>
+    <span class="n">th_raw</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">th_raw</span><span class="p">)</span>  <span class="o">&amp;</span> <span class="p">(</span><span class="n">th_raw</span>  <span class="o">==</span> <span class="mi">0</span><span class="p">),</span> <span class="n">bdl_th</span><span class="p">,</span>  <span class="n">th_raw</span><span class="p">)</span>
+
+    <span class="c1"># Convert K2O → elemental K in wt%, preserving BDL sign</span>
+    <span class="n">k_raw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">k2o_raw</span><span class="p">),</span>
+                     <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">k2o_raw</span><span class="p">)</span> <span class="o">*</span> <span class="n">_K2O_TO_K</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">k2o_raw</span><span class="p">),</span>
+                     <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+    <span class="c1"># Working copies (will be modified by prediction / censoring steps)</span>
+    <span class="n">u</span>  <span class="o">=</span> <span class="n">u_raw</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">th</span> <span class="o">=</span> <span class="n">th_raw</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">k</span>  <span class="o">=</span> <span class="n">k_raw</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">rb</span> <span class="o">=</span> <span class="n">rb_raw</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">sm</span> <span class="o">=</span> <span class="n">sm_raw</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="n">bdl_flag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>  <span class="c1"># track samples that used BDL substitution</span>
+
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="c1"># 3. Predict missing / BDL values from correlated elements           #</span>
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+
+    <span class="k">if</span> <span class="n">estimate_missing</span><span class="p">:</span>
+        <span class="n">_predict_u_th</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">th</span><span class="p">,</span> <span class="n">u_raw</span><span class="p">,</span> <span class="n">th_raw</span><span class="p">,</span> <span class="n">ign_mask</span><span class="p">,</span> <span class="n">sed_mask</span><span class="p">,</span> <span class="n">verbose</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">include_rb</span><span class="p">:</span>
+            <span class="n">_predict_rb_from_k</span><span class="p">(</span><span class="n">rb</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">verbose</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">include_sm</span><span class="p">:</span>
+            <span class="n">_predict_sm_from_nd</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">nd_raw</span><span class="p">,</span> <span class="n">verbose</span><span class="p">)</span>
+
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="c1"># 4. Handle remaining BDL values                                      #</span>
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+
+    <span class="k">for</span> <span class="n">arr</span><span class="p">,</span> <span class="n">lbl</span> <span class="ow">in</span> <span class="p">[(</span><span class="n">u</span><span class="p">,</span> <span class="s1">&#39;U&#39;</span><span class="p">),</span> <span class="p">(</span><span class="n">th</span><span class="p">,</span> <span class="s1">&#39;Th&#39;</span><span class="p">),</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">),</span> <span class="p">(</span><span class="n">rb</span><span class="p">,</span> <span class="s1">&#39;Rb&#39;</span><span class="p">),</span> <span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="s1">&#39;Sm&#39;</span><span class="p">)]:</span>
+        <span class="k">if</span> <span class="n">arr</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">is_bdl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">arr</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">bdl_flag</span> <span class="o">|=</span> <span class="n">is_bdl</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_bdl</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">censor_bdl</span><span class="p">:</span>
+            <span class="n">arr</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">_bdl_censor</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">lbl</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">arr</span><span class="p">[</span><span class="n">is_bdl</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">is_bdl</span><span class="p">])</span>   <span class="c1"># use DL as-is (upper bound)</span>
+
+    <span class="c1"># After substitution, any remaining ≤0 become NaN (shouldn&#39;t happen)</span>
+    <span class="k">for</span> <span class="n">arr</span> <span class="ow">in</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">th</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">rb</span><span class="p">,</span> <span class="n">sm</span><span class="p">):</span>
+        <span class="n">arr</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">arr</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+    <span class="c1"># 5. Compute heat production                                          #</span>
+    <span class="c1"># ------------------------------------------------------------------ #</span>
+
+    <span class="n">rb_in</span> <span class="o">=</span> <span class="n">rb</span> <span class="k">if</span> <span class="n">include_rb</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="n">sm_in</span> <span class="o">=</span> <span class="n">sm</span> <span class="k">if</span> <span class="n">include_sm</span> <span class="k">else</span> <span class="kc">None</span>
+
+    <span class="k">if</span> <span class="n">t</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="n">t_scalar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">t_scalar</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  hpest: time-corrected HP at </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">t_scalar</span><span class="p">)</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> Ma&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  hpest: time-corrected HP (per-sample ages)&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Extract major-element concentrations for short-lived nuclides</span>
+        <span class="n">Al_in</span> <span class="o">=</span> <span class="n">Fe_in</span> <span class="o">=</span> <span class="n">Be_in</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">early_earth</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s1">&#39;al2o3&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+                <span class="n">mw_al2o3</span> <span class="o">=</span> <span class="n">_mwc</span><span class="o">.</span><span class="n">molecular_weight</span><span class="p">(</span><span class="s1">&#39;Al2O3&#39;</span><span class="p">)</span>
+                <span class="n">mw_al</span>    <span class="o">=</span> <span class="n">_mwc</span><span class="o">.</span><span class="n">molecular_weight</span><span class="p">(</span><span class="s1">&#39;Al&#39;</span><span class="p">)</span>
+                <span class="n">al2o3</span>    <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;al2o3&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+                <span class="n">Al_in</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">al2o3</span><span class="p">),</span>
+                                    <span class="n">al2o3</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">mw_al</span> <span class="o">/</span> <span class="n">mw_al2o3</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e4</span><span class="p">,</span>
+                                    <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+            <span class="k">if</span> <span class="s1">&#39;feo_tot&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+                <span class="n">mw_feo</span> <span class="o">=</span> <span class="n">_mwc</span><span class="o">.</span><span class="n">molecular_weight</span><span class="p">(</span><span class="s1">&#39;FeO&#39;</span><span class="p">)</span>
+                <span class="n">mw_fe</span>  <span class="o">=</span> <span class="n">_mwc</span><span class="o">.</span><span class="n">molecular_weight</span><span class="p">(</span><span class="s1">&#39;Fe&#39;</span><span class="p">)</span>
+                <span class="n">feo</span>    <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;feo_tot&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+                <span class="n">Fe_in</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">feo</span><span class="p">),</span>
+                                  <span class="n">feo</span> <span class="o">*</span> <span class="p">(</span><span class="n">mw_fe</span> <span class="o">/</span> <span class="n">mw_feo</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e4</span><span class="p">,</span>
+                                  <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+            <span class="n">Be_raw</span> <span class="o">=</span> <span class="n">_col_or_nan</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;be_ppm&#39;</span><span class="p">)</span>
+            <span class="n">Be_in</span>  <span class="o">=</span> <span class="n">Be_raw</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">Be_raw</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">()</span> <span class="k">else</span> <span class="kc">None</span>
+
+        <span class="n">h_mass</span> <span class="o">=</span> <span class="n">radiogenic_hp_at_time</span><span class="p">(</span>
+            <span class="n">t</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">th</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span>
+            <span class="n">Rb</span><span class="o">=</span><span class="n">rb_in</span><span class="p">,</span> <span class="n">Sm</span><span class="o">=</span><span class="n">sm_in</span><span class="p">,</span>
+            <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>
+            <span class="n">early_earth</span><span class="o">=</span><span class="n">early_earth</span><span class="p">,</span>
+            <span class="n">Al</span><span class="o">=</span><span class="n">Al_in</span><span class="p">,</span> <span class="n">Fe</span><span class="o">=</span><span class="n">Fe_in</span><span class="p">,</span> <span class="n">Be</span><span class="o">=</span><span class="n">Be_in</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">h_mass</span> <span class="o">=</span> <span class="n">radiogenic_hp</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">th</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">Rb</span><span class="o">=</span><span class="n">rb_in</span><span class="p">,</span> <span class="n">Sm</span><span class="o">=</span><span class="n">sm_in</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">)</span>
+
+    <span class="c1"># NaN where all three core inputs are NaN</span>
+    <span class="n">all_nan</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">th</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+    <span class="n">h_mass</span><span class="p">[</span><span class="n">all_nan</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;heat_production_mass&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">h_mass</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;heat_production_bdl&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="n">bdl_flag</span>
+
+    <span class="c1"># Volumetric HP (μW m⁻³)</span>
+    <span class="k">if</span> <span class="s1">&#39;density_model&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">global_geochemistry.geochem.physprop.seismic</span><span class="w"> </span><span class="kn">import</span> <span class="n">vpest</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">global_geochemistry.geochem.physprop.density</span><span class="w"> </span><span class="kn">import</span> <span class="n">density_cm</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">vpest</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;density_model&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">density_cm</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;p_velocity&#39;</span><span class="p">])</span>
+
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;heat_production&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">h_mass</span> <span class="o">*</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;density_model&#39;</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="n">n_valid</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">h_mass</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+        <span class="n">n_bdl</span>   <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">bdl_flag</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  hpest: </span><span class="si">{</span><span class="n">n_valid</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1"> samples with HP; </span><span class="si">{</span><span class="n">n_bdl</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1"> used BDL substitution&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">data</span></div>
+
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Missing-value prediction helpers (used by hpest)</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<span class="n">_K_RB_RATIO</span> <span class="o">=</span> <span class="mf">300.0</span>   <span class="c1"># typical K/Rb for continental crust</span>
+<span class="n">_SM_ND_RATIO</span> <span class="o">=</span> <span class="mf">0.22</span>   <span class="c1"># Sm/Nd for upper continental crust (Taylor &amp; McLennan 1985)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_predict_u_th</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">th</span><span class="p">,</span> <span class="n">u_raw</span><span class="p">,</span> <span class="n">th_raw</span><span class="p">,</span> <span class="n">ign_mask</span><span class="p">,</span> <span class="n">sed_mask</span><span class="p">,</span> <span class="n">verbose</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;In-place: predict missing U from Th and vice versa.</span>
+
+<span class="sd">    Uses rock-type-specific median log₁₀(Th/U) computed from samples</span>
+<span class="sd">    that have both values measured (positive).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sio2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>  <span class="c1"># placeholder; ratio varies by SiO2 for sed</span>
+
+    <span class="n">both</span> <span class="o">=</span> <span class="p">(</span><span class="n">u_raw</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">th_raw</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="n">divide</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">invalid</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">):</span>
+        <span class="n">log_ratio</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">both</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">th_raw</span> <span class="o">/</span> <span class="n">u_raw</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_med</span><span class="p">(</span><span class="n">mask</span><span class="p">):</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">log_ratio</span><span class="p">[</span><span class="n">mask</span> <span class="o">&amp;</span> <span class="n">both</span><span class="p">]</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">r</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">r</span><span class="p">))</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+    <span class="n">med_ign</span> <span class="o">=</span> <span class="n">_med</span><span class="p">(</span><span class="n">ign_mask</span><span class="p">)</span>
+    <span class="n">med_sed</span> <span class="o">=</span> <span class="n">_med</span><span class="p">(</span><span class="n">sed_mask</span><span class="p">)</span>
+    <span class="n">med_all</span> <span class="o">=</span> <span class="n">_med</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">))</span>  <span class="c1"># fallback</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_ratio</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">ign_mask</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">med_ign</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">med_ign</span><span class="p">)</span> <span class="k">else</span> <span class="n">med_all</span>
+        <span class="k">if</span> <span class="n">sed_mask</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">med_sed</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">med_sed</span><span class="p">)</span> <span class="k">else</span> <span class="n">med_all</span>
+        <span class="k">return</span> <span class="n">med_all</span>
+
+    <span class="n">n_u</span> <span class="o">=</span> <span class="n">n_th</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="p">)):</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">_ratio</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
+            <span class="k">continue</span>
+
+        <span class="c1"># Predict U from Th</span>
+        <span class="n">u_missing</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="ow">or</span> <span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span>
+        <span class="n">th_pos</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">th</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="ow">and</span> <span class="n">th</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">u_missing</span> <span class="ow">and</span> <span class="n">th_pos</span><span class="p">:</span>
+            <span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">th</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="mi">10</span><span class="o">**</span><span class="n">r</span>
+            <span class="n">n_u</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="c1"># Predict Th from U</span>
+        <span class="n">th_missing</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">th</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="ow">or</span> <span class="n">th</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span>
+        <span class="n">u_pos</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="ow">and</span> <span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">th_missing</span> <span class="ow">and</span> <span class="n">u_pos</span><span class="p">:</span>
+            <span class="n">th</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="o">**</span><span class="n">r</span>
+            <span class="n">n_th</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">if</span> <span class="n">verbose</span> <span class="ow">and</span> <span class="p">(</span><span class="n">n_u</span> <span class="ow">or</span> <span class="n">n_th</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  hpest: estimated </span><span class="si">{</span><span class="n">n_u</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1"> U and </span><span class="si">{</span><span class="n">n_th</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1"> Th from Th/U ratio&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_predict_rb_from_k</span><span class="p">(</span><span class="n">rb</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">verbose</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;In-place: predict missing Rb from K (wt%) using K/Rb ≈ 300.&quot;&quot;&quot;</span>
+    <span class="n">missing_rb</span> <span class="o">=</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">rb</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">rb</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">k_pos</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">k</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">mask</span>       <span class="o">=</span> <span class="n">missing_rb</span> <span class="o">&amp;</span> <span class="n">k_pos</span>
+    <span class="k">if</span> <span class="n">mask</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+        <span class="n">k_ppm</span> <span class="o">=</span> <span class="n">k</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1e4</span>                   <span class="c1"># wt% → ppm</span>
+        <span class="n">rb</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">k_ppm</span> <span class="o">/</span> <span class="n">_K_RB_RATIO</span>
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  hpest: estimated </span><span class="si">{</span><span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1"> Rb from K (K/Rb = </span><span class="si">{</span><span class="n">_K_RB_RATIO</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_predict_sm_from_nd</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">nd</span><span class="p">,</span> <span class="n">verbose</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;In-place: predict missing Sm from Nd using Sm/Nd ≈ 0.22.&quot;&quot;&quot;</span>
+    <span class="n">missing_sm</span> <span class="o">=</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">sm</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">sm</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">nd_pos</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">nd</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">nd</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">mask</span>       <span class="o">=</span> <span class="n">missing_sm</span> <span class="o">&amp;</span> <span class="n">nd_pos</span>
+    <span class="k">if</span> <span class="n">mask</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+        <span class="n">sm</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">nd</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">*</span> <span class="n">_SM_ND_RATIO</span>
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  hpest: estimated </span><span class="si">{</span><span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1"> Sm from Nd (Sm/Nd = </span><span class="si">{</span><span class="n">_SM_ND_RATIO</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># U/Th-only estimation for heat production (for backward compatibility)</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="hpest_u_th">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.geochem.physprop.heat.html#global_geochemistry.geochem.physprop.heat.hpest_u_th">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">hpest_u_th</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Estimate missing U or Th from the observed Th/U ratio by rock type.</span>
+
+<span class="sd">    Adds ``u_est``, ``th_est``, ``ratio_th_u``, and ``heat_production_est``</span>
+<span class="sd">    columns.  The main ``hpest()`` function incorporates this logic via</span>
+<span class="sd">    ``estimate_missing=True``; this function is kept for diagnostic use.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : pandas.DataFrame</span>
+<span class="sd">        Requires &#39;u_ppm&#39;, &#39;th_ppm&#39;, &#39;sio2&#39;, &#39;rock_group&#39;, &#39;rock_origin&#39;.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">        Modified copy of *data*.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">n</span>    <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="n">u_ppm</span>  <span class="o">=</span> <span class="n">_col_or_nan</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;u_ppm&#39;</span><span class="p">)</span>
+    <span class="n">th_ppm</span> <span class="o">=</span> <span class="n">_col_or_nan</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;th_ppm&#39;</span><span class="p">)</span>
+    <span class="n">sio2</span>   <span class="o">=</span> <span class="n">_col_or_nan</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;sio2&#39;</span><span class="p">)</span>
+
+    <span class="n">has_u</span>  <span class="o">=</span> <span class="n">u_ppm</span>  <span class="o">&gt;</span> <span class="mi">0</span>
+    <span class="n">has_th</span> <span class="o">=</span> <span class="n">th_ppm</span> <span class="o">&gt;</span> <span class="mi">0</span>
+
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;u_est&#39;</span><span class="p">]</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;th_est&#39;</span><span class="p">]</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;ratio_th_u&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+    <span class="n">both</span> <span class="o">=</span> <span class="n">has_u</span> <span class="o">&amp;</span> <span class="n">has_th</span>
+    <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="n">divide</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">invalid</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">):</span>
+        <span class="n">ratio</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">both</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">th_ppm</span> <span class="o">/</span> <span class="n">u_ppm</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;ratio_th_u&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ratio</span>
+
+    <span class="n">grp</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;rock_group&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+           <span class="k">if</span> <span class="s1">&#39;rock_group&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="k">else</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span><span class="p">))</span>
+    <span class="n">org</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;rock_origin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+           <span class="k">if</span> <span class="s1">&#39;rock_origin&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="k">else</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span><span class="p">))</span>
+
+    <span class="n">ign_mask</span> <span class="o">=</span> <span class="p">((</span><span class="n">grp</span> <span class="o">==</span> <span class="s1">&#39;igneous&#39;</span><span class="p">)</span> <span class="o">|</span>
+                <span class="n">org</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;metaigneous&#39;</span><span class="p">,</span> <span class="s1">&#39;metavolcanic&#39;</span><span class="p">,</span> <span class="s1">&#39;metaplutonic&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+    <span class="n">sed_mask</span> <span class="o">=</span> <span class="p">((</span><span class="n">grp</span> <span class="o">==</span> <span class="s1">&#39;sedimentary&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">org</span> <span class="o">==</span> <span class="s1">&#39;metasedimentary&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_median_ratio</span><span class="p">(</span><span class="n">mask</span><span class="p">):</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">ratio</span><span class="p">[</span><span class="n">mask</span> <span class="o">&amp;</span> <span class="n">both</span><span class="p">]</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">r</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">r</span><span class="p">))</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+    <span class="n">med_ign</span>  <span class="o">=</span> <span class="n">_median_ratio</span><span class="p">(</span><span class="n">ign_mask</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  hpest_u_th: igneous median Th/U = </span><span class="si">{</span><span class="mi">10</span><span class="o">**</span><span class="n">med_ign</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">  (log10 = </span><span class="si">{</span><span class="n">med_ign</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+
+    <span class="n">i_mask</span> <span class="o">=</span> <span class="n">ign_mask</span> <span class="o">&amp;</span> <span class="n">has_th</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">has_u</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i_mask</span><span class="p">,</span> <span class="s1">&#39;u_est&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">th_ppm</span><span class="p">[</span><span class="n">i_mask</span><span class="p">]</span> <span class="o">/</span> <span class="mi">10</span><span class="o">**</span><span class="n">med_ign</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  hpest_u_th: estimated </span><span class="si">{</span><span class="n">i_mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1"> U values (igneous)&#39;</span><span class="p">)</span>
+
+    <span class="n">i_mask</span> <span class="o">=</span> <span class="n">ign_mask</span> <span class="o">&amp;</span> <span class="n">has_u</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">has_th</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i_mask</span><span class="p">,</span> <span class="s1">&#39;th_est&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="n">med_ign</span> <span class="o">*</span> <span class="n">u_ppm</span><span class="p">[</span><span class="n">i_mask</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  hpest_u_th: estimated </span><span class="si">{</span><span class="n">i_mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1"> Th values (igneous)&#39;</span><span class="p">)</span>
+
+    <span class="n">sed_low</span>  <span class="o">=</span> <span class="n">sed_mask</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sio2</span> <span class="o">&lt;=</span> <span class="mi">30</span><span class="p">)</span>
+    <span class="n">sed_high</span> <span class="o">=</span> <span class="n">sed_mask</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sio2</span> <span class="o">&gt;=</span> <span class="mi">50</span><span class="p">)</span>
+    <span class="n">sed_mid</span>  <span class="o">=</span> <span class="n">sed_mask</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sio2</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sio2</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">)</span>
+
+    <span class="n">med_low</span>  <span class="o">=</span> <span class="n">_median_ratio</span><span class="p">(</span><span class="n">sed_low</span><span class="p">)</span>
+    <span class="n">med_high</span> <span class="o">=</span> <span class="n">_median_ratio</span><span class="p">(</span><span class="n">sed_high</span><span class="p">)</span>
+
+    <span class="n">slope</span>     <span class="o">=</span> <span class="p">(</span><span class="n">med_high</span> <span class="o">-</span> <span class="n">med_low</span><span class="p">)</span> <span class="o">/</span> <span class="mf">20.0</span>
+    <span class="n">intercept</span> <span class="o">=</span> <span class="n">med_low</span> <span class="o">-</span> <span class="mf">30.0</span> <span class="o">*</span> <span class="n">slope</span>
+
+    <span class="k">for</span> <span class="n">seg_mask</span><span class="p">,</span> <span class="n">seg_med</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="p">[</span>
+        <span class="p">(</span><span class="n">sed_low</span><span class="p">,</span>  <span class="n">med_low</span><span class="p">,</span>  <span class="s1">&#39;sed SiO2 ≤ 30&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">sed_high</span><span class="p">,</span> <span class="n">med_high</span><span class="p">,</span> <span class="s1">&#39;sed SiO2 ≥ 50&#39;</span><span class="p">),</span>
+    <span class="p">]:</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">seg_mask</span> <span class="o">&amp;</span> <span class="n">has_th</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">has_u</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">m</span><span class="p">,</span> <span class="s1">&#39;u_est&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="n">th_ppm</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">/</span> <span class="mi">10</span><span class="o">**</span><span class="n">seg_med</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  hpest_u_th: estimated </span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1"> U values (</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+
+        <span class="n">m</span> <span class="o">=</span> <span class="n">seg_mask</span> <span class="o">&amp;</span> <span class="n">has_u</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">has_th</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">m</span><span class="p">,</span> <span class="s1">&#39;th_est&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="n">seg_med</span> <span class="o">*</span> <span class="n">u_ppm</span><span class="p">[</span><span class="n">m</span><span class="p">]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  hpest_u_th: estimated </span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1"> Th values (</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+
+    <span class="n">med_mid</span> <span class="o">=</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">sio2</span> <span class="o">+</span> <span class="n">intercept</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">sed_mid</span> <span class="o">&amp;</span> <span class="n">has_th</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">has_u</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">m</span><span class="p">,</span> <span class="s1">&#39;u_est&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="n">th_ppm</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">/</span> <span class="mi">10</span><span class="o">**</span><span class="n">med_mid</span><span class="p">[</span><span class="n">m</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  hpest_u_th: estimated </span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1"> U values (sed 30–50 SiO2)&#39;</span><span class="p">)</span>
+
+    <span class="n">m</span> <span class="o">=</span> <span class="n">sed_mid</span> <span class="o">&amp;</span> <span class="n">has_u</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">has_th</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">m</span><span class="p">,</span> <span class="s1">&#39;th_est&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="n">med_mid</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">*</span> <span class="n">u_ppm</span><span class="p">[</span><span class="n">m</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  hpest_u_th: estimated </span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1"> Th values (sed 30–50 SiO2)&#39;</span><span class="p">)</span>
+
+    <span class="c1"># HP using estimated values</span>
+    <span class="n">k2o</span> <span class="o">=</span> <span class="n">get_k2o</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">rho</span> <span class="o">=</span> <span class="p">(</span><span class="n">_col_or_nan</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;density_model&#39;</span><span class="p">)</span>
+           <span class="k">if</span> <span class="s1">&#39;density_model&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">))</span>
+
+    <span class="n">hp_est</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+    <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">k2o</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">has_th</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">has_u</span>
+    <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+        <span class="n">hp_est</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">=</span> <span class="n">compute_hp</span><span class="p">(</span><span class="n">k2o</span><span class="p">[</span><span class="n">m</span><span class="p">],</span>
+                               <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">m</span><span class="p">,</span> <span class="s1">&#39;u_est&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="nb">float</span><span class="p">),</span>
+                               <span class="n">th_ppm</span><span class="p">[</span><span class="n">m</span><span class="p">])</span>
+
+    <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">k2o</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">has_u</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">has_th</span>
+    <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+        <span class="n">hp_est</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">=</span> <span class="n">compute_hp</span><span class="p">(</span><span class="n">k2o</span><span class="p">[</span><span class="n">m</span><span class="p">],</span>
+                               <span class="n">u_ppm</span><span class="p">[</span><span class="n">m</span><span class="p">],</span>
+                               <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">m</span><span class="p">,</span> <span class="s1">&#39;th_est&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="nb">float</span><span class="p">))</span>
+
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;heat_production_est&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hp_est</span> <span class="o">*</span> <span class="n">rho</span>
+    <span class="k">return</span> <span class="n">data</span></div>
+
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Basalt liquidus temperature</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="basalt_liquidus">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.geochem.physprop.heat.html#global_geochemistry.geochem.physprop.heat.basalt_liquidus">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">basalt_liquidus</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Estimate liquidus temperature of basaltic melts from MgO content.</span>
+
+<span class="sd">    Applies the empirical relation of Niu et al. (2002)::</span>
+
+<span class="sd">        T (°C) = 1026 × exp(0.01894 × MgO)</span>
+
+<span class="sd">    Valid for SiO2 &lt; 60 wt%.  Returns NaN for other compositions.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : pandas.DataFrame</span>
+<span class="sd">        Requires ``mgo`` (wt%); ``sio2`` applies the SiO2 &lt; 60 filter.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">        Liquidus temperature in °C.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Niu, Y. et al. (2002) Mineral chemistry, whole-rock compositions and</span>
+<span class="sd">    petrogenesis of ODP Leg 176 gabbros. Proc. Ocean Drill. Prog. Sci.</span>
+<span class="sd">    Results 176, 1–60.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">mgo</span>  <span class="o">=</span> <span class="n">_col_or_nan</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;mgo&#39;</span><span class="p">)</span>
+    <span class="n">sio2</span> <span class="o">=</span> <span class="p">(</span><span class="n">_col_or_nan</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;sio2&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="s1">&#39;sio2&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)))</span>
+
+    <span class="n">T</span> <span class="o">=</span> <span class="mf">1026.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.01894</span> <span class="o">*</span> <span class="n">mgo</span><span class="p">)</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">sio2</span> <span class="o">&lt;</span> <span class="mi">60</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">mgo</span><span class="p">),</span> <span class="n">T</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">T</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Derrick Hasterok.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

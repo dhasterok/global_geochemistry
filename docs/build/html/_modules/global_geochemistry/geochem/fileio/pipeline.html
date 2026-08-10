@@ -1,0 +1,684 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>global_geochemistry.geochem.fileio.pipeline &#8212; global_geochemistry 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/global_geochemistry/geochem/fileio/pipeline';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">global_geochemistry 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../generated/global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../generated/global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">global_geochemistry.geochem.fileio.pipeline</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for global_geochemistry.geochem.fileio.pipeline</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Full load-and-process pipeline for the global geochemical database.</span>
+
+<span class="sd">``load_geochem()`` is the single entry point for loading the database and</span>
+<span class="sd">applying the complete processing chain: Fe correction, oxide normalisation,</span>
+<span class="sd">REE summation, geochemical indices, rock classification, and physical property</span>
+<span class="sd">estimates.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">global_geochemistry.geochem.fileio.database</span><span class="w">          </span><span class="kn">import</span> <span class="n">load_database</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">global_geochemistry.geochem.processing.iron</span><span class="w">          </span><span class="kn">import</span> <span class="n">fefix</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">global_geochemistry.geochem.processing.normalize</span><span class="w">     </span><span class="kn">import</span> <span class="n">oxide_norm</span><span class="p">,</span> <span class="n">cation_to_oxide</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">global_geochemistry.geochem.processing.elements</span><span class="w">      </span><span class="kn">import</span> <span class="n">sumree</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">global_geochemistry.geochem.processing.ages</span><span class="w">          </span><span class="kn">import</span> <span class="n">age_correction</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">global_geochemistry.geochem.classification.indices</span><span class="w">   </span><span class="kn">import</span> <span class="n">geochem_index</span><span class="p">,</span> <span class="n">lambdaree</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">global_geochemistry.geochem.classification.igneous</span><span class="w">   </span><span class="kn">import</span> <span class="n">tas</span><span class="p">,</span> <span class="n">graniteclass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">global_geochemistry.geochem.classification.sedimentary</span><span class="w"> </span><span class="kn">import</span> <span class="n">sedclass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">global_geochemistry.geochem.classification.metamorphic</span><span class="w"> </span><span class="kn">import</span> <span class="n">metamorphic_class</span><span class="p">,</span> <span class="n">adjust_origin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">global_geochemistry.geochem.physprop.seismic</span><span class="w">         </span><span class="kn">import</span> <span class="n">vpest</span><span class="p">,</span> <span class="n">vsest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">global_geochemistry.geochem.physprop.density</span><span class="w">         </span><span class="kn">import</span> <span class="n">densest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">global_geochemistry.geochem.physprop.thermal</span><span class="w">         </span><span class="kn">import</span> <span class="n">tcest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">global_geochemistry.geochem.physprop.heat</span><span class="w">            </span><span class="kn">import</span> <span class="n">hpest</span><span class="p">,</span> <span class="n">hpest_u_th</span><span class="p">,</span> <span class="n">basalt_liquidus</span>
+
+
+<span class="n">_OXIDES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sio2&#39;</span><span class="p">,</span> <span class="s1">&#39;tio2&#39;</span><span class="p">,</span> <span class="s1">&#39;al2o3&#39;</span><span class="p">,</span> <span class="s1">&#39;feo_tot&#39;</span><span class="p">,</span> <span class="s1">&#39;mgo&#39;</span><span class="p">,</span> <span class="s1">&#39;cao&#39;</span><span class="p">,</span> <span class="s1">&#39;na2o&#39;</span><span class="p">,</span> <span class="s1">&#39;k2o&#39;</span><span class="p">,</span> <span class="s1">&#39;p2o5&#39;</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_group</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">*</span><span class="n">groups</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;rock_group&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_origin</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">*</span><span class="n">origins</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;rock_origin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">origins</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_igneous_mask</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">_group</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;igneous&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="n">_origin</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;metaigneous&#39;</span><span class="p">,</span> <span class="s1">&#39;metavolcanic&#39;</span><span class="p">,</span> <span class="s1">&#39;metaplutonic&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_sedimentary_mask</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">_group</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;sedimentary&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="n">_origin</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;metasedimentary&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_metamorphic_mask</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">_group</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;metamorphic&#39;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="load_geochem">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.geochem.fileio.pipeline.html#global_geochemistry.geochem.fileio.pipeline.load_geochem">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_geochem</span><span class="p">(</span>
+    <span class="n">db_version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;2024_01_23&#39;</span><span class="p">,</span>
+    <span class="n">normalization</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;anhydrous&#39;</span><span class="p">,</span>
+    <span class="n">total_tol</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">ree_scheme</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;reduced&#39;</span><span class="p">,</span>
+    <span class="n">derived_props</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">hp_method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;mcdonough&#39;</span><span class="p">,</span>
+    <span class="n">hp_include_rb</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">hp_include_sm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">hp_est_missing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">hp_censor_bdl</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">assign_tectonic</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">assign_crustal_thickness</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load and fully process the global geochemical database.</span>
+
+<span class="sd">    Applies the complete processing chain in order:</span>
+
+<span class="sd">    1. Load raw database CSV</span>
+<span class="sd">    2. Drop mineral analyses; reconcile age data</span>
+<span class="sd">    3. Fe correction (fefix)</span>
+<span class="sd">    4. Cation → oxide conversion</span>
+<span class="sd">    5. Oxide normalisation (anhydrous / hydrous / none)</span>
+<span class="sd">    6. REE sums</span>
+<span class="sd">    7. Geochemical indices + REE λ coefficients</span>
+<span class="sd">    8. Rock classification (TAS, granite, sedimentary, metamorphic)</span>
+<span class="sd">    9. Physical property estimates (Vp, Vs, density, Tc, HP) if *derived_props*</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    db_version : str</span>
+<span class="sd">        Database export date tag used to build the default CSV path.</span>
+<span class="sd">    normalization : {&#39;anhydrous&#39;, &#39;hydrous&#39;, &#39;none&#39;}</span>
+<span class="sd">        Oxide normalisation mode.  ``&#39;hydrous&#39;`` retains only samples with LOI</span>
+<span class="sd">        or volatile data.</span>
+<span class="sd">    total_tol : float</span>
+<span class="sd">        Oxide sum tolerance; samples with total outside ``100 ± total_tol``</span>
+<span class="sd">        wt% are filtered before normalisation.</span>
+<span class="sd">    ree_scheme : {&#39;reduced&#39;, &#39;full&#39;}</span>
+<span class="sd">        Element set used by :func:`~.elements.sumree`.</span>
+<span class="sd">    derived_props : bool</span>
+<span class="sd">        Compute physical property estimates (Vp, Vs, density, Tc, HP).</span>
+<span class="sd">        Set to ``False`` to skip and save time when only geochemistry is needed.</span>
+<span class="sd">    hp_method : {&#39;mcdonough&#39;, &#39;rybach&#39;}</span>
+<span class="sd">        Heat production formula.</span>
+<span class="sd">    hp_include_rb : bool</span>
+<span class="sd">        Include Rb contribution to heat production (~0.15% of UCC total).</span>
+<span class="sd">    hp_include_sm : bool</span>
+<span class="sd">        Include Sm contribution (~0.04% of UCC total).</span>
+<span class="sd">    hp_est_missing : bool</span>
+<span class="sd">        Predict missing U/Th from rock-type Th/U ratio; Rb from K; Sm from Nd.</span>
+<span class="sd">    hp_censor_bdl : bool</span>
+<span class="sd">        Apply Gaussian censoring to below-detection-limit U, Th, K values.</span>
+<span class="sd">    assign_tectonic : bool</span>
+<span class="sd">        Assign tectonic plate and province attributes to each sample using</span>
+<span class="sd">        point-in-polygon testing against the global_tectonics shapefiles.</span>
+<span class="sd">        Adds columns: ``plate``, ``plate_code``, ``subplate``, ``plate_type``,</span>
+<span class="sd">        ``crust_type``, ``prov_name``, ``prov_type``, ``prov_group``,</span>
+<span class="sd">        ``lastorogen``, ``continent``.  Default ``True``.</span>
+<span class="sd">        Requires the global_tectonics dataset — run</span>
+<span class="sd">        ``download_dataset(&#39;global_tectonics&#39;)`` if not already installed.</span>
+<span class="sd">    assign_crustal_thickness : bool</span>
+<span class="sd">        Interpolate total crustal thickness (ECM1 column ``Hc``) to each</span>
+<span class="sd">        sample location and store in column ``crustal_thickness_km``.</span>
+<span class="sd">        Default ``False``.  Requires ECM1.txt — update its path in</span>
+<span class="sd">        data_registry.json if needed.</span>
+<span class="sd">    verbose : bool</span>
+<span class="sd">        Print progress messages to stdout.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">        Fully processed database.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; data = load_geochem()                         # all defaults</span>
+<span class="sd">    &gt;&gt;&gt; data = load_geochem(derived_props=False)      # skip physprop estimates</span>
+<span class="sd">    &gt;&gt;&gt; data = load_geochem(normalization=&#39;hydrous&#39;)  # volatile-bearing samples only</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_log</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="c1"># 1. Load</span>
+    <span class="n">_log</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Reading database </span><span class="si">{</span><span class="n">db_version</span><span class="si">}</span><span class="s1">...&#39;</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">load_database</span><span class="p">()</span>
+    <span class="n">_log</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1"> samples loaded.&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="s1">&#39;rock_group&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="o">~</span><span class="n">_group</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;mineral&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">_log</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1"> samples after removing minerals.&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="s1">&#39;age&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">_log</span><span class="p">(</span><span class="s1">&#39;Correcting age data...&#39;</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">age_correction</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="c1"># 2. Fe correction</span>
+    <span class="n">_log</span><span class="p">(</span><span class="s1">&#39;Converting Fe to FeO and computing Fe²⁺/Fe_total...&#39;</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">fefix</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="c1"># 3. Cation → oxide</span>
+    <span class="n">_log</span><span class="p">(</span><span class="s1">&#39;Converting cation data to oxides where missing...&#39;</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">cation_to_oxide</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="c1"># 4. Normalisation</span>
+    <span class="k">if</span> <span class="n">normalization</span> <span class="o">==</span> <span class="s1">&#39;none&#39;</span><span class="p">:</span>
+        <span class="n">_log</span><span class="p">(</span><span class="s1">&#39;Skipping normalisation.&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">normalization</span> <span class="o">==</span> <span class="s1">&#39;hydrous&#39;</span><span class="p">:</span>
+        <span class="n">vol_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;loi&#39;</span><span class="p">,</span> <span class="s1">&#39;h2o_plus&#39;</span><span class="p">,</span> <span class="s1">&#39;h2o&#39;</span><span class="p">,</span> <span class="s1">&#39;co2&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+        <span class="n">has_vol</span>  <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">vol_cols</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">has_vol</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">_log</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1"> samples with volatile data retained.&#39;</span><span class="p">)</span>
+        <span class="n">_log</span><span class="p">(</span><span class="s1">&#39;Normalising to hydrous conditions...&#39;</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">oxide_norm</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">oxides</span><span class="o">=</span><span class="n">_OXIDES</span><span class="p">,</span> <span class="n">normalization</span><span class="o">=</span><span class="s1">&#39;hydrous&#39;</span><span class="p">,</span> <span class="n">total_tol</span><span class="o">=</span><span class="n">total_tol</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">_log</span><span class="p">(</span><span class="s1">&#39;Normalising to anhydrous conditions...&#39;</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">oxide_norm</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">oxides</span><span class="o">=</span><span class="n">_OXIDES</span><span class="p">,</span> <span class="n">normalization</span><span class="o">=</span><span class="s1">&#39;anhydrous&#39;</span><span class="p">,</span> <span class="n">total_tol</span><span class="o">=</span><span class="n">total_tol</span><span class="p">)</span>
+
+    <span class="c1"># 5. REE sums</span>
+    <span class="n">_log</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Computing REE sums (</span><span class="si">{</span><span class="n">ree_scheme</span><span class="si">}</span><span class="s1"> scheme)...&#39;</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">sumree</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="n">ree_scheme</span><span class="p">)</span>
+
+    <span class="c1"># 6. Geochemical indices</span>
+    <span class="n">_log</span><span class="p">(</span><span class="s1">&#39;Computing geochemical indices...&#39;</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">geochem_index</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">_log</span><span class="p">(</span><span class="s2">&quot;Fitting REE lambda coefficients (O&#39;Neill 2016)...&quot;</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">lambdaree</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s1">&#39;nree&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">_log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;nree&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> samples with REE fits.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 7. Rock classification</span>
+    <span class="n">_log</span><span class="p">(</span><span class="s1">&#39;Classifying igneous rocks by TAS...&#39;</span><span class="p">)</span>
+    <span class="n">ign</span> <span class="o">=</span> <span class="n">_igneous_mask</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">rock_category</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s1">&#39;rock_origin&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">rock_category</span><span class="p">[</span><span class="n">ign</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ign</span><span class="p">,</span> <span class="s1">&#39;rock_origin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;tas_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ign</span><span class="p">,</span> <span class="s1">&#39;tas_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tas</span><span class="p">(</span>
+        <span class="n">data</span><span class="p">[</span><span class="n">ign</span><span class="p">],</span>
+        <span class="n">rock_category</span><span class="o">=</span><span class="n">rock_category</span><span class="p">[</span><span class="n">ign</span><span class="p">]</span> <span class="k">if</span> <span class="n">ign</span><span class="o">.</span><span class="n">any</span><span class="p">()</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">_log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;tas_name&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> samples classified.&quot;</span><span class="p">)</span>
+
+    <span class="n">_log</span><span class="p">(</span><span class="s1">&#39;Computing granite classification (Frost et al. 2001 + SIA)...&#39;</span><span class="p">)</span>
+    <span class="n">gc</span> <span class="o">=</span> <span class="n">graniteclass</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">ign</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;sia_type&#39;</span><span class="p">,</span> <span class="s1">&#39;fe_mg_class&#39;</span><span class="p">,</span> <span class="s1">&#39;alkali_lime&#39;</span><span class="p">,</span> <span class="s1">&#39;alumina_sat&#39;</span><span class="p">):</span>
+        <span class="n">data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ign</span><span class="p">,</span> <span class="s1">&#39;sia_type&#39;</span><span class="p">]</span>    <span class="o">=</span> <span class="n">gc</span><span class="p">[</span><span class="s1">&#39;sia&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ign</span><span class="p">,</span> <span class="s1">&#39;fe_mg_class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gc</span><span class="p">[</span><span class="s1">&#39;fe_mg&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ign</span><span class="p">,</span> <span class="s1">&#39;alkali_lime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gc</span><span class="p">[</span><span class="s1">&#39;alkali_lime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ign</span><span class="p">,</span> <span class="s1">&#39;alumina_sat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gc</span><span class="p">[</span><span class="s1">&#39;alumina_sat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+    <span class="n">_log</span><span class="p">(</span><span class="s1">&#39;Classifying sedimentary rocks...&#39;</span><span class="p">)</span>
+    <span class="n">sed</span> <span class="o">=</span> <span class="n">_sedimentary_mask</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="n">default</span> <span class="ow">in</span> <span class="p">[(</span><span class="s1">&#39;sed_name&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;sed_Q&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;sed_F&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;sed_L&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)]:</span>
+        <span class="n">data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">default</span>
+    <span class="k">if</span> <span class="n">sed</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">sedclass</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">sed</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;sed_name&#39;</span><span class="p">,</span> <span class="s1">&#39;sed_Q&#39;</span><span class="p">,</span> <span class="s1">&#39;sed_F&#39;</span><span class="p">,</span> <span class="s1">&#39;sed_L&#39;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+                <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">result</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="n">col</span><span class="p">]</span>
+    <span class="n">_log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;sed_name&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> samples classified.&quot;</span><span class="p">)</span>
+
+    <span class="n">_log</span><span class="p">(</span><span class="s1">&#39;Inferring protolith origin for metamorphic rocks...&#39;</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">adjust_origin</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="n">_log</span><span class="p">(</span><span class="s1">&#39;Classifying metamorphic rocks (facies + texture)...&#39;</span><span class="p">)</span>
+    <span class="n">meta</span> <span class="o">=</span> <span class="n">_metamorphic_mask</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;met_facies&#39;</span><span class="p">,</span> <span class="s1">&#39;met_texture&#39;</span><span class="p">):</span>
+        <span class="n">data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">meta</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">metamorphic_class</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">meta</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;met_facies&#39;</span><span class="p">,</span> <span class="s1">&#39;met_texture&#39;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+                <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">result</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="n">col</span><span class="p">]</span>
+    <span class="n">_log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;met_facies&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> samples classified.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 8. Physical property estimates</span>
+    <span class="k">if</span> <span class="n">derived_props</span><span class="p">:</span>
+        <span class="n">_log</span><span class="p">(</span><span class="s1">&#39;Computing physical property estimates...&#39;</span><span class="p">)</span>
+        <span class="n">_log</span><span class="p">(</span><span class="s1">&#39;  P-velocity...&#39;</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">vpest</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">_log</span><span class="p">(</span><span class="s1">&#39;  S-velocity...&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s1">&#39;p_velocity&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;s_velocity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vsest</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;p_velocity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="nb">float</span><span class="p">))</span>
+        <span class="n">_log</span><span class="p">(</span><span class="s1">&#39;  Density...&#39;</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">densest</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">_log</span><span class="p">(</span><span class="s1">&#39;  Thermal conductivity...&#39;</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">tcest</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">_log</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  Heat production (</span><span class="si">{</span><span class="n">hp_method</span><span class="si">!r}</span><span class="s1">, est_missing=</span><span class="si">{</span><span class="n">hp_est_missing</span><span class="si">}</span><span class="s1">, censor_bdl=</span><span class="si">{</span><span class="n">hp_censor_bdl</span><span class="si">}</span><span class="s1">)...&#39;</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">hpest</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">hp_method</span><span class="p">,</span>
+                     <span class="n">include_rb</span><span class="o">=</span><span class="n">hp_include_rb</span><span class="p">,</span> <span class="n">include_sm</span><span class="o">=</span><span class="n">hp_include_sm</span><span class="p">,</span>
+                     <span class="n">estimate_missing</span><span class="o">=</span><span class="n">hp_est_missing</span><span class="p">,</span> <span class="n">censor_bdl</span><span class="o">=</span><span class="n">hp_censor_bdl</span><span class="p">)</span>
+        <span class="n">_log</span><span class="p">(</span><span class="s1">&#39;  Diagnostic U/Th estimates...&#39;</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">hpest_u_th</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">_log</span><span class="p">(</span><span class="s1">&#39;  Basalt liquidus temperature...&#39;</span><span class="p">)</span>
+        <span class="n">ign</span> <span class="o">=</span> <span class="n">_igneous_mask</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;basalt_liquidus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ign</span><span class="p">,</span> <span class="s1">&#39;basalt_liquidus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">basalt_liquidus</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">ign</span><span class="p">])</span>
+        <span class="k">if</span> <span class="s1">&#39;basalt_liquidus&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">_log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;basalt_liquidus&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> basaltic samples with liquidus estimate.&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">_log</span><span class="p">(</span><span class="s1">&#39;Skipping physical property estimates.&#39;</span><span class="p">)</span>
+
+    <span class="c1"># 9. Tectonic attribute assignment (plate, province, crust type, …)</span>
+    <span class="k">if</span> <span class="n">assign_tectonic</span> <span class="ow">and</span> <span class="s1">&#39;latitude&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="ow">and</span> <span class="s1">&#39;longitude&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">_log</span><span class="p">(</span><span class="s1">&#39;Assigning tectonic attributes (plate, province)...&#39;</span><span class="p">)</span>
+        <span class="n">_log</span><span class="p">(</span><span class="s1">&#39;  (Building spatial index — takes ~30 s on first run)&#39;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">_sys</span><span class="o">,</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">_pl</span>
+            <span class="n">_root</span> <span class="o">=</span> <span class="n">_pl</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span>
+            <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">_root</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+                <span class="n">_sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">_root</span><span class="p">))</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">src.maptools.tectonic</span><span class="w"> </span><span class="kn">import</span> <span class="n">assign_tectonic_attributes</span>
+            <span class="n">tect</span> <span class="o">=</span> <span class="n">assign_tectonic_attributes</span><span class="p">(</span>
+                <span class="n">data</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="nb">float</span><span class="p">),</span>
+                <span class="n">data</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="nb">float</span><span class="p">),</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">tect</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">tect</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+            <span class="n">assigned</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;plate&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="nb">str</span><span class="p">))</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+            <span class="n">_log</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  </span><span class="si">{</span><span class="n">assigned</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1"> samples assigned to a tectonic plate.&#39;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">_log</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  WARNING: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">_log</span><span class="p">(</span><span class="s1">&#39;  Tectonic assignment skipped — run download_dataset(&quot;global_tectonics&quot;) to install data.&#39;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">_log</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  WARNING: tectonic assignment failed (</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+
+    <span class="c1"># 10. Crustal thickness from ECM1</span>
+    <span class="k">if</span> <span class="n">assign_crustal_thickness</span> <span class="ow">and</span> <span class="s1">&#39;latitude&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="ow">and</span> <span class="s1">&#39;longitude&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">_log</span><span class="p">(</span><span class="s1">&#39;Interpolating crustal thickness from ECM1...&#39;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">_sys</span><span class="o">,</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">_pl</span>
+            <span class="n">_root</span> <span class="o">=</span> <span class="n">_pl</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span>
+            <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">_root</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+                <span class="n">_sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">_root</span><span class="p">))</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">src.geophys.ecm1</span><span class="w"> </span><span class="kn">import</span> <span class="n">interpolate_to_points</span>
+            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;crustal_thickness_km&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">interpolate_to_points</span><span class="p">(</span>
+                <span class="n">data</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="nb">float</span><span class="p">),</span>
+                <span class="n">data</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="nb">float</span><span class="p">),</span>
+                <span class="s1">&#39;Hc&#39;</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">n_hc</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;crustal_thickness_km&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+            <span class="n">_log</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  </span><span class="si">{</span><span class="n">n_hc</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1"> samples with crustal thickness estimate.&#39;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">_log</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  WARNING: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">_log</span><span class="p">(</span><span class="s1">&#39;  Crustal thickness skipped — update ECM1 location in data_registry.json.&#39;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">_log</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  WARNING: crustal thickness interpolation failed (</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+
+    <span class="n">_log</span><span class="p">(</span><span class="s1">&#39;Done.&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Derrick Hasterok.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

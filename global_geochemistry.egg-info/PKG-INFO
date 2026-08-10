@@ -6,5 +6,6 @@ License-File: LICENSE
 Requires-Dist: numpy
 Requires-Dist: pandas
 Requires-Dist: matplotlib
+Requires-Dist: shapely
 Requires-Dist: scipy
 Dynamic: license-file

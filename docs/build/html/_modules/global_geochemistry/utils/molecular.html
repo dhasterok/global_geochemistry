@@ -1,0 +1,468 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>global_geochemistry.utils.molecular &#8212; global_geochemistry 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/global_geochemistry/utils/molecular';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">global_geochemistry 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../generated/global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../generated/global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">global_geochemistry.utils.molecular</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for global_geochemistry.utils.molecular</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Created on Thu Nov 30 15:55:16 2023</span>
+
+<span class="sd">@author: Shavin Kaluthantri</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="MolecularWeightCalculator">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.utils.molecular.html#global_geochemistry.utils.molecular.MolecularWeightCalculator">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">MolecularWeightCalculator</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">element_data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;H&#39;</span><span class="p">:</span> <span class="mf">1.00794</span><span class="p">,</span> <span class="s1">&#39;He&#39;</span><span class="p">:</span> <span class="mf">4.002602</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span> <span class="mf">6.941</span><span class="p">,</span> <span class="s1">&#39;Be&#39;</span><span class="p">:</span> <span class="mf">9.012182</span><span class="p">,</span>
+            <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="mf">10.811</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="mf">12.0107</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="mf">14.0067</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">:</span> <span class="mf">15.9994</span><span class="p">,</span>
+            <span class="s1">&#39;F&#39;</span><span class="p">:</span> <span class="mf">18.9984032</span><span class="p">,</span> <span class="s1">&#39;Ne&#39;</span><span class="p">:</span> <span class="mf">20.1797</span><span class="p">,</span> <span class="s1">&#39;Na&#39;</span><span class="p">:</span> <span class="mf">22.98976928</span><span class="p">,</span> <span class="s1">&#39;Mg&#39;</span><span class="p">:</span> <span class="mf">24.3050</span><span class="p">,</span>
+            <span class="s1">&#39;Al&#39;</span><span class="p">:</span> <span class="mf">26.9815386</span><span class="p">,</span> <span class="s1">&#39;Si&#39;</span><span class="p">:</span> <span class="mf">28.0855</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">:</span> <span class="mf">30.973762</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="mf">32.065</span><span class="p">,</span>
+            <span class="s1">&#39;Cl&#39;</span><span class="p">:</span> <span class="mf">35.453</span><span class="p">,</span> <span class="s1">&#39;Ar&#39;</span><span class="p">:</span> <span class="mf">39.948</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span> <span class="mf">39.0983</span><span class="p">,</span> <span class="s1">&#39;Ca&#39;</span><span class="p">:</span> <span class="mf">40.078</span><span class="p">,</span>
+            <span class="s1">&#39;Sc&#39;</span><span class="p">:</span> <span class="mf">44.955912</span><span class="p">,</span> <span class="s1">&#39;Ti&#39;</span><span class="p">:</span> <span class="mf">47.867</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">:</span> <span class="mf">50.9415</span><span class="p">,</span> <span class="s1">&#39;Cr&#39;</span><span class="p">:</span> <span class="mf">51.9961</span><span class="p">,</span>
+            <span class="s1">&#39;Mn&#39;</span><span class="p">:</span> <span class="mf">54.938045</span><span class="p">,</span> <span class="s1">&#39;Fe&#39;</span><span class="p">:</span> <span class="mf">55.845</span><span class="p">,</span> <span class="s1">&#39;Co&#39;</span><span class="p">:</span> <span class="mf">58.933195</span><span class="p">,</span> <span class="s1">&#39;Ni&#39;</span><span class="p">:</span> <span class="mf">58.6934</span><span class="p">,</span>
+            <span class="s1">&#39;Cu&#39;</span><span class="p">:</span> <span class="mf">63.546</span><span class="p">,</span> <span class="s1">&#39;Zn&#39;</span><span class="p">:</span> <span class="mf">65.409</span><span class="p">,</span> <span class="s1">&#39;Ga&#39;</span><span class="p">:</span> <span class="mf">69.723</span><span class="p">,</span> <span class="s1">&#39;Ge&#39;</span><span class="p">:</span> <span class="mf">72.64</span><span class="p">,</span>
+            <span class="s1">&#39;As&#39;</span><span class="p">:</span> <span class="mf">74.92160</span><span class="p">,</span> <span class="s1">&#39;Se&#39;</span><span class="p">:</span> <span class="mf">78.96</span><span class="p">,</span> <span class="s1">&#39;Br&#39;</span><span class="p">:</span> <span class="mf">79.904</span><span class="p">,</span> <span class="s1">&#39;Kr&#39;</span><span class="p">:</span> <span class="mf">83.798</span><span class="p">,</span>
+            <span class="s1">&#39;Rb&#39;</span><span class="p">:</span> <span class="mf">85.4678</span><span class="p">,</span> <span class="s1">&#39;Sr&#39;</span><span class="p">:</span> <span class="mf">87.62</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">:</span> <span class="mf">88.90585</span><span class="p">,</span> <span class="s1">&#39;Zr&#39;</span><span class="p">:</span> <span class="mf">91.224</span><span class="p">,</span>
+            <span class="s1">&#39;Nb&#39;</span><span class="p">:</span> <span class="mf">92.90638</span><span class="p">,</span> <span class="s1">&#39;Mo&#39;</span><span class="p">:</span> <span class="mf">95.94</span><span class="p">,</span> <span class="s1">&#39;Ru&#39;</span><span class="p">:</span> <span class="mf">101.07</span><span class="p">,</span> <span class="s1">&#39;Rh&#39;</span><span class="p">:</span> <span class="mf">102.90550</span><span class="p">,</span>
+            <span class="s1">&#39;Pd&#39;</span><span class="p">:</span> <span class="mf">106.42</span><span class="p">,</span> <span class="s1">&#39;Ag&#39;</span><span class="p">:</span> <span class="mf">107.8682</span><span class="p">,</span> <span class="s1">&#39;Cd&#39;</span><span class="p">:</span> <span class="mf">112.411</span><span class="p">,</span> <span class="s1">&#39;In&#39;</span><span class="p">:</span> <span class="mf">114.818</span><span class="p">,</span>
+            <span class="s1">&#39;Sn&#39;</span><span class="p">:</span> <span class="mf">118.710</span><span class="p">,</span> <span class="s1">&#39;Sb&#39;</span><span class="p">:</span> <span class="mf">121.760</span><span class="p">,</span> <span class="s1">&#39;Te&#39;</span><span class="p">:</span> <span class="mf">127.60</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">:</span> <span class="mf">126.90447</span><span class="p">,</span>
+            <span class="s1">&#39;Xe&#39;</span><span class="p">:</span> <span class="mf">131.293</span><span class="p">,</span> <span class="s1">&#39;Cs&#39;</span><span class="p">:</span> <span class="mf">132.9054519</span><span class="p">,</span> <span class="s1">&#39;Ba&#39;</span><span class="p">:</span> <span class="mf">137.327</span><span class="p">,</span> <span class="s1">&#39;La&#39;</span><span class="p">:</span> <span class="mf">138.90547</span><span class="p">,</span>
+            <span class="s1">&#39;Ce&#39;</span><span class="p">:</span> <span class="mf">140.116</span><span class="p">,</span> <span class="s1">&#39;Pr&#39;</span><span class="p">:</span> <span class="mf">140.90765</span><span class="p">,</span> <span class="s1">&#39;Nd&#39;</span><span class="p">:</span> <span class="mf">144.242</span><span class="p">,</span> <span class="s1">&#39;Sm&#39;</span><span class="p">:</span> <span class="mf">150.36</span><span class="p">,</span>
+            <span class="s1">&#39;Eu&#39;</span><span class="p">:</span> <span class="mf">151.964</span><span class="p">,</span> <span class="s1">&#39;Gd&#39;</span><span class="p">:</span> <span class="mf">157.25</span><span class="p">,</span> <span class="s1">&#39;Tb&#39;</span><span class="p">:</span> <span class="mf">158.92535</span><span class="p">,</span> <span class="s1">&#39;Dy&#39;</span><span class="p">:</span> <span class="mf">162.500</span><span class="p">,</span>
+            <span class="s1">&#39;Ho&#39;</span><span class="p">:</span> <span class="mf">164.93032</span><span class="p">,</span> <span class="s1">&#39;Er&#39;</span><span class="p">:</span> <span class="mf">167.259</span><span class="p">,</span> <span class="s1">&#39;Tm&#39;</span><span class="p">:</span> <span class="mf">168.93421</span><span class="p">,</span> <span class="s1">&#39;Yb&#39;</span><span class="p">:</span> <span class="mf">173.04</span><span class="p">,</span>
+            <span class="s1">&#39;Lu&#39;</span><span class="p">:</span> <span class="mf">174.967</span><span class="p">,</span> <span class="s1">&#39;Hf&#39;</span><span class="p">:</span> <span class="mf">178.49</span><span class="p">,</span> <span class="s1">&#39;Ta&#39;</span><span class="p">:</span> <span class="mf">180.94788</span><span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">:</span> <span class="mf">183.84</span><span class="p">,</span>
+            <span class="s1">&#39;Re&#39;</span><span class="p">:</span> <span class="mf">186.207</span><span class="p">,</span> <span class="s1">&#39;Os&#39;</span><span class="p">:</span> <span class="mf">190.23</span><span class="p">,</span> <span class="s1">&#39;Ir&#39;</span><span class="p">:</span> <span class="mf">192.217</span><span class="p">,</span> <span class="s1">&#39;Pt&#39;</span><span class="p">:</span> <span class="mf">195.084</span><span class="p">,</span>
+            <span class="s1">&#39;Au&#39;</span><span class="p">:</span> <span class="mf">196.966569</span><span class="p">,</span> <span class="s1">&#39;Hg&#39;</span><span class="p">:</span> <span class="mf">200.59</span><span class="p">,</span> <span class="s1">&#39;Tl&#39;</span><span class="p">:</span> <span class="mf">204.3833</span><span class="p">,</span> <span class="s1">&#39;Pb&#39;</span><span class="p">:</span> <span class="mf">207.2</span><span class="p">,</span>
+            <span class="s1">&#39;Bi&#39;</span><span class="p">:</span> <span class="mf">208.98040</span><span class="p">,</span> <span class="s1">&#39;Th&#39;</span><span class="p">:</span> <span class="mf">232.03806</span><span class="p">,</span> <span class="s1">&#39;Pa&#39;</span><span class="p">:</span> <span class="mf">231.03588</span><span class="p">,</span> <span class="s1">&#39;U&#39;</span><span class="p">:</span> <span class="mf">238.02891</span>
+        <span class="p">}</span>
+
+<div class="viewcode-block" id="MolecularWeightCalculator.molecular_weight">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.utils.molecular.html#global_geochemistry.utils.molecular.MolecularWeightCalculator.molecular_weight">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">molecular_weight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">formula</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_compute_mass</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">formula</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_mass</span><span class="p">(</span><span class="n">formula</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_compute_mass</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">formula</span><span class="p">):</span>
+        <span class="n">wt</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">ind</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">ind</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">formula</span><span class="p">):</span>
+            <span class="n">mass</span><span class="p">,</span> <span class="n">ind</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unit_mass</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">ind</span><span class="p">)</span>
+            <span class="n">wt</span> <span class="o">+=</span> <span class="n">mass</span>
+        <span class="k">return</span> <span class="n">wt</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_unit_mass</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">formula</span><span class="p">,</span> <span class="n">lind</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">formula</span><span class="p">[</span><span class="n">lind</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;(&#39;</span><span class="p">:</span>
+            <span class="c1"># Handling ion</span>
+            <span class="n">rind</span> <span class="o">=</span> <span class="n">lind</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="k">while</span> <span class="n">rind</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">formula</span><span class="p">)</span> <span class="ow">and</span> <span class="n">formula</span><span class="p">[</span><span class="n">rind</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;)&#39;</span><span class="p">:</span>
+                <span class="n">rind</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">rind</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">formula</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Error in chemical formula. Closing parenthesis not found.&quot;</span><span class="p">)</span>
+            <span class="n">ion</span> <span class="o">=</span> <span class="n">formula</span><span class="p">[</span><span class="n">lind</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span><span class="n">rind</span><span class="p">]</span>
+            <span class="n">mass</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">molecular_weight</span><span class="p">(</span><span class="n">ion</span><span class="p">)</span>
+            <span class="n">lind</span> <span class="o">=</span> <span class="n">rind</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Handling element</span>
+            <span class="n">rind</span> <span class="o">=</span> <span class="n">lind</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="k">while</span> <span class="n">rind</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">formula</span><span class="p">)</span> <span class="ow">and</span> <span class="n">formula</span><span class="p">[</span><span class="n">rind</span><span class="p">]</span><span class="o">.</span><span class="n">islower</span><span class="p">():</span>
+                <span class="n">rind</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">sym</span> <span class="o">=</span> <span class="n">formula</span><span class="p">[</span><span class="n">lind</span><span class="p">:</span><span class="n">rind</span><span class="p">]</span>
+            <span class="n">mass</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_element_lookup</span><span class="p">(</span><span class="n">sym</span><span class="p">)</span>
+            <span class="n">lind</span> <span class="o">=</span> <span class="n">rind</span>
+
+        <span class="c1"># Counting the number of atoms</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">lind</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">formula</span><span class="p">)</span> <span class="ow">and</span> <span class="n">formula</span><span class="p">[</span><span class="n">lind</span><span class="p">]</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">formula</span><span class="p">[</span><span class="n">lind</span><span class="p">])</span>
+            <span class="n">lind</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">mass</span><span class="p">,</span> <span class="n">lind</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_element_lookup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sym</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">element_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">sym</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></div>
+
+
+<span class="c1"># Example usage</span>
+<span class="n">calculator</span> <span class="o">=</span> <span class="n">MolecularWeightCalculator</span><span class="p">()</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="n">calculator</span><span class="o">.</span><span class="n">molecular_weight</span><span class="p">(</span><span class="s2">&quot;Fe2O3&quot;</span><span class="p">)</span>
+<span class="c1"># print(f&quot;Molecular weight of H2O: {weight} g/mol&quot;)</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Derrick Hasterok.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

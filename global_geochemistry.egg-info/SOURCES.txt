@@ -7,6 +7,11 @@ global_geochemistry.egg-info/dependency_links.txt
 global_geochemistry.egg-info/requires.txt
 global_geochemistry.egg-info/top_level.txt
 src/__init__.py
+src/data/coast.npz
+src/data/custom_colormaps.csv
+src/data/earthref.xlsx
+src/data/element_info.xlsx
+src/data/geologic_time_scale.csv
 src/geochem/__init__.py
 src/geochem/el_v_el_plot.py
 src/geochem/classification/__init__.py
@@ -54,6 +59,7 @@ src/plotting/colormap.py
 src/plotting/hp_velocity.py
 src/plotting/radar.py
 src/plotting/scatter.py
+src/plotting/spider.py
 src/plotting/ternary.py
 src/plotting/whisker.py
 src/tectonics/__init__.py
