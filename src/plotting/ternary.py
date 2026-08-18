@@ -704,6 +704,363 @@ class ternary:
         
         return cval
 
+    def ternplot(self, a, b, c, d=None, ax=None, **kwargs):
+        """Plots (line and/or marker) data on ternary axes.
+
+        Thin ternary counterpart to `matplotlib.axes.Axes.plot` -- unlike
+        `ternscatter`, this connects points in array order and supports
+        all of `plot`'s style/marker/linestyle options, making it
+        suitable for boundary curves, discrimination lines, and
+        error-bar crosses.
+
+        Parameters
+        ----------
+        a, b, c : array_like
+            Coordinates for the top, left, and right vertices, respectively.
+        d : array_like, optional
+            Coordinate for the bottom vertex of a quaternary (diamond) plot.
+        ax : matplotlib.axes.Axes, optional
+            Defaults to this instance's own axes.
+        **kwargs
+            Passed to `Axes.plot` (e.g. linestyle, color, marker).
+
+        Returns
+        -------
+        list of matplotlib.lines.Line2D
+        """
+        if ax is None:
+            ax = self.ax
+
+        a = np.atleast_1d(np.asarray(a, dtype=float))
+        b = np.atleast_1d(np.asarray(b, dtype=float))
+        c = np.atleast_1d(np.asarray(c, dtype=float))
+
+        if d is None:
+            x, y = self.tern2xy(a, b, c)
+        else:
+            d = np.atleast_1d(np.asarray(d, dtype=float))
+            x = np.zeros_like(a)
+            y = np.zeros_like(a)
+            ind = d > 0
+            x[~ind], y[~ind] = self.tern2xy(a[~ind], b[~ind], c[~ind])
+            x[ind], y[ind] = self.tern2xy(d[ind], b[ind], c[ind])
+            y[ind] = -y[ind]
+
+        return ax.plot(x, y, **kwargs)
+
+    def terntext(self, a, b, c, text, ax=None, **kwargs):
+        """Places text at a ternary coordinate.
+
+        Parameters
+        ----------
+        a, b, c : float or array_like
+            Ternary coordinates for the top, left, and right vertices.
+        text : str
+            Text to place.
+        ax : matplotlib.axes.Axes, optional
+        **kwargs
+            Passed to `Axes.text`.
+
+        Returns
+        -------
+        matplotlib.text.Text
+        """
+        if ax is None:
+            ax = self.ax
+        x, y = self.tern2xy(a, b, c)
+        return ax.text(x, y, text, **kwargs)
+
+    def ternintersect(self, a1, b1, c1, a2, b2, c2):
+        """Computes the intersection of two lines on the ternary diagram.
+
+        Line 1 runs through ``(a1[0], b1[0], c1[0])`` and
+        ``(a1[1], b1[1], c1[1])``; line 2 is defined the same way from
+        its own endpoints.
+
+        Parameters
+        ----------
+        a1, b1, c1 : array_like, length 2
+            Ternary coordinates of the two endpoints defining line 1.
+        a2, b2, c2 : array_like, length 2
+            Ternary coordinates of the two endpoints defining line 2.
+
+        Returns
+        -------
+        ai, bi, ci : float
+            Ternary coordinates of the intersection point, normalized to
+            the sum ``a1[0] + b1[0] + c1[0]``.
+        """
+        a1, b1, c1 = np.asarray(a1, float), np.asarray(b1, float), np.asarray(c1, float)
+        a2, b2, c2 = np.asarray(a2, float), np.asarray(b2, float), np.asarray(c2, float)
+
+        s = a1[0] + b1[0] + c1[0]
+
+        x1, y1 = self.tern2xy(a1, b1, c1)
+        x2, y2 = self.tern2xy(a2, b2, c2)
+
+        m11 = (y1[1] - y1[0]) / (x1[1] - x1[0])
+        m12 = -m11 * x1[0] + y1[0]
+        m21 = (y2[1] - y2[0]) / (x2[1] - x2[0])
+        m22 = -m21 * x2[0] + y2[0]
+
+        xi = (m22 - m12) / (m11 - m21)
+        yi = m11 * xi + m12
+
+        ai, bi, ci = self.xy2tern(xi, yi)
+        return ai * s, bi * s, ci * s
+
+    def gridtern(self, dt, extend=0):
+        """Generates a triangular grid of ternary vertex coordinates.
+
+        Builds the full set of (a, b, c) points on a uniform grid with
+        spacing `dt` across the ternary simplex (optionally extended
+        beyond it), converted to Cartesian coordinates. Used internally
+        by :func:`ternsurf` to build the Delaunay triangulation mesh.
+
+        Parameters
+        ----------
+        dt : float
+            Grid spacing, as a fraction of the simplex (e.g. 0.05).
+        extend : float, optional
+            Extends the grid this far beyond the standard [0, 1] simplex
+            (see :func:`ternextend`), by default 0 (no extension).
+
+        Returns
+        -------
+        xv, yv : numpy.ndarray
+            Cartesian coordinates of the grid vertices.
+        """
+        g = np.arange(0, 1 + dt / 2, dt)
+        tv = [(gi, gj, gk) for gi in g for gj in g for gk in g
+              if abs(gi + gj + gk - 1) <= 0.001 * dt]
+
+        if extend > 0:
+            ga = np.arange(-extend, 0, dt)
+            gbc = np.arange(0, 1 + extend + dt / 2, dt)
+            tv += [(gi, gj, gk) for gi in ga for gj in gbc for gk in gbc
+                   if abs(gi + gj + gk - 1) <= 0.001 * dt]
+
+        tv = np.array(tv[::-1])
+        return self.tern2xy(tv[:, 0], tv[:, 1], tv[:, 2])
+
+    def ternextend(self, extend, ax=None):
+        """Draws a widened ternary axes frame beyond the standard triangle.
+
+        Useful for displaying points that fall outside the closed [0, 1]
+        ternary simplex (e.g. from an unclosed/extrapolated calculation).
+
+        Note: this ports the outer frame of MATLAB's `ternextend.m`
+        exactly; the original's internal decorative partial-gridlines
+        (hand-tuned index arithmetic that does not generalize cleanly to
+        arbitrary `extend` values) are not reproduced -- call
+        :func:`terngrid` separately for grid lines within the standard
+        simplex.
+
+        Parameters
+        ----------
+        extend : float
+            Amount to extend the triangle by, in the same units as the
+            ternary axes (typically a small fraction, e.g. 0.1-0.5).
+        ax : matplotlib.axes.Axes, optional
+
+        Returns
+        -------
+        matplotlib.axes.Axes
+        """
+        if ax is None:
+            ax = self.ax
+
+        w = extend
+        u = w + 0.5 * extend
+        h = -0.5 * extend / np.tan(np.pi / 6)
+
+        ax.set_aspect('equal')
+        ax.plot([-w, -u, u, w], [0, h, h, 0], 'k-', linewidth=1)
+        ax.axis('off')
+
+        return ax
+
+    def ternsurf(self, a, b, c, val, dt, extend=0, plot=True, ax=None, cmap='viridis'):
+        """Computes (and optionally plots) a smoothed statistic surface.
+
+        Bins data into a Delaunay triangulation of the ternary simplex
+        (grid spacing `dt`), computes the median, a robust spread (1.35x
+        the interquartile range, approximating 1 std for a normal
+        distribution), and log10(count) within each triangle, then
+        interpolates those triangle-center statistics back onto the mesh
+        vertices for a smooth flat-shaded surface -- the ternary
+        counterpart of a 2-D binned/smoothed map.
+
+        Parameters
+        ----------
+        a, b, c : array_like
+            Ternary coordinates of the data.
+        val : array_like
+            Values to summarize within each triangular bin.
+        dt : float
+            Grid spacing (fraction of the simplex) for the triangulation.
+        extend : float, optional
+            Extend the triangulation beyond the standard simplex, by
+            default 0.
+        plot : bool, optional
+            If True (default), draw median/spread/log-count panels via
+            `Axes.tripcolor`. If False, only the statistics are computed
+            and returned.
+        ax : sequence of 3 matplotlib.axes.Axes, optional
+            Existing (median, spread, count) axes to draw into; a new
+            1x3 figure is created if not given.
+        cmap : str, optional
+
+        Returns
+        -------
+        dict
+            ``triangles`` (vertex index array), ``xv``/``yv`` (mesh
+            vertex coordinates), ``median``/``spread``/``log_n``
+            (per-vertex smoothed statistics), and -- if `plot` --
+            ``axes`` (the three Axes used).
+        """
+        from scipy.spatial import Delaunay
+        from scipy.interpolate import LinearNDInterpolator, NearestNDInterpolator
+
+        a, b, c, val = (np.asarray(v, dtype=float) for v in (a, b, c, val))
+
+        xv, yv = self.gridtern(dt, extend=extend)
+        tri = Delaunay(np.column_stack([xv, yv])).simplices
+
+        # drop near-zero-area slivers introduced by roundoff at the mesh edges
+        area0 = 0.5 * abs(dt * dt * np.sin(np.pi / 3))
+        tri_area = 0.5 * np.abs(
+            (xv[tri[:, 1]] - xv[tri[:, 0]]) * (yv[tri[:, 2]] - yv[tri[:, 0]])
+            - (xv[tri[:, 2]] - xv[tri[:, 0]]) * (yv[tri[:, 1]] - yv[tri[:, 0]])
+        )
+        tri = tri[np.abs(tri_area - area0) < (1e-3 * dt) ** 2]
+
+        valid = np.isfinite(val) & np.isfinite(a) & np.isfinite(b) & np.isfinite(c)
+        xp, yp = self.tern2xy(a[valid], b[valid], c[valid])
+        vp = val[valid]
+
+        n_tri = len(tri)
+        med = np.full(n_tri, np.nan)
+        spread = np.full(n_tri, np.nan)
+        log_n = np.full(n_tri, np.nan)
+
+        for i, t in enumerate(tri):
+            path = Path(np.column_stack([xv[t], yv[t]]))
+            inside = path.contains_points(np.column_stack([xp, yp]))
+            vals_in = vp[inside]
+            if inside.sum() > 0:
+                log_n[i] = np.log10(inside.sum())
+            if len(vals_in) > 0:
+                q25, q50, q75 = np.quantile(vals_in, [0.25, 0.5, 0.75])
+                med[i] = q50
+                spread[i] = (q75 - q25) * 1.35
+
+        xc = xv[tri].mean(axis=1)
+        yc = yv[tri].mean(axis=1)
+
+        def _interpolate(values):
+            # scipy's LinearNDInterpolator, unlike MATLAB's scatteredInterpolant,
+            # returns NaN outside the convex hull of the triangle centroids
+            # rather than extrapolating -- fall back to nearest-neighbor for
+            # those points so the mesh edges/corners aren't left as gaps.
+            finite = np.isfinite(values)
+            centers = np.column_stack([xc[finite], yc[finite]])
+            linear = LinearNDInterpolator(centers, values[finite])
+            nearest = NearestNDInterpolator(centers, values[finite])
+
+            out = linear(xv, yv)
+            gap = ~np.isfinite(out)
+            out[gap] = nearest(xv[gap], yv[gap])
+            return out
+
+        result = {
+            'triangles': tri, 'xv': xv, 'yv': yv,
+            'median': _interpolate(med), 'spread': _interpolate(spread), 'log_n': _interpolate(log_n),
+        }
+
+        if not plot:
+            return result
+
+        if ax is None:
+            _, ax = plt.subplots(1, 3, figsize=(13, 4.5))
+
+        for a_, field, title in zip(ax, ('median', 'spread', 'log_n'), ('Median', 'Spread', 'log$_{10}$(n)')):
+            a_.tripcolor(xv, yv, tri, result[field], cmap=cmap, shading='gouraud')
+            a_.set_aspect('equal')
+            a_.axis('off')
+            a_.set_title(title)
+
+        result['axes'] = ax
+        return result
+
+    def errorbar_tern(self, A, B, C, q=0.025, plot_type='bar', color=None, ax=None):
+        """Plots an uncertainty region for ternary data.
+
+        Computes the ``(q, 0.5, 1-q)`` quantiles of each of A, B, C (or
+        uses them directly if each is already a 3-element
+        ``[lower, median, upper]`` sequence), then draws either crossed
+        error bars (``'bar'``) or an uncertainty patch (``'patch'``)
+        centered on the median.
+
+        Parameters
+        ----------
+        A, B, C : array_like
+            Raw data (quantiles computed internally), or 3-element
+            ``[lower, median, upper]`` sequences to use directly.
+        q : float, optional
+            Lower/upper quantile level (paired with ``1 - q``), by
+            default 0.025.
+        plot_type : {'bar', 'patch', 'none'}, optional
+            Drawing style, by default 'bar'.
+        color : color spec, optional
+        ax : matplotlib.axes.Axes, optional
+
+        Returns
+        -------
+        Aq, Bq, Cq : numpy.ndarray, shape (3,)
+            The ``[lower, median, upper]`` triplet used for each of A, B, C.
+        """
+        if ax is None:
+            ax = self.ax
+
+        A, B, C = np.asarray(A, float), np.asarray(B, float), np.asarray(C, float)
+        qs = [q, 0.5, 1 - q]
+
+        if A.shape == (3,) and B.shape == (3,) and C.shape == (3,):
+            Aq, Bq, Cq = A, B, C
+        else:
+            Aq = np.quantile(A[~np.isnan(A)], qs)
+            Bq = np.quantile(B[~np.isnan(B)], qs)
+            Cq = np.quantile(C[~np.isnan(C)], qs)
+
+        if plot_type == 'none':
+            return Aq, Bq, Cq
+        if plot_type not in ('bar', 'patch'):
+            raise ValueError(f"Unknown plot_type: {plot_type!r}")
+
+        dA = -0.5 * (np.array([Aq[0], Aq[2]]) - Aq[1])
+        dB = -0.5 * (np.array([Bq[0], Bq[2]]) - Bq[1])
+        dC = -0.5 * (np.array([Cq[0], Cq[2]]) - Cq[1])
+
+        line_kw = {} if color is None else {'color': color}
+        marker_kw = {'marker': '^', 'linestyle': 'none'}
+        if color is not None:
+            marker_kw.update(markerfacecolor=color, markeredgecolor='none')
+
+        if plot_type == 'bar':
+            self.ternplot([Aq[0], Aq[2]], Bq[1] + dA, Cq[1] + dA, ax=ax, **line_kw)
+            self.ternplot(Aq[1] + dB, [Bq[0], Bq[2]], Cq[1] + dB, ax=ax, **line_kw)
+            self.ternplot(Aq[1] + dC, Bq[1] + dC, [Cq[0], Cq[2]], ax=ax, **line_kw)
+        else:
+            Av = [Aq[0], Aq[1] + dB[1], Aq[1] + dC[0], Aq[2], Aq[1] + dB[0], Aq[1] + dC[1], Aq[0]]
+            Bv = [Bq[1] + dA[0], Bq[2], Bq[1] + dC[0], Bq[1] + dA[1], Bq[0], Bq[1] + dC[1], Bq[1] + dA[0]]
+            Cv = [Cq[1] + dA[0], Cq[1] + dB[1], Cq[0], Cq[1] + dA[1], Cq[1] + dB[0], Cq[2], Cq[1] + dA[0]]
+            self.ternplot(Av, Bv, Cv, ax=ax, **line_kw)
+
+        self.ternplot([Aq[1]], [Bq[1]], [Cq[1]], ax=ax, **marker_kw)
+
+        return Aq, Bq, Cq
+
     def ternpolygons(self, polygons, labels=None, color='k', linewidth=0.75,
                      fontsize=9, label_offset=0.02):
         """Draw classification polygon boundaries on the ternary axes.

@@ -24,7 +24,7 @@ def plot_spider_norm(data, ref_data, norm_ref_data, layer,el_list=None, style='Q
     
     el_list_lower = [re.sub(r'\d', '', el).lower() for el in el_list]
     # Filter ref_dataerence data
-    ref_data_chem = ref_data.loc[(ref_data['reference'] == norm_ref_data) | (ref_data['model'] == norm_ref_data) & (ref_data['layer'] == layer) & (ref_data['sigma'] == 0)]
+    ref_data_chem = ref_data.loc[((ref_data['reference'] == norm_ref_data) | (ref_data['model'] == norm_ref_data)) & (ref_data['layer'] == layer) & (ref_data['sigma'] == 0)]
     plot_inf = {}
     if el_list is None:
         el_list = ['Cs', 'Rb', 'Ba', 'Th', 
@@ -76,7 +76,7 @@ def plot_spider_norm(data, ref_data, norm_ref_data, layer,el_list=None, style='Q
             elif style=='Quanta':
                 y_q = np.quantile(np.log10(y), q=quantiles)
         else: #censorred data
-            ymodel, y_q = gausscensor(y,scale = 'log',q=quantiles); 
+            ymodel, y_q = gausscensor(y, scale='log10', q=quantiles)
             y_q = y_q[:,1]
         
         
@@ -92,7 +92,7 @@ def plot_spider_norm(data, ref_data, norm_ref_data, layer,el_list=None, style='Q
     
     if style in ['MeanSD', 'MeanSE']:
             
-        result_df['mu_norm'] = np.log10(10**result_df['mu'].div(ref_series, axis=0))
+        result_df['mu_norm'] = np.log10((10**result_df['mu']).div(ref_series, axis=0))
         result_df['sigma_norm'] = result_df['sigma'].div(np.log10(ref_series))
         
         result_df['se'] = result_df['sigma']/len(result_df['sigma'])
@@ -265,17 +265,33 @@ def plot_data(ax, t, C, style,el_list, Q=None, label= None):
 # ax.legend(loc='upper right')
 
 
+# (db_column, oxide_formula_for_mw, n_element_atoms_in_oxide)
+_OXIDE_COL = {
+    'K':  ('k2o',     'K2O',   2),
+    'Na': ('na2o',    'Na2O',  2),
+    'Ti': ('tio2',    'TiO2',  1),
+    'Al': ('al2o3',   'Al2O3', 2),
+    'Ba': ('bao',     'BaO',   1),
+    'Fe': ('feo_tot', 'FeO',   1),
+    'Ni': ('nio',     'NiO',   1),
+    'Mn': ('mno',     'MnO',   1),
+    'Cr': ('cr2o3',   'Cr2O3', 2/3),
+    'P':  ('p2o5',    'P2O5',  2),
+}
+
+
 def ox2ppm(element_list, data):
     mol_cal = MolecularWeightCalculator()
+    cols = {c.lower() for c in data.columns}
     for element in element_list:
-        oxide = element + "O"
-        if oxide in data.columns:
-            molar_mass_element = mol_cal.molecular_weight(element)
-            molar_mass_oxide = mol_cal.molecular_weight(oxide)
-            conversion_factor = {
-                'K': 2, 'Na': 2, 'Al': 2, 'Fe': 1, 'Ni': 1, 'Mn': 1, 'Cr': 2/3, 'P': 2
-            }.get(element, 1)
-            data[element.lower() + '_ppm'] = conversion_factor * molar_mass_element / molar_mass_oxide * data[oxide] * 10000
+        if element not in _OXIDE_COL:
+            continue
+        db_col, formula, n_el = _OXIDE_COL[element]
+        if db_col not in cols:
+            continue
+        mw_el  = mol_cal.molecular_weight(element)
+        mw_ox  = mol_cal.molecular_weight(formula)
+        data[element.lower() + '_ppm'] = n_el * mw_el / mw_ox * data[db_col] * 10000
     return data
 
 # ref_data = pd.read_excel('earthref.xlsx')

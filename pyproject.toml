@@ -12,6 +12,10 @@ dependencies = [
     "matplotlib",
     "shapely",
     "scipy",
+    "pyproj",
+    "scikit-learn",
+    "ruptures",
+    "composition-stats",
 ]
 
 [tool.setuptools]
@@ -28,7 +32,9 @@ packages = [
     "global_geochemistry.maptools",
     "global_geochemistry.modelling",
     "global_geochemistry.modelling.inversion",
+    "global_geochemistry.multivariate",
     "global_geochemistry.plotting",
+    "global_geochemistry.stats",
     "global_geochemistry.tectonics",
     "global_geochemistry.utils",
 ]

@@ -585,6 +585,43 @@ def plot_tas(ax=None, rock_type='volcanic', **kwargs):
 
 
 # ===========================================================================
+# Calc-alkaline / tholeiitic discrimination line
+# ===========================================================================
+
+def ca_thol_line(tern=None, color='k', **kwargs):
+    """Calc-alkaline vs. tholeiitic discrimination line.
+
+    Computes FeOt-(Na2O+K2O)-MgO coordinates along an empirical
+    polynomial boundary (fit over MgO 5-56 wt%) separating tholeiitic
+    and calc-alkaline differentiation trends on an AFM-style ternary
+    diagram.
+
+    Parameters
+    ----------
+    tern : plotting.ternary.ternary, optional
+        If given, the line is also drawn via ``tern.ternplot``.
+    color : color spec, optional
+    **kwargs
+        Passed to ``tern.ternplot``, if `tern` is given.
+
+    Returns
+    -------
+    dict
+        ``FeO``, ``A`` (Na2O+K2O proxy), ``MgO`` coordinate arrays.
+    """
+    mgo = np.arange(5, 57, dtype=float)
+    feo = (1.5559e-12 * mgo**8 - 7.7142e-10 * mgo**7 + 1.5664e-7 * mgo**6
+           - 1.6738e-5 * mgo**5 + 1.0017e-3 * mgo**4 - 3.2552e-2 * mgo**3
+           + 4.7776e-1 * mgo**2 - 1.1085 * mgo + 30)
+    a = 100 - mgo - feo
+
+    if tern is not None:
+        tern.ternplot(feo, a, mgo, color=color, **kwargs)
+
+    return {'FeO': feo, 'A': a, 'MgO': mgo}
+
+
+# ===========================================================================
 # Internal helpers
 # ===========================================================================
 
