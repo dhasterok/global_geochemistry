@@ -272,9 +272,11 @@
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">global_geochemistry.geochem.classification.igneous</a></li>
 <li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.classification.indices.html">global_geochemistry.geochem.classification.indices</a></li>
 <li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.classification.metamorphic.html">global_geochemistry.geochem.classification.metamorphic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.classification.rockgroup.html">global_geochemistry.geochem.classification.rockgroup</a></li>
 <li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.classification.sedimentary.html">global_geochemistry.geochem.classification.sedimentary</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.geochem.coda.html">global_geochemistry.geochem.coda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="global_geochemistry.geochem.el_v_el_plot.html">global_geochemistry.geochem.el_v_el_plot</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="global_geochemistry.geochem.fileio.html">global_geochemistry.geochem.fileio</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.fileio.database.html">global_geochemistry.geochem.fileio.database</a></li>
@@ -328,15 +330,31 @@
 <li class="toctree-l3"><a class="reference internal" href="global_geochemistry.modelling.inversion.models.html">global_geochemistry.modelling.inversion.models</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.modelling.regression.html">global_geochemistry.modelling.regression</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="global_geochemistry.multivariate.html">global_geochemistry.multivariate</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.multivariate.clustering.html">global_geochemistry.multivariate.clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.multivariate.pca.html">global_geochemistry.multivariate.pca</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="global_geochemistry.plotting.html">global_geochemistry.plotting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="global_geochemistry.plotting.colormap.html">global_geochemistry.plotting.colormap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.plotting.histogram_colorbar.html">global_geochemistry.plotting.histogram_colorbar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="global_geochemistry.plotting.hp_velocity.html">global_geochemistry.plotting.hp_velocity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="global_geochemistry.plotting.radar.html">global_geochemistry.plotting.radar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="global_geochemistry.plotting.scatter.html">global_geochemistry.plotting.scatter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="global_geochemistry.plotting.ternary.html">global_geochemistry.plotting.ternary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="global_geochemistry.plotting.whisker.html">global_geochemistry.plotting.whisker</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="global_geochemistry.stats.html">global_geochemistry.stats</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.stats.changepoint.html">global_geochemistry.stats.changepoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.stats.circular.html">global_geochemistry.stats.circular</a></li>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.stats.correlation.html">global_geochemistry.stats.correlation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.stats.kde_tools.html">global_geochemistry.stats.kde_tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.stats.outliers.html">global_geochemistry.stats.outliers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.stats.sampling.html">global_geochemistry.stats.sampling</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="global_geochemistry.tectonics.html">global_geochemistry.tectonics</a></li>
@@ -442,27 +460,55 @@ Whalen et al. (1987) Contrib. Mineral. Petrol. 95, 407–419.</p>
 <p class="rubric">Functions</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#global_geochemistry.geochem.classification.igneous.carbclass" title="global_geochemistry.geochem.classification.igneous.carbclass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">carbclass</span></code></a>(data)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#global_geochemistry.geochem.classification.igneous.ca_thol_line" title="global_geochemistry.geochem.classification.igneous.ca_thol_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ca_thol_line</span></code></a>([tern, color])</p></td>
+<td><p>Calc-alkaline vs. tholeiitic discrimination line.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#global_geochemistry.geochem.classification.igneous.carbclass" title="global_geochemistry.geochem.classification.igneous.carbclass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">carbclass</span></code></a>(data)</p></td>
 <td><p>Classify carbonatites on the CaO–MgO–(FeO+Fe2O3+MnO) ternary.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#global_geochemistry.geochem.classification.igneous.graniteclass" title="global_geochemistry.geochem.classification.igneous.graniteclass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">graniteclass</span></code></a>(data)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#global_geochemistry.geochem.classification.igneous.graniteclass" title="global_geochemistry.geochem.classification.igneous.graniteclass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">graniteclass</span></code></a>(data)</p></td>
 <td><p>Geochemical classification of granitoids.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#global_geochemistry.geochem.classification.igneous.mgnum" title="global_geochemistry.geochem.classification.igneous.mgnum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mgnum</span></code></a>(mgo, feo_tot[, fe3_fraction])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#global_geochemistry.geochem.classification.igneous.mgnum" title="global_geochemistry.geochem.classification.igneous.mgnum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mgnum</span></code></a>(mgo, feo_tot[, fe3_fraction])</p></td>
 <td><p>Mg/(Mg + Fe²⁺) molar ratio.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#global_geochemistry.geochem.classification.igneous.plot_tas" title="global_geochemistry.geochem.classification.igneous.plot_tas"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_tas</span></code></a>([ax, rock_type])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#global_geochemistry.geochem.classification.igneous.plot_tas" title="global_geochemistry.geochem.classification.igneous.plot_tas"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_tas</span></code></a>([ax, rock_type])</p></td>
 <td><p>Draw TAS field boundaries on a matplotlib Axes.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#global_geochemistry.geochem.classification.igneous.qap" title="global_geochemistry.geochem.classification.igneous.qap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qap</span></code></a>(cipw_result[, is_volcanic])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#global_geochemistry.geochem.classification.igneous.qap" title="global_geochemistry.geochem.classification.igneous.qap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qap</span></code></a>(cipw_result[, is_volcanic])</p></td>
 <td><p>Assign QAP rock names from CIPW normative mineral proportions.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#global_geochemistry.geochem.classification.igneous.tas" title="global_geochemistry.geochem.classification.igneous.tas"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tas</span></code></a>(data[, rock_category])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#global_geochemistry.geochem.classification.igneous.tas" title="global_geochemistry.geochem.classification.igneous.tas"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tas</span></code></a>(data[, rock_category])</p></td>
 <td><p>Classify igneous rocks using the Total Alkali–Silica diagram.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<dl class="py function">
+<dt class="sig sig-object py" id="global_geochemistry.geochem.classification.igneous.ca_thol_line">
+<span class="sig-prename descclassname"><span class="pre">global_geochemistry.geochem.classification.igneous.</span></span><span class="sig-name descname"><span class="pre">ca_thol_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tern</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'k'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/global_geochemistry/geochem/classification/igneous.html#ca_thol_line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#global_geochemistry.geochem.classification.igneous.ca_thol_line" title="Link to this definition">#</a></dt>
+<dd><p>Calc-alkaline vs. tholeiitic discrimination line.</p>
+<p>Computes FeOt-(Na2O+K2O)-MgO coordinates along an empirical
+polynomial boundary (fit over MgO 5-56 wt%) separating tholeiitic
+and calc-alkaline differentiation trends on an AFM-style ternary
+diagram.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tern</strong> (<a class="reference internal" href="global_geochemistry.plotting.ternary.html#global_geochemistry.plotting.ternary.ternary" title="global_geochemistry.plotting.ternary.ternary"><em>plotting.ternary.ternary</em></a><em>, </em><em>optional</em>) – If given, the line is also drawn via <code class="docutils literal notranslate"><span class="pre">tern.ternplot</span></code>.</p></li>
+<li><p><strong>color</strong> (<em>color spec</em><em>, </em><em>optional</em>)</p></li>
+<li><p><strong>**kwargs</strong> – Passed to <code class="docutils literal notranslate"><span class="pre">tern.ternplot</span></code>, if <cite>tern</cite> is given.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">FeO</span></code>, <code class="docutils literal notranslate"><span class="pre">A</span></code> (Na2O+K2O proxy), <code class="docutils literal notranslate"><span class="pre">MgO</span></code> coordinate arrays.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="global_geochemistry.geochem.classification.igneous.carbclass">
 <span class="sig-prename descclassname"><span class="pre">global_geochemistry.geochem.classification.igneous.</span></span><span class="sig-name descname"><span class="pre">carbclass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/global_geochemistry/geochem/classification/igneous.html#carbclass"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#global_geochemistry.geochem.classification.igneous.carbclass" title="Link to this definition">#</a></dt>
@@ -651,6 +697,7 @@ When None all samples receive volcanic names.</p></li>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global_geochemistry.geochem.classification.igneous.ca_thol_line"><code class="docutils literal notranslate"><span class="pre">ca_thol_line()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global_geochemistry.geochem.classification.igneous.carbclass"><code class="docutils literal notranslate"><span class="pre">carbclass()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global_geochemistry.geochem.classification.igneous.graniteclass"><code class="docutils literal notranslate"><span class="pre">graniteclass()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global_geochemistry.geochem.classification.igneous.mgnum"><code class="docutils literal notranslate"><span class="pre">mgnum()</span></code></a></li>

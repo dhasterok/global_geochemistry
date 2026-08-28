@@ -11,3 +11,4 @@ global\_geochemistry.modelling
    :recursive:
 
    inversion
+   regression

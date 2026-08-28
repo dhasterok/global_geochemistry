@@ -272,9 +272,11 @@
 <li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.classification.igneous.html">global_geochemistry.geochem.classification.igneous</a></li>
 <li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.classification.indices.html">global_geochemistry.geochem.classification.indices</a></li>
 <li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.classification.metamorphic.html">global_geochemistry.geochem.classification.metamorphic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.classification.rockgroup.html">global_geochemistry.geochem.classification.rockgroup</a></li>
 <li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.classification.sedimentary.html">global_geochemistry.geochem.classification.sedimentary</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.geochem.coda.html">global_geochemistry.geochem.coda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="global_geochemistry.geochem.el_v_el_plot.html">global_geochemistry.geochem.el_v_el_plot</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="global_geochemistry.geochem.fileio.html">global_geochemistry.geochem.fileio</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="global_geochemistry.geochem.fileio.database.html">global_geochemistry.geochem.fileio.database</a></li>
@@ -328,15 +330,31 @@
 <li class="toctree-l3"><a class="reference internal" href="global_geochemistry.modelling.inversion.models.html">global_geochemistry.modelling.inversion.models</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.modelling.regression.html">global_geochemistry.modelling.regression</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="global_geochemistry.multivariate.html">global_geochemistry.multivariate</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.multivariate.clustering.html">global_geochemistry.multivariate.clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.multivariate.pca.html">global_geochemistry.multivariate.pca</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="global_geochemistry.plotting.html">global_geochemistry.plotting</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="global_geochemistry.plotting.colormap.html">global_geochemistry.plotting.colormap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.plotting.histogram_colorbar.html">global_geochemistry.plotting.histogram_colorbar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="global_geochemistry.plotting.hp_velocity.html">global_geochemistry.plotting.hp_velocity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="global_geochemistry.plotting.radar.html">global_geochemistry.plotting.radar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="global_geochemistry.plotting.scatter.html">global_geochemistry.plotting.scatter</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">global_geochemistry.plotting.ternary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="global_geochemistry.plotting.whisker.html">global_geochemistry.plotting.whisker</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="global_geochemistry.stats.html">global_geochemistry.stats</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.stats.changepoint.html">global_geochemistry.stats.changepoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.stats.circular.html">global_geochemistry.stats.circular</a></li>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.stats.correlation.html">global_geochemistry.stats.correlation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.stats.kde_tools.html">global_geochemistry.stats.kde_tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.stats.outliers.html">global_geochemistry.stats.outliers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="global_geochemistry.stats.sampling.html">global_geochemistry.stats.sampling</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="global_geochemistry.tectonics.html">global_geochemistry.tectonics</a></li>
@@ -457,6 +475,12 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#global_geochemistry.plotting.ternary.ternary.cplanexy" title="global_geochemistry.plotting.ternary.ternary.cplanexy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cplanexy</span></code></a>(xd, yd, xp, yp, cp, x1, y1, cv1, ...)</p></td>
 <td><p>Fits a plane to (x,y,color) data</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#global_geochemistry.plotting.ternary.ternary.errorbar_tern" title="global_geochemistry.plotting.ternary.ternary.errorbar_tern"><code class="xref py py-obj docutils literal notranslate"><span class="pre">errorbar_tern</span></code></a>(A, B, C[, q, plot_type, color, ax])</p></td>
+<td><p>Plots an uncertainty region for ternary data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#global_geochemistry.plotting.ternary.ternary.gridtern" title="global_geochemistry.plotting.ternary.ternary.gridtern"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gridtern</span></code></a>(dt[, extend])</p></td>
+<td><p>Generates a triangular grid of ternary vertex coordinates.</p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#global_geochemistry.plotting.ternary.ternary.hexagon" title="global_geochemistry.plotting.ternary.ternary.hexagon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hexagon</span></code></a>(bins)</p></td>
 <td><p>Creates hexagonal bins within a ternary</p></td>
 </tr>
@@ -469,22 +493,37 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#global_geochemistry.plotting.ternary.ternary.terncolor" title="global_geochemistry.plotting.ternary.ternary.terncolor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">terncolor</span></code></a>(a, b, c[, ca, cb, cc, p, cp])</p></td>
 <td><p>Computes colors using a ternary colormap</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#global_geochemistry.plotting.ternary.ternary.terngrid" title="global_geochemistry.plotting.ternary.ternary.terngrid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">terngrid</span></code></a>([spacing])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#global_geochemistry.plotting.ternary.ternary.ternextend" title="global_geochemistry.plotting.ternary.ternary.ternextend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ternextend</span></code></a>(extend[, ax])</p></td>
+<td><p>Draws a widened ternary axes frame beyond the standard triangle.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#global_geochemistry.plotting.ternary.ternary.terngrid" title="global_geochemistry.plotting.ternary.ternary.terngrid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">terngrid</span></code></a>([spacing])</p></td>
 <td><p>Adds ternary grid lines to ternary axes.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#global_geochemistry.plotting.ternary.ternary.ternhex" title="global_geochemistry.plotting.ternary.ternary.ternhex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ternhex</span></code></a>([a, b, c, val, hexbin_df, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#global_geochemistry.plotting.ternary.ternary.ternhex" title="global_geochemistry.plotting.ternary.ternary.ternhex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ternhex</span></code></a>([a, b, c, val, hexbin_df, ...])</p></td>
 <td><p>Creates a heatmap from a set of hexgonal bins</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#global_geochemistry.plotting.ternary.ternary.ternpolygons" title="global_geochemistry.plotting.ternary.ternary.ternpolygons"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ternpolygons</span></code></a>(polygons[, labels, color, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#global_geochemistry.plotting.ternary.ternary.ternintersect" title="global_geochemistry.plotting.ternary.ternary.ternintersect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ternintersect</span></code></a>(a1, b1, c1, a2, b2, c2)</p></td>
+<td><p>Computes the intersection of two lines on the ternary diagram.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#global_geochemistry.plotting.ternary.ternary.ternplot" title="global_geochemistry.plotting.ternary.ternary.ternplot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ternplot</span></code></a>(a, b, c[, d, ax])</p></td>
+<td><p>Plots (line and/or marker) data on ternary axes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#global_geochemistry.plotting.ternary.ternary.ternpolygons" title="global_geochemistry.plotting.ternary.ternary.ternpolygons"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ternpolygons</span></code></a>(polygons[, labels, color, ...])</p></td>
 <td><p>Draw classification polygon boundaries on the ternary axes.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#global_geochemistry.plotting.ternary.ternary.ternscatter" title="global_geochemistry.plotting.ternary.ternary.ternscatter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ternscatter</span></code></a>(a, b, c[, d, size, cmap, color, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#global_geochemistry.plotting.ternary.ternary.ternscatter" title="global_geochemistry.plotting.ternary.ternary.ternscatter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ternscatter</span></code></a>(a, b, c[, d, size, cmap, color, ...])</p></td>
 <td><p>Scatter plot data on ternary axes.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#global_geochemistry.plotting.ternary.ternary.ternticks" title="global_geochemistry.plotting.ternary.ternary.ternticks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ternticks</span></code></a>([spacing])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#global_geochemistry.plotting.ternary.ternary.ternsurf" title="global_geochemistry.plotting.ternary.ternary.ternsurf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ternsurf</span></code></a>(a, b, c, val, dt[, extend, plot, ...])</p></td>
+<td><p>Computes (and optionally plots) a smoothed statistic surface.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#global_geochemistry.plotting.ternary.ternary.terntext" title="global_geochemistry.plotting.ternary.ternary.terntext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">terntext</span></code></a>(a, b, c, text[, ax])</p></td>
+<td><p>Places text at a ternary coordinate.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#global_geochemistry.plotting.ternary.ternary.ternticks" title="global_geochemistry.plotting.ternary.ternary.ternticks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ternticks</span></code></a>([spacing])</p></td>
 <td><p>Adds ternary tick marks to ternary axes.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#global_geochemistry.plotting.ternary.ternary.xy2tern" title="global_geochemistry.plotting.ternary.ternary.xy2tern"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xy2tern</span></code></a>(x, y)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#global_geochemistry.plotting.ternary.ternary.xy2tern" title="global_geochemistry.plotting.ternary.ternary.xy2tern"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xy2tern</span></code></a>(x, y)</p></td>
 <td><p>Converts cartesian (x,y) points to ternary (a,b,c) coordinates.</p></td>
 </tr>
 </tbody>
@@ -546,6 +585,65 @@ color of know points.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="global_geochemistry.plotting.ternary.ternary.errorbar_tern">
+<span class="sig-name descname"><span class="pre">errorbar_tern</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.025</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/global_geochemistry/plotting/ternary.html#ternary.errorbar_tern"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#global_geochemistry.plotting.ternary.ternary.errorbar_tern" title="Link to this definition">#</a></dt>
+<dd><p>Plots an uncertainty region for ternary data.</p>
+<p>Computes the <code class="docutils literal notranslate"><span class="pre">(q,</span> <span class="pre">0.5,</span> <span class="pre">1-q)</span></code> quantiles of each of A, B, C (or
+uses them directly if each is already a 3-element
+<code class="docutils literal notranslate"><span class="pre">[lower,</span> <span class="pre">median,</span> <span class="pre">upper]</span></code> sequence), then draws either crossed
+error bars (<code class="docutils literal notranslate"><span class="pre">'bar'</span></code>) or an uncertainty patch (<code class="docutils literal notranslate"><span class="pre">'patch'</span></code>)
+centered on the median.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> (<em>array_like</em>) – Raw data (quantiles computed internally), or 3-element
+<code class="docutils literal notranslate"><span class="pre">[lower,</span> <span class="pre">median,</span> <span class="pre">upper]</span></code> sequences to use directly.</p></li>
+<li><p><strong>B</strong> (<em>array_like</em>) – Raw data (quantiles computed internally), or 3-element
+<code class="docutils literal notranslate"><span class="pre">[lower,</span> <span class="pre">median,</span> <span class="pre">upper]</span></code> sequences to use directly.</p></li>
+<li><p><strong>C</strong> (<em>array_like</em>) – Raw data (quantiles computed internally), or 3-element
+<code class="docutils literal notranslate"><span class="pre">[lower,</span> <span class="pre">median,</span> <span class="pre">upper]</span></code> sequences to use directly.</p></li>
+<li><p><strong>q</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>, </em><em>optional</em>) – Lower/upper quantile level (paired with <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">-</span> <span class="pre">q</span></code>), by
+default 0.025.</p></li>
+<li><p><strong>plot_type</strong> (<em>{'bar'</em><em>, </em><em>'patch'</em><em>, </em><em>'none'}</em><em>, </em><em>optional</em>) – Drawing style, by default ‘bar’.</p></li>
+<li><p><strong>color</strong> (<em>color spec</em><em>, </em><em>optional</em>)</p></li>
+<li><p><strong>ax</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.11.1)"><em>matplotlib.axes.Axes</em></a><em>, </em><em>optional</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Aq, Bq, Cq</strong> – The <code class="docutils literal notranslate"><span class="pre">[lower,</span> <span class="pre">median,</span> <span class="pre">upper]</span></code> triplet used for each of A, B, C.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)">numpy.ndarray</a>, shape (3,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="global_geochemistry.plotting.ternary.ternary.gridtern">
+<span class="sig-name descname"><span class="pre">gridtern</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/global_geochemistry/plotting/ternary.html#ternary.gridtern"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#global_geochemistry.plotting.ternary.ternary.gridtern" title="Link to this definition">#</a></dt>
+<dd><p>Generates a triangular grid of ternary vertex coordinates.</p>
+<p>Builds the full set of (a, b, c) points on a uniform grid with
+spacing <cite>dt</cite> across the ternary simplex (optionally extended
+beyond it), converted to Cartesian coordinates. Used internally
+by <a class="reference internal" href="#global_geochemistry.plotting.ternary.ternary.ternsurf" title="global_geochemistry.plotting.ternary.ternary.ternsurf"><code class="xref py py-func docutils literal notranslate"><span class="pre">ternsurf()</span></code></a> to build the Delaunay triangulation mesh.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Grid spacing, as a fraction of the simplex (e.g. 0.05).</p></li>
+<li><p><strong>extend</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>, </em><em>optional</em>) – Extends the grid this far beyond the standard [0, 1] simplex
+(see <a class="reference internal" href="#global_geochemistry.plotting.ternary.ternary.ternextend" title="global_geochemistry.plotting.ternary.ternary.ternextend"><code class="xref py py-func docutils literal notranslate"><span class="pre">ternextend()</span></code></a>), by default 0 (no extension).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>xv, yv</strong> – Cartesian coordinates of the grid vertices.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)">numpy.ndarray</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -624,6 +722,32 @@ within the triangle.  Default color scheme is yellow-green-navy.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="global_geochemistry.plotting.ternary.ternary.ternextend">
+<span class="sig-name descname"><span class="pre">ternextend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extend</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/global_geochemistry/plotting/ternary.html#ternary.ternextend"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#global_geochemistry.plotting.ternary.ternary.ternextend" title="Link to this definition">#</a></dt>
+<dd><p>Draws a widened ternary axes frame beyond the standard triangle.</p>
+<p>Useful for displaying points that fall outside the closed [0, 1]
+ternary simplex (e.g. from an unclosed/extrapolated calculation).</p>
+<p>Note: this ports the outer frame of MATLAB’s <cite>ternextend.m</cite>
+exactly; the original’s internal decorative partial-gridlines
+(hand-tuned index arithmetic that does not generalize cleanly to
+arbitrary <cite>extend</cite> values) are not reproduced – call
+<a class="reference internal" href="#global_geochemistry.plotting.ternary.ternary.terngrid" title="global_geochemistry.plotting.ternary.ternary.terngrid"><code class="xref py py-func docutils literal notranslate"><span class="pre">terngrid()</span></code></a> separately for grid lines within the standard
+simplex.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>extend</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Amount to extend the triangle by, in the same units as the
+ternary axes (typically a small fraction, e.g. 0.1-0.5).</p></li>
+<li><p><strong>ax</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.11.1)"><em>matplotlib.axes.Axes</em></a><em>, </em><em>optional</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.11.1)">matplotlib.axes.Axes</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="global_geochemistry.plotting.ternary.ternary.terngrid">
 <span class="sig-name descname"><span class="pre">terngrid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spacing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/global_geochemistry/plotting/ternary.html#ternary.terngrid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#global_geochemistry.plotting.ternary.ternary.terngrid" title="Link to this definition">#</a></dt>
 <dd><p>Adds ternary grid lines to ternary axes.</p>
@@ -656,6 +780,60 @@ within the triangle.  Default color scheme is yellow-green-navy.</p>
 <li><p><strong>norm</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.colors.Norm.html#matplotlib.colors.Norm" title="(in Matplotlib v3.11.1)"><em>matplotlib.colors.Norm</em></a><em>, </em><em>optional</em>) – Normalize colormap</p></li>
 <li><p><strong>orientation</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>optional</em>) – orientation of colormap, <code class="docutils literal notranslate"><span class="pre">horizontal</span></code> or <code class="docutils literal notranslate"><span class="pre">vertical</span></code>, by default horizontal</p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="global_geochemistry.plotting.ternary.ternary.ternintersect">
+<span class="sig-name descname"><span class="pre">ternintersect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/global_geochemistry/plotting/ternary.html#ternary.ternintersect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#global_geochemistry.plotting.ternary.ternary.ternintersect" title="Link to this definition">#</a></dt>
+<dd><p>Computes the intersection of two lines on the ternary diagram.</p>
+<p>Line 1 runs through <code class="docutils literal notranslate"><span class="pre">(a1[0],</span> <span class="pre">b1[0],</span> <span class="pre">c1[0])</span></code> and
+<code class="docutils literal notranslate"><span class="pre">(a1[1],</span> <span class="pre">b1[1],</span> <span class="pre">c1[1])</span></code>; line 2 is defined the same way from
+its own endpoints.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a1</strong> (<em>array_like</em><em>, </em><em>length 2</em>) – Ternary coordinates of the two endpoints defining line 1.</p></li>
+<li><p><strong>b1</strong> (<em>array_like</em><em>, </em><em>length 2</em>) – Ternary coordinates of the two endpoints defining line 1.</p></li>
+<li><p><strong>c1</strong> (<em>array_like</em><em>, </em><em>length 2</em>) – Ternary coordinates of the two endpoints defining line 1.</p></li>
+<li><p><strong>a2</strong> (<em>array_like</em><em>, </em><em>length 2</em>) – Ternary coordinates of the two endpoints defining line 2.</p></li>
+<li><p><strong>b2</strong> (<em>array_like</em><em>, </em><em>length 2</em>) – Ternary coordinates of the two endpoints defining line 2.</p></li>
+<li><p><strong>c2</strong> (<em>array_like</em><em>, </em><em>length 2</em>) – Ternary coordinates of the two endpoints defining line 2.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ai, bi, ci</strong> – Ternary coordinates of the intersection point, normalized to
+the sum <code class="docutils literal notranslate"><span class="pre">a1[0]</span> <span class="pre">+</span> <span class="pre">b1[0]</span> <span class="pre">+</span> <span class="pre">c1[0]</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="global_geochemistry.plotting.ternary.ternary.ternplot">
+<span class="sig-name descname"><span class="pre">ternplot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/global_geochemistry/plotting/ternary.html#ternary.ternplot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#global_geochemistry.plotting.ternary.ternary.ternplot" title="Link to this definition">#</a></dt>
+<dd><p>Plots (line and/or marker) data on ternary axes.</p>
+<p>Thin ternary counterpart to <cite>matplotlib.axes.Axes.plot</cite> – unlike
+<cite>ternscatter</cite>, this connects points in array order and supports
+all of <cite>plot</cite>’s style/marker/linestyle options, making it
+suitable for boundary curves, discrimination lines, and
+error-bar crosses.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<em>array_like</em>) – Coordinates for the top, left, and right vertices, respectively.</p></li>
+<li><p><strong>b</strong> (<em>array_like</em>) – Coordinates for the top, left, and right vertices, respectively.</p></li>
+<li><p><strong>c</strong> (<em>array_like</em>) – Coordinates for the top, left, and right vertices, respectively.</p></li>
+<li><p><strong>d</strong> (<em>array_like</em><em>, </em><em>optional</em>) – Coordinate for the bottom vertex of a quaternary (diamond) plot.</p></li>
+<li><p><strong>ax</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.11.1)"><em>matplotlib.axes.Axes</em></a><em>, </em><em>optional</em>) – Defaults to this instance’s own axes.</p></li>
+<li><p><strong>**kwargs</strong> – Passed to <cite>Axes.plot</cite> (e.g. linestyle, color, marker).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a> of <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.lines.Line2D.html#matplotlib.lines.Line2D" title="(in Matplotlib v3.11.1)">matplotlib.lines.Line2D</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -708,6 +886,68 @@ to display a legend with values for labels, by default None</p></li>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>matplotlib.scatter_object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="global_geochemistry.plotting.ternary.ternary.ternsurf">
+<span class="sig-name descname"><span class="pre">ternsurf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'viridis'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/global_geochemistry/plotting/ternary.html#ternary.ternsurf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#global_geochemistry.plotting.ternary.ternary.ternsurf" title="Link to this definition">#</a></dt>
+<dd><p>Computes (and optionally plots) a smoothed statistic surface.</p>
+<p>Bins data into a Delaunay triangulation of the ternary simplex
+(grid spacing <cite>dt</cite>), computes the median, a robust spread (1.35x
+the interquartile range, approximating 1 std for a normal
+distribution), and log10(count) within each triangle, then
+interpolates those triangle-center statistics back onto the mesh
+vertices for a smooth flat-shaded surface – the ternary
+counterpart of a 2-D binned/smoothed map.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<em>array_like</em>) – Ternary coordinates of the data.</p></li>
+<li><p><strong>b</strong> (<em>array_like</em>) – Ternary coordinates of the data.</p></li>
+<li><p><strong>c</strong> (<em>array_like</em>) – Ternary coordinates of the data.</p></li>
+<li><p><strong>val</strong> (<em>array_like</em>) – Values to summarize within each triangular bin.</p></li>
+<li><p><strong>dt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Grid spacing (fraction of the simplex) for the triangulation.</p></li>
+<li><p><strong>extend</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>, </em><em>optional</em>) – Extend the triangulation beyond the standard simplex, by
+default 0.</p></li>
+<li><p><strong>plot</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em>, </em><em>optional</em>) – If True (default), draw median/spread/log-count panels via
+<cite>Axes.tripcolor</cite>. If False, only the statistics are computed
+and returned.</p></li>
+<li><p><strong>ax</strong> (<em>sequence</em><em> of </em><em>3 matplotlib.axes.Axes</em><em>, </em><em>optional</em>) – Existing (median, spread, count) axes to draw into; a new
+1x3 figure is created if not given.</p></li>
+<li><p><strong>cmap</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>optional</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">triangles</span></code> (vertex index array), <code class="docutils literal notranslate"><span class="pre">xv</span></code>/<code class="docutils literal notranslate"><span class="pre">yv</span></code> (mesh
+vertex coordinates), <code class="docutils literal notranslate"><span class="pre">median</span></code>/<code class="docutils literal notranslate"><span class="pre">spread</span></code>/<code class="docutils literal notranslate"><span class="pre">log_n</span></code>
+(per-vertex smoothed statistics), and – if <cite>plot</cite> –
+<code class="docutils literal notranslate"><span class="pre">axes</span></code> (the three Axes used).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="global_geochemistry.plotting.ternary.ternary.terntext">
+<span class="sig-name descname"><span class="pre">terntext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/global_geochemistry/plotting/ternary.html#ternary.terntext"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#global_geochemistry.plotting.ternary.ternary.terntext" title="Link to this definition">#</a></dt>
+<dd><p>Places text at a ternary coordinate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em> or </em><em>array_like</em>) – Ternary coordinates for the top, left, and right vertices.</p></li>
+<li><p><strong>b</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em> or </em><em>array_like</em>) – Ternary coordinates for the top, left, and right vertices.</p></li>
+<li><p><strong>c</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em> or </em><em>array_like</em>) – Ternary coordinates for the top, left, and right vertices.</p></li>
+<li><p><strong>text</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Text to place.</p></li>
+<li><p><strong>ax</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.11.1)"><em>matplotlib.axes.Axes</em></a><em>, </em><em>optional</em>)</p></li>
+<li><p><strong>**kwargs</strong> – Passed to <cite>Axes.text</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://matplotlib.org/stable/api/text_api.html#matplotlib.text.Text" title="(in Matplotlib v3.11.1)">matplotlib.text.Text</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -794,14 +1034,21 @@ the Cartesian origin is defined at the midpoint between b and c.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global_geochemistry.plotting.ternary.ternary"><code class="docutils literal notranslate"><span class="pre">ternary</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global_geochemistry.plotting.ternary.ternary.cplane"><code class="docutils literal notranslate"><span class="pre">ternary.cplane()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global_geochemistry.plotting.ternary.ternary.cplanexy"><code class="docutils literal notranslate"><span class="pre">ternary.cplanexy()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global_geochemistry.plotting.ternary.ternary.errorbar_tern"><code class="docutils literal notranslate"><span class="pre">ternary.errorbar_tern()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global_geochemistry.plotting.ternary.ternary.gridtern"><code class="docutils literal notranslate"><span class="pre">ternary.gridtern()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global_geochemistry.plotting.ternary.ternary.hexagon"><code class="docutils literal notranslate"><span class="pre">ternary.hexagon()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global_geochemistry.plotting.ternary.ternary.tern2xy"><code class="docutils literal notranslate"><span class="pre">ternary.tern2xy()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global_geochemistry.plotting.ternary.ternary.ternaxes"><code class="docutils literal notranslate"><span class="pre">ternary.ternaxes()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global_geochemistry.plotting.ternary.ternary.terncolor"><code class="docutils literal notranslate"><span class="pre">ternary.terncolor()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global_geochemistry.plotting.ternary.ternary.ternextend"><code class="docutils literal notranslate"><span class="pre">ternary.ternextend()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global_geochemistry.plotting.ternary.ternary.terngrid"><code class="docutils literal notranslate"><span class="pre">ternary.terngrid()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global_geochemistry.plotting.ternary.ternary.ternhex"><code class="docutils literal notranslate"><span class="pre">ternary.ternhex()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global_geochemistry.plotting.ternary.ternary.ternintersect"><code class="docutils literal notranslate"><span class="pre">ternary.ternintersect()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global_geochemistry.plotting.ternary.ternary.ternplot"><code class="docutils literal notranslate"><span class="pre">ternary.ternplot()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global_geochemistry.plotting.ternary.ternary.ternpolygons"><code class="docutils literal notranslate"><span class="pre">ternary.ternpolygons()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global_geochemistry.plotting.ternary.ternary.ternscatter"><code class="docutils literal notranslate"><span class="pre">ternary.ternscatter()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global_geochemistry.plotting.ternary.ternary.ternsurf"><code class="docutils literal notranslate"><span class="pre">ternary.ternsurf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global_geochemistry.plotting.ternary.ternary.terntext"><code class="docutils literal notranslate"><span class="pre">ternary.terntext()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global_geochemistry.plotting.ternary.ternary.ternticks"><code class="docutils literal notranslate"><span class="pre">ternary.ternticks()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global_geochemistry.plotting.ternary.ternary.xy2tern"><code class="docutils literal notranslate"><span class="pre">ternary.xy2tern()</span></code></a></li>
 </ul>

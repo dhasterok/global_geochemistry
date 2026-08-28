@@ -8,6 +8,7 @@ global\_geochemistry.geochem.classification.igneous
 
    .. autosummary::
    
+      ca_thol_line
       carbclass
       graniteclass
       mgnum

@@ -11,6 +11,7 @@ global\_geochemistry.geochem
    :recursive:
 
    classification
+   coda
    el_v_el_plot
    fileio
    physprop

@@ -332,6 +332,7 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">curve_fit</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.special</span><span class="w"> </span><span class="kn">import</span> <span class="n">erf</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span><span class="p">,</span> <span class="n">maxwell</span>
 
 
 <span class="c1"># ---------------------------------------------------------------------------</span>
@@ -448,6 +449,268 @@
     <span class="k">if</span> <span class="n">p0</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">p0</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmedian</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">finite</span><span class="p">])),</span> <span class="mf">1.0</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">lognormal_forward</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="n">finite</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">finite</span><span class="p">],</span> <span class="n">p0</span><span class="o">=</span><span class="n">p0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Gaussian (normal) probability density model</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="gaussian_forward">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.modelling.inversion.models.html#global_geochemistry.modelling.inversion.models.gaussian_forward">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">gaussian_forward</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gaussian PDF forward model: y = norm.pdf(x, mu, sigma).&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="gaussian_jac">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.modelling.inversion.models.html#global_geochemistry.modelling.inversion.models.gaussian_jac">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">gaussian_jac</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Jacobian of gaussian_forward w.r.t. (mu, sigma).</span>
+
+<span class="sd">    Returns an (N, 2) array: [dy/dmu, dy/dsigma].</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">var</span> <span class="o">=</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">mu</span>
+    <span class="n">arg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">u</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">var</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+    <span class="n">dydmu</span> <span class="o">=</span> <span class="n">u</span> <span class="o">*</span> <span class="n">arg</span> <span class="o">/</span> <span class="p">(</span><span class="n">sigma</span> <span class="o">*</span> <span class="n">var</span><span class="p">)</span>
+    <span class="n">dydsigma</span> <span class="o">=</span> <span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">var</span><span class="p">)</span> <span class="o">*</span> <span class="n">arg</span> <span class="o">/</span> <span class="n">var</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">dydmu</span><span class="p">,</span> <span class="n">dydsigma</span><span class="p">])</span></div>
+
+
+
+<div class="viewcode-block" id="fit_gaussian">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.modelling.inversion.models.html#global_geochemistry.modelling.inversion.models.fit_gaussian">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">fit_gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">p0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fit a Gaussian PDF model to (x, y) data.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x, y : array-like</span>
+<span class="sd">    p0 : (mu0, sigma0), optional</span>
+<span class="sd">        Initial parameter guess. Defaults to the mean/std of `x` weighted</span>
+<span class="sd">        by `y` (i.e. estimated directly from where the density is</span>
+<span class="sd">        concentrated, not from `x` alone -- using `mean(x)` as the mu0</span>
+<span class="sd">        guess fails whenever `x` happens to be symmetric about a value</span>
+<span class="sd">        other than the true peak).</span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        Forwarded to :func:`scipy.optimize.curve_fit`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    popt : ndarray, shape (2,)</span>
+<span class="sd">        Optimal (mu, sigma).</span>
+<span class="sd">    pcov : ndarray, shape (2, 2)</span>
+<span class="sd">        Covariance of popt.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">float</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">p0</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">w</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">mu0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">w</span><span class="p">)</span>
+            <span class="n">sigma0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">mu0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">w</span><span class="p">))</span> <span class="ow">or</span> <span class="mf">1.0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">mu0</span><span class="p">,</span> <span class="n">sigma0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nanstd</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="ow">or</span> <span class="mf">1.0</span>
+        <span class="n">p0</span> <span class="o">=</span> <span class="p">[</span><span class="n">mu0</span><span class="p">,</span> <span class="n">sigma0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">gaussian_forward</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">p0</span><span class="o">=</span><span class="n">p0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Maxwell-Boltzmann probability density model</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="maxwell_forward">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.modelling.inversion.models.html#global_geochemistry.modelling.inversion.models.maxwell_forward">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">maxwell_forward</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Maxwell-Boltzmann PDF forward model: y = maxwell.pdf(x, scale=a).&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">maxwell</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">a</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="maxwell_jac">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.modelling.inversion.models.html#global_geochemistry.modelling.inversion.models.maxwell_jac">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">maxwell_jac</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Jacobian of maxwell_forward w.r.t. the scale parameter a.</span>
+
+<span class="sd">    Returns an (N, 1) array: [dy/da].</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">dyda</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="n">a</span><span class="o">**-</span><span class="mi">6</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">a</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">a</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dyda</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="fit_maxwell">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.modelling.inversion.models.html#global_geochemistry.modelling.inversion.models.fit_maxwell">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">fit_maxwell</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">p0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fit a Maxwell-Boltzmann PDF model to (x, y) data.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x, y : array-like</span>
+<span class="sd">    p0 : (a0,), optional</span>
+<span class="sd">        Initial scale-parameter guess. Defaults to an estimate from the</span>
+<span class="sd">        mean of `x` weighted by `y` (the density&#39;s concentration), using</span>
+<span class="sd">        the Maxwell-Boltzmann mean-to-scale relation ``mean = 2*a*sqrt(2/pi)``.</span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        Forwarded to :func:`scipy.optimize.curve_fit`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    popt : ndarray, shape (1,)</span>
+<span class="sd">        Optimal scale parameter a.</span>
+<span class="sd">    pcov : ndarray, shape (1, 1)</span>
+<span class="sd">        Covariance of popt.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">float</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">p0</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">w</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">mean0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">w</span><span class="p">)</span>
+            <span class="n">a0</span> <span class="o">=</span> <span class="n">mean0</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">a0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanstd</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="ow">or</span> <span class="mf">1.0</span>
+        <span class="n">p0</span> <span class="o">=</span> <span class="p">[</span><span class="n">a0</span> <span class="ow">or</span> <span class="mf">1.0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">maxwell_forward</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">p0</span><span class="o">=</span><span class="n">p0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Thermal conductivity vs. anorthite content and temperature</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="tc_forward">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.modelling.inversion.models.html#global_geochemistry.modelling.inversion.models.tc_forward">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">tc_forward</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">m3</span><span class="p">,</span> <span class="n">m4</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Thermal conductivity forward model.</span>
+
+<span class="sd">    k = (m1 + m2*An + m3*An^2) * (298 / T)^m4</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    X : array-like, shape (2, N)</span>
+<span class="sd">        Stacked independent variables ``[An, T]``: molar fraction</span>
+<span class="sd">        anorthite content and temperature in Kelvin.</span>
+<span class="sd">    m1, m2, m3 : float</span>
+<span class="sd">        Quadratic-in-An coefficients for thermal conductivity at 298 K.</span>
+<span class="sd">    m4 : float</span>
+<span class="sd">        Temperature power-law exponent.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">an</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="n">X</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">m1</span> <span class="o">+</span> <span class="n">m2</span> <span class="o">*</span> <span class="n">an</span> <span class="o">+</span> <span class="n">m3</span> <span class="o">*</span> <span class="n">an</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">298.0</span> <span class="o">/</span> <span class="n">T</span><span class="p">)</span><span class="o">**</span><span class="n">m4</span></div>
+
+
+
+<div class="viewcode-block" id="tc_jac">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.modelling.inversion.models.html#global_geochemistry.modelling.inversion.models.tc_jac">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">tc_jac</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">m3</span><span class="p">,</span> <span class="n">m4</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Jacobian of tc_forward w.r.t. (m1, m2, m3, m4).</span>
+
+<span class="sd">    Returns an (N, 4) array.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">an</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="n">X</span>
+    <span class="n">base</span> <span class="o">=</span> <span class="p">(</span><span class="mf">298.0</span> <span class="o">/</span> <span class="n">T</span><span class="p">)</span><span class="o">**</span><span class="n">m4</span>
+    <span class="n">dm1</span> <span class="o">=</span> <span class="n">base</span>
+    <span class="n">dm2</span> <span class="o">=</span> <span class="n">an</span> <span class="o">*</span> <span class="n">base</span>
+    <span class="n">dm3</span> <span class="o">=</span> <span class="n">an</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">base</span>
+    <span class="n">dm4</span> <span class="o">=</span> <span class="p">(</span><span class="n">m1</span> <span class="o">+</span> <span class="n">m2</span> <span class="o">*</span> <span class="n">an</span> <span class="o">+</span> <span class="n">m3</span> <span class="o">*</span> <span class="n">an</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">base</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">298.0</span> <span class="o">/</span> <span class="n">T</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">dm1</span><span class="p">,</span> <span class="n">dm2</span><span class="p">,</span> <span class="n">dm3</span><span class="p">,</span> <span class="n">dm4</span><span class="p">])</span></div>
+
+
+
+<div class="viewcode-block" id="fit_tc">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.modelling.inversion.models.html#global_geochemistry.modelling.inversion.models.fit_tc">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">fit_tc</span><span class="p">(</span><span class="n">an</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">p0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fit the thermal conductivity model to (An, T, k) data.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    an : array-like</span>
+<span class="sd">        Molar fraction anorthite content.</span>
+<span class="sd">    T : array-like</span>
+<span class="sd">        Temperature, K.</span>
+<span class="sd">    k : array-like</span>
+<span class="sd">        Thermal conductivity, W m^-1 K^-1.</span>
+<span class="sd">    p0 : (m1, m2, m3, m4), optional</span>
+<span class="sd">        Initial parameter guess. Defaults to ``(mean(k), 0, 0, 1)``.</span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        Forwarded to :func:`scipy.optimize.curve_fit`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    popt : ndarray, shape (4,)</span>
+<span class="sd">        Optimal (m1, m2, m3, m4).</span>
+<span class="sd">    pcov : ndarray, shape (4, 4)</span>
+<span class="sd">        Covariance of popt.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">an</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">an</span><span class="p">,</span> <span class="nb">float</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="nb">float</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">an</span><span class="p">,</span> <span class="n">T</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">p0</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">p0</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">tc_forward</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">p0</span><span class="o">=</span><span class="n">p0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="tc_plot">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.modelling.inversion.models.html#global_geochemistry.modelling.inversion.models.tc_plot">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">tc_plot</span><span class="p">(</span><span class="n">an</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">popt</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plots thermal conductivity vs. anorthite content and temperature.</span>
+
+<span class="sd">    Left panel shows k vs. An at 298 K; right panel shows k vs. T colored</span>
+<span class="sd">    by An. If `popt` (from :func:`fit_tc`) is given, the fitted model curve</span>
+<span class="sd">    is overlaid on the left panel at 298 K.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    an : array-like</span>
+<span class="sd">        Molar fraction anorthite content.</span>
+<span class="sd">    T : array-like</span>
+<span class="sd">        Temperature, K.</span>
+<span class="sd">    k : array-like</span>
+<span class="sd">        Thermal conductivity, W m^-1 K^-1.</span>
+<span class="sd">    popt : array-like, shape (4,), optional</span>
+<span class="sd">        Fitted (m1, m2, m3, m4) from :func:`fit_tc`, overlaid at T=298 K.</span>
+<span class="sd">    axes : (matplotlib.axes.Axes, matplotlib.axes.Axes), optional</span>
+<span class="sd">        Existing (left, right) axes to draw into; a new figure is created</span>
+<span class="sd">        if not given.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    (matplotlib.axes.Axes, matplotlib.axes.Axes)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+    <span class="n">an</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">an</span><span class="p">,</span> <span class="nb">float</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="nb">float</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">axes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">))</span>
+    <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">axes</span>
+
+    <span class="n">ind</span> <span class="o">=</span> <span class="n">T</span> <span class="o">==</span> <span class="mi">298</span>
+    <span class="n">sc1</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">an</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">k</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">an</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;winter&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">popt</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">an_line</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="n">k_line</span> <span class="o">=</span> <span class="n">tc_forward</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">an_line</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">an_line</span><span class="p">,</span> <span class="mf">298.0</span><span class="p">)]),</span> <span class="o">*</span><span class="n">popt</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">an_line</span><span class="p">,</span> <span class="n">k_line</span><span class="p">,</span> <span class="s1">&#39;k-&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sc1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;An&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;% Anorthite&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Thermal Conductivity [W/m/K]&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_box_aspect</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">sc2</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">an</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;winter&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sc2</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;An&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Temperature [K]&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Thermal conductivity [W/m/K]&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="mi">700</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_box_aspect</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span></div>
 
 </pre></div>
 

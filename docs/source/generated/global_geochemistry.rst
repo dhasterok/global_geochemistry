@@ -14,6 +14,8 @@
    geophys
    maptools
    modelling
+   multivariate
    plotting
+   stats
    tectonics
    utils

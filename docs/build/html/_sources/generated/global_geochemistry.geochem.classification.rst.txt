@@ -14,4 +14,5 @@ global\_geochemistry.geochem.classification
    igneous
    indices
    metamorphic
+   rockgroup
    sedimentary

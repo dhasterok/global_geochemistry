@@ -1044,6 +1044,384 @@
         <span class="k">return</span> <span class="n">cval</span></div>
 
 
+<div class="viewcode-block" id="ternary.ternplot">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.plotting.ternary.html#global_geochemistry.plotting.ternary.ternary.ternplot">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ternplot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Plots (line and/or marker) data on ternary axes.</span>
+
+<span class="sd">        Thin ternary counterpart to `matplotlib.axes.Axes.plot` -- unlike</span>
+<span class="sd">        `ternscatter`, this connects points in array order and supports</span>
+<span class="sd">        all of `plot`&#39;s style/marker/linestyle options, making it</span>
+<span class="sd">        suitable for boundary curves, discrimination lines, and</span>
+<span class="sd">        error-bar crosses.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        a, b, c : array_like</span>
+<span class="sd">            Coordinates for the top, left, and right vertices, respectively.</span>
+<span class="sd">        d : array_like, optional</span>
+<span class="sd">            Coordinate for the bottom vertex of a quaternary (diamond) plot.</span>
+<span class="sd">        ax : matplotlib.axes.Axes, optional</span>
+<span class="sd">            Defaults to this instance&#39;s own axes.</span>
+<span class="sd">        **kwargs</span>
+<span class="sd">            Passed to `Axes.plot` (e.g. linestyle, color, marker).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list of matplotlib.lines.Line2D</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">ax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span>
+
+        <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">))</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">))</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">d</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tern2xy</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">))</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+            <span class="n">ind</span> <span class="o">=</span> <span class="n">d</span> <span class="o">&gt;</span> <span class="mi">0</span>
+            <span class="n">x</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tern2xy</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="o">~</span><span class="n">ind</span><span class="p">])</span>
+            <span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tern2xy</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="n">ind</span><span class="p">])</span>
+            <span class="n">y</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">y</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ternary.terntext">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.plotting.ternary.html#global_geochemistry.plotting.ternary.ternary.terntext">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">terntext</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Places text at a ternary coordinate.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        a, b, c : float or array_like</span>
+<span class="sd">            Ternary coordinates for the top, left, and right vertices.</span>
+<span class="sd">        text : str</span>
+<span class="sd">            Text to place.</span>
+<span class="sd">        ax : matplotlib.axes.Axes, optional</span>
+<span class="sd">        **kwargs</span>
+<span class="sd">            Passed to `Axes.text`.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        matplotlib.text.Text</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">ax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tern2xy</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ternary.ternintersect">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.plotting.ternary.html#global_geochemistry.plotting.ternary.ternary.ternintersect">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ternintersect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a1</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">c2</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Computes the intersection of two lines on the ternary diagram.</span>
+
+<span class="sd">        Line 1 runs through ``(a1[0], b1[0], c1[0])`` and</span>
+<span class="sd">        ``(a1[1], b1[1], c1[1])``; line 2 is defined the same way from</span>
+<span class="sd">        its own endpoints.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        a1, b1, c1 : array_like, length 2</span>
+<span class="sd">            Ternary coordinates of the two endpoints defining line 1.</span>
+<span class="sd">        a2, b2, c2 : array_like, length 2</span>
+<span class="sd">            Ternary coordinates of the two endpoints defining line 2.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ai, bi, ci : float</span>
+<span class="sd">            Ternary coordinates of the intersection point, normalized to</span>
+<span class="sd">            the sum ``a1[0] + b1[0] + c1[0]``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">a1</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">c1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="nb">float</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">b1</span><span class="p">,</span> <span class="nb">float</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
+        <span class="n">a2</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">a2</span><span class="p">,</span> <span class="nb">float</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">b2</span><span class="p">,</span> <span class="nb">float</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">c2</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
+
+        <span class="n">s</span> <span class="o">=</span> <span class="n">a1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">b1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">c1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tern2xy</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">c1</span><span class="p">)</span>
+        <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tern2xy</span><span class="p">(</span><span class="n">a2</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">c2</span><span class="p">)</span>
+
+        <span class="n">m11</span> <span class="o">=</span> <span class="p">(</span><span class="n">y1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">y1</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">x1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x1</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">m12</span> <span class="o">=</span> <span class="o">-</span><span class="n">m11</span> <span class="o">*</span> <span class="n">x1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">y1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">m21</span> <span class="o">=</span> <span class="p">(</span><span class="n">y2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">y2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">x2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">m22</span> <span class="o">=</span> <span class="o">-</span><span class="n">m21</span> <span class="o">*</span> <span class="n">x2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">y2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">xi</span> <span class="o">=</span> <span class="p">(</span><span class="n">m22</span> <span class="o">-</span> <span class="n">m12</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">m11</span> <span class="o">-</span> <span class="n">m21</span><span class="p">)</span>
+        <span class="n">yi</span> <span class="o">=</span> <span class="n">m11</span> <span class="o">*</span> <span class="n">xi</span> <span class="o">+</span> <span class="n">m12</span>
+
+        <span class="n">ai</span><span class="p">,</span> <span class="n">bi</span><span class="p">,</span> <span class="n">ci</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xy2tern</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span> <span class="n">yi</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ai</span> <span class="o">*</span> <span class="n">s</span><span class="p">,</span> <span class="n">bi</span> <span class="o">*</span> <span class="n">s</span><span class="p">,</span> <span class="n">ci</span> <span class="o">*</span> <span class="n">s</span></div>
+
+
+<div class="viewcode-block" id="ternary.gridtern">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.plotting.ternary.html#global_geochemistry.plotting.ternary.ternary.gridtern">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">gridtern</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generates a triangular grid of ternary vertex coordinates.</span>
+
+<span class="sd">        Builds the full set of (a, b, c) points on a uniform grid with</span>
+<span class="sd">        spacing `dt` across the ternary simplex (optionally extended</span>
+<span class="sd">        beyond it), converted to Cartesian coordinates. Used internally</span>
+<span class="sd">        by :func:`ternsurf` to build the Delaunay triangulation mesh.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        dt : float</span>
+<span class="sd">            Grid spacing, as a fraction of the simplex (e.g. 0.05).</span>
+<span class="sd">        extend : float, optional</span>
+<span class="sd">            Extends the grid this far beyond the standard [0, 1] simplex</span>
+<span class="sd">            (see :func:`ternextend`), by default 0 (no extension).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        xv, yv : numpy.ndarray</span>
+<span class="sd">            Cartesian coordinates of the grid vertices.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">dt</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+        <span class="n">tv</span> <span class="o">=</span> <span class="p">[(</span><span class="n">gi</span><span class="p">,</span> <span class="n">gj</span><span class="p">,</span> <span class="n">gk</span><span class="p">)</span> <span class="k">for</span> <span class="n">gi</span> <span class="ow">in</span> <span class="n">g</span> <span class="k">for</span> <span class="n">gj</span> <span class="ow">in</span> <span class="n">g</span> <span class="k">for</span> <span class="n">gk</span> <span class="ow">in</span> <span class="n">g</span>
+              <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">gi</span> <span class="o">+</span> <span class="n">gj</span> <span class="o">+</span> <span class="n">gk</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mf">0.001</span> <span class="o">*</span> <span class="n">dt</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">extend</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">ga</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="n">extend</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+            <span class="n">gbc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">extend</span> <span class="o">+</span> <span class="n">dt</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+            <span class="n">tv</span> <span class="o">+=</span> <span class="p">[(</span><span class="n">gi</span><span class="p">,</span> <span class="n">gj</span><span class="p">,</span> <span class="n">gk</span><span class="p">)</span> <span class="k">for</span> <span class="n">gi</span> <span class="ow">in</span> <span class="n">ga</span> <span class="k">for</span> <span class="n">gj</span> <span class="ow">in</span> <span class="n">gbc</span> <span class="k">for</span> <span class="n">gk</span> <span class="ow">in</span> <span class="n">gbc</span>
+                   <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">gi</span> <span class="o">+</span> <span class="n">gj</span> <span class="o">+</span> <span class="n">gk</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mf">0.001</span> <span class="o">*</span> <span class="n">dt</span><span class="p">]</span>
+
+        <span class="n">tv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tv</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tern2xy</span><span class="p">(</span><span class="n">tv</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">tv</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">tv</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="ternary.ternextend">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.plotting.ternary.html#global_geochemistry.plotting.ternary.ternary.ternextend">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ternextend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extend</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Draws a widened ternary axes frame beyond the standard triangle.</span>
+
+<span class="sd">        Useful for displaying points that fall outside the closed [0, 1]</span>
+<span class="sd">        ternary simplex (e.g. from an unclosed/extrapolated calculation).</span>
+
+<span class="sd">        Note: this ports the outer frame of MATLAB&#39;s `ternextend.m`</span>
+<span class="sd">        exactly; the original&#39;s internal decorative partial-gridlines</span>
+<span class="sd">        (hand-tuned index arithmetic that does not generalize cleanly to</span>
+<span class="sd">        arbitrary `extend` values) are not reproduced -- call</span>
+<span class="sd">        :func:`terngrid` separately for grid lines within the standard</span>
+<span class="sd">        simplex.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        extend : float</span>
+<span class="sd">            Amount to extend the triangle by, in the same units as the</span>
+<span class="sd">            ternary axes (typically a small fraction, e.g. 0.1-0.5).</span>
+<span class="sd">        ax : matplotlib.axes.Axes, optional</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        matplotlib.axes.Axes</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">ax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span>
+
+        <span class="n">w</span> <span class="o">=</span> <span class="n">extend</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">w</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">extend</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">extend</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">6</span><span class="p">)</span>
+
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="n">w</span><span class="p">,</span> <span class="o">-</span><span class="n">u</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">w</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;k-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">ax</span></div>
+
+
+<div class="viewcode-block" id="ternary.ternsurf">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.plotting.ternary.html#global_geochemistry.plotting.ternary.ternary.ternsurf">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ternsurf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Computes (and optionally plots) a smoothed statistic surface.</span>
+
+<span class="sd">        Bins data into a Delaunay triangulation of the ternary simplex</span>
+<span class="sd">        (grid spacing `dt`), computes the median, a robust spread (1.35x</span>
+<span class="sd">        the interquartile range, approximating 1 std for a normal</span>
+<span class="sd">        distribution), and log10(count) within each triangle, then</span>
+<span class="sd">        interpolates those triangle-center statistics back onto the mesh</span>
+<span class="sd">        vertices for a smooth flat-shaded surface -- the ternary</span>
+<span class="sd">        counterpart of a 2-D binned/smoothed map.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        a, b, c : array_like</span>
+<span class="sd">            Ternary coordinates of the data.</span>
+<span class="sd">        val : array_like</span>
+<span class="sd">            Values to summarize within each triangular bin.</span>
+<span class="sd">        dt : float</span>
+<span class="sd">            Grid spacing (fraction of the simplex) for the triangulation.</span>
+<span class="sd">        extend : float, optional</span>
+<span class="sd">            Extend the triangulation beyond the standard simplex, by</span>
+<span class="sd">            default 0.</span>
+<span class="sd">        plot : bool, optional</span>
+<span class="sd">            If True (default), draw median/spread/log-count panels via</span>
+<span class="sd">            `Axes.tripcolor`. If False, only the statistics are computed</span>
+<span class="sd">            and returned.</span>
+<span class="sd">        ax : sequence of 3 matplotlib.axes.Axes, optional</span>
+<span class="sd">            Existing (median, spread, count) axes to draw into; a new</span>
+<span class="sd">            1x3 figure is created if not given.</span>
+<span class="sd">        cmap : str, optional</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+<span class="sd">            ``triangles`` (vertex index array), ``xv``/``yv`` (mesh</span>
+<span class="sd">            vertex coordinates), ``median``/``spread``/``log_n``</span>
+<span class="sd">            (per-vertex smoothed statistics), and -- if `plot` --</span>
+<span class="sd">            ``axes`` (the three Axes used).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.spatial</span><span class="w"> </span><span class="kn">import</span> <span class="n">Delaunay</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.interpolate</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearNDInterpolator</span><span class="p">,</span> <span class="n">NearestNDInterpolator</span>
+
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">val</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">val</span><span class="p">))</span>
+
+        <span class="n">xv</span><span class="p">,</span> <span class="n">yv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gridtern</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="n">extend</span><span class="p">)</span>
+        <span class="n">tri</span> <span class="o">=</span> <span class="n">Delaunay</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">xv</span><span class="p">,</span> <span class="n">yv</span><span class="p">]))</span><span class="o">.</span><span class="n">simplices</span>
+
+        <span class="c1"># drop near-zero-area slivers introduced by roundoff at the mesh edges</span>
+        <span class="n">area0</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="nb">abs</span><span class="p">(</span><span class="n">dt</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">3</span><span class="p">))</span>
+        <span class="n">tri_area</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span>
+            <span class="p">(</span><span class="n">xv</span><span class="p">[</span><span class="n">tri</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">-</span> <span class="n">xv</span><span class="p">[</span><span class="n">tri</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]])</span> <span class="o">*</span> <span class="p">(</span><span class="n">yv</span><span class="p">[</span><span class="n">tri</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]]</span> <span class="o">-</span> <span class="n">yv</span><span class="p">[</span><span class="n">tri</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]])</span>
+            <span class="o">-</span> <span class="p">(</span><span class="n">xv</span><span class="p">[</span><span class="n">tri</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]]</span> <span class="o">-</span> <span class="n">xv</span><span class="p">[</span><span class="n">tri</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]])</span> <span class="o">*</span> <span class="p">(</span><span class="n">yv</span><span class="p">[</span><span class="n">tri</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">-</span> <span class="n">yv</span><span class="p">[</span><span class="n">tri</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]])</span>
+        <span class="p">)</span>
+        <span class="n">tri</span> <span class="o">=</span> <span class="n">tri</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">tri_area</span> <span class="o">-</span> <span class="n">area0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mf">1e-3</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">]</span>
+
+        <span class="n">valid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="n">xp</span><span class="p">,</span> <span class="n">yp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tern2xy</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">valid</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="n">valid</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="n">valid</span><span class="p">])</span>
+        <span class="n">vp</span> <span class="o">=</span> <span class="n">val</span><span class="p">[</span><span class="n">valid</span><span class="p">]</span>
+
+        <span class="n">n_tri</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tri</span><span class="p">)</span>
+        <span class="n">med</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n_tri</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+        <span class="n">spread</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n_tri</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+        <span class="n">log_n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n_tri</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tri</span><span class="p">):</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">xv</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="n">yv</span><span class="p">[</span><span class="n">t</span><span class="p">]]))</span>
+            <span class="n">inside</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">contains_points</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">xp</span><span class="p">,</span> <span class="n">yp</span><span class="p">]))</span>
+            <span class="n">vals_in</span> <span class="o">=</span> <span class="n">vp</span><span class="p">[</span><span class="n">inside</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">inside</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">log_n</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">inside</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">vals_in</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">q25</span><span class="p">,</span> <span class="n">q50</span><span class="p">,</span> <span class="n">q75</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">vals_in</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">])</span>
+                <span class="n">med</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">q50</span>
+                <span class="n">spread</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">q75</span> <span class="o">-</span> <span class="n">q25</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.35</span>
+
+        <span class="n">xc</span> <span class="o">=</span> <span class="n">xv</span><span class="p">[</span><span class="n">tri</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">yc</span> <span class="o">=</span> <span class="n">yv</span><span class="p">[</span><span class="n">tri</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">_interpolate</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+            <span class="c1"># scipy&#39;s LinearNDInterpolator, unlike MATLAB&#39;s scatteredInterpolant,</span>
+            <span class="c1"># returns NaN outside the convex hull of the triangle centroids</span>
+            <span class="c1"># rather than extrapolating -- fall back to nearest-neighbor for</span>
+            <span class="c1"># those points so the mesh edges/corners aren&#39;t left as gaps.</span>
+            <span class="n">finite</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+            <span class="n">centers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">xc</span><span class="p">[</span><span class="n">finite</span><span class="p">],</span> <span class="n">yc</span><span class="p">[</span><span class="n">finite</span><span class="p">]])</span>
+            <span class="n">linear</span> <span class="o">=</span> <span class="n">LinearNDInterpolator</span><span class="p">(</span><span class="n">centers</span><span class="p">,</span> <span class="n">values</span><span class="p">[</span><span class="n">finite</span><span class="p">])</span>
+            <span class="n">nearest</span> <span class="o">=</span> <span class="n">NearestNDInterpolator</span><span class="p">(</span><span class="n">centers</span><span class="p">,</span> <span class="n">values</span><span class="p">[</span><span class="n">finite</span><span class="p">])</span>
+
+            <span class="n">out</span> <span class="o">=</span> <span class="n">linear</span><span class="p">(</span><span class="n">xv</span><span class="p">,</span> <span class="n">yv</span><span class="p">)</span>
+            <span class="n">gap</span> <span class="o">=</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+            <span class="n">out</span><span class="p">[</span><span class="n">gap</span><span class="p">]</span> <span class="o">=</span> <span class="n">nearest</span><span class="p">(</span><span class="n">xv</span><span class="p">[</span><span class="n">gap</span><span class="p">],</span> <span class="n">yv</span><span class="p">[</span><span class="n">gap</span><span class="p">])</span>
+            <span class="k">return</span> <span class="n">out</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;triangles&#39;</span><span class="p">:</span> <span class="n">tri</span><span class="p">,</span> <span class="s1">&#39;xv&#39;</span><span class="p">:</span> <span class="n">xv</span><span class="p">,</span> <span class="s1">&#39;yv&#39;</span><span class="p">:</span> <span class="n">yv</span><span class="p">,</span>
+            <span class="s1">&#39;median&#39;</span><span class="p">:</span> <span class="n">_interpolate</span><span class="p">(</span><span class="n">med</span><span class="p">),</span> <span class="s1">&#39;spread&#39;</span><span class="p">:</span> <span class="n">_interpolate</span><span class="p">(</span><span class="n">spread</span><span class="p">),</span> <span class="s1">&#39;log_n&#39;</span><span class="p">:</span> <span class="n">_interpolate</span><span class="p">(</span><span class="n">log_n</span><span class="p">),</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">plot</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">result</span>
+
+        <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">))</span>
+
+        <span class="k">for</span> <span class="n">a_</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">title</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;median&#39;</span><span class="p">,</span> <span class="s1">&#39;spread&#39;</span><span class="p">,</span> <span class="s1">&#39;log_n&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;Median&#39;</span><span class="p">,</span> <span class="s1">&#39;Spread&#39;</span><span class="p">,</span> <span class="s1">&#39;log$_</span><span class="si">{10}</span><span class="s1">$(n)&#39;</span><span class="p">)):</span>
+            <span class="n">a_</span><span class="o">.</span><span class="n">tripcolor</span><span class="p">(</span><span class="n">xv</span><span class="p">,</span> <span class="n">yv</span><span class="p">,</span> <span class="n">tri</span><span class="p">,</span> <span class="n">result</span><span class="p">[</span><span class="n">field</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">shading</span><span class="o">=</span><span class="s1">&#39;gouraud&#39;</span><span class="p">)</span>
+            <span class="n">a_</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+            <span class="n">a_</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+            <span class="n">a_</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+
+        <span class="n">result</span><span class="p">[</span><span class="s1">&#39;axes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ax</span>
+        <span class="k">return</span> <span class="n">result</span></div>
+
+
+<div class="viewcode-block" id="ternary.errorbar_tern">
+<a class="viewcode-back" href="../../../generated/global_geochemistry.plotting.ternary.html#global_geochemistry.plotting.ternary.ternary.errorbar_tern">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">errorbar_tern</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mf">0.025</span><span class="p">,</span> <span class="n">plot_type</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Plots an uncertainty region for ternary data.</span>
+
+<span class="sd">        Computes the ``(q, 0.5, 1-q)`` quantiles of each of A, B, C (or</span>
+<span class="sd">        uses them directly if each is already a 3-element</span>
+<span class="sd">        ``[lower, median, upper]`` sequence), then draws either crossed</span>
+<span class="sd">        error bars (``&#39;bar&#39;``) or an uncertainty patch (``&#39;patch&#39;``)</span>
+<span class="sd">        centered on the median.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        A, B, C : array_like</span>
+<span class="sd">            Raw data (quantiles computed internally), or 3-element</span>
+<span class="sd">            ``[lower, median, upper]`` sequences to use directly.</span>
+<span class="sd">        q : float, optional</span>
+<span class="sd">            Lower/upper quantile level (paired with ``1 - q``), by</span>
+<span class="sd">            default 0.025.</span>
+<span class="sd">        plot_type : {&#39;bar&#39;, &#39;patch&#39;, &#39;none&#39;}, optional</span>
+<span class="sd">            Drawing style, by default &#39;bar&#39;.</span>
+<span class="sd">        color : color spec, optional</span>
+<span class="sd">        ax : matplotlib.axes.Axes, optional</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Aq, Bq, Cq : numpy.ndarray, shape (3,)</span>
+<span class="sd">            The ``[lower, median, upper]`` triplet used for each of A, B, C.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">ax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span>
+
+        <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="nb">float</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="nb">float</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
+        <span class="n">qs</span> <span class="o">=</span> <span class="p">[</span><span class="n">q</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">q</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,)</span> <span class="ow">and</span> <span class="n">B</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,)</span> <span class="ow">and</span> <span class="n">C</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,):</span>
+            <span class="n">Aq</span><span class="p">,</span> <span class="n">Bq</span><span class="p">,</span> <span class="n">Cq</span> <span class="o">=</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">Aq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">A</span><span class="p">)],</span> <span class="n">qs</span><span class="p">)</span>
+            <span class="n">Bq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">B</span><span class="p">)],</span> <span class="n">qs</span><span class="p">)</span>
+            <span class="n">Cq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">C</span><span class="p">[</span><span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">C</span><span class="p">)],</span> <span class="n">qs</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">plot_type</span> <span class="o">==</span> <span class="s1">&#39;none&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Aq</span><span class="p">,</span> <span class="n">Bq</span><span class="p">,</span> <span class="n">Cq</span>
+        <span class="k">if</span> <span class="n">plot_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;patch&#39;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown plot_type: </span><span class="si">{</span><span class="n">plot_type</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">dA</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">Aq</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Aq</span><span class="p">[</span><span class="mi">2</span><span class="p">]])</span> <span class="o">-</span> <span class="n">Aq</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">dB</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">Bq</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Bq</span><span class="p">[</span><span class="mi">2</span><span class="p">]])</span> <span class="o">-</span> <span class="n">Bq</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">dC</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">Cq</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Cq</span><span class="p">[</span><span class="mi">2</span><span class="p">]])</span> <span class="o">-</span> <span class="n">Cq</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="n">line_kw</span> <span class="o">=</span> <span class="p">{}</span> <span class="k">if</span> <span class="n">color</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="n">color</span><span class="p">}</span>
+        <span class="n">marker_kw</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;marker&#39;</span><span class="p">:</span> <span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="s1">&#39;linestyle&#39;</span><span class="p">:</span> <span class="s1">&#39;none&#39;</span><span class="p">}</span>
+        <span class="k">if</span> <span class="n">color</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">marker_kw</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">markerfacecolor</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">markeredgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">plot_type</span> <span class="o">==</span> <span class="s1">&#39;bar&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ternplot</span><span class="p">([</span><span class="n">Aq</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Aq</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span> <span class="n">Bq</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dA</span><span class="p">,</span> <span class="n">Cq</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dA</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">line_kw</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ternplot</span><span class="p">(</span><span class="n">Aq</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dB</span><span class="p">,</span> <span class="p">[</span><span class="n">Bq</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Bq</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span> <span class="n">Cq</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dB</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">line_kw</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ternplot</span><span class="p">(</span><span class="n">Aq</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dC</span><span class="p">,</span> <span class="n">Bq</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dC</span><span class="p">,</span> <span class="p">[</span><span class="n">Cq</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Cq</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">line_kw</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">Av</span> <span class="o">=</span> <span class="p">[</span><span class="n">Aq</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Aq</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dB</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">Aq</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dC</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Aq</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">Aq</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dB</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Aq</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dC</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">Aq</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+            <span class="n">Bv</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bq</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dA</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Bq</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">Bq</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dC</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Bq</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dA</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">Bq</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Bq</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dC</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">Bq</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dA</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+            <span class="n">Cv</span> <span class="o">=</span> <span class="p">[</span><span class="n">Cq</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dA</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Cq</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dB</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">Cq</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Cq</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dA</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">Cq</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dB</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Cq</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">Cq</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dA</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ternplot</span><span class="p">(</span><span class="n">Av</span><span class="p">,</span> <span class="n">Bv</span><span class="p">,</span> <span class="n">Cv</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">line_kw</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ternplot</span><span class="p">([</span><span class="n">Aq</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="n">Bq</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="n">Cq</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">marker_kw</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">Aq</span><span class="p">,</span> <span class="n">Bq</span><span class="p">,</span> <span class="n">Cq</span></div>
+
+
 <div class="viewcode-block" id="ternary.ternpolygons">
 <a class="viewcode-back" href="../../../generated/global_geochemistry.plotting.ternary.html#global_geochemistry.plotting.ternary.ternary.ternpolygons">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">ternpolygons</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">polygons</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span>

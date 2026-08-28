@@ -908,6 +908,46 @@
 
 
 <span class="c1"># ===========================================================================</span>
+<span class="c1"># Calc-alkaline / tholeiitic discrimination line</span>
+<span class="c1"># ===========================================================================</span>
+
+<div class="viewcode-block" id="ca_thol_line">
+<a class="viewcode-back" href="../../../../generated/global_geochemistry.geochem.classification.igneous.html#global_geochemistry.geochem.classification.igneous.ca_thol_line">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">ca_thol_line</span><span class="p">(</span><span class="n">tern</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calc-alkaline vs. tholeiitic discrimination line.</span>
+
+<span class="sd">    Computes FeOt-(Na2O+K2O)-MgO coordinates along an empirical</span>
+<span class="sd">    polynomial boundary (fit over MgO 5-56 wt%) separating tholeiitic</span>
+<span class="sd">    and calc-alkaline differentiation trends on an AFM-style ternary</span>
+<span class="sd">    diagram.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tern : plotting.ternary.ternary, optional</span>
+<span class="sd">        If given, the line is also drawn via ``tern.ternplot``.</span>
+<span class="sd">    color : color spec, optional</span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        Passed to ``tern.ternplot``, if `tern` is given.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict</span>
+<span class="sd">        ``FeO``, ``A`` (Na2O+K2O proxy), ``MgO`` coordinate arrays.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">mgo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">57</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">feo</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.5559e-12</span> <span class="o">*</span> <span class="n">mgo</span><span class="o">**</span><span class="mi">8</span> <span class="o">-</span> <span class="mf">7.7142e-10</span> <span class="o">*</span> <span class="n">mgo</span><span class="o">**</span><span class="mi">7</span> <span class="o">+</span> <span class="mf">1.5664e-7</span> <span class="o">*</span> <span class="n">mgo</span><span class="o">**</span><span class="mi">6</span>
+           <span class="o">-</span> <span class="mf">1.6738e-5</span> <span class="o">*</span> <span class="n">mgo</span><span class="o">**</span><span class="mi">5</span> <span class="o">+</span> <span class="mf">1.0017e-3</span> <span class="o">*</span> <span class="n">mgo</span><span class="o">**</span><span class="mi">4</span> <span class="o">-</span> <span class="mf">3.2552e-2</span> <span class="o">*</span> <span class="n">mgo</span><span class="o">**</span><span class="mi">3</span>
+           <span class="o">+</span> <span class="mf">4.7776e-1</span> <span class="o">*</span> <span class="n">mgo</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">1.1085</span> <span class="o">*</span> <span class="n">mgo</span> <span class="o">+</span> <span class="mi">30</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">-</span> <span class="n">mgo</span> <span class="o">-</span> <span class="n">feo</span>
+
+    <span class="k">if</span> <span class="n">tern</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">tern</span><span class="o">.</span><span class="n">ternplot</span><span class="p">(</span><span class="n">feo</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">mgo</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;FeO&#39;</span><span class="p">:</span> <span class="n">feo</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="n">a</span><span class="p">,</span> <span class="s1">&#39;MgO&#39;</span><span class="p">:</span> <span class="n">mgo</span><span class="p">}</span></div>
+
+
+
+<span class="c1"># ===========================================================================</span>
 <span class="c1"># Internal helpers</span>
 <span class="c1"># ===========================================================================</span>
 

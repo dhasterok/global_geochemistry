@@ -1,4 +1,4 @@
-﻿global\_geochemistry.plotting
+global\_geochemistry.plotting
 =============================
 
 .. automodule:: global_geochemistry.plotting
@@ -11,9 +11,9 @@
    :recursive:
 
    colormap
+   histogram_colorbar
    hp_velocity
    radar
    scatter
-   spider
    ternary
    whisker

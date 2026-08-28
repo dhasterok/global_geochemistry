@@ -1,0 +1,1330 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>composition_stats &#8212; global_geochemistry 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/composition_stats';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">global_geochemistry 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../generated/global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../generated/global_geochemistry.html">
+    global_geochemistry
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/dhasterok/global_geochemistry" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">composition_stats</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for composition_stats</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Based on the `skbio.stats.composition` module, with below copyright notice.</span>
+<span class="c1"># The original COPYING.txt file can be found under licenses/scikit-bio.txt.</span>
+<span class="c1"># ----------------------------------------------------------------------------</span>
+<span class="c1"># Copyright (c) 2013--, scikit-bio development team.</span>
+<span class="c1">#</span>
+<span class="c1"># Distributed under the terms of the Modified BSD License.</span>
+<span class="c1">#</span>
+<span class="c1"># The full license is in the file COPYING.txt, distributed with this software.</span>
+<span class="c1"># ----------------------------------------------------------------------------</span>
+
+<span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Composition Statistics (:mod:`composition_stats`)</span>
+<span class="sd">=================================================</span>
+
+<span class="sd">.. currentmodule:: composition_stats</span>
+
+<span class="sd">This module provides functions for compositional data analysis.</span>
+
+<span class="sd">Many &#39;omics datasets are inherently compositional - meaning that they</span>
+<span class="sd">are best interpreted as proportions or percentages rather than</span>
+<span class="sd">absolute counts.</span>
+
+<span class="sd">Formally, :math:`x` is a composition if :math:`\sum_{i=0}^D x_{i} = c`</span>
+<span class="sd">and :math:`x_{i} &gt; 0`, :math:`1 \leq i \leq D` and :math:`c` is a real</span>
+<span class="sd">valued constant and there are :math:`D` components for each</span>
+<span class="sd">composition. In this module :math:`c=1`. Compositional data can be</span>
+<span class="sd">analyzed using Aitchison geometry. [1]_</span>
+
+<span class="sd">However, in this framework, standard real Euclidean operations such as</span>
+<span class="sd">addition and multiplication no longer apply. Only operations such as</span>
+<span class="sd">perturbation and power can be used to manipulate this data.</span>
+
+<span class="sd">This module allows two styles of manipulation of compositional data.</span>
+<span class="sd">Compositional data can be analyzed using perturbation and power</span>
+<span class="sd">operations, which can be useful for simulation studies. The</span>
+<span class="sd">alternative strategy is to transform compositional data into the real</span>
+<span class="sd">space.  Right now, the centre log ratio transform (clr) and</span>
+<span class="sd">the isometric log ratio transform (ilr) [2]_ can be used to accomplish</span>
+<span class="sd">this. This transform can be useful for performing standard statistical</span>
+<span class="sd">tools such as parametric hypothesis testing, regressions and more.</span>
+
+<span class="sd">The major caveat of using this framework is dealing with zeros.  In</span>
+<span class="sd">the Aitchison geometry, only compositions with nonzero components can</span>
+<span class="sd">be considered. The multiplicative replacement technique [3]_ can be</span>
+<span class="sd">used to substitute these zeros with small pseudocounts without</span>
+<span class="sd">introducing major distortions to the data.</span>
+
+<span class="sd">Functions</span>
+<span class="sd">---------</span>
+
+<span class="sd">.. autosummary::</span>
+<span class="sd">   :toctree:</span>
+
+<span class="sd">   closure</span>
+<span class="sd">   multiplicative_replacement</span>
+<span class="sd">   perturb</span>
+<span class="sd">   perturb_inv</span>
+<span class="sd">   power</span>
+<span class="sd">   inner</span>
+<span class="sd">   clr</span>
+<span class="sd">   clr_inv</span>
+<span class="sd">   ilr</span>
+<span class="sd">   ilr_inv</span>
+<span class="sd">   alr</span>
+<span class="sd">   alr_inv</span>
+<span class="sd">   center</span>
+<span class="sd">   centralize</span>
+<span class="sd">   sbp_basis</span>
+
+<span class="sd">References</span>
+<span class="sd">----------</span>
+<span class="sd">.. [1] V. Pawlowsky-Glahn, J. J. Egozcue, R. Tolosana-Delgado (2015),</span>
+<span class="sd">   Modeling and Analysis of Compositional Data, Wiley, Chichester, UK</span>
+
+<span class="sd">.. [2] J. J. Egozcue.,  &quot;Isometric Logratio Transformations for</span>
+<span class="sd">   Compositional Data Analysis&quot; Mathematical Geology, 35.3 (2003)</span>
+
+<span class="sd">.. [3] J. A. Martin-Fernandez,  &quot;Dealing With Zeros and Missing Values in</span>
+<span class="sd">   Compositional Data Sets Using Nonparametric Imputation&quot;,</span>
+<span class="sd">   Mathematical Geology, 35.3 (2003)</span>
+
+
+<span class="sd">Examples</span>
+<span class="sd">--------</span>
+
+<span class="sd">&gt;&gt;&gt; import numpy as np</span>
+
+<span class="sd">Consider a very simple environment with only 3 species. The species</span>
+<span class="sd">in the environment are equally distributed and their proportions are</span>
+<span class="sd">equivalent:</span>
+
+<span class="sd">&gt;&gt;&gt; otus = np.array([1./3, 1./3., 1./3])</span>
+
+<span class="sd">Suppose that an antibiotic kills off half of the population for the</span>
+<span class="sd">first two species, but doesn&#39;t harm the third species. Then the</span>
+<span class="sd">perturbation vector, after closure, would be as follows:</span>
+
+<span class="sd">&gt;&gt;&gt; antibiotic = closure(np.array([1./2, 1./2, 1]))</span>
+
+<span class="sd">And the resulting perturbation would be</span>
+
+<span class="sd">&gt;&gt;&gt; perturb(otus, antibiotic)</span>
+<span class="sd">array([ 0.25,  0.25,  0.5 ])</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy.stats</span>
+
+
+<div class="viewcode-block" id="closure">
+<a class="viewcode-back" href="../generated/global_geochemistry.geochem.coda.html#global_geochemistry.geochem.coda.closure">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">closure</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Performs closure to ensure that all elements add up to 1.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mat : array_like</span>
+<span class="sd">       a matrix of proportions where</span>
+<span class="sd">       rows = compositions</span>
+<span class="sd">       columns = components</span>
+<span class="sd">    out : array_like or None, optional</span>
+<span class="sd">        A location into which the result is stored. If provided, it must have</span>
+<span class="sd">        a shape that the inputs broadcast to. If not provided or None, a</span>
+<span class="sd">        freshly-allocated array is returned.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    array_like, np.float64</span>
+<span class="sd">       A matrix of proportions where all of the values</span>
+<span class="sd">       are nonzero and each composition (row) adds up to 1</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">       Raises an error if any values are negative.</span>
+<span class="sd">    ValueError</span>
+<span class="sd">       Raises an error if the matrix has more than 2 dimension.</span>
+<span class="sd">    ValueError</span>
+<span class="sd">       Raises an error if there is a row that has all zeros.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; from composition_stats import closure</span>
+<span class="sd">    &gt;&gt;&gt; X = np.array([[2, 2, 6], [4, 4, 2]])</span>
+<span class="sd">    &gt;&gt;&gt; closure(X)</span>
+<span class="sd">    array([[ 0.2,  0.2,  0.6],</span>
+<span class="sd">           [ 0.4,  0.4,  0.2]])</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">mat</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot have negative proportions&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">mat</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Input matrix can only have two dimensions or less&quot;</span><span class="p">)</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">norm</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Input matrix cannot have rows with all zeros&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="multiplicative_replacement">
+<a class="viewcode-back" href="../generated/global_geochemistry.geochem.coda.html#global_geochemistry.geochem.coda.multiplicative_replacement">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">multiplicative_replacement</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Replace all zeros with small non-zero values</span>
+
+<span class="sd">    It uses the multiplicative replacement strategy [1]_ ,</span>
+<span class="sd">    replacing zeros with a small positive :math:`\delta`</span>
+<span class="sd">    and ensuring that the compositions still add up to 1.</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mat: array_like</span>
+<span class="sd">       a matrix of proportions where</span>
+<span class="sd">       rows = compositions and</span>
+<span class="sd">       columns = components</span>
+<span class="sd">       each composition (row) must add up to unity (see :ref:`closure()`)</span>
+<span class="sd">    delta: float, optional</span>
+<span class="sd">       a small number to be used to replace zeros</span>
+<span class="sd">       If delta is not specified, then the default delta is</span>
+<span class="sd">       :math:`\delta = \frac{1}{N^2}` where :math:`N`</span>
+<span class="sd">       is the number of components</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray, np.float64</span>
+<span class="sd">       A matrix of proportions where all of the values</span>
+<span class="sd">       are nonzero and each composition (row) adds up to 1</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">       Raises an error if negative proportions are created due to a large</span>
+<span class="sd">       `delta`.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    This method will result in negative proportions if a large delta is chosen.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] J. A. Martin-Fernandez. &quot;Dealing With Zeros and Missing Values in</span>
+<span class="sd">           Compositional Data Sets Using Nonparametric Imputation&quot;</span>
+
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; from composition_stats import multiplicative_replacement</span>
+<span class="sd">    &gt;&gt;&gt; X = np.array([[.2,.4,.4, 0],[0,.5,.5,0]])</span>
+<span class="sd">    &gt;&gt;&gt; multiplicative_replacement(X)</span>
+<span class="sd">    array([[ 0.1875,  0.375 ,  0.375 ,  0.0625],</span>
+<span class="sd">           [ 0.0625,  0.4375,  0.4375,  0.0625]])</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">z_mat</span> <span class="o">=</span> <span class="p">(</span><span class="n">mat</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">num_feats</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">tot</span> <span class="o">=</span> <span class="n">z_mat</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">delta</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">delta</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">/</span> <span class="n">num_feats</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+
+    <span class="n">zcnts</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">tot</span> <span class="o">*</span> <span class="n">delta</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">zcnts</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;The multiplicative replacement created negative &#39;</span>
+                         <span class="s1">&#39;proportions. Consider using a smaller `delta`.&#39;</span><span class="p">)</span>
+    <span class="n">mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">z_mat</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">zcnts</span> <span class="o">*</span> <span class="n">mat</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mat</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">perturb</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Performs the perturbation operation.</span>
+
+<span class="sd">    This operation is defined as</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        x \oplus y = C[x_1 y_1, \ldots, x_D y_D]</span>
+
+<span class="sd">    :math:`C[x]` is the closure operation defined as</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        C[x] = \left[\frac{x_1}{\sum_{i=1}^{D} x_i},\ldots,</span>
+<span class="sd">                     \frac{x_D}{\sum_{i=1}^{D} x_i} \right]</span>
+
+<span class="sd">    for some :math:`D` dimensional real vector :math:`x` and</span>
+<span class="sd">    :math:`D` is the number of components for every composition.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x : array_like, float</span>
+<span class="sd">        a matrix of proportions where</span>
+<span class="sd">        rows = compositions and</span>
+<span class="sd">        columns = components</span>
+<span class="sd">        each composition (row) must add up to unity (see :ref:`closure()`)</span>
+<span class="sd">    y : array_like, float</span>
+<span class="sd">        a matrix of proportions where</span>
+<span class="sd">        rows = compositions and</span>
+<span class="sd">        columns = components</span>
+<span class="sd">        each composition (row) must add up to unity (see :ref:`closure()`)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray, np.float64</span>
+<span class="sd">       A matrix of proportions where all of the values</span>
+<span class="sd">       are nonzero and each composition (row) adds up to 1</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; from composition_stats import perturb</span>
+<span class="sd">    &gt;&gt;&gt; x = np.array([.1,.3,.4, .2])</span>
+<span class="sd">    &gt;&gt;&gt; y = np.array([1./6,1./6,1./3,1./3])</span>
+<span class="sd">    &gt;&gt;&gt; perturb(x,y)</span>
+<span class="sd">    array([ 0.0625,  0.1875,  0.5   ,  0.25  ])</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">closure</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">z</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">perturb_inv</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Performs the inverse perturbation operation.</span>
+
+<span class="sd">    This operation is defined as</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        x \ominus y = C[x_1 y_1^{-1}, \ldots, x_D y_D^{-1}]</span>
+
+<span class="sd">    :math:`C[x]` is the closure operation defined as</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        C[x] = \left[\frac{x_1}{\sum_{i=1}^{D} x_i},\ldots,</span>
+<span class="sd">                     \frac{x_D}{\sum_{i=1}^{D} x_i} \right]</span>
+
+
+<span class="sd">    for some :math:`D` dimensional real vector :math:`x` and</span>
+<span class="sd">    :math:`D` is the number of components for every composition.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x : array_like</span>
+<span class="sd">        a matrix of proportions where</span>
+<span class="sd">        rows = compositions and</span>
+<span class="sd">        columns = components</span>
+<span class="sd">        each composition (row) must add up to unity (see :ref:`closure()`)</span>
+<span class="sd">    y : array_like</span>
+<span class="sd">        a matrix of proportions where</span>
+<span class="sd">        rows = compositions and</span>
+<span class="sd">        columns = components</span>
+<span class="sd">        each composition (row) must add up to unity (see :ref:`closure()`)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray, np.float64</span>
+<span class="sd">       A matrix of proportions where all of the values</span>
+<span class="sd">       are nonzero and each composition (row) adds up to 1</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; from composition_stats import perturb_inv</span>
+<span class="sd">    &gt;&gt;&gt; x = np.array([.1,.3,.4, .2])</span>
+<span class="sd">    &gt;&gt;&gt; y = np.array([1./6,1./6,1./3,1./3])</span>
+<span class="sd">    &gt;&gt;&gt; perturb_inv(x,y)</span>
+<span class="sd">    array([ 0.14285714,  0.42857143,  0.28571429,  0.14285714])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">closure</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">z</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">power</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Performs the power operation.</span>
+
+<span class="sd">    This operation is defined as follows</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        `x \odot a = C[x_1^a, \ldots, x_D^a]</span>
+
+<span class="sd">    :math:`C[x]` is the closure operation defined as</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        C[x] = \left[\frac{x_1}{\sum_{i=1}^{D} x_i},\ldots,</span>
+<span class="sd">                     \frac{x_D}{\sum_{i=1}^{D} x_i} \right]</span>
+
+<span class="sd">    for some :math:`D` dimensional real vector :math:`x` and</span>
+<span class="sd">    :math:`D` is the number of components for every composition.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x : array_like, float</span>
+<span class="sd">        a matrix of proportions where</span>
+<span class="sd">        rows = compositions and</span>
+<span class="sd">        columns = components</span>
+<span class="sd">        each composition (row) must add up to unity (see :ref:`closure()`)</span>
+<span class="sd">    a : float</span>
+<span class="sd">        a scalar float</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray, np.float64</span>
+<span class="sd">       A matrix of proportions where all of the values</span>
+<span class="sd">       are nonzero and each composition (row) adds up to 1</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; from composition_stats import power</span>
+<span class="sd">    &gt;&gt;&gt; x = np.array([.1,.3,.4, .2])</span>
+<span class="sd">    &gt;&gt;&gt; power(x, .1)</span>
+<span class="sd">    array([ 0.23059566,  0.25737316,  0.26488486,  0.24714631])</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">closure</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates the Aitchson inner product.</span>
+
+<span class="sd">    This inner product is defined as follows</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        \langle x, y \rangle_a =</span>
+<span class="sd">        \frac{1}{2D} \sum\limits_{i=1}^{D} \sum\limits_{j=1}^{D}</span>
+<span class="sd">        \ln\left(\frac{x_i}{x_j}\right) \ln\left(\frac{y_i}{y_j}\right)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x : array_like</span>
+<span class="sd">        a matrix of proportions where</span>
+<span class="sd">        rows = compositions and</span>
+<span class="sd">        columns = components</span>
+<span class="sd">        each composition (row) must add up to unity (see :ref:`closure()`)</span>
+<span class="sd">    y : array_like</span>
+<span class="sd">        a matrix of proportions where</span>
+<span class="sd">        rows = compositions and</span>
+<span class="sd">        columns = components</span>
+<span class="sd">        each composition (row) must add up to unity (see :ref:`closure()`)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">         inner product result</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; from composition_stats import inner</span>
+<span class="sd">    &gt;&gt;&gt; x = np.array([.1, .3, .4, .2])</span>
+<span class="sd">    &gt;&gt;&gt; y = np.array([.2, .4, .2, .2])</span>
+<span class="sd">    &gt;&gt;&gt; inner(x, y)  # doctest: +ELLIPSIS</span>
+<span class="sd">    0.2107852473...</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">clr</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">clr</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="clr">
+<a class="viewcode-back" href="../generated/global_geochemistry.geochem.coda.html#global_geochemistry.geochem.coda.clr">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">clr</span><span class="p">(</span><span class="n">mat</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Performs centre log ratio transformation.</span>
+
+<span class="sd">    This function transforms compositions from Aitchison geometry to</span>
+<span class="sd">    the real space. The :math:`clr` transform is both an isometry and an</span>
+<span class="sd">    isomorphism defined on the following spaces</span>
+
+<span class="sd">    :math:`clr: S^D \rightarrow U`</span>
+
+<span class="sd">    where :math:`U=</span>
+<span class="sd">    \{x :\sum\limits_{i=1}^D x = 0 \; \forall x \in \mathbb{R}^D\}`</span>
+
+<span class="sd">    It is defined for a composition :math:`x` as follows:</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        clr(x) = \ln\left[\frac{x_1}{g_m(x)}, \ldots, \frac{x_D}{g_m(x)}\right]</span>
+
+<span class="sd">    where :math:`g_m(x) = (\prod\limits_{i=1}^{D} x_i)^{1/D}` is the geometric</span>
+<span class="sd">    mean of :math:`x`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mat : array_like, float</span>
+<span class="sd">       a matrix of proportions where</span>
+<span class="sd">       rows = compositions and</span>
+<span class="sd">       columns = components</span>
+<span class="sd">       each composition (row) must add up to unity (see :ref:`closure()`)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">         clr transformed matrix</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; from composition_stats import clr</span>
+<span class="sd">    &gt;&gt;&gt; x = np.array([.1, .3, .4, .2])</span>
+<span class="sd">    &gt;&gt;&gt; clr(x)</span>
+<span class="sd">    array([-0.79451346,  0.30409883,  0.5917809 , -0.10136628])</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">lmat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
+    <span class="n">gm</span> <span class="o">=</span> <span class="n">lmat</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">lmat</span> <span class="o">-</span> <span class="n">gm</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">clr_inv</span><span class="p">(</span><span class="n">mat</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Performs inverse centre log ratio transformation.</span>
+
+<span class="sd">    This function transforms compositions from the real space to</span>
+<span class="sd">    Aitchison geometry. The :math:`clr^{-1}` transform is both an isometry,</span>
+<span class="sd">    and an isomorphism defined on the following spaces</span>
+
+<span class="sd">    :math:`clr^{-1}: U \rightarrow S^D`</span>
+
+<span class="sd">    where :math:`U=</span>
+<span class="sd">    \{x :\sum\limits_{i=1}^D x = 0 \; \forall x \in \mathbb{R}^D\}`</span>
+
+<span class="sd">    This transformation is defined as follows</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        clr^{-1}(x) = C[\exp( x_1, \ldots, x_D)]</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mat : array_like, float</span>
+<span class="sd">       a matrix of real values where</span>
+<span class="sd">       rows = transformed compositions and</span>
+<span class="sd">       columns = components</span>
+<span class="sd">       each composition (row) must add up to unity (see :ref:`closure()`)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">         inverse clr transformed matrix</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; from composition_stats import clr_inv</span>
+<span class="sd">    &gt;&gt;&gt; x = np.array([.1, .3, .4, .2])</span>
+<span class="sd">    &gt;&gt;&gt; clr_inv(x)</span>
+<span class="sd">    array([ 0.21383822,  0.26118259,  0.28865141,  0.23632778])</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">emat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">closure</span><span class="p">(</span><span class="n">emat</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">emat</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="ilr">
+<a class="viewcode-back" href="../generated/global_geochemistry.geochem.coda.html#global_geochemistry.geochem.coda.ilr">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">ilr</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Performs isometric log ratio transformation.</span>
+
+<span class="sd">    This function transforms compositions from Aitchison simplex to</span>
+<span class="sd">    the real space. The :math: ilr` transform is both an isometry,</span>
+<span class="sd">    and an isomorphism defined on the following spaces</span>
+
+<span class="sd">    :math:`ilr: S^D \rightarrow \mathbb{R}^{D-1}`</span>
+
+<span class="sd">    The ilr transformation is defined as follows</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        ilr(x) =</span>
+<span class="sd">        [\langle x, e_1 \rangle_a, \ldots, \langle x, e_{D-1} \rangle_a]</span>
+
+<span class="sd">    where :math:`[e_1,\ldots,e_{D-1}]` is an orthonormal basis in the simplex.</span>
+
+<span class="sd">    If an orthornormal basis isn&#39;t specified, the J. J. Egozcue orthonormal</span>
+<span class="sd">    basis derived from Gram-Schmidt orthogonalization will be used by</span>
+<span class="sd">    default.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mat: numpy.ndarray</span>
+<span class="sd">       a matrix of proportions where</span>
+<span class="sd">       rows = compositions and</span>
+<span class="sd">       columns = components</span>
+<span class="sd">       each composition (row) must add up to unity (see :ref:`closure()`)</span>
+<span class="sd">    basis: numpy.ndarray, float, optional</span>
+<span class="sd">        orthonormal basis for Aitchison simplex</span>
+<span class="sd">        defaults to J.J.Egozcue orthonormal basis.</span>
+<span class="sd">    check: bool</span>
+<span class="sd">        Specifies if the basis is orthonormal.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; from composition_stats import ilr</span>
+<span class="sd">    &gt;&gt;&gt; x = np.array([.1, .3, .4, .2])</span>
+<span class="sd">    &gt;&gt;&gt; ilr(x)</span>
+<span class="sd">    array([-0.7768362 , -0.68339802,  0.11704769])</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    If the `basis` parameter is specified, it is expected to be a basis in the</span>
+<span class="sd">    Aitchison simplex.  If there are `D-1` elements specified in `mat`, then</span>
+<span class="sd">    the dimensions of the basis needs be `D-1 x D`, where rows represent</span>
+<span class="sd">    basis vectors, and the columns represent proportions.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">basis</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">basis</span> <span class="o">=</span> <span class="n">clr_inv</span><span class="p">(</span><span class="n">_gram_schmidt_basis</span><span class="p">(</span><span class="n">mat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">basis</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Basis needs to be a 2D matrix, &quot;</span>
+                             <span class="s2">&quot;not a </span><span class="si">%d</span><span class="s2">D matrix.&quot;</span> <span class="o">%</span>
+                             <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">basis</span><span class="o">.</span><span class="n">shape</span><span class="p">)))</span>
+        <span class="k">if</span> <span class="n">check</span><span class="p">:</span>
+            <span class="n">_check_orthogonality</span><span class="p">(</span><span class="n">basis</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">inner</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">ilr_inv</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Performs inverse isometric log ratio transform.</span>
+
+<span class="sd">    This function transforms compositions from the real space to</span>
+<span class="sd">    Aitchison geometry. The :math:`ilr^{-1}` transform is both an isometry,</span>
+<span class="sd">    and an isomorphism defined on the following spaces</span>
+
+<span class="sd">    :math:`ilr^{-1}: \mathbb{R}^{D-1} \rightarrow S^D`</span>
+
+<span class="sd">    The inverse ilr transformation is defined as follows</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        ilr^{-1}(x) = \bigoplus\limits_{i=1}^{D-1} x \odot e_i</span>
+
+<span class="sd">    where :math:`[e_1,\ldots, e_{D-1}]` is an orthonormal basis in the simplex.</span>
+
+<span class="sd">    If an orthonormal basis isn&#39;t specified, the J. J. Egozcue orthonormal</span>
+<span class="sd">    basis derived from Gram-Schmidt orthogonalization will be used by</span>
+<span class="sd">    default.</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mat: numpy.ndarray, float</span>
+<span class="sd">       a matrix of transformed proportions where</span>
+<span class="sd">       rows = compositions and</span>
+<span class="sd">       columns = components</span>
+<span class="sd">       each composition (row) must add up to unity (see :ref:`closure()`)</span>
+
+<span class="sd">    basis: numpy.ndarray, float, optional</span>
+<span class="sd">        orthonormal basis for Aitchison simplex</span>
+<span class="sd">        defaults to J.J.Egozcue orthonormal basis</span>
+
+<span class="sd">    check: bool</span>
+<span class="sd">        Specifies if the basis is orthonormal.</span>
+
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; from composition_stats import ilr</span>
+<span class="sd">    &gt;&gt;&gt; x = np.array([.1, .3, .6,])</span>
+<span class="sd">    &gt;&gt;&gt; ilr_inv(x)</span>
+<span class="sd">    array([ 0.34180297,  0.29672718,  0.22054469,  0.14092516])</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    If the `basis` parameter is specified, it is expected to be a basis in the</span>
+<span class="sd">    Aitchison simplex.  If there are `D-1` elements specified in `mat`, then</span>
+<span class="sd">    the dimensions of the basis needs be `D-1 x D`, where rows represent</span>
+<span class="sd">    basis vectors, and the columns represent proportions.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">basis</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">basis</span> <span class="o">=</span> <span class="n">_gram_schmidt_basis</span><span class="p">(</span><span class="n">mat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">basis</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Basis needs to be a 2D matrix, &quot;</span>
+                             <span class="s2">&quot;not a </span><span class="si">%d</span><span class="s2">D matrix.&quot;</span> <span class="o">%</span>
+                             <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">basis</span><span class="o">.</span><span class="n">shape</span><span class="p">)))</span>
+        <span class="k">if</span> <span class="n">check</span><span class="p">:</span>
+            <span class="n">_check_orthogonality</span><span class="p">(</span><span class="n">basis</span><span class="p">)</span>
+        <span class="c1"># this is necessary, since the clr function</span>
+        <span class="c1"># performs np.squeeze()</span>
+        <span class="n">basis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">clr</span><span class="p">(</span><span class="n">basis</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">clr_inv</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">basis</span><span class="p">))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">alr</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">denominator_idx</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Performs additive log ratio transformation.</span>
+
+<span class="sd">    This function transforms compositions from a D-part Aitchison simplex to</span>
+<span class="sd">    a non-isometric real space of D-1 dimensions. The argument</span>
+<span class="sd">    `denominator_col` defines the index of the column used as the common</span>
+<span class="sd">    denominator. The :math: `alr` transformed data are amenable to multivariate</span>
+<span class="sd">    analysis as long as statistics don&#39;t involve distances.</span>
+
+<span class="sd">    :math:`alr: S^D \rightarrow \mathbb{R}^{D-1}`</span>
+
+<span class="sd">    The alr transformation is defined as follows</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        alr(x) = \left[ \ln \frac{x_1}{x_D}, \ldots,</span>
+<span class="sd">        \ln \frac{x_{D-1}}{x_D} \right]</span>
+
+<span class="sd">    where :math:`D` is the index of the part used as common denominator.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mat: numpy.ndarray</span>
+<span class="sd">       a matrix of proportions where</span>
+<span class="sd">       rows = compositions and</span>
+<span class="sd">       columns = components</span>
+<span class="sd">       each composition (row) must add up to unity (see :ref:`closure()`)</span>
+<span class="sd">    denominator_idx: int</span>
+<span class="sd">       the index of the column (2D-matrix) or position (vector) of</span>
+<span class="sd">       `mat` which should be used as the reference composition. By default</span>
+<span class="sd">       `denominator_idx=0` to specify the first column or position.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">         alr-transformed data projected in a non-isometric real space</span>
+<span class="sd">         of D-1 dimensions for a D-parts composition</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; from composition_stats import alr</span>
+<span class="sd">    &gt;&gt;&gt; x = np.array([.1, .3, .4, .2])</span>
+<span class="sd">    &gt;&gt;&gt; alr(x)</span>
+<span class="sd">    array([ 1.09861229,  1.38629436,  0.69314718])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">mat</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">mat_t</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">T</span>
+        <span class="n">numerator_idx</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">mat_t</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="k">del</span> <span class="n">numerator_idx</span><span class="p">[</span><span class="n">denominator_idx</span><span class="p">]</span>
+        <span class="n">lr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">mat_t</span><span class="p">[</span><span class="n">numerator_idx</span><span class="p">,</span> <span class="p">:]</span><span class="o">/</span><span class="n">mat_t</span><span class="p">[</span><span class="n">denominator_idx</span><span class="p">,</span> <span class="p">:])</span><span class="o">.</span><span class="n">T</span>
+    <span class="k">elif</span> <span class="n">mat</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">numerator_idx</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">mat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="k">del</span> <span class="n">numerator_idx</span><span class="p">[</span><span class="n">denominator_idx</span><span class="p">]</span>
+        <span class="n">lr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">mat</span><span class="p">[</span><span class="n">numerator_idx</span><span class="p">]</span><span class="o">/</span><span class="n">mat</span><span class="p">[</span><span class="n">denominator_idx</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;mat must be either 1D or 2D&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">lr</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">alr_inv</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">denominator_idx</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Performs inverse additive log ratio transform.</span>
+
+<span class="sd">    This function transforms compositions from the non-isometric real space of</span>
+<span class="sd">    alrs to Aitchison geometry.</span>
+
+<span class="sd">    :math:`alr^{-1}: \mathbb{R}^{D-1} \rightarrow S^D`</span>
+
+<span class="sd">    The inverse alr transformation is defined as follows</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">         alr^{-1}(x) = C[exp([y_1, y_2, ..., y_{D-1}, 0])]</span>
+
+<span class="sd">    where :math:`C[x]` is the closure operation defined as</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        C[x] = \left[\frac{x_1}{\sum_{i=1}^{D} x_i},\ldots,</span>
+<span class="sd">                     \frac{x_D}{\sum_{i=1}^{D} x_i} \right]</span>
+
+<span class="sd">    for some :math:`D` dimensional real vector :math:`x` and</span>
+<span class="sd">    :math:`D` is the number of components for every composition.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mat: numpy.ndarray</span>
+<span class="sd">       a matrix of alr-transformed data</span>
+<span class="sd">    denominator_idx: int</span>
+<span class="sd">       the index of the column (2D-composition) or position (1D-composition) of</span>
+<span class="sd">       the output where the common denominator should be placed. By default</span>
+<span class="sd">       `denominator_idx=0` to specify the first column or position.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">         Inverse alr transformed matrix or vector where rows sum to 1.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; from composition_stats import alr, alr_inv</span>
+<span class="sd">    &gt;&gt;&gt; x = np.array([.1, .3, .4, .2])</span>
+<span class="sd">    &gt;&gt;&gt; alr_inv(alr(x))</span>
+<span class="sd">    array([ 0.1,  0.3,  0.4,  0.2])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">mat</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">mat_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">denominator_idx</span><span class="p">,</span>
+                            <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">mat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">comp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">mat_idx</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="n">comp</span><span class="p">[:,</span> <span class="n">denominator_idx</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">numerator_idx</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">comp</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="k">del</span> <span class="n">numerator_idx</span><span class="p">[</span><span class="n">denominator_idx</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">numerator_idx</span><span class="p">:</span>
+            <span class="n">comp</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">comp</span><span class="p">[:,</span> <span class="n">denominator_idx</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">mat_idx</span><span class="p">[:,</span> <span class="n">i</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="n">mat</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">mat_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">denominator_idx</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">comp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">mat_idx</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="n">comp</span><span class="p">[</span><span class="n">denominator_idx</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">numerator_idx</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">comp</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="k">del</span> <span class="n">numerator_idx</span><span class="p">[</span><span class="n">denominator_idx</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">numerator_idx</span><span class="p">:</span>
+            <span class="n">comp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">comp</span><span class="p">[</span><span class="n">denominator_idx</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">mat_idx</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;mat must be either 1D or 2D&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">comp</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">center</span><span class="p">(</span><span class="n">mat</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute the geometric average of data.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mat : array_like</span>
+<span class="sd">       a matrix of proportions where</span>
+<span class="sd">       rows = compositions</span>
+<span class="sd">       columns = components</span>
+<span class="sd">       each composition (row) must add up to unity (see :ref:`closure()`)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    array_like, np.float64</span>
+<span class="sd">       central composition</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; from composition_stats import center</span>
+<span class="sd">    &gt;&gt;&gt; X = np.array([[.1,.3,.4, .2],[.2,.2,.2,.4]])</span>
+<span class="sd">    &gt;&gt;&gt; center(X)</span>
+<span class="sd">    array([ 0.14854315,  0.25728427,  0.29708629,  0.29708629])</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cen</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">gmean</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">closure</span><span class="p">(</span><span class="n">cen</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">cen</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">centralize</span><span class="p">(</span><span class="n">mat</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Center data around its geometric average.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mat : array_like, float</span>
+<span class="sd">       a matrix of proportions where</span>
+<span class="sd">       rows = compositions and</span>
+<span class="sd">       columns = components</span>
+<span class="sd">       each composition (row) must add up to unity (see :ref:`closure()`)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">         centered composition matrix</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; from composition_stats import centralize</span>
+<span class="sd">    &gt;&gt;&gt; X = np.array([[.1,.3,.4, .2],[.2,.2,.2,.4]])</span>
+<span class="sd">    &gt;&gt;&gt; centralize(X)</span>
+<span class="sd">    array([[ 0.17445763,  0.30216948,  0.34891526,  0.17445763],</span>
+<span class="sd">           [ 0.32495488,  0.18761279,  0.16247744,  0.32495488]])</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cen</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">gmean</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">perturb_inv</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">cen</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_gram_schmidt_basis</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Builds clr transformed basis derived from</span>
+<span class="sd">    gram schmidt orthogonalization</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    n : int</span>
+<span class="sd">        Dimension of the Aitchison simplex</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">basis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="mi">1</span><span class="o">/</span><span class="n">i</span><span class="p">)]</span><span class="o">*</span><span class="n">i</span> <span class="o">+</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span>
+                     <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">basis</span><span class="p">[:,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">e</span>
+    <span class="k">return</span> <span class="n">basis</span><span class="o">.</span><span class="n">T</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">sbp_basis</span><span class="p">(</span><span class="n">sbp</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Builds an orthogonal basis from a sequential binary partition (SBP). As</span>
+<span class="sd">    explained in [1]_, the SBP is a hierarchical collection of binary</span>
+<span class="sd">    divisions of compositional parts. The child groups are divided again until</span>
+<span class="sd">    all groups contain a single part. The SBP can be encoded in a</span>
+<span class="sd">    :math:`(D - 1) \times D` matrix where, for each row, parts can be grouped</span>
+<span class="sd">    by -1 and +1 tags, and 0 for excluded parts. The `sbp_basis` method was</span>
+<span class="sd">    originally derived from function `gsi.buildilrBase()` found in the R</span>
+<span class="sd">    package `compositions` [2]_. The ith balance is computed as follows</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        b_i = \sqrt{ \frac{r_i s_i}{r_i+s_i} }</span>
+<span class="sd">        \ln \left( \frac{g(x_{r_i})}{g(x_{s_i})} \right)</span>
+
+<span class="sd">    where :math:`b_i` is the ith balance corresponding to the ith row in the</span>
+<span class="sd">    SBP, :math:`r_i` and :math:`s_i` and the number of respectively `+1` and</span>
+<span class="sd">    `-1` labels in the ith row of the SBP and where :math:`g(x) =</span>
+<span class="sd">    (\prod\limits_{i=1}^{D} x_i)^{1/D}` is the geometric mean of :math:`x`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    sbp: np.array, int</span>
+<span class="sd">        A contrast matrix, also known as a sequential binary partition, where</span>
+<span class="sd">        every row represents a partition between two groups of features. A part</span>
+<span class="sd">        labelled `+1` would correspond to that feature being in the numerator</span>
+<span class="sd">        of the given row partition, a part labelled `-1` would correspond to</span>
+<span class="sd">        features being in the denominator of that given row partition, and `0`</span>
+<span class="sd">        would correspond to features excluded in the row partition.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.array</span>
+<span class="sd">        An orthonormal basis in the Aitchison simplex</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; sbp = np.array([[1, 1,-1,-1,-1],</span>
+<span class="sd">    ...                 [1,-1, 0, 0, 0],</span>
+<span class="sd">    ...                 [0, 0, 1,-1,-1],</span>
+<span class="sd">    ...                 [0, 0, 0, 1,-1]])</span>
+<span class="sd">    ...</span>
+<span class="sd">    &gt;&gt;&gt; sbp_basis(sbp)</span>
+<span class="sd">    array([[ 0.31209907,  0.31209907,  0.12526729,  0.12526729,  0.12526729],</span>
+<span class="sd">           [ 0.36733337,  0.08930489,  0.18112058,  0.18112058,  0.18112058],</span>
+<span class="sd">           [ 0.17882092,  0.17882092,  0.40459293,  0.11888261,  0.11888261],</span>
+<span class="sd">           [ 0.18112058,  0.18112058,  0.18112058,  0.36733337,  0.08930489]])</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] Parent, S.É., Parent, L.E., Egozcue, J.J., Rozane, D.E.,</span>
+<span class="sd">       Hernandes, A., Lapointe, L., Hébert-Gentile, V., Naess, K.,</span>
+<span class="sd">       Marchand, S., Lafond, J., Mattos, D., Barlow, P., Natale, W., 2013.</span>
+<span class="sd">       The plant ionome revisited by the nutrient balance concept.</span>
+<span class="sd">       Front. Plant Sci. 4, 39, http://dx.doi.org/10.3389/fpls.2013.00039.</span>
+<span class="sd">    .. [2] van den Boogaart, K. Gerald, Tolosana-Delgado, Raimon and Bren,</span>
+<span class="sd">       Matevz, 2014. `compositions`: Compositional Data Analysis. R package</span>
+<span class="sd">       version 1.40-1. https://CRAN.R-project.org/package=compositions.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">n_pos</span> <span class="o">=</span> <span class="p">(</span><span class="n">sbp</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">n_neg</span> <span class="o">=</span> <span class="p">(</span><span class="n">sbp</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">psi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">sbp</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sbp</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="n">psi</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">sbp</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">n_neg</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">n_pos</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">**</span><span class="n">sbp</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">/</span>
+                                        <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">sbp</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:])))</span>
+    <span class="k">return</span> <span class="n">clr_inv</span><span class="p">(</span><span class="n">psi</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_check_orthogonality</span><span class="p">(</span><span class="n">basis</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Checks to see if basis is truly orthonormal in the</span>
+<span class="sd">    Aitchison simplex</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    basis: numpy.ndarray</span>
+<span class="sd">        basis in the Aitchison simplex</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">basis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">basis</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">inner</span><span class="p">(</span><span class="n">basis</span><span class="p">,</span> <span class="n">basis</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">basis</span><span class="p">)),</span>
+                       <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Aitchison basis is not orthonormal&quot;</span><span class="p">)</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Derrick Hasterok.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
